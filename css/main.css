@@ -19,6 +19,12 @@
   font-style: normal;
   font-stretch: normal;
   src: url("fonts/EOT/SourceCodePro-Bold.eot") format("embedded-opentype"), url("fonts/WOFF2/OTF/SourceCodePro-Bold.otf.woff2") format("woff2"), url("fonts/WOFF/OTF/SourceCodePro-Bold.otf.woff") format("woff"), url("fonts/OTF/SourceCodePro-Bold.otf") format("opentype"), url("fonts/TTF/SourceCodePro-Bold.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  src: url("EOT/SourceSansPro-Light.eot") format("embedded-opentype"), url("WOFF/OTF/SourceSansPro-Light.otf.woff") format("woff"), url("OTF/SourceSansPro-Light.otf") format("opentype"), url("TTF/SourceSansPro-Light.ttf") format("truetype"); }
 /*
  * Font & font sizes.
  */
