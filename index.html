@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<p><center><pre class="art-p">╷ ╷╭─╮╷  ╭─╴╭─╮╭┬╮╭─╮
+│ ││─╯│  │  │ ││╵││─╯
+╰┴╯╰─╴╰─╴╰─╴╰─╯╵ ╵╰─╴</center></pre></p>
+<p><center>
+  Weblog not ready yet, currently testing and setting things up.
+</center></p>
+
+<h1 class="page-heading">Recent Posts</h1>
+
+{% for post in site.posts limit:5 %}
+<div class="index">
+  <div>
+    <span class="index-title">
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }} </a>
+    </span>
+    <span class="index-info">
+      {{ post.date | date: "%b %-d, %Y" }} {% for cat in post.categories %} [{{cat}}] {% endfor %}
+    </span>
+  </div>
+  <div class="index-excerpt">
+    <blockquote>{{ post.excerpt | strip_html | truncate: 256 }}</blockquote>
+  </div>
+</div>
+{% endfor %}
+
+
+

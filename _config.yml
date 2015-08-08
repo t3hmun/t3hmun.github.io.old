@@ -1,0 +1,17 @@
+# Site settings
+title: t3hmun
+email: blog at t3hmun dot com
+description: "A Jekyll theme simple enough to understand and edit, even if you find the default Jekyll site complicated. Intended for learning and use."
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://t3hmun.github.io" #"http://yourdomain.com" the base hostname & protocol for your site
+twitter_username: # Leaving this blank for fun.
+github_username:  t3hmun
+footer:
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+destination: t3hmun.github.io
