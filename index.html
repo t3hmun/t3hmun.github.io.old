@@ -9,7 +9,12 @@ layout: default
   Weblog not ready yet, currently testing and setting things up.
 </center></p>
 
-<h1 class="page-heading">Recent Posts</h1>
+<h5><pre class="art-p">╭─╮╭─╴╭─╴╭─╴┌─╮╶┬╴
+│┬╯├─ │  ├─ │ │ │
+╵╰╴╰─╴╰─╴╰─╴╵ ╵ ╵ </pre>
+<pre class="art-p">╭─╮╭─╮╭─╴╶┬╴╭─╴
+├─╯│ │╰─╮ │ ╰─╮
+╵  ╰─╯╶─╯ ╵ ╶─╯</pre></h5>
 
 {% for post in site.posts limit:5 %}
 <div class="index">
@@ -18,7 +23,7 @@ layout: default
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }} </a>
     </span>
     <span class="index-info">
-      {{ post.date | date: "%b %-d, %Y" }} {% for cat in post.categories %} [{{cat}}] {% endfor %}
+      <b>[{{ post.category }}]</b> {% for tag in post.tags %} [{{tag}}] {% endfor %} {{ post.date | date: "%b %-d, %Y" }} 
     </span>
   </div>
   <div class="index-excerpt">

@@ -313,7 +313,7 @@ code {
     padding: 0 $standard-side-margin;
     /* No margins, don't want to disrupt text/line spacing. */
     margin: 0;
-    color: $code-colour; 
+    color: $code-colour;
     /* Inline so it can be part of a sentence,
      * Block to prevent line-breaks in the middle. */
     /* display: inline-block; Actually no, too much chaos with justified text. */
@@ -355,6 +355,7 @@ pre {
     text-align: left;
     margin: $standard-margin $standard-side-margin;
     margin-bottom: $endpara-margin;
+    background: none;
 
     /* This is used to give the title and info a single underline. */
     .index-excerpt {
@@ -370,10 +371,13 @@ pre {
     }
 
     .index-info {
-        padding: $thin-line $standard-side-margin;
+        font-size: $base * $h6-size-coef;
+        line-height: $base * $h6-size-coef;
+        padding: $standard-margin $standard-side-margin;
         /* Float so that it appears as a block on the right. */
         float: right;
         /* Kicks it to the next line if there is not enough space next to the title. */
         overflow: auto;
     }
+
 }
