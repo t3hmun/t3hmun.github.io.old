@@ -2,9 +2,6 @@
 layout: default
 ---
 
-<p><center><pre class="art-p">╷ ╷╭─╮╷  ╭─╴╭─╮╭┬╮╭─╮
-│ ││─╯│  │  │ ││╵││─╯
-╰┴╯╰─╴╰─╴╰─╴╰─╯╵ ╵╰─╴</center></pre></p>
 <p><center>
   Weblog not ready yet, currently testing and setting things up.
 </center></p>
@@ -14,10 +11,7 @@ layout: default
 ╵╰╴╰─╴╰─╴╰─╴╵ ╵ ╵ </pre>
 <pre class="art-p">╭─╮╭─╮╭─╴╶┬╴╭─╴
 ├─╯│ │╰─╮ │ ╰─╮
-╵  ╰─╯╶─╯ ╵ ╶─╯</pre>
-<pre class="art-p">
-<a href="{{ site.baseurl }}/index/"> Archive</a>
-</pre></h5>
+╵  ╰─╯╶─╯ ╵ ╶─╯</pre></h5>
 
 {% for post in site.posts limit:5 %}
 <div class="index">
@@ -30,7 +24,7 @@ layout: default
     </span>
   </div>
   <div class="index-excerpt">
-    <p>{{ post.excerpt | strip_html | truncate: 256 }}</p>
+    <p>{{ post.excerpt | strip_html | truncate: 256 }}...</p>
   </div>
 </div>
 {% endfor %}

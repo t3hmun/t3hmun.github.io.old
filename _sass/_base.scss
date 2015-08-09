@@ -371,8 +371,8 @@ pre {
     }
 
     .index-info {
-        font-size: $base * $h6-size-coef;
-        line-height: $base * $h6-size-coef;
+        font-size: $base * $taglist-size-coef;
+        line-height: $base * $taglist-size-coef;
         padding: $standard-margin $standard-side-margin;
         /* Float so that it appears as a block on the right. */
         float: right;
