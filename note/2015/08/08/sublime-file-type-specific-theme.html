@@ -2,11 +2,11 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>About</title>
+  <title>Sublime File Type Specific Theme</title>
   <meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
-  <meta name="description" content="A Jekyll theme simple enough to understand and edit, even if you find the default Jekyll site complicated. Intended for learning and use.">
+  <meta name="description" content="Setting a separate theme for a single filetype in Sublime 3 is quite simple.The Markdown Extended package combined the Monokai Extended colour scheme is grea...">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://t3hmun.github.io/about/">
+  <link rel="canonical" href="http://t3hmun.github.io/note/2015/08/08/sublime-file-type-specific-theme.html">
   <link rel="alternate" type="application/rss+xml" title="t3hmun" href="http://t3hmun.github.io/feed.xml" />
 </head>
 
@@ -35,23 +35,40 @@
 </header>
 
   <article>
-    <h4 class="post-title"><pre class="art-p">╭─╮├─╮╭─╮╷ ╷┼─╴
-╰─╰╰─╯╰─╯╰─╯╰─╯</pre></h4>
-<p><pre class="art-p">╷   ╷                         
-│   │╭──╮│   ╭──╴╭──╮╭─┬─╮╭──╮
-│ │ ││──╯│   │   │  ││ ╵ ││──╯
-╰─┴─╯╰──╴╰──╴╰──╴╰──╯╵   ╵╰──╴</pre>
-<pre class="art-p">
+    <h1 class="post-title">Sublime File Type Specific Theme</h1>
+Aug 8, 2015
+<p>Setting a separate theme for a single filetype in Sublime 3 is quite simple.
+The Markdown Extended package combined the Monokai Extended colour scheme is great but I prefer a different colour scheme for everything else.</p>
 
-to my weblog.
-</pre>
-</p>
+<ul>
+  <li>Open a file of the relevant type.</li>
+  <li>Preferences &gt; Settings - More &gt; Syntax Specific - User</li>
+  <li>Add: <code class="highlighter-rouge">"color_scheme" : "Packages/Name of package/Name of theme.tmTheme"</code></li>
+</ul>
 
-<p>Content is mostly programming related, with an occasional touch of woodwork.</p>
+<p>Finding out the name of the theme:</p>
 
-<p>The theme of this website is <a href="http://t3hmun.github.io/rather-simple-jekyll-theme/">based on one</a> that I created in order to learn the basics of CSS, SASS and webpage layout across multiple size devices.</p>
+<ul>
+  <li>Prefences &gt; <code class="highlighter-rouge">Browse Packages</code> to open package folder.</li>
+  <li>If the package has its own folder there, just find the filename.</li>
+  <li>Otherwise visit the <code class="highlighter-rouge">../Installed Packages</code> folder.</li>
+  <li>Find the package, open with 7zip and find the filename.</li>
+</ul>
 
-<p>My contact mail info can be found at the bottom of every page.</p>
+<p>This is what my <code class="highlighter-rouge">Markdown Extended.sublime-settings</code> looks like now:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"extensions"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"md"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+
+    </span><span class="nt">"color_scheme"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Packages/Monokai Extended/Monokai Extended.tmTheme"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+
   </article>
   <footer class="site-footer">
 <pre class="art-p"><a href="#">▁▁
