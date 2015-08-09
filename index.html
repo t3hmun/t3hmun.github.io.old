@@ -22,7 +22,7 @@ layout: default
     </span>
   </div>
   <div class="index-excerpt">
-    <blockquote>{{ post.excerpt | strip_html | truncate: 256 }}</blockquote>
+    <p>{{ post.excerpt | strip_html | truncate: 256 }}</p>
   </div>
 </div>
 {% endfor %}

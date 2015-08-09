@@ -49,10 +49,10 @@
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
-    src: url('EOT/SourceSansPro-Light.eot') format('embedded-opentype'),
-         url('WOFF/OTF/SourceSansPro-Light.otf.woff') format('woff'),
-         url('OTF/SourceSansPro-Light.otf') format('opentype'),
-         url('TTF/SourceSansPro-Light.ttf') format('truetype');
+    src: url('fonts/EOT/SourceSansPro-Light.eot') format('embedded-opentype'),
+         url('fonts/WOFF/OTF/SourceSansPro-Light.otf.woff') format('woff'),
+         url('fonts/OTF/SourceSansPro-Light.otf') format('opentype'),
+         url('fonts/TTF/SourceSansPro-Light.ttf') format('truetype');
 }
 
 /*
@@ -134,6 +134,7 @@ $very-subtle-colour: darken($highlight-colour, 40%);
 $feature-colour: darken(mix($background-colour, $subtle-colour, 80%), 10%);
 $minor-feature-colour: darken($background-colour, 5%);
 $visited-colour: darken($link-colour, 15%);
+$code-colour: mix($text-colour, $highlight-colour);
 $code-background: $feature-colour;
 $bullet-background: $minor-feature-colour;
 $blockq-background: $minor-feature-colour;
