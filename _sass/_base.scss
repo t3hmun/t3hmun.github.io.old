@@ -152,6 +152,7 @@ ul {
 
     /* Since the bullet list is deviating from the standard text width its nice to demark it with a custom background. */
     background: $bullet-background;
+    border-radius: $standard-radius;
 
 }
 
@@ -165,8 +166,8 @@ li {
     /* DO NOT add a negative text indent. Child inline block will inherit and lose their formatting. */
 
     /* I just like the look of these lines between top level blocks. */
-    border-bottom: $medium-line solid $background-colour;
-
+    /*border-bottom: $medium-line solid $background-colour;
+*/
     >ul {
         >li{
             border-bottom: none;
@@ -312,10 +313,10 @@ code {
     padding: 0 $standard-side-margin;
     /* No margins, don't want to disrupt text/line spacing. */
     margin: 0;
-    color: $strong-colour;
+    /* color: $strong-colour; */
     /* Inline so it can be part of a sentence,
      * Block to prevent line-breaks in the middle. */
-    display: inline-block;
+    /* display: inline-block; Actually no, too much chaos with justified text. */
     /* Creates neat curved corners. */
     border-radius: $standard-radius;
     /* No border it is part of the sentence. */

@@ -111,7 +111,7 @@ $reading-width: $base * 30;
 $article-width: $reading-width * 1.8; /* Max with of any article content. */
 $blockq-width: $reading-width + $thick-line + $standard-side-margin + 50;
 /* Bullet points get wider space than standard text blocks. */
-$bullet-width: $article-width * 0.9; /* A bit less than max. */
+$bullet-width: $article-width * 0.95; /* A bit less than max. */
 $bullet-indent: 3%;
 $bullet-text-gap: $base * 0.5;
 
@@ -126,12 +126,12 @@ $link-colour: #a6e22e; /* This sould be the colour for all clickables. */
 
 /* Colours for borders and lines. */
 /* May want to change around lighten/darken for light themes. */
-$strong-colour: lighten($highlight-colour, 15%);
+$strong-colour: lighten($highlight-colour, 25%);
 $subtle-colour: darken($highlight-colour, 30%); /* Used to compute feature colour. */
 $very-subtle-colour: darken($highlight-colour, 40%);
 
 /* Titles and special elements. */
-$feature-colour: darken(mix($background-colour, $subtle-colour, 80%), 10%); /* code */
+$feature-colour: darken(mix($background-colour, $subtle-colour, 80%), 10%);
 $minor-feature-colour: darken($background-colour, 5%);
 $visited-colour: darken($link-colour, 15%);
 $code-background: $feature-colour;
