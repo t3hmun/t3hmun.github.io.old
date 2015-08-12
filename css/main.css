@@ -748,7 +748,8 @@ pre {
     /* Float so that it appears as a block on the right. */
     float: right;
     /* Kicks it to the next line if there is not enough space next to the title. */
-    overflow: auto; }
+    overflow: auto;
+    font-family: "Source Sans Pro", sans-serif; }
 
 /* This only defines the lines around the header and footer. */
 /* Site header
