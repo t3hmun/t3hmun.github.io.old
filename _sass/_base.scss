@@ -378,6 +378,7 @@ pre {
         float: right;
         /* Kicks it to the next line if there is not enough space next to the title. */
         overflow: auto;
+        font-family: $p-font-family;
     }
 
 }
