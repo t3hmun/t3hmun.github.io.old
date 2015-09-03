@@ -22,8 +22,8 @@ layout: default
     </span>
   </div>
   <div class="index-excerpt">
-    <p>{{ post.excerpt | strip_html | truncate: 256 }}<pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
-╰─╴╰─╯╵ ╵╰╴╰╴╵ ╵╰─╯╰─╴╰─┘ ▘ ▝ ▝</pre>
+    <p>{{ post.excerpt | strip_html | truncate: 256 }}<a href="{{ post.url | prepend: site.baseurl }}"><pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
+╰─╴╰─╯╵ ╵╰╴╰╴╵ ╵╰─╯╰─╴╰─┘ ▘ ▝ ▝</pre></a>
     </p>
   </div>
 </div>
