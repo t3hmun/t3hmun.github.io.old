@@ -180,7 +180,7 @@ li {
 /* This inserts the content character to use as a bullet point. */
 li:before {
     padding-right:$bullet-text-gap;
-    content: "*";
+    content: "\2022"; /* \2022 is the code for UTF-8 bullet point */
     color: $strong-colour;
     font-weight: $bullet-weight;
 }
@@ -281,6 +281,7 @@ a {
 pre,
 code {
     background-color: $code-background;
+    text-align: left;
 
     /* Set a monospace font.*/
     font-family: $syntax-font-family;

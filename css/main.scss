@@ -118,7 +118,7 @@ $article-width: $reading-width * 1.8; /* Max with of any article content. */
 $blockq-width: $reading-width + $thick-line + $standard-side-margin + 50;
 /* Bullet points get wider space than standard text blocks. */
 $bullet-width: $article-width * 0.95; /* A bit less than max. */
-$bullet-indent: 3%;
+$bullet-indent: $base /2;
 $bullet-text-gap: $base * 0.5;
 
 /*
