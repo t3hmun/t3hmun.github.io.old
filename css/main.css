@@ -472,8 +472,8 @@ __end of intuerlude__
  * The HTML head (not header) is mainly just meta tags and configuration. */
 body {
   font-family: "Source Code Pro", monospace;
-  font-size: 21px;
-  line-height: 31.5px;
+  font-size: 19px;
+  line-height: 28.5px;
   font-weight: 300;
   color: #DDD;
   background-color: #272822;
@@ -492,43 +492,45 @@ article {
    *  which are all blocks with their own internal alignment. */
   text-align: left;
   /* Here we configure the maximum width we want to allow content to consume. */
-  max-width: 1134px; }
+  max-width: 1026px; }
 
 /* P for Paragraph. This should only be used for heavy blocks of reading text.
  * Other quantities of text should use other tags. */
 p {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 23.1px;
-  line-height: 31.5px;
+  font-size: 20.9px;
+  line-height: 28.5px;
   font-weight: 300;
+  /* Source Sans kerning is a tad tight. */
+  letter-spacing: 0.04em;
   /* Justify for glorious newspaper quality reading. */
   text-align: justify;
   /* Reading width is meant to be the maximum comfortable text block width.
    * The ideal heavy reading width is meant to be rather narrow.
    * However pictures and lighter text blocks can exploit more space,
    *  hence the bigger size of $article-width. */
-  max-width: 630px;
+  max-width: 570px;
   /* Auto side margins to centre the p block in the screen.
    * Extra margin at bottom for end of paragraph. */
-  margin: 6.3px auto 18.9px;
+  margin: 5.7px auto 17.1px;
   /* This is required to stop the text from hugging the edge of the screen. A tiny gutter. */
-  padding: 0 5.04px;
+  padding: 0 4.56px;
   /* This is important to prevent this block from wrapping / appearing-next-to floating elements. */
   clear: both; }
 
 blockquote {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 23.1px;
-  line-height: 31.5px;
+  font-size: 20.9px;
+  line-height: 28.5px;
   font-weight: 300;
   /* The side line to indicate a blockquote. */
-  border-left: 14.7px solid #824701;
+  border-left: 13.3px solid #824701;
   /* This tiny bit of padding separates the tiers of blockquotes. */
-  padding-left: 5.04px;
+  padding-left: 4.56px;
   /* Centre the block. */
   margin: 0 auto;
   /* Give the blockquote slightly more space than standard text.  */
-  max-width: 699.74px;
+  max-width: 637.86px;
   /* Avoid troublesome interaction with floating elements. */
   clear: both;
   /* A unique background to mark out the area. */
@@ -542,35 +544,35 @@ blockquote {
    * This overrides the width of p elements that are direct children of blockquote elements.
    * Without this the text would revert to being restrained by the p max-width setting. */ }
   blockquote > p {
-    max-width: 699.74px; }
+    max-width: 637.86px; }
 
 /* The list tag, general settings for lists. */
 ul {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 23.1px;
-  line-height: 31.5px;
+  font-size: 20.9px;
+  line-height: 28.5px;
   font-weight: 300;
   /* No browser generated bullet points.
    * Each of the browsers generate bullet shapes differently so I prefer to create them using text (see li:before). */
   list-style: none;
   text-align: justify;
   padding: 0;
-  margin-top: 6.3px;
+  margin-top: 5.7px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 18.9px;
+  margin-bottom: 17.1px;
   /* Bullet point lists are easier to read when given more horizontal space. */
-  max-width: 1077.3px;
+  max-width: 974.7px;
   /* Since the bullet list is deviating from the standard text width its nice to demark it with a custom background. */
   background: #1a1a16;
-  border-radius: 8.4px; }
+  border-radius: 7.6px; }
 
 /* Individual list item. */
 li {
   /* Using percentage makes it squash nicely on small displays.
    * I can't explain the relationship between padding-left and text-indent. */
   padding-left: 3%;
-  padding-right: 6.3px;
+  padding-right: 5.7px;
   /* DO NOT add a negative text indent. Child inline block will inherit and lose their formatting. */
   /* I just like the look of these lines between top level blocks. */
     /*border-bottom: $medium-line solid $background-colour;
@@ -580,14 +582,14 @@ li {
 
 /* This inserts the content character to use as a bullet point. */
 li:before {
-  padding-right: 10.5px;
+  padding-right: 9.5px;
   content: "*";
   color: #fed29d;
   font-weight: 700; }
 
 /* Define the sub-list bullet point. */
 li li:before {
-  padding-right: 10.5px;
+  padding-right: 9.5px;
   content: "-";
   color: #fed29d; }
 
@@ -600,9 +602,9 @@ img {
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
-  margin: 6.3px 5.04px 18.9px;
+  margin: 5.7px 4.56px 17.1px;
   padding: 0;
-  border-bottom: 2.1px solid #824701;
+  border-bottom: 1.9px solid #824701;
   /* This `&` syntax a feature of SASS.
    * This results in `.post-title` CSS for each of the above header tags. */
   /* Make post heading stand out. */
@@ -618,28 +620,28 @@ h1, h2, h3, h4, h5, h6 {
 /* Sets the size and allows bottom-border to appear behind decenders
  * I want the bottom bits of lettlers lige g and p to cross the line. */
 h1 {
-  font-size: 42px;
-  line-height: 42px; }
+  font-size: 38px;
+  line-height: 38px; }
 
 h2 {
-  font-size: 35.7px;
-  line-height: 35.7px; }
+  font-size: 32.3px;
+  line-height: 32.3px; }
 
 h3 {
-  font-size: 29.4px;
-  line-height: 29.4px; }
+  font-size: 26.6px;
+  line-height: 26.6px; }
 
 h4 {
-  font-size: 25.2px;
-  line-height: 25.2px; }
+  font-size: 22.8px;
+  line-height: 22.8px; }
 
 h5 {
-  font-size: 18.9px;
-  line-height: 18.9px; }
+  font-size: 17.1px;
+  line-height: 17.1px; }
 
 h6 {
-  font-size: 10.5px;
-  line-height: 10.5px; }
+  font-size: 9.5px;
+  line-height: 9.5px; }
 
 /* Links. Colour them according to the theme. */
 a {
@@ -653,9 +655,9 @@ a {
     text-decoration: underline; }
 
 .top-nav {
-  font-size: 26.25px;
+  font-size: 23.75px;
   font-weight: 500;
-  margin: 6.3px;
+  margin: 5.7px;
   color: #fd971f; }
 
 /* Code formatting - fenced code blocks use the pre tag.
@@ -672,27 +674,41 @@ code {
   /* This is for box art :D */ }
   pre.art,
   code.art {
-    line-height: 1.3;
+    line-height: 1.38;
     max-width: 90%;
     margin: auto; }
-  pre.art-p,
-  code.art-p {
-    line-height: 1.3;
+  pre.art-block-tiny,
+  code.art-block-tiny {
+    line-height: 1.36;
     max-width: 90%;
     margin: auto;
     background: none;
     border: none;
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: middle;
+    /* Need to increase weight to prevent lines being anti-aliased into oblivion. */
+    font-weight: 500;
+    font-size: 9.5px; }
+  pre.art-block-small,
+  code.art-block-small {
+    line-height: 1.38;
+    max-width: 90%;
+    margin: auto;
+    background: none;
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14.25px; }
   pre > a:hover,
   code > a:hover {
     color: #DDD;
+    /* No decoration, underline makes a mess of art. */
     text-decoration: none; }
 
 /* This is the tag for small inline `code` bits. */
 code {
   /* A small amount of padding to void escaping the curved edges */
-  padding: 0 5.04px;
+  padding: 0 4.56px;
   /* No margins, don't want to disrupt text/line spacing. */
   margin: 0;
   color: #edba7e;
@@ -700,15 +716,16 @@ code {
    * Block to prevent line-breaks in the middle. */
   /* display: inline-block; Actually no, too much chaos with justified text. */
   /* Creates neat curved corners. */
-  border-radius: 8.4px;
+  border-radius: 7.6px;
   /* No border it is part of the sentence. */
-  border: none; }
+  border: none;
+  display: inline-block; }
 
 pre {
   /* Want the block to be flush with the screen edge but not the text. */
-  padding: 0 5.04px;
-  margin: 6.3px 0;
-  border: 2.1px solid #4f2b01;
+  padding: 0 4.56px;
+  margin: 5.7px 0;
+  border: 1.9px solid #4f2b01;
   border-radius: 0;
   /* Curves look bad when flussh with sceen edge. */
   /* This gives the code block its own scroll bar.
@@ -729,22 +746,22 @@ pre {
  */
 .index {
   text-align: left;
-  margin: 6.3px 5.04px;
-  margin-bottom: 18.9px;
+  margin: 5.7px 4.56px;
+  margin-bottom: 17.1px;
   background: none;
   /* This is used to give the title and info a single underline. */ }
   .index .index-excerpt {
-    border-top: 2.1px solid #4f2b01;
+    border-top: 1.9px solid #4f2b01;
     /* This prevents it appearing inbetween the title and date. */
     clear: both; }
   .index .index-title {
-    font-size: 26.25px;
+    font-size: 23.75px;
     /* Float so that it appears as a block on the left. */
     float: left; }
   .index .index-info {
-    font-size: 18.9px;
-    line-height: 18.9px;
-    padding: 6.3px 5.04px;
+    font-size: 17.1px;
+    line-height: 17.1px;
+    padding: 5.7px 4.56px;
     /* Float so that it appears as a block on the right. */
     float: right;
     /* Kicks it to the next line if there is not enough space next to the title. */
@@ -755,23 +772,24 @@ pre {
 /* Site header
  */
 .site-header {
-  border-top: 14.7px none #fd971f;
-  border-bottom: 2.1px none #fd971f;
-  margin-bottom: 18.9px; }
+  border-top: 13.3px none #fd971f;
+  border-bottom: 1.9px none #fd971f;
+  margin-bottom: 17.1px; }
 
 /* Site footer
  */
 .site-footer {
-  border-top: 2.1px none #fd971f;
-  border-bottom: 14.7px none #fed29d;
-  text-align: center; }
+  border-top: 1.9px none #fd971f;
+  border-bottom: 13.3px none #fed29d;
+  text-align: center;
+  font-size: 14.25px; }
 
 article {
-  border-bottom: 2.1px solid #824701; }
+  border-bottom: 1.9px solid #824701; }
 
 /* This is used to apply a suitable theme to the sytax highlighting performed by Rouge. */
 .highlight table td {
-  padding: 6.3px; }
+  padding: 5.7px; }
 
 .highlight table pre {
   margin: 0; }
