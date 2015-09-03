@@ -61,16 +61,21 @@
 $base-font-family: 'Source Code Pro', monospace;
 $syntax-font-family: 'Source Code Pro', monospace;
 $p-font-family: 'Source Sans Pro', sans-serif;
-$base: 21px; /* All sizes computed from this. */
+$base: 19px; /* All sizes computed from this. */
 $base-font-size: $base;
 $p-font-size: $base * 1.1;
-$small-font-size: $base-font-size * 0.85;
+$small-font-size: $base-font-size * 0.75;
+$half-font-size: $base-font-size * 0.5;
 $big-font-size: $base-font-size * 1.25;
 
-$body-font-weight: 300;
-$header-weight: 500;
-$site-title-weight: 700;
-$bullet-weight: 700; /* Bullet points are made of text. */
+$light-weight: 300;
+$medium-weight: 500;
+$heavy-weight: 700;
+
+$body-font-weight: $light-weight;
+$header-weight: $medium-weight;
+$site-title-weight:$heavy-weight;
+$bullet-weight: $heavy-weight; /* Bullet points are made of text. */
 
 $h1-size-coef: 2;
 $h2-size-coef: 1.7;
