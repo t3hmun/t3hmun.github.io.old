@@ -56,12 +56,24 @@
 }
 
 /*
+ * Now its time to define a lot of variables.
+ * All colours and sizes should be modified here, not in the CSS.
+ */
+
+
+/* BASE SIZE */
+/* All sizes computed from this (using multiplication). */
+$base: 19px; 
+
+
+
+
+/*
  * Font & font sizes.
  */
 $base-font-family: 'Source Code Pro', monospace;
 $syntax-font-family: 'Source Code Pro', monospace;
 $p-font-family: 'Source Sans Pro', sans-serif;
-$base: 19px; /* All sizes computed from this. */
 $base-font-size: $base;
 $p-font-size: $base * 1.1;
 $small-font-size: $base-font-size * 0.75;
@@ -74,8 +86,9 @@ $heavy-weight: 700;
 
 $body-font-weight: $light-weight;
 $header-weight: $medium-weight;
-$site-title-weight:$heavy-weight;
-$bullet-weight: $heavy-weight; /* Bullet points are made of text. */
+$site-title-weight: $heavy-weight;
+/* Used on the bullet point itself, not the text. */
+$bullet-weight: $heavy-weight;
 
 $h1-size-coef: 2;
 $h2-size-coef: 1.7;
@@ -83,7 +96,7 @@ $h3-size-coef: 1.4;
 $h4-size-coef: 1.2;
 $h5-size-coef: 0.9;
 $h6-size-coef: 0.5;
-$taglist-size-coef: 0.9;
+$taglist-size-coef: 0.8;
 
 /*
  * All Spacings
@@ -101,8 +114,10 @@ $endpara-margin: $standard-margin * 3;
 /*
  * Misc
  */
-/* Border edge radius for the code element. */
-$standard-radius: $base * 0.4;
+/* Border edge radius. */
+$standard-radius: $base * 0.4; /* Used by bullet lists. */
+$code-radius: $base * 0.2; /* Used by inline code blocks.  */
+
 $thin-line: $base * 0.1;
 $medium-line:$thin-line * 3;
 $thick-line:$thin-line * 7;

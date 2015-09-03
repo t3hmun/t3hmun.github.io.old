@@ -339,10 +339,18 @@ code {
      * Block to prevent line-breaks in the middle. */
     /* display: inline-block; Actually no, too much chaos with justified text. */
     /* Creates neat curved corners. */
-    border-radius: $standard-radius;
+    border-radius: $code-radius;
     /* No border it is part of the sentence. */
     border: none;
     display: inline-block;
+
+    &.index-tag {
+        font-size: $base * $taglist-size-coef;
+        line-height: 130%;
+        padding: $base * $taglist-size-coef * 0.12;
+        margin: 0;
+        vertical-align: middle;
+    }
 }
 
 pre {
@@ -393,14 +401,12 @@ pre {
     }
 
     .index-info {
-        font-size: $base * $taglist-size-coef;
-        line-height: $base * $taglist-size-coef;
-        padding: $standard-margin $standard-side-margin;
         /* Float so that it appears as a block on the right. */
         float: right;
         /* Kicks it to the next line if there is not enough space next to the title. */
         overflow: auto;
         font-family: $p-font-family;
+        vertical-align: middle;
     }
 
 }
