@@ -53,6 +53,8 @@ body {
     font-weight: $body-font-weight;
     color: $text-colour;
     background-color: $background-colour;
+    /* Source Sans kerning is a tad tight. */
+    letter-spacing: $letter-spacing-adjustment;
 
     /* Everything lacking its own alignment will be centred (primarily header and footer). */
     text-align: center;
@@ -82,8 +84,6 @@ p {
     font-size: $p-font-size;
     line-height: $base-line-height;
     font-weight: $body-font-weight;
-    /* Source Sans kerning is a tad tight. */
-    letter-spacing: 0.04em;
     /* Justify for glorious newspaper quality reading. */
     text-align: justify;
     /* Reading width is meant to be the maximum comfortable text block width.
@@ -214,9 +214,6 @@ h1, h2, h3, h4, h5, h6 {
     /* This `&` syntax a feature of SASS.
      * This results in `.post-title` CSS for each of the above header tags. */
     /* Make post heading stand out. */
-    &.post-title {
-        color: $highlight-colour;
-    }
 
     /* Make site title stand out. */
     &.site-title {
@@ -232,10 +229,19 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: $base * $h1-size-coef;
     line-height: $base * $h1-size-coef;
+
+    &.index-title{
+        margin: 0;
+        color: $highlight-colour;
+    }
 }
 h2 {
     font-size: $base * $h2-size-coef;
     line-height: $base * $h2-size-coef;
+
+    &.index-title{
+        margin: 0;
+    }
 }
 h3 {
     font-size: $base * $h3-size-coef;
@@ -284,6 +290,8 @@ a {
  * Code needs to be given maximum horizontal space. Scrolling or wrapping code is no fun. */
 pre,
 code {
+    /* Reset letter spacing (it can ruin monospace). */
+    letter-spacing: 0;
     background-color: $code-background;
     text-align: left;
 
@@ -393,13 +401,11 @@ pre {
 
     /* This is used to give the title and info a single underline. */
     .index-excerpt {
-        border-top: $thin-line solid $very-subtle-colour;
         /* This prevents it appearing inbetween the title and date. */
         clear: both;
     }
 
     .index-title {
-        font-size: $big-font-size;
         /* Float so that it appears as a block on the left. */
         float: left;
     }
@@ -411,6 +417,22 @@ pre {
         overflow: auto;
         font-family: $p-font-family;
         vertical-align: middle;
+        margin: $standard-margin $standard-side-margin;
+        margin-bottom: $endpara-margin;
     }
 
+}
+
+.left-float {
+    font-size: $big-font-size;
+    /* Float so that it appears as a block on the left. */
+    float: left;
+}
+
+.right-float{
+    /* Float so that it appears as a block on the right. */
+    float: right;
+    /* Kicks it to the next line if there is not enough space next to the title. */
+    overflow: auto;
+    vertical-align: middle;
 }

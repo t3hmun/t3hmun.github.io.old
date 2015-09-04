@@ -1,6 +1,15 @@
 ---
 layout: default
 ---
-<h1 class="post-title">{{ page.title }}</h1>
-{{ page.date | date: "%b %-d, %Y" }}
+<div class="index">
+  <div>
+    <span class="index-title">
+      <a href="{{ post.url | prepend: site.baseurl }}"><h1 class="index-title">{{ page.title }}</h1></a>
+    </span>
+    <span class="index-info">
+      <b><code class="index-tag">[{{ page.category }}]</code></b> {% for tag in page.tags %} <code class="index-tag">[{{tag}}]</code> {% endfor %} - {{ page.date | date: "%b %-d, %Y" }} 
+    </span>
+  </div>
+</div>
+
 {{ content }}
