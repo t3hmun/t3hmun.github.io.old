@@ -207,16 +207,14 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
     border-bottom: $thin-line solid $subtle-colour;
 
-    /* This `&` syntax a feature of SASS.
-     * This results in `.post-title` CSS for each of the above header tags. */
-    /* Make post heading stand out. */
-
-    /* Make site title stand out. */
-    &.site-title {
-        font-weight: $site-title-weight;
+    &.post-title{
         color: $highlight-colour;
-        border-bottom: none;
-        margin-bottom: 0;
+    }
+
+    &.index-title{
+        margin: 0;
+        margin-left: $standard-side-margin;
+        color: $highlight-colour;
     }
 }
 
@@ -225,19 +223,10 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: $base * $h1-size-coef;
     line-height: $base * $h1-size-coef;
-
-    &.index-title{
-        margin: 0;
-        color: $highlight-colour;
-    }
 }
 h2 {
     font-size: $base * $h2-size-coef;
     line-height: $base * $h2-size-coef;
-
-    &.index-title{
-        margin: 0;
-    }
 }
 h3 {
     font-size: $base * $h3-size-coef;
@@ -268,6 +257,10 @@ a {
     &:hover {
         color: $text-colour;
         text-decoration: underline;
+    }
+
+    &.site-header{
+        color: $highlight-colour;
     }
 }
 
@@ -417,18 +410,4 @@ pre {
         margin-bottom: $endpara-margin;
     }
 
-}
-
-.left-float {
-    font-size: $big-font-size;
-    /* Float so that it appears as a block on the left. */
-    float: left;
-}
-
-.right-float{
-    /* Float so that it appears as a block on the right. */
-    float: right;
-    /* Kicks it to the next line if there is not enough space next to the title. */
-    overflow: auto;
-    vertical-align: middle;
 }
