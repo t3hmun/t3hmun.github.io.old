@@ -99,10 +99,6 @@ p {
 
     /* This is important to prevent this block from wrapping / appearing-next-to floating elements. */
     clear: both;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
 }
 
 blockquote {
