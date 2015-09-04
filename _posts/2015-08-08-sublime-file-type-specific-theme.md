@@ -20,7 +20,7 @@ Finding out the name of the theme:
  * Otherwise visit the `../Installed Packages` folder.
  * Find the package, open with 7zip and find the filename.
 
-This is what my `Markdown Extended.sublime-settings` looks like now:
+This is what my `Markdown Extended.sublime-settings` file looks like now:
 
 ``` json
 {
