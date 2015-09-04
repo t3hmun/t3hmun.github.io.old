@@ -5,9 +5,7 @@
 {% endif %}
 <div class="index">
   <div>
-    <span class="index-title">
-      <{{ include.headerlevel }} class="index-title"><a href="{{ pp.url | prepend: site.baseurl }}">{{ pp.title }}</a></{{ include.headerlevel }}>
-    </span>
+      <{{ include.headerlevel }} class="index-title-{{ include.pageorpost }}"><a href="{{ pp.url | prepend: site.baseurl }}">{{ pp.title }}</a></{{ include.headerlevel }}>
     <span class="index-info">
       <b><code class="index-tag">[{{ pp.category }}]</code></b> {% for tag in pp.tags %} <code class="index-tag">[{{tag}}]</code> {% endfor %}<span class="fblock"> - {{ pp.date | date: "%b %-d, %Y" }}</span>
     </span>

@@ -226,11 +226,26 @@ h1, h2, h3, h4, h5, h6 {
         border-bottom: $thin-line solid $subtle-colour;
     }
 
-    &.index-title{
+    &.index-title-page{
         margin: 0;
         margin-left: $standard-side-margin;
         color: $highlight-colour;
         border-bottom: none;
+    }
+
+    &.index-title-post{
+        margin: 0;
+        margin-left: $standard-side-margin;
+        color: $highlight-colour;
+        border-bottom: none;
+    }
+
+    >a{
+        &:hover {
+            color: $text-colour;
+            /* No decoration, underline makes a mess of art. */
+            text-decoration: none;
+        }
     }
 }
 
@@ -417,9 +432,31 @@ pre {
     float: left; 
     width: 100%;
 
-    .index-title {
+    .index-title-post {
         /* Float so that it appears as a block on the left. */
         float: left;
+
+        >a {        
+            &:hover {
+                color: $text-colour;
+                /* No decoration, underline makes a mess of art. */
+                text-decoration: none;
+            }
+        }
+    }
+
+    .index-title-page {
+        /* Float so that it appears as a block on the left. */
+        float: left;
+
+        >a { 
+            color: $highlight-colour;         
+            &:hover {
+                color: $text-colour;
+                /* No decoration, underline makes a mess of art. */
+                text-decoration: none;
+            }
+        }
     }
 
     .index-info {
