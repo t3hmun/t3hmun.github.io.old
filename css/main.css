@@ -26,10 +26,15 @@
   font-stretch: normal;
   src: url("fonts/EOT/SourceSansPro-Light.eot") format("embedded-opentype"), url("fonts/WOFF/OTF/SourceSansPro-Light.otf.woff") format("woff"), url("fonts/OTF/SourceSansPro-Light.otf") format("opentype"), url("fonts/TTF/SourceSansPro-Light.ttf") format("truetype"); }
 /*
+ * Now its time to define a lot of variables.
+ * All colours and sizes should be modified here, not in the CSS.
+ */
+/* BASE SIZE */
+/* All sizes computed from this (using multiplication). */
+/*
  * Font & font sizes.
  */
-/* All sizes computed from this. */
-/* Bullet points are made of text. */
+/* Used on the bullet point itself, not the text. */
 /*
  * All Spacings
  */
@@ -41,7 +46,9 @@
 /*
  * Misc
  */
-/* Border edge radius for the code element. */
+/* Border edge radius. */
+/* Used by bullet lists. */
+/* Used by inline code blocks.  */
 /*
  * Reading width is the max for paragraphs of text and is narrow.
  * Article width is the max for headers, code and other content which can take advantage of wider screens.#
@@ -426,20 +433,27 @@ th {
 /**** t3hmun's educational base scss file.
  *
  * The job of this file is to define the appearance and feel of basic HTML elements using CSS.
+ * This is by no means a normal quantity of comments.
  * The comments are extra verbose for educational purposes.
-
+ * Written by someone who last used HTML and CSS over a decade ago. 
+ *
 
 __educational interlude__
+
+> For those that have not encounted SASS before, it's not complicated read on:
 
 ## SASS extension to CSS
 
 One may notice that most sizes and colours are set using variables.
 These variables are a feature of SASS.
 The values for these variables are all defined in the `main.scss` file.
-SASS is an extension of CSS that outputs into CSS.
+SASS is an extension of CSS that outputs into CSS (a sort of meta-language).
 CSS tends to get ridiculously oversized and complicated these days.
-SASS lets us abstract away a lot of this with variables and a bunch of other features.
+SASS lets us abstract away a lot of this with variables and a bunch of other features;
+ especially tacking the cases where CSS is tediously repetitive.
 
+
+> For those that are new to CSS, the following is worth understanding:
 
 ## Margin VS Padding
 
@@ -471,12 +485,15 @@ __end of intuerlude__
  * The header and footer are located inside the body (Header and footer are new HTML5 tags).
  * The HTML head (not header) is mainly just meta tags and configuration. */
 body {
-  font-family: "Source Code Pro", monospace;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 19px;
   line-height: 28.5px;
   font-weight: 300;
   color: #DDD;
   background-color: #272822;
+  /* Source Sans kerning is a tad tight so adding a bit of extra space. 
+     This does mean that other font segments will need to reset the spacing. */
+  letter-spacing: 0.03em;
   /* Everything lacking its own alignment will be centred (primarily header and footer). */
   text-align: center; }
 
@@ -501,13 +518,12 @@ p {
   font-size: 20.9px;
   line-height: 28.5px;
   font-weight: 300;
-  /* Source Sans kerning is a tad tight. */
-  letter-spacing: 0.04em;
   /* Justify for glorious newspaper quality reading. */
   text-align: justify;
   /* Reading width is meant to be the maximum comfortable text block width.
-   * The ideal heavy reading width is meant to be rather narrow.
-   * However pictures and lighter text blocks can exploit more space,
+   * The ideal heavy reading width is meant to be rather narrow 
+    * (I'm thinking newspapers and academic articles where the information is easy to scan).
+   * However its nice to have pictures and lighter text blocks exploit more space,
    *  hence the bigger size of $article-width. */
   max-width: 570px;
   /* Auto side margins to centre the p block in the screen.
@@ -571,7 +587,7 @@ ul {
 li {
   /* Using percentage makes it squash nicely on small displays.
    * I can't explain the relationship between padding-left and text-indent. */
-  padding-left: 3%;
+  padding-left: 9.5px;
   padding-right: 5.7px;
   /* DO NOT add a negative text indent. Child inline block will inherit and lose their formatting. */
   /* I just like the look of these lines between top level blocks. */
@@ -583,7 +599,8 @@ li {
 /* This inserts the content character to use as a bullet point. */
 li:before {
   padding-right: 9.5px;
-  content: "*";
+  content: "\2022";
+  /* \2022 is the code for UTF-8 bullet point */
   color: #fed29d;
   font-weight: 700; }
 
@@ -604,18 +621,27 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   margin: 5.7px 4.56px 17.1px;
   padding: 0;
-  border-bottom: 1.9px solid #824701;
-  /* This `&` syntax a feature of SASS.
-   * This results in `.post-title` CSS for each of the above header tags. */
-  /* Make post heading stand out. */
-  /* Make site title stand out. */ }
+  /* This is different in h1. */
+  border-bottom: 1.9px solid #4f2b01;
+  /* Avoid troublesome interaction with floating elements. */
+  clear: both; }
   h1.post-title, h2.post-title, h3.post-title, h4.post-title, h5.post-title, h6.post-title {
-    color: #fd971f; }
-  h1.site-title, h2.site-title, h3.site-title, h4.site-title, h5.site-title, h6.site-title {
-    font-weight: 700;
     color: #fd971f;
-    border-bottom: none;
-    margin-bottom: 0; }
+    border-bottom: 1.9px solid #824701; }
+  h1.index-title-page, h2.index-title-page, h3.index-title-page, h4.index-title-page, h5.index-title-page, h6.index-title-page {
+    margin: 0;
+    margin-left: 4.56px;
+    color: #fd971f;
+    border-bottom: none; }
+  h1.index-title-post, h2.index-title-post, h3.index-title-post, h4.index-title-post, h5.index-title-post, h6.index-title-post {
+    margin: 0;
+    margin-left: 4.56px;
+    color: #fd971f;
+    border-bottom: none; }
+  h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hover {
+    color: #DDD;
+    /* No decoration, underline makes a mess of art. */
+    text-decoration: none; }
 
 /* Sets the size and allows bottom-border to appear behind decenders
  * I want the bottom bits of lettlers lige g and p to cross the line. */
@@ -653,6 +679,8 @@ a {
   a:hover {
     color: #DDD;
     text-decoration: underline; }
+  a.site-header {
+    color: #fd971f; }
 
 .top-nav {
   font-size: 23.75px;
@@ -668,13 +696,19 @@ a {
  * Code needs to be given maximum horizontal space. Scrolling or wrapping code is no fun. */
 pre,
 code {
+  /* Reset letter spacing (it can ruin monospace). */
+  letter-spacing: 0;
   background-color: #16120b;
+  text-align: left;
   /* Set a monospace font.*/
   font-family: "Source Code Pro", monospace;
-  /* This is for box art :D */ }
+  /* This is for box art :D */
+  /* The next 2 art tags are inline blocks, they appear next to normal text.  */ }
   pre.art,
   code.art {
+    /* Correct line spacing to make the boxart connect. */
     line-height: 1.38;
+    /* Do not allow wrapping that would damage the art. Forces scroll instead. */
     max-width: 90%;
     margin: auto; }
   pre.art-block-tiny,
@@ -698,6 +732,7 @@ code {
     border: none;
     display: inline-block;
     vertical-align: middle;
+    /* Need to increase weight to prevent lines being anti-aliased into oblivion. */
     font-size: 14.25px; }
   pre > a:hover,
   code > a:hover {
@@ -716,10 +751,16 @@ code {
    * Block to prevent line-breaks in the middle. */
   /* display: inline-block; Actually no, too much chaos with justified text. */
   /* Creates neat curved corners. */
-  border-radius: 7.6px;
+  border-radius: 3.8px;
   /* No border it is part of the sentence. */
   border: none;
   display: inline-block; }
+  code.index-tag {
+    font-size: 15.2px;
+    line-height: 130%;
+    padding: 1.824px;
+    margin: 0;
+    vertical-align: middle; }
 
 pre {
   /* Want the block to be flush with the screen edge but not the text. */
@@ -739,34 +780,56 @@ pre {
     padding-right: 0;
     padding-left: 0; }
 
+/* Blocks of normal text in the footer and title date that should stay together. */
 .fblock {
   display: inline-block; }
+
+/* Used for the continued button in the index. */
+.right-align {
+  text-align: right;
+  margin-bottom: 17.1px; }
 
 /* Style for index and recent posts.
  */
 .index {
-  text-align: left;
-  margin: 5.7px 4.56px;
+  text-align: right;
+  margin: 5.7px 0;
   margin-bottom: 17.1px;
   background: none;
-  /* This is used to give the title and info a single underline. */ }
-  .index .index-excerpt {
-    border-top: 1.9px solid #4f2b01;
-    /* This prevents it appearing inbetween the title and date. */
-    clear: both; }
-  .index .index-title {
-    font-size: 23.75px;
+  border-bottom: 1.9px solid #824701;
+  float: left;
+  width: 100%; }
+  .index .index-title-post {
     /* Float so that it appears as a block on the left. */
     float: left; }
+    .index .index-title-post > a:hover {
+      color: #DDD;
+      /* No decoration, underline makes a mess of art. */
+      text-decoration: none; }
+  .index .index-title-page {
+    /* Float so that it appears as a block on the left. */
+    float: left; }
+    .index .index-title-page > a {
+      color: #fd971f; }
+      .index .index-title-page > a:hover {
+        color: #DDD;
+        /* No decoration, underline makes a mess of art. */
+        text-decoration: none; }
   .index .index-info {
-    font-size: 17.1px;
-    line-height: 17.1px;
-    padding: 5.7px 4.56px;
     /* Float so that it appears as a block on the right. */
     float: right;
     /* Kicks it to the next line if there is not enough space next to the title. */
     overflow: auto;
-    font-family: "Source Sans Pro", sans-serif; }
+    font-family: "Source Sans Pro", sans-serif;
+    vertical-align: middle;
+    margin: 5.7px 4.56px;
+    margin-bottom: 0; }
+
+.index-list .index-excerpt {
+  /* This prevents it appearing inbetween the title and date. */
+  clear: both; }
+.index-list > .index {
+  border-bottom: 1.9px solid #4f2b01; }
 
 /* This only defines the lines around the header and footer. */
 /* Site header
