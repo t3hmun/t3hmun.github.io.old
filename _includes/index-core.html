@@ -1,0 +1,24 @@
+<div class="index-list">
+  <div class="index">
+    <div>
+      <span class="index-title">
+        <{{ include.headerlevel }} class="index-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }} {{ headerlevel }}</a></{{ include.headerlevel }}>
+      </span>
+      <span class="index-info">
+        <b><code class="index-tag">[{{ post.category }}]</code></b> {% for tag in post.tags %} <code class="index-tag">[{{tag}}]</code> {% endfor %} - {{ post.date | date: "%b %-d, %Y" }} 
+      </span>
+    </div>
+
+  </div>    
+  <div class="index-excerpt">
+    <p>
+      {{ post.excerpt | strip_html | truncate: 256 }}
+    </p>
+      <div class="right-align">
+        <a href="{{ post.url | prepend: site.baseurl }}">
+          <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
+╰─╴╰─╯╵ ╵╰╴╰╴╵ ╵╰─╯╰─╴╰─┘ ▘ ▝ ▝</pre>
+        </a>
+      </div>
+    </div>
+</div>

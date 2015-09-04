@@ -215,16 +215,22 @@ h1, h2, h3, h4, h5, h6 {
 
     margin: $standard-margin $standard-side-margin $endpara-margin;
     padding: 0;
-    border-bottom: $thin-line solid $subtle-colour;
+    /* This is different in h1. */
+    border-bottom: $thin-line solid $very-subtle-colour;
+
+    /* Avoid troublesome interaction with floating elements. */
+    clear: both;
 
     &.post-title{
         color: $highlight-colour;
+        border-bottom: $thin-line solid $subtle-colour;
     }
 
     &.index-title{
         margin: 0;
         margin-left: $standard-side-margin;
         color: $highlight-colour;
+        border-bottom: none;
     }
 }
 
@@ -389,8 +395,15 @@ pre {
     }
 }
 
+/* Blocks of normal text in the footer that should stay together. */
 .fblock {
     display: inline-block;
+}
+
+/* Used for the continued button in the index. */
+.right-align {
+    text-align: right;
+    margin-bottom: $endpara-margin;
 }
 
 /* Style for index and recent posts.
@@ -400,12 +413,9 @@ pre {
     margin: $standard-margin $standard-side-margin;
     margin-bottom: $endpara-margin;
     background: none;
-
-    /* This is used to give the title and info a single underline. */
-    .index-excerpt {
-        /* This prevents it appearing inbetween the title and date. */
-        clear: both;
-    }
+    border-bottom: $thin-line solid $subtle-colour;
+    float: left; 
+    width: 100%;
 
     .index-title {
         /* Float so that it appears as a block on the left. */
@@ -420,7 +430,18 @@ pre {
         font-family: $p-font-family;
         vertical-align: middle;
         margin: $standard-margin $standard-side-margin;
-        margin-bottom: $endpara-margin;
+        margin-bottom: 0;
     }
-
 }
+
+.index-list{
+    .index-excerpt {
+        /* This prevents it appearing inbetween the title and date. */
+        clear: both;
+    }
+    >.index{
+        border-bottom: $thin-line solid $very-subtle-colour;
+    }
+    
+}
+
