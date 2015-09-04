@@ -395,7 +395,7 @@ pre {
     }
 }
 
-/* Blocks of normal text in the footer that should stay together. */
+/* Blocks of normal text in the footer and title date that should stay together. */
 .fblock {
     display: inline-block;
 }
@@ -409,8 +409,8 @@ pre {
 /* Style for index and recent posts.
  */
 .index {
-    text-align: left;
-    margin: $standard-margin $standard-side-margin;
+    text-align: right;
+    margin: $standard-margin 0;
     margin-bottom: $endpara-margin;
     background: none;
     border-bottom: $thin-line solid $subtle-colour;
