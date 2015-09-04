@@ -1,15 +1,7 @@
 ---
 layout: default
 ---
-<div class="index">
-  <div>
-    <span class="index-title">
-      <a href="{{ post.url | prepend: site.baseurl }}"><h1 class="index-title">{{ page.title }}</h1></a>
-    </span>
-    <span class="index-info">
-      <b><code class="index-tag">[{{ page.category }}]</code></b> {% for tag in page.tags %} <code class="index-tag">[{{tag}}]</code> {% endfor %}<span class="fblock"> - {{ page.date | date: "%b %-d, %Y" }}</span>
-    </span>
-  </div>
-</div>
+
+{% include titletagdate.html headerlevel='h1' pageorpost='page' %}
 
 {{ content }}

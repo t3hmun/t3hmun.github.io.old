@@ -1,15 +1,5 @@
 <div class="index-list">
-  <div class="index">
-    <div>
-      <span class="index-title">
-        <{{ include.headerlevel }} class="index-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }} {{ headerlevel }}</a></{{ include.headerlevel }}>
-      </span>
-      <span class="index-info">
-        <b><code class="index-tag">[{{ post.category }}]</code></b> {% for tag in post.tags %} <code class="index-tag">[{{tag}}]</code> {% endfor %} - {{ post.date | date: "%b %-d, %Y" }} 
-      </span>
-    </div>
-
-  </div>    
+  {% include titletagdate.html headerlevel='h2' pageorpost='post' %}
   <div class="index-excerpt">
     <p>
       {{ post.excerpt | strip_html | truncate: 256 }}
