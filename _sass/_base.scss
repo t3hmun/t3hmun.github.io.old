@@ -435,6 +435,7 @@ pre {
     .index-title-post {
         /* Float so that it appears as a block on the left. */
         float: left;
+        text-align: left;
 
         >a {        
             &:hover {
@@ -448,6 +449,7 @@ pre {
     .index-title-page {
         /* Float so that it appears as a block on the left. */
         float: left;
+        text-align: left;
 
         >a { 
             color: $highlight-colour;         
