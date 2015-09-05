@@ -801,14 +801,16 @@ pre {
   width: 100%; }
   .index .index-title-post {
     /* Float so that it appears as a block on the left. */
-    float: left; }
+    float: left;
+    text-align: left; }
     .index .index-title-post > a:hover {
       color: #DDD;
       /* No decoration, underline makes a mess of art. */
       text-decoration: none; }
   .index .index-title-page {
     /* Float so that it appears as a block on the left. */
-    float: left; }
+    float: left;
+    text-align: left; }
     .index .index-title-page > a {
       color: #fd971f; }
       .index .index-title-page > a:hover {
