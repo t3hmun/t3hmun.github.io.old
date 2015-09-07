@@ -410,6 +410,11 @@ pre {
     }
 }
 
+img {
+    text-align: center;
+    width:100%;
+}
+
 /* Blocks of normal text in the footer and title date that should stay together. */
 .fblock {
     display: inline-block;
@@ -419,6 +424,7 @@ pre {
 .right-align {
     text-align: right;
     margin-bottom: $endpara-margin;
+    align: middle;
 }
 
 /* Style for index and recent posts.
