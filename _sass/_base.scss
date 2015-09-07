@@ -391,7 +391,7 @@ code {
 pre {
     /* Want the block to be flush with the screen edge but not the text. */
     padding: 0 $standard-side-margin;
-    margin: $standard-margin 0;
+    margin: $standard-margin 0 $endpara-margin;
 
     border: $thin-line solid $very-subtle-colour;
     border-radius: 0; /* Curves look bad when flussh with sceen edge. */
@@ -490,3 +490,12 @@ img {
     
 }
 
+.mootdiv {
+    display: none;
+}
+
+.load-button {
+    color: #000;
+    border-top: $thin-line solid $very-subtle-colour;
+    margin: 0;
+}

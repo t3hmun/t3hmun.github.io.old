@@ -5,3 +5,23 @@ layout: default
 {% include titletagdate.html headerlevel='h1' pageorpost='page' %}
 
 {{ content }}
+
+<div id="load-button" class="load-button">
+  <script type="text/javascript">
+    function loadcomments(){
+      document.getElementById('load-button').style.visibility='hidden'
+      var scriptele=document.createElement('script')
+      scriptele.setAttribute("type","text/javascript")
+      scriptele.setAttribute("src","//cdn.muut.com/1/moot.min.js")
+      document.getElementsByTagName("head")[0].appendChild(scriptele)
+      document.getElementById('mootdiv').style.display='block'
+    }
+  </script>
+  <br>
+  <center><button id="load-button" onclick="loadcomments()">Click to load comments</button></center>
+  <br>
+</div>
+
+<div class="mootdiv" id="mootdiv">
+  <a href="https://muut.com/i/t3hmun/comments" class="muut" type="dynamic">Loading comments...</a>
+</div>

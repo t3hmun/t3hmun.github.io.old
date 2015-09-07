@@ -151,6 +151,9 @@ $link-colour: #a6e22e; /* This sould be the colour for all clickables. */
 $strong-colour: lighten($highlight-colour, 25%);
 $subtle-colour: darken($highlight-colour, 30%); /* Used to compute feature colour. */
 $very-subtle-colour: darken($highlight-colour, 40%);
+$white: #FFF;
+/* The lazy way to washout a colour. */
+$neo-white-colour: mix(mix(mix(mix($highlight-colour, #FFF), #000),#FFF), #666);
 
 /* Titles and special elements. */
 $feature-colour: darken(mix($background-colour, $subtle-colour, 80%), 10%);
