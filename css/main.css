@@ -780,6 +780,10 @@ pre {
     padding-right: 0;
     padding-left: 0; }
 
+img {
+  text-align: center;
+  width: 100%; }
+
 /* Blocks of normal text in the footer and title date that should stay together. */
 .fblock {
   display: inline-block; }
@@ -787,7 +791,8 @@ pre {
 /* Used for the continued button in the index. */
 .right-align {
   text-align: right;
-  margin-bottom: 17.1px; }
+  margin-bottom: 17.1px;
+  align: middle; }
 
 /* Style for index and recent posts.
  */
