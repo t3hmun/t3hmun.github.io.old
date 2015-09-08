@@ -79,7 +79,7 @@ $p-font-size: $base * 1.1;
 $small-font-size: $base-font-size * 0.75;
 $half-font-size: $base-font-size * 0.5;
 $big-font-size: $base-font-size * 1.25;
-$letter-spacing-adjustment: 0.03em;
+$letter-spacing-adjustment: 0.02em;
 
 $light-weight: 300;
 $medium-weight: 500;
@@ -130,7 +130,7 @@ $thick-line:$thin-line * 7;
  * Remember these are MAX values, they may be made smaller according to the screen/window size.
  */
 $reading-width: $base * 30;
-$article-width: $reading-width * 1.8; /* Max with of any article content. */
+$article-width: $reading-width * 2; /* Max with of any article content. */
 $blockq-width: $reading-width + $thick-line + $standard-side-margin + 50;
 /* Bullet points get wider space than standard text blocks. */
 $bullet-width: $article-width * 0.95; /* A bit less than max. */

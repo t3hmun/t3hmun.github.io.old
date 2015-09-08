@@ -498,4 +498,8 @@ img {
     color: #000;
     border-top: $thin-line solid $very-subtle-colour;
     margin: 0;
+
+    .disclaimer{
+        color: $text-colour;
+    }
 }

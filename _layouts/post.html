@@ -9,16 +9,22 @@ layout: default
 <div id="load-button" class="load-button">
   <script type="text/javascript">
     function loadcomments(){
+      // Hide the load button.
       document.getElementById('load-button').style.visibility='hidden'
+      // Unhide the muut link div (Muut will remove the link when loaded).
+      document.getElementById('mootdiv').style.display='block'
+      // Create an element for the script and insert into head.
       var scriptele=document.createElement('script')
       scriptele.setAttribute("type","text/javascript")
       scriptele.setAttribute("src","//cdn.muut.com/1/moot.min.js")
       document.getElementsByTagName("head")[0].appendChild(scriptele)
-      document.getElementById('mootdiv').style.display='block'
     }
   </script>
   <br>
-  <center><button id="load-button" onclick="loadcomments()">Click to load comments</button></center>
+  <span class="disclaimer"><center>
+    Comments use Muut subject to their <a href="{{ site.baseurl }}/muut-comments/">terms of use</a>.
+  </center></span>
+  <center><button onclick="loadcomments()">Click to load comments</button></center>
   <br>
 </div>
 
