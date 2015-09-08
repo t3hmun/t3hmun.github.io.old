@@ -66,6 +66,7 @@
 /* Colours for borders and lines. */
 /* May want to change around lighten/darken for light themes. */
 /* Used to compute feature colour. */
+/* The lazy way to washout a colour. */
 /* Titles and special elements. */
 /*
  * Import partials from `sass_dir` (defaults to `_sass`)
@@ -493,7 +494,7 @@ body {
   background-color: #272822;
   /* Source Sans kerning is a tad tight so adding a bit of extra space. 
      This does mean that other font segments will need to reset the spacing. */
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   /* Everything lacking its own alignment will be centred (primarily header and footer). */
   text-align: center; }
 
@@ -509,7 +510,7 @@ article {
    *  which are all blocks with their own internal alignment. */
   text-align: left;
   /* Here we configure the maximum width we want to allow content to consume. */
-  max-width: 1026px; }
+  max-width: 1140px; }
 
 /* P for Paragraph. This should only be used for heavy blocks of reading text.
  * Other quantities of text should use other tags. */
@@ -578,7 +579,7 @@ ul {
   margin-right: auto;
   margin-bottom: 17.1px;
   /* Bullet point lists are easier to read when given more horizontal space. */
-  max-width: 974.7px;
+  max-width: 1083px;
   /* Since the bullet list is deviating from the standard text width its nice to demark it with a custom background. */
   background: #1a1a16;
   border-radius: 7.6px; }
@@ -765,7 +766,7 @@ code {
 pre {
   /* Want the block to be flush with the screen edge but not the text. */
   padding: 0 4.56px;
-  margin: 5.7px 0;
+  margin: 5.7px 0 17.1px;
   border: 1.9px solid #4f2b01;
   border-radius: 0;
   /* Curves look bad when flussh with sceen edge. */
@@ -837,6 +838,16 @@ img {
   clear: both; }
 .index-list > .index {
   border-bottom: 1.9px solid #4f2b01; }
+
+.mootdiv {
+  display: none; }
+
+.load-button {
+  color: #000;
+  border-top: 1.9px solid #4f2b01;
+  margin: 0; }
+  .load-button .disclaimer {
+    color: #DDD; }
 
 /* This only defines the lines around the header and footer. */
 /* Site header

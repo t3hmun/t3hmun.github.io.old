@@ -103,9 +103,30 @@
 <p><br /></p>
 
 
-<div class="moot">
-<a class="muut" href="https://muut.com/i/t3hmun">t3hmun forum</a>
-<script src="//cdn.muut.com/1/moot.min.js"></script>
+<div id="load-button" class="load-button">
+  <script type="text/javascript">
+    function loadcomments(){
+      // Hide the load button.
+      document.getElementById('load-button').style.visibility='hidden'
+      // Unhide the muut link div (Muut will remove the link when loaded).
+      document.getElementById('mootdiv').style.display='block'
+      // Create an element for the script and insert into head.
+      var scriptele=document.createElement('script')
+      scriptele.setAttribute("type","text/javascript")
+      scriptele.setAttribute("src","//cdn.muut.com/1/moot.min.js")
+      document.getElementsByTagName("head")[0].appendChild(scriptele)
+    }
+  </script>
+  <br>
+  <span class="disclaimer"><center>
+    Comments use Muut subject to their <a href="/muut-comments/">terms of use</a>.
+  </center></span>
+  <center><button onclick="loadcomments()">Click to load comments</button></center>
+  <br>
+</div>
+
+<div class="mootdiv" id="mootdiv">
+  <a href="https://muut.com/i/t3hmun/comments" class="muut" type="dynamic">Loading comments...</a>
 </div>
   </article>
   <footer class="site-footer">

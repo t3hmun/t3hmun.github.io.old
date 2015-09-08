@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Optional Muut Comments Loaded using a Button</title>
+  <meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
+  <meta name="description" content="I decided to make loading the comments system on my Jekyll blog site optional by making them load on a button press. No downloading of large scripts or conta...">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://t3hmun.github.io/article/2015/09/08/optional-muut-comments-loaded-using-a-button.html">
+  <link rel="alternate" type="application/rss+xml" title="t3hmun" href="http://t3hmun.github.io/feed.xml" />
+</head>
+
+<body>
+  <header>
+<pre class="art"><a class="site-header" href="/"><center>  ╶─╮            
+┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮
+╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵</center></a></pre>
+  <div class="top-nav">
+<pre class="art-block-tiny">  
+▒ 
+  </pre><pre class="art-block-tiny"><a href="/about/">╭─╮├─╮╭─╮╷ ╷┼─╴
+╰─╰╰─╯╰─╯╰─╯╰─╯</a></pre>
+<pre class="art-block-tiny"> 
+▒
+ </pre>
+<pre class="art-block-tiny"><a href="/archive/">╭─╮╭─╭─╴├─╮┐ ┐┌╭─╮
+╰─╵╵ ╰─╴╵ ╵╰╴└┘╰─╴</a></pre>
+<pre class="art-block-tiny"> 
+▒
+ </pre>
+  </div>
+</header>
+
+  <article>
+    
+
+
+<div class="index">
+  <div>
+      <h1 class="index-title-page"><a href="/article/2015/09/08/optional-muut-comments-loaded-using-a-button.html">Optional Muut Comments Loaded using a Button</a></h1>
+    <span class="index-info">
+      <b><code class="index-tag">[article]</code></b>  <code class="index-tag">[muut]</code>  <code class="index-tag">[comments]</code>  <code class="index-tag">[js]</code> <span class="fblock"> - Sep 8, 2015</span>
+    </span>
+  </div>
+</div>
+
+<p>I decided to make loading the comments system on my Jekyll blog site optional by making them load on a button press. No downloading of large scripts or contacting the third party comments service until the user decides to.</p>
+
+<h2 id="what-why">What, Why?</h2>
+
+<p>Primary purpose of the page is to display content, comments are secondary and should not impact the loading and performance of the page. Also large comments blocks at the bottom of the page create marathon distances to the footer, which I find hurtful to the design of the page. These issues are especially significant on mobile phones where processing power, data and screen-space are precious commodities that should not be wasted.</p>
+
+<p>My solution: load comments dynamically with a minimal block of JavaScript. Minimal means no JQuery or any other cumbersome library. I haven’t properly started learning JavaScript yet but the code to do this was really very simple.</p>
+
+<p>On top of all of this, users of my site may not want to have their activity tracked and profiled by the comments service that I use. Adding a button allows them to the user to opt in. Ideally I’d self-host the comments but that requires a good server and I’m not currently ready to spend the money and effort on making that reliable.</p>
+
+<h2 id="a-litte-bit-of-javascript">A Litte Bit of Javascript</h2>
+
+<p>I’m using <a href="https://muut.com/">Muut</a> for my comments, but a similar method should work for Disqus or any other system that just involves loading a JavaScript file. Previous to this my page has been entirely JavaScript free. Therefore it would be extreme and wasteful to use something such as JQuery.</p>
+
+<p>When loaded Muut looks for a link with the <code class="highlighter-rouge">class="muut"</code> attribute and then inserts itself at that link’s position. I have Muut on dynamic mode so the link doesn’t point to anywhere useful. Therefore I don’t want that link to be visible before Muut is loaded, so it is hidden with CSS and then restored in my JavaScript (otherwise the comments would be hidden).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"load-button"</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"load-button"</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/javascript"</span><span class="o">&gt;</span>
+    <span class="kd">function</span> <span class="nx">loadcomments</span><span class="p">(){</span>
+      
+      <span class="c1">//Hide the load button, it is no longer wanted.</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'load-button'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">visibility</span><span class="o">=</span><span class="s1">'hidden'</span>
+
+      <span class="c1">//Unhide the moot div.</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'mootdiv'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="o">=</span><span class="s1">'block'</span>
+      
+      <span class="c1">//Create an element for the script and then shove it in the head.</span>
+      <span class="kd">var</span> <span class="nx">scriptele</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)</span>
+      <span class="nx">scriptele</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"type"</span><span class="p">,</span><span class="s2">"text/javascript"</span><span class="p">)</span>
+      <span class="nx">scriptele</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"src"</span><span class="p">,</span><span class="s2">"//cdn.muut.com/1/moot.min.js"</span><span class="p">)</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"head"</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">scriptele</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span> 
+  <span class="o">&lt;</span><span class="nx">center</span><span class="o">&gt;&lt;</span><span class="nx">button</span> <span class="nx">onclick</span><span class="o">=</span><span class="s2">"loadcomments()"</span><span class="o">&gt;</span><span class="nx">Click</span> <span class="nx">to</span> <span class="nx">load</span> <span class="nx">comments</span><span class="o">&lt;</span><span class="sr">/button&gt;&lt;/</span><span class="nx">center</span><span class="o">&gt;</span>
+ 
+<span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"mootdiv"</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"mootdiv"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"https://muut.com/i/InsertYourMuutIdHere/comments"</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"muut"</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"dynamic"</span><span class="o">&gt;</span><span class="nx">Loading</span> <span class="nx">comments</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nc">.mootdiv</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>You may notice that I’ve changed the link Muut uses to position itself to a loading message. That message will stay on screen while the Muut js loads. Muut then replaces itself. Simple hack to keep the user informed.</p>
+
+<h2 id="muut-y-u-no-disqus">Muut? Y u no Disqus</h2>
+
+<p>Disqus irks me. By default it has that links to other articles detritus at the end of the comments block. These kinds of links conjure images of clickbait in my mind, most detrimental to my inner state of calm. Its also large and slow.</p>
+
+<p>Muut appears to be smaller, and it has some neat markdown support. I like the idea of being able to drop code snippets in the comments. Its under heavy development, probably has a few bugs but it is an experiment.</p>
+
+<p>Overall I don’t intend to stay with third party comments systems forever since there are all sorts of issues surrounding user tracking and content ownership. I’ll set up my own server eventually, but configuring everything properly can be quite a lot of work and I have other priorities at the moment.</p>
+
+
+<div id="load-button" class="load-button">
+  <script type="text/javascript">
+    function loadcomments(){
+      // Hide the load button.
+      document.getElementById('load-button').style.visibility='hidden'
+      // Unhide the muut link div (Muut will remove the link when loaded).
+      document.getElementById('mootdiv').style.display='block'
+      // Create an element for the script and insert into head.
+      var scriptele=document.createElement('script')
+      scriptele.setAttribute("type","text/javascript")
+      scriptele.setAttribute("src","//cdn.muut.com/1/moot.min.js")
+      document.getElementsByTagName("head")[0].appendChild(scriptele)
+    }
+  </script>
+  <br>
+  <span class="disclaimer"><center>
+    Comments use Muut subject to their <a href="/muut-comments/">terms of use</a>.
+  </center></span>
+  <center><button onclick="loadcomments()">Click to load comments</button></center>
+  <br>
+</div>
+
+<div class="mootdiv" id="mootdiv">
+  <a href="https://muut.com/i/t3hmun/comments" class="muut" type="dynamic">Loading comments...</a>
+</div>
+  </article>
+  <footer class="site-footer">
+<pre class="art-block-small"><a href="#">       ▁▁
+scroll ╱╲ to top</a></pre>
+<br/><br/>
+<pre class="art-block-small">╭┬╮╭─╮┐│  ▝ 
+╵ ╵╰─╵╰╰╴ ▝ </pre><span class="fblock">blog at t3hmun dot com</span>
+<br/>
+<span class="fblock">See my code at </span>
+<pre class="art-block-small"><a href="http://github.com/t3hmun">╭─╴.   ╷ ╷    
+│ ┐┐ ┼ ├─┤╷╷├╮
+╰─╯╰╴╰╴╵ ╵╰╯└╯</a></pre>
+<br/>
+Site content is licensed as 
+<pre class="art-block-small"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">╭─╴╭─╴            
+│  │   attribution
+╰─╴╰─╴            </a></pre>
+<pre class="art-block-small"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴     ╭─╮    
+ ╰─╮hare ├─┤like
+ ╶─╯     ╵ ╵    </a></pre>
+<pre class="art"><a href="/"><center>  ╶─╮            
+┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮
+╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵</center></a></pre>
+</footer>
+
+</body>
+</html>
