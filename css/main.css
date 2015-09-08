@@ -516,7 +516,7 @@ article {
  * Other quantities of text should use other tags. */
 p {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 20.9px;
+  font-size: 19px;
   line-height: 28.5px;
   font-weight: 300;
   /* Justify for glorious newspaper quality reading. */
@@ -537,7 +537,7 @@ p {
 
 blockquote {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 20.9px;
+  font-size: 19px;
   line-height: 28.5px;
   font-weight: 300;
   /* The side line to indicate a blockquote. */
@@ -566,7 +566,7 @@ blockquote {
 /* The list tag, general settings for lists. */
 ul {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 20.9px;
+  font-size: 19px;
   line-height: 28.5px;
   font-weight: 300;
   /* No browser generated bullet points.
@@ -849,8 +849,12 @@ img {
   .load-button .disclaimer {
     color: #DDD; }
 
-.themebutton {
-  color: #0b0f02; }
+.themebuttons {
+  /* Keep the buttons on the same lines. */
+  display: inline-block;
+  font-size: 14.25px; }
+  .themebuttons .themebutton {
+    color: #0b0f02; }
 
 /* This only defines the lines around the header and footer. */
 /* Site header

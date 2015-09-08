@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>t3hmun</title>
-  <meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
+  <meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="A Jekyll theme simple enough to understand and edit, even if you find the default Jekyll site complicated. Intended for learning and use.">
   <link id="maincss" rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://t3hmun.github.io/">
@@ -27,19 +27,43 @@
 ╰─╵╵ ╰─╴╵ ╵╰╴└┘╰─╴</a></pre>
 <pre class="art-block-tiny"> 
 ▒
- </pre><span class="themebutton">
- <script type="text/javascript">
-    function changetheme(name){
-      document.getElementById('maincss').setAttribute('href',name)
-    }
-  </script>
-  <button onclick="changetheme('/css/main-light.css')"> light </button>
-</span>  
-<pre class="art-block-tiny">▒</pre>
-<span class="themebutton">
-  <button onclick="changetheme('/css/main.css')"> dark </button>
-</span>
-<pre class="art-block-tiny">▒</pre>
+ </pre>
+  <span class="themebuttons">    
+    Theme: 
+    <script type="text/javascript">
+      function changetheme(name){
+        document.getElementById('maincss').setAttribute('href',name);
+      }
+      function changepfont(font){
+        var eles = document.getElementsByTagName('p');
+        for (var i=0; i < eles.length; i++){
+          eles[i].style.fontFamily=font;
+          eles[i].style.letterSpacing=0;
+        }
+      }
+      function garishprompt(){
+        font = prompt("Insert custom fontname.");
+        changepfont(font);
+      }
+    </script>
+    <span class="themebutton">
+      <button onclick="changetheme('/css/main-light.css')"> light </button>
+    </span>  
+    <pre class="art-block-tiny">▒</pre>
+    <span class="themebutton">
+      <button onclick="changetheme('/css/main.css')"> dark </button>
+    </span>
+    <pre class="art-block-tiny">▒</pre>
+    <span class="themebutton">
+      <button onclick="changepfont('veranda')"> veranda </button>
+    </span>
+    <pre class="art-block-tiny">▒</pre>
+    <span class="themebutton">
+      <button onclick="garishprompt()"> custom </button>
+    </span>
+    <pre class="art-block-tiny">▒</pre>
+  </span>
+  
 </div>
 
 </header>
@@ -68,11 +92,11 @@
   </div>
 </div>
   <div class="index-excerpt">
-    <p>
+    
       I decided to make loading the comments system on my Jekyll blog site optional by making them load on a button press. No downloading of large scripts or contacting the third party comments service until the user decides to.
 
 
-    </p>
+    
       <div class="right-align">
         <a href="/article/2015/09/08/optional-muut-comments-loaded-using-a-button.html">
           <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
@@ -95,9 +119,9 @@
   </div>
 </div>
   <div class="index-excerpt">
-    <p>
+    
       A quick look at the Vaughan BS150D double sided pullsaw that I recently acquired.
-    </p>
+    
       <div class="right-align">
         <a href="/article/2015/09/06/Vaughan-Bear-Saw.html">
           <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
@@ -120,12 +144,12 @@
   </div>
 </div>
   <div class="index-excerpt">
-    <p>
+    
       Setting a separate theme for a single filetype in Sublime 3 is quite simple.
 The Markdown Extended package combined the Monokai Extended colour scheme is great but I prefer a different colour scheme for everything else.
 
 
-    </p>
+    
       <div class="right-align">
         <a href="/note/2015/08/08/sublime-file-type-specific-theme.html">
           <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
@@ -148,9 +172,9 @@ The Markdown Extended package combined the Monokai Extended colour scheme is gre
   </div>
 </div>
   <div class="index-excerpt">
-    <p>
+    
       This is a test of the display of the theme and also a discussion of the design.
-    </p>
+    
       <div class="right-align">
         <a href="/article/2015/07/29/Test-Post.html">
           <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤

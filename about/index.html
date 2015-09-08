@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>About</title>
-  <meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
+  <meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="A Jekyll theme simple enough to understand and edit, even if you find the default Jekyll site complicated. Intended for learning and use.">
   <link id="maincss" rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://t3hmun.github.io/about/">
@@ -27,19 +27,43 @@
 ╰─╵╵ ╰─╴╵ ╵╰╴└┘╰─╴</a></pre>
 <pre class="art-block-tiny"> 
 ▒
- </pre><span class="themebutton">
- <script type="text/javascript">
-    function changetheme(name){
-      document.getElementById('maincss').setAttribute('href',name)
-    }
-  </script>
-  <button onclick="changetheme('/css/main-light.css')"> light </button>
-</span>  
-<pre class="art-block-tiny">▒</pre>
-<span class="themebutton">
-  <button onclick="changetheme('/css/main.css')"> dark </button>
-</span>
-<pre class="art-block-tiny">▒</pre>
+ </pre>
+  <span class="themebuttons">    
+    Theme: 
+    <script type="text/javascript">
+      function changetheme(name){
+        document.getElementById('maincss').setAttribute('href',name);
+      }
+      function changepfont(font){
+        var eles = document.getElementsByTagName('p');
+        for (var i=0; i < eles.length; i++){
+          eles[i].style.fontFamily=font;
+          eles[i].style.letterSpacing=0;
+        }
+      }
+      function garishprompt(){
+        font = prompt("Insert custom fontname.");
+        changepfont(font);
+      }
+    </script>
+    <span class="themebutton">
+      <button onclick="changetheme('/css/main-light.css')"> light </button>
+    </span>  
+    <pre class="art-block-tiny">▒</pre>
+    <span class="themebutton">
+      <button onclick="changetheme('/css/main.css')"> dark </button>
+    </span>
+    <pre class="art-block-tiny">▒</pre>
+    <span class="themebutton">
+      <button onclick="changepfont('veranda')"> veranda </button>
+    </span>
+    <pre class="art-block-tiny">▒</pre>
+    <span class="themebutton">
+      <button onclick="garishprompt()"> custom </button>
+    </span>
+    <pre class="art-block-tiny">▒</pre>
+  </span>
+  
 </div>
 
 </header>
