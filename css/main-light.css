@@ -490,8 +490,8 @@ body {
   font-size: 19px;
   line-height: 28.5px;
   font-weight: 300;
-  color: #DDD;
-  background-color: #272822;
+  color: #111;
+  background-color: #fff;
   /* Source Sans kerning is a tad tight so adding a bit of extra space. 
      This does mean that other font segments will need to reset the spacing. */
   letter-spacing: 0.02em;
@@ -541,7 +541,7 @@ blockquote {
   line-height: 28.5px;
   font-weight: 300;
   /* The side line to indicate a blockquote. */
-  border-left: 13.3px solid #824701;
+  border-left: 13.3px solid #fdae52;
   /* This tiny bit of padding separates the tiers of blockquotes. */
   padding-left: 4.56px;
   /* Centre the block. */
@@ -551,7 +551,7 @@ blockquote {
   /* Avoid troublesome interaction with floating elements. */
   clear: both;
   /* A unique background to mark out the area. */
-  background: #1a1a16;
+  background: #f2f2f2;
   /* Set some features that may be set differently on some browsers. */
   outline: 0;
   font-size: 100%;
@@ -581,7 +581,7 @@ ul {
   /* Bullet point lists are easier to read when given more horizontal space. */
   max-width: 1083px;
   /* Since the bullet list is deviating from the standard text width its nice to demark it with a custom background. */
-  background: #1a1a16;
+  background: #f2f2f2;
   border-radius: 7.6px; }
 
 /* Individual list item. */
@@ -602,14 +602,14 @@ li:before {
   padding-right: 9.5px;
   content: "\2022";
   /* \2022 is the code for UTF-8 bullet point */
-  color: #fed29d;
+  color: #361d00;
   font-weight: 700; }
 
 /* Define the sub-list bullet point. */
 li li:before {
   padding-right: 9.5px;
   content: "-";
-  color: #fed29d; }
+  color: #361d00; }
 
 /* Img
  * Stops images being wider than the window.
@@ -623,24 +623,24 @@ h1, h2, h3, h4, h5, h6 {
   margin: 5.7px 4.56px 17.1px;
   padding: 0;
   /* This is different in h1. */
-  border-bottom: 1.9px solid #4f2b01;
+  border-bottom: 1.9px solid #fec684;
   /* Avoid troublesome interaction with floating elements. */
   clear: both; }
   h1.post-title, h2.post-title, h3.post-title, h4.post-title, h5.post-title, h6.post-title {
-    color: #fd971f;
-    border-bottom: 1.9px solid #824701; }
+    color: #b46202;
+    border-bottom: 1.9px solid #fdae52; }
   h1.index-title-page, h2.index-title-page, h3.index-title-page, h4.index-title-page, h5.index-title-page, h6.index-title-page {
     margin: 0;
     margin-left: 4.56px;
-    color: #fd971f;
+    color: #b46202;
     border-bottom: none; }
   h1.index-title-post, h2.index-title-post, h3.index-title-post, h4.index-title-post, h5.index-title-post, h6.index-title-post {
     margin: 0;
     margin-left: 4.56px;
-    color: #fd971f;
+    color: #b46202;
     border-bottom: none; }
   h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hover {
-    color: #DDD;
+    color: #111;
     /* No decoration, underline makes a mess of art. */
     text-decoration: none; }
 
@@ -672,22 +672,22 @@ h6 {
 
 /* Links. Colour them according to the theme. */
 a {
-  color: #a6e22e;
+  color: #3b520b;
   text-decoration: none;
   /* Removes the underline. */ }
   a:visited {
-    color: #7aac18; }
+    color: #6a9515; }
   a:hover {
-    color: #DDD;
+    color: #111;
     text-decoration: underline; }
   a.site-header {
-    color: #fd971f; }
+    color: #b46202; }
 
 .top-nav {
   font-size: 23.75px;
   font-weight: 500;
   margin: 5.7px;
-  color: #fd971f; }
+  color: #b46202; }
 
 /* Code formatting - fenced code blocks use the pre tag.
  * The `code` tag is for inline monospace blocks.
@@ -699,7 +699,7 @@ pre,
 code {
   /* Reset letter spacing (it can ruin monospace). */
   letter-spacing: 0;
-  background-color: #16120b;
+  background-color: #fffbf6;
   text-align: left;
   /* Set a monospace font.*/
   font-family: "Source Code Pro", monospace;
@@ -737,7 +737,7 @@ code {
     font-size: 14.25px; }
   pre > a:hover,
   code > a:hover {
-    color: #DDD;
+    color: #111;
     /* No decoration, underline makes a mess of art. */
     text-decoration: none; }
 
@@ -747,7 +747,7 @@ code {
   padding: 0 4.56px;
   /* No margins, don't want to disrupt text/line spacing. */
   margin: 0;
-  color: #edba7e;
+  color: lightmix(#111, #b46202);
   /* Inline so it can be part of a sentence,
    * Block to prevent line-breaks in the middle. */
   /* display: inline-block; Actually no, too much chaos with justified text. */
@@ -767,7 +767,7 @@ pre {
   /* Want the block to be flush with the screen edge but not the text. */
   padding: 0 4.56px;
   margin: 5.7px 0 17.1px;
-  border: 1.9px solid #4f2b01;
+  border: 1.9px solid #fec684;
   border-radius: 0;
   /* Curves look bad when flussh with sceen edge. */
   /* This gives the code block its own scroll bar.
@@ -802,7 +802,7 @@ img {
   margin: 5.7px 0;
   margin-bottom: 17.1px;
   background: none;
-  border-bottom: 1.9px solid #824701;
+  border-bottom: 1.9px solid #fdae52;
   float: left;
   width: 100%; }
   .index .index-title-post {
@@ -810,7 +810,7 @@ img {
     float: left;
     text-align: left; }
     .index .index-title-post > a:hover {
-      color: #DDD;
+      color: #111;
       /* No decoration, underline makes a mess of art. */
       text-decoration: none; }
   .index .index-title-page {
@@ -818,9 +818,9 @@ img {
     float: left;
     text-align: left; }
     .index .index-title-page > a {
-      color: #fd971f; }
+      color: #b46202; }
       .index .index-title-page > a:hover {
-        color: #DDD;
+        color: #111;
         /* No decoration, underline makes a mess of art. */
         text-decoration: none; }
   .index .index-info {
@@ -837,52 +837,86 @@ img {
   /* This prevents it appearing inbetween the title and date. */
   clear: both; }
 .index-list > .index {
-  border-bottom: 1.9px solid #4f2b01; }
+  border-bottom: 1.9px solid #fec684; }
 
 .mootdiv {
   display: none; }
 
 .load-button {
   color: #000;
-  border-top: 1.9px solid #4f2b01;
+  border-top: 1.9px solid #fec684;
   margin: 0; }
   .load-button .disclaimer {
-    color: #DDD; }
-
-.themebutton {
-  color: #0b0f02; }
+    color: #111; }
 
 /* This only defines the lines around the header and footer. */
 /* Site header
  */
 .site-header {
-  border-top: 13.3px none #fd971f;
-  border-bottom: 1.9px none #fd971f;
+  border-top: 13.3px none #b46202;
+  border-bottom: 1.9px none #b46202;
   margin-bottom: 17.1px; }
 
 /* Site footer
  */
 .site-footer {
-  border-top: 1.9px none #fd971f;
-  border-bottom: 13.3px none #fed29d;
+  border-top: 1.9px none #b46202;
+  border-bottom: 13.3px none #361d00;
   text-align: center;
   font-size: 14.25px; }
 
 article {
-  border-bottom: 1.9px solid #824701; }
+  border-bottom: 1.9px solid #fdae52; }
 
 /* This is used to apply a suitable theme to the sytax highlighting performed by Rouge. */
 .highlight table td {
-  padding: 5.7px; }
+  padding: 5px; }
 
 .highlight table pre {
   margin: 0; }
 
+.highlight .cm {
+  color: #999988;
+  font-style: italic; }
+
+.highlight .cp {
+  color: #999999;
+  font-weight: bold; }
+
+.highlight .c1 {
+  color: #999988;
+  font-style: italic; }
+
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic; }
+
+.highlight .c, .highlight .cd {
+  color: #999988;
+  font-style: italic; }
+
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2; }
+
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd; }
+
+.highlight .ge {
+  color: #000000;
+  font-style: italic; }
+
+.highlight .gr {
+  color: #aa0000; }
+
 .highlight .gh {
   color: #999999; }
 
-.highlight .sr {
-  color: #f6aa11; }
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd; }
 
 .highlight .go {
   color: #888888; }
@@ -890,173 +924,157 @@ article {
 .highlight .gp {
   color: #555555; }
 
+.highlight .gs {
+  font-weight: bold; }
+
 .highlight .gu {
   color: #aaaaaa; }
 
-.highlight .nb {
-  color: #f6aa11; }
-
-.highlight .cm {
-  color: #75715e; }
-
-.highlight .cp {
-  color: #75715e; }
-
-.highlight .c1 {
-  color: #75715e; }
-
-.highlight .cs {
-  color: #75715e; }
-
-.highlight .c, .highlight .cd {
-  color: #75715e; }
-
-.highlight .err {
-  color: #960050; }
-
-.highlight .gr {
-  color: #960050; }
-
 .highlight .gt {
-  color: #960050; }
-
-.highlight .gd {
-  color: #49483e; }
-
-.highlight .gi {
-  color: #49483e; }
-
-.highlight .ge {
-  color: #49483e; }
+  color: #aa0000; }
 
 .highlight .kc {
-  color: #66d9ef; }
+  color: #000000;
+  font-weight: bold; }
 
 .highlight .kd {
-  color: #66d9ef; }
-
-.highlight .kr {
-  color: #66d9ef; }
-
-.highlight .no {
-  color: #66d9ef; }
-
-.highlight .kt {
-  color: #66d9ef; }
-
-.highlight .mf {
-  color: #ae81ff; }
-
-.highlight .mh {
-  color: #ae81ff; }
-
-.highlight .il {
-  color: #ae81ff; }
-
-.highlight .mi {
-  color: #ae81ff; }
-
-.highlight .mo {
-  color: #ae81ff; }
-
-.highlight .m, .highlight .mb, .highlight .mx {
-  color: #ae81ff; }
-
-.highlight .sc {
-  color: #ae81ff; }
-
-.highlight .se {
-  color: #ae81ff; }
-
-.highlight .ss {
-  color: #ae81ff; }
-
-.highlight .sd {
-  color: #e6db74; }
-
-.highlight .s2 {
-  color: #e6db74; }
-
-.highlight .sb {
-  color: #e6db74; }
-
-.highlight .sh {
-  color: #e6db74; }
-
-.highlight .si {
-  color: #e6db74; }
-
-.highlight .sx {
-  color: #e6db74; }
-
-.highlight .s1 {
-  color: #e6db74; }
-
-.highlight .s {
-  color: #e6db74; }
-
-.highlight .na {
-  color: #a6e22e; }
-
-.highlight .nc {
-  color: #a6e22e; }
-
-.highlight .nd {
-  color: #a6e22e; }
-
-.highlight .ne {
-  color: #a6e22e; }
-
-.highlight .nf {
-  color: #a6e22e; }
-
-.highlight .vc {
-  color: #ffffff; }
-
-.highlight .nn {
-  color: #ffffff; }
-
-.highlight .nl {
-  color: #ffffff; }
-
-.highlight .ni {
-  color: #ffffff; }
-
-.highlight .bp {
-  color: #ffffff; }
-
-.highlight .vg {
-  color: #ffffff; }
-
-.highlight .vi {
-  color: #ffffff; }
-
-.highlight .nv {
-  color: #ffffff; }
-
-.highlight .w {
-  color: #ffffff; }
-
-.highlight {
-  color: #ffffff; }
-
-.highlight .n, .highlight .py, .highlight .nx {
-  color: #ffffff; }
-
-.highlight .ow {
-  color: #f92672; }
-
-.highlight .nt {
-  color: #f92672; }
-
-.highlight .k, .highlight .kv {
-  color: #f92672; }
+  color: #000000;
+  font-weight: bold; }
 
 .highlight .kn {
-  color: #f92672; }
+  color: #000000;
+  font-weight: bold; }
 
 .highlight .kp {
-  color: #f92672; }
+  color: #000000;
+  font-weight: bold; }
+
+.highlight .kr {
+  color: #000000;
+  font-weight: bold; }
+
+.highlight .kt {
+  color: #445588;
+  font-weight: bold; }
+
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold; }
+
+.highlight .mf {
+  color: #009999; }
+
+.highlight .mh {
+  color: #009999; }
+
+.highlight .il {
+  color: #009999; }
+
+.highlight .mi {
+  color: #009999; }
+
+.highlight .mo {
+  color: #009999; }
+
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999; }
+
+.highlight .sb {
+  color: #d14; }
+
+.highlight .sc {
+  color: #d14; }
+
+.highlight .sd {
+  color: #d14; }
+
+.highlight .s2 {
+  color: #d14; }
+
+.highlight .se {
+  color: #d14; }
+
+.highlight .sh {
+  color: #d14; }
+
+.highlight .si {
+  color: #d14; }
+
+.highlight .sx {
+  color: #d14; }
+
+.highlight .sr {
+  color: #009926; }
+
+.highlight .s1 {
+  color: #d14; }
+
+.highlight .ss {
+  color: #990073; }
+
+.highlight .s {
+  color: #d14; }
+
+.highlight .na {
+  color: #008080; }
+
+.highlight .bp {
+  color: #999999; }
+
+.highlight .nb {
+  color: #0086B3; }
+
+.highlight .nc {
+  color: #445588;
+  font-weight: bold; }
+
+.highlight .no {
+  color: #008080; }
+
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold; }
+
+.highlight .ni {
+  color: #800080; }
+
+.highlight .ne {
+  color: #990000;
+  font-weight: bold; }
+
+.highlight .nf {
+  color: #990000;
+  font-weight: bold; }
+
+.highlight .nl {
+  color: #990000;
+  font-weight: bold; }
+
+.highlight .nn {
+  color: #555555; }
+
+.highlight .nt {
+  color: #000080; }
+
+.highlight .vc {
+  color: #008080; }
+
+.highlight .vg {
+  color: #008080; }
+
+.highlight .vi {
+  color: #008080; }
+
+.highlight .nv {
+  color: #008080; }
+
+.highlight .ow {
+  color: #000000;
+  font-weight: bold; }
 
 .highlight .o {
-  color: #f92672; }
+  color: #000000;
+  font-weight: bold; }
+
+.highlight .w {
+  color: #bbbbbb; }

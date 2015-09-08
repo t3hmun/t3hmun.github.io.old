@@ -5,7 +5,7 @@
   <title>Test Post</title>
   <meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
   <meta name="description" content="This is a test of the display of the theme and also a discussion of the design.">
-  <link rel="stylesheet" href="/css/main.css">
+  <link id="maincss" rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://t3hmun.github.io/article/2015/07/29/Test-Post.html">
   <link rel="alternate" type="application/rss+xml" title="t3hmun" href="http://t3hmun.github.io/feed.xml" />
 </head>
@@ -15,7 +15,7 @@
 <pre class="art"><a class="site-header" href="/"><center>  ╶─╮            
 ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮
 ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵</center></a></pre>
-  <div class="top-nav">
+<div class="top-nav">
 <pre class="art-block-tiny">  
 ▒ 
   </pre><pre class="art-block-tiny"><a href="/about/">╭─╮├─╮╭─╮╷ ╷┼─╴
@@ -27,8 +27,21 @@
 ╰─╵╵ ╰─╴╵ ╵╰╴└┘╰─╴</a></pre>
 <pre class="art-block-tiny"> 
 ▒
- </pre>
-  </div>
+ </pre><span class="themebutton">
+ <script type="text/javascript">
+    function changetheme(name){
+      document.getElementById('maincss').setAttribute('href',name)
+    }
+  </script>
+  <button onclick="changetheme('/css/main-light.css')"> light </button>
+</span>  
+<pre class="art-block-tiny">▒</pre>
+<span class="themebutton">
+  <button onclick="changetheme('/css/main.css')"> dark </button>
+</span>
+<pre class="art-block-tiny">▒</pre>
+</div>
+
 </header>
 
   <article>
