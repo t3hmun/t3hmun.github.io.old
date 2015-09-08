@@ -503,3 +503,7 @@ img {
         color: $text-colour;
     }
 }
+
+.themebutton {
+    color: darken($link-colour, 50%);
+}
