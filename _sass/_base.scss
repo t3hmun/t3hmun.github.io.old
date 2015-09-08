@@ -504,6 +504,11 @@ img {
     }
 }
 
-.themebutton {
-    color: darken($link-colour, 50%);
+.themebuttons{
+    /* Keep the buttons on the same lines. */
+    display: inline-block;
+    font-size: $small-font-size;
+    .themebutton {
+        color: darken($link-colour, 50%);
+    }
 }

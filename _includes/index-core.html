@@ -1,9 +1,9 @@
 <div class="index-list">
   {% include titletagdate.html headerlevel='h2' pageorpost='post' %}
   <div class="index-excerpt">
-    <p>
+    
       {{ post.excerpt | strip_html | truncate: 256 }}
-    </p>
+    
       <div class="right-align">
         <a href="{{ post.url | prepend: site.baseurl }}">
           <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
