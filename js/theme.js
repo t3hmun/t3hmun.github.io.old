@@ -1,12 +1,8 @@
-document.addEventListener("load", function() {
-    document.findElementById('togglepfontbutton').style.display = 'block';
-});
-
-function changetheme(name) {
+function changeTheme(name) {
     document.getElementById('maincss').setAttribute('href', name);
 }
 
-function changepfont(font) {
+function changeParaFont(font) {
     var eles = document.getElementsByTagName('p');
     for (var i = 0; i < eles.length; i++) {
         eles[i].style.fontFamily = font;
@@ -14,27 +10,24 @@ function changepfont(font) {
     }
 }
 
-function customfontprompt() {
+function customFontPrompt() {
     font = prompt("Insert custom fontname.");
-    changepfont(font);
+    changeParaFont(font);
 }
 
-function garishprompt() {
-    font = prompt("Insert custom fontname.");
-    changepfont(font);
-}
+var FONTTOGGLE = true;
+var DEFAULTFONT = 'Source Sans Pro';
+var OTHERFONT = 'verdana';
 
-var pfonttoggle = true;
+function toggleParaFont() {
 
-function togglepfont() {
-
-    if (pfonttoggle) {
-        pfonttoggle = false;
-        document.findElementById('togglepfontbutton').value = 'default';
-        changepfont('verdana');
+    if (FONTTOGGLE) {
+        FONTTOGGLE = false;
+        document.getElementById('toggleParaFontButton').innerHTML = 'default';
+        changeParaFont(OTHERFONT);
     } else {
-        pfonttoggle = true;
-        document.findElementById('togglepfontbutton').value = 'verdana';
-        changepfont('Source Sans Pro');
+        FONTTOGGLE = true;
+        document.getElementById('toggleParaFontButton').innerHTML = OTHERFONT;
+        changeParaFont(DEFAULTFONT);
     }
 }
