@@ -109,8 +109,13 @@ p {
 
     /* This is important to prevent this block from wrapping / appearing-next-to floating elements. */
     clear: both;
-}
 
+
+}
+/* Used for the index. */
+.wide {
+    max-width: $article-width;
+}
 blockquote {
     font-family: $p-font-family;
     font-size: $p-font-size;

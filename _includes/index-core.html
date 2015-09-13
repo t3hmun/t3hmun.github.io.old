@@ -1,14 +1,14 @@
 <div class="index-list">
   {% include titletagdate.html headerlevel='h2' pageorpost='post' %}
   <div class="index-excerpt">
-    
+    <p class="wide">
       {{ post.excerpt | strip_html | truncate: 256 }}
-    
-      <div class="right-align">
-        <a href="{{ post.url | prepend: site.baseurl }}">
-          <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
+    </p>
+    <div class="right-align">
+      <a href="{{ post.url | prepend: site.baseurl }}">
+        <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
 ╰─╴╰─╯╵ ╵╰╴╰╴╵ ╵╰─╯╰─╴╰─┘ ▘ ▝ ▝</pre>
-        </a>
-      </div>
+      </a>
+    </div>
     </div>
 </div>
