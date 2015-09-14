@@ -1,40 +1,27 @@
 <header>
-  <pre class="art"><a class="site-header" href="{{ site.baseurl }}/"><center>  ╶─╮            
+  <div class="site-header">
+    <pre class="art"><a href="{{ site.baseurl }}/">  ╶─╮            
 ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮
-╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵</center></a></pre>
+╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵</a></pre>
+  </div>
   <div class="top-nav">
-    <pre class="art-block-tiny">  
-  ▒ 
-  </pre><pre class="art-block-tiny"><a href="{{ site.baseurl }}/about/">╭─╮├─╮╭─╮╷ ╷┼─╴
+    <pre class="art-block-tiny">▒</pre>
+    <pre class="art-block-tiny"><a href="{{ site.baseurl }}/about/">╭─╮├─╮╭─╮╷ ╷┼─╴
 ╰─╰╰─╯╰─╯╰─╯╰─╯</a></pre>
-    <pre class="art-block-tiny"> 
-  ▒
-  </pre>
+    <pre class="art-block-tiny">▒</pre>
     <pre class="art-block-tiny"><a href="{{ site.baseurl }}/archive/">╭─╮╭─╭─╴├─╮┐ ┐┌╭─╮
 ╰─╵╵ ╰─╴╵ ╵╰╴└┘╰─╴</a></pre>
-    <pre class="art-block-tiny"> 
-  ▒
-  </pre>
-    <span class="themebuttons">
-      Theme:
-      <script src="{{ site.baseurl }}/js/theme.js"></script>
-      <span class="themebutton">
-        <button onclick="changeTheme('{{ "/css/main-light.css" | prepend: site.baseurl }}')"> light </button>
-      </span>
+    <pre class="art-block-tiny">▒</pre>
+    <div class="themebuttons">
       <pre class="art-block-tiny">▒</pre>
-      <span class="themebutton">
-        <button onclick="changeTheme('{{ "/css/main.css" | prepend: site.baseurl }}')"> dark </button>
-      </span>
+      <script src="{{ site.baseurl }}/js/theme.js"> </script>
+      <button class="themebutton" onclick="toggleTheme()"> light/dark </button>
       <pre class="art-block-tiny">▒</pre>
-      <span class="themebutton">
-        <button id="toggleParaFontButton" onclick="toggleParaFont()"> verdana </button>
-      </span>
+      <button class="themebutton" id="toggleParaFontButton" onclick="toggleParaFont()"> verdana </button>
       <pre class="art-block-tiny">▒</pre>
-      <span class="themebutton">
-        <button onclick="customFontPrompt()"> custom </button>
-      </span>
+      <button class="themebutton" onclick="customFontPrompt()"> custom </button>
       <pre class="art-block-tiny">▒</pre>
-    </span>
+    </div>
   </div>
 </header>
 

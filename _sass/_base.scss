@@ -84,6 +84,8 @@ article {
 
     /* Here we configure the maximum width we want to allow content to consume. */
     max-width: $article-width;
+    //background-color: darken($background-colour, 2%);
+    //border: $thin-line solid darken($background-colour, 2%);
 }
 
 /* P for Paragraph. This should only be used for heavy blocks of reading text.
@@ -296,7 +298,11 @@ a {
     }
 
     &.site-header{
+        display: block;
         color: $highlight-colour;
+        text-align: center;
+        margin: 0;
+        padding: 0;
     }
 }
 
@@ -328,8 +334,10 @@ code {
         /* Correct line spacing to make the boxart connect. */
         line-height: 1.38;
         /* Do not allow wrapping that would damage the art. Forces scroll instead. */
-        max-width: 90%;
+        max-width: 90%;        
         margin: auto;
+        vertical-align: middle;
+        text-align: center;
     }
 
     /* The next 2 art tags are inline blocks, they appear next to normal text.  */
@@ -373,7 +381,7 @@ code {
     /* A small amount of padding to void escaping the curved edges */
     padding: 0 $standard-side-margin;
     /* No margins, don't want to disrupt text/line spacing. */
-    margin: 0;
+    margin: 0 1px;
     color: $code-colour;
     /* Inline so it can be part of a sentence,
      * Block to prevent line-breaks in the middle. */
@@ -383,7 +391,7 @@ code {
     /* No border it is part of the sentence. */
     border: none;
     display: inline-block;
-
+    font-size: $small-font-size;
     &.index-tag {
         font-size: $base * $taglist-size-coef;
         line-height: 130%;
@@ -508,11 +516,27 @@ img {
     }
 }
 
+.top-nav{
+    vertical-align: middle;
+}
+
 .themebuttons{
     /* Keep the buttons on the same lines. */
     display: inline-block;
     font-size: $small-font-size;
-    .themebutton {
-        color: darken($link-colour, 50%);
-    }
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+}
+
+.themebutton {
+    color: $link-colour;
+    display: inline-block;
+    border: $thin-line solid $very-subtle-colour;
+    font-family: inherit;
+    border-radius: $code-radius;
+    background-color: $background-colour;
+    margin: 0 $standard-margin;
+    padding: 0 $standard-margin;
+    vertical-align: middle;
 }

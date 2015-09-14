@@ -1,3 +1,19 @@
+
+var THEMETOGGLE = true;
+var LIGHTTHEME = "/css/main.css"
+var DARKTHEME = "/css/main-light.css"
+
+function toggleTheme()
+{
+    if(THEMETOGGLE){
+        THEMETOGGLE=false;
+        changeTheme(LIGHTTHEME);
+    }else{
+        THEMETOGGLE=true;
+        changeTheme(DARKTHEME);
+    }
+}
+
 function changeTheme(name) {
     document.getElementById('maincss').setAttribute('href', name);
 }
@@ -23,7 +39,7 @@ function toggleParaFont() {
 
     if (FONTTOGGLE) {
         FONTTOGGLE = false;
-        document.getElementById('toggleParaFontButton').innerHTML = 'default';
+        document.getElementById('toggleParaFontButton').innerHTML = DEFAULTFONT;
         changeParaFont(OTHERFONT);
     } else {
         FONTTOGGLE = true;
