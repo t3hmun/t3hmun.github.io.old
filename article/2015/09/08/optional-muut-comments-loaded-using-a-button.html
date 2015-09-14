@@ -12,61 +12,32 @@
 
 <body>
   <header>
-<pre class="art"><a class="site-header" href="/"><center>  ╶─╮            
+  <div class="site-header">
+    <pre class="art"><a href="/">  ╶─╮            
 ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮
-╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵</center></a></pre>
-<div class="top-nav">
-<pre class="art-block-tiny">  
-▒ 
-  </pre><pre class="art-block-tiny"><a href="/about/">╭─╮├─╮╭─╮╷ ╷┼─╴
+╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵</a></pre>
+  </div>
+  <div class="top-nav">
+    <pre class="art-block-tiny">▒</pre>
+    <pre class="art-block-tiny"><a href="/about/">╭─╮├─╮╭─╮╷ ╷┼─╴
 ╰─╰╰─╯╰─╯╰─╯╰─╯</a></pre>
-<pre class="art-block-tiny"> 
-▒
- </pre>
-<pre class="art-block-tiny"><a href="/archive/">╭─╮╭─╭─╴├─╮┐ ┐┌╭─╮
+    <pre class="art-block-tiny">▒</pre>
+    <pre class="art-block-tiny"><a href="/archive/">╭─╮╭─╭─╴├─╮┐ ┐┌╭─╮
 ╰─╵╵ ╰─╴╵ ╵╰╴└┘╰─╴</a></pre>
-<pre class="art-block-tiny"> 
-▒
- </pre>
-  <span class="themebuttons">    
-    Theme: 
-    <script type="text/javascript">
-      function changetheme(name){
-        document.getElementById('maincss').setAttribute('href',name);
-      }
-      function changepfont(font){
-        var eles = document.getElementsByTagName('p');
-        for (var i=0; i < eles.length; i++){
-          eles[i].style.fontFamily=font;
-          eles[i].style.letterSpacing=0;
-        }
-      }
-      function garishprompt(){
-        font = prompt("Insert custom fontname.");
-        changepfont(font);
-      }
-    </script>
-    <span class="themebutton">
-      <button onclick="changetheme('/css/main-light.css')"> light </button>
-    </span>  
     <pre class="art-block-tiny">▒</pre>
-    <span class="themebutton">
-      <button onclick="changetheme('/css/main.css')"> dark </button>
-    </span>
-    <pre class="art-block-tiny">▒</pre>
-    <span class="themebutton">
-      <button onclick="changepfont('veranda')"> veranda </button>
-    </span>
-    <pre class="art-block-tiny">▒</pre>
-    <span class="themebutton">
-      <button onclick="garishprompt()"> custom </button>
-    </span>
-    <pre class="art-block-tiny">▒</pre>
-  </span>
-  
-</div>
-
+    <div class="themebuttons">
+      <pre class="art-block-tiny">▒</pre>
+      <script src="/js/theme.js"> </script>
+      <button class="themebutton" onclick="toggleTheme()"> light/dark </button>
+      <pre class="art-block-tiny">▒</pre>
+      <button class="themebutton" id="toggleParaFontButton" onclick="toggleParaFont()"> verdana </button>
+      <pre class="art-block-tiny">▒</pre>
+      <button class="themebutton" onclick="customFontPrompt()"> custom </button>
+      <pre class="art-block-tiny">▒</pre>
+    </div>
+  </div>
 </header>
+
 
   <article>
     
@@ -95,7 +66,7 @@
 
 <p>I’m using <a href="https://muut.com/">Muut</a> for my comments, but a similar method should work for Disqus or any other system that just involves loading a JavaScript file. Previous to this my page has been entirely JavaScript free. Therefore it would be extreme and wasteful to use something such as JQuery.</p>
 
-<p>When loaded Muut looks for a link with the <code class="highlighter-rouge">class="muut"</code> attribute and then inserts itself at that link’s position. I have Muut on dynamic mode so the link doesn’t point to anywhere useful. Therefore I don’t want that link to be visible before Muut is loaded, so it is hidden with CSS and then restored in my JavaScript (otherwise the comments would be hidden).</p>
+<p>When loaded Muut looks for a link with the <code class="highlighter-rouge">class="muut"</code> attribute and then inserts itself at that link’s position. I have Muut on dynamic mode so the link doesn’t point to anywhere useful. Therefore I don’t want that link to be visible before Muut is loaded, so it is hidden with CSS and then restored in my JavaScript (otherwise the comments would be hidden). </p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>
 <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"load-button"</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"load-button"</span><span class="o">&gt;</span>
@@ -134,7 +105,7 @@
 </code></pre>
 </div>
 
-<p>You may notice that I’ve changed the link Muut uses to position itself to a loading message. That message will stay on screen while the Muut js loads. Muut then replaces itself. Simple hack to keep the user informed.</p>
+<p>You may notice that I’ve changed the link Muut uses to position itself to a loading message. That message will stay on screen while the Muut js loads. Muut then replaces itself. Simple hack to keep the user informed. </p>
 
 <h2 id="muut-y-u-no-disqus">Muut? Y u no Disqus</h2>
 

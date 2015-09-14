@@ -12,61 +12,32 @@
 
 <body>
   <header>
-<pre class="art"><a class="site-header" href="/"><center>  ╶─╮            
+  <div class="site-header">
+    <pre class="art"><a href="/">  ╶─╮            
 ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮
-╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵</center></a></pre>
-<div class="top-nav">
-<pre class="art-block-tiny">  
-▒ 
-  </pre><pre class="art-block-tiny"><a href="/about/">╭─╮├─╮╭─╮╷ ╷┼─╴
+╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵</a></pre>
+  </div>
+  <div class="top-nav">
+    <pre class="art-block-tiny">▒</pre>
+    <pre class="art-block-tiny"><a href="/about/">╭─╮├─╮╭─╮╷ ╷┼─╴
 ╰─╰╰─╯╰─╯╰─╯╰─╯</a></pre>
-<pre class="art-block-tiny"> 
-▒
- </pre>
-<pre class="art-block-tiny"><a href="/archive/">╭─╮╭─╭─╴├─╮┐ ┐┌╭─╮
+    <pre class="art-block-tiny">▒</pre>
+    <pre class="art-block-tiny"><a href="/archive/">╭─╮╭─╭─╴├─╮┐ ┐┌╭─╮
 ╰─╵╵ ╰─╴╵ ╵╰╴└┘╰─╴</a></pre>
-<pre class="art-block-tiny"> 
-▒
- </pre>
-  <span class="themebuttons">    
-    Theme: 
-    <script type="text/javascript">
-      function changetheme(name){
-        document.getElementById('maincss').setAttribute('href',name);
-      }
-      function changepfont(font){
-        var eles = document.getElementsByTagName('p');
-        for (var i=0; i < eles.length; i++){
-          eles[i].style.fontFamily=font;
-          eles[i].style.letterSpacing=0;
-        }
-      }
-      function garishprompt(){
-        font = prompt("Insert custom fontname.");
-        changepfont(font);
-      }
-    </script>
-    <span class="themebutton">
-      <button onclick="changetheme('/css/main-light.css')"> light </button>
-    </span>  
     <pre class="art-block-tiny">▒</pre>
-    <span class="themebutton">
-      <button onclick="changetheme('/css/main.css')"> dark </button>
-    </span>
-    <pre class="art-block-tiny">▒</pre>
-    <span class="themebutton">
-      <button onclick="changepfont('veranda')"> veranda </button>
-    </span>
-    <pre class="art-block-tiny">▒</pre>
-    <span class="themebutton">
-      <button onclick="garishprompt()"> custom </button>
-    </span>
-    <pre class="art-block-tiny">▒</pre>
-  </span>
-  
-</div>
-
+    <div class="themebuttons">
+      <pre class="art-block-tiny">▒</pre>
+      <script src="/js/theme.js"> </script>
+      <button class="themebutton" onclick="toggleTheme()"> light/dark </button>
+      <pre class="art-block-tiny">▒</pre>
+      <button class="themebutton" id="toggleParaFontButton" onclick="toggleParaFont()"> verdana </button>
+      <pre class="art-block-tiny">▒</pre>
+      <button class="themebutton" onclick="customFontPrompt()"> custom </button>
+      <pre class="art-block-tiny">▒</pre>
+    </div>
+  </div>
 </header>
+
 
   <article>
     <h1 class="post-title">Muut Comments</h1>

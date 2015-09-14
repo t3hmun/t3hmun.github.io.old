@@ -535,6 +535,10 @@ p {
   /* This is important to prevent this block from wrapping / appearing-next-to floating elements. */
   clear: both; }
 
+/* Used for the index. */
+.wide {
+  max-width: 1140px; }
+
 blockquote {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 19px;
@@ -681,7 +685,11 @@ a {
     color: #DDD;
     text-decoration: underline; }
   a.site-header {
-    color: #fd971f; }
+    display: block;
+    color: #fd971f;
+    text-align: center;
+    margin: 0;
+    padding: 0; }
 
 .top-nav {
   font-size: 23.75px;
@@ -711,7 +719,9 @@ code {
     line-height: 1.38;
     /* Do not allow wrapping that would damage the art. Forces scroll instead. */
     max-width: 90%;
-    margin: auto; }
+    margin: auto;
+    vertical-align: middle;
+    text-align: center; }
   pre.art-block-tiny,
   code.art-block-tiny {
     line-height: 1.36;
@@ -746,7 +756,7 @@ code {
   /* A small amount of padding to void escaping the curved edges */
   padding: 0 4.56px;
   /* No margins, don't want to disrupt text/line spacing. */
-  margin: 0;
+  margin: 0 1px;
   color: #edba7e;
   /* Inline so it can be part of a sentence,
    * Block to prevent line-breaks in the middle. */
@@ -755,7 +765,8 @@ code {
   border-radius: 3.8px;
   /* No border it is part of the sentence. */
   border: none;
-  display: inline-block; }
+  display: inline-block;
+  font-size: 14.25px; }
   code.index-tag {
     font-size: 15.2px;
     line-height: 130%;
@@ -848,12 +859,27 @@ img {
   .load-button .disclaimer {
     color: #DDD; }
 
+.top-nav {
+  vertical-align: middle; }
+
 .themebuttons {
   /* Keep the buttons on the same lines. */
   display: inline-block;
-  font-size: 14.25px; }
-  .themebuttons .themebutton {
-    color: #0b0f02; }
+  font-size: 14.25px;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0; }
+
+.themebutton {
+  color: #a6e22e;
+  display: inline-block;
+  border: 1.9px solid #4f2b01;
+  font-family: inherit;
+  border-radius: 3.8px;
+  background-color: #272822;
+  margin: 0 5.7px;
+  padding: 0 5.7px;
+  vertical-align: middle; }
 
 /* This only defines the lines around the header and footer. */
 /* Site header

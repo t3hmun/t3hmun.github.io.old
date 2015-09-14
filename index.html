@@ -12,61 +12,32 @@
 
 <body>
   <header>
-<pre class="art"><a class="site-header" href="/"><center>  ╶─╮            
+  <div class="site-header">
+    <pre class="art"><a href="/">  ╶─╮            
 ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮
-╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵</center></a></pre>
-<div class="top-nav">
-<pre class="art-block-tiny">  
-▒ 
-  </pre><pre class="art-block-tiny"><a href="/about/">╭─╮├─╮╭─╮╷ ╷┼─╴
+╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵</a></pre>
+  </div>
+  <div class="top-nav">
+    <pre class="art-block-tiny">▒</pre>
+    <pre class="art-block-tiny"><a href="/about/">╭─╮├─╮╭─╮╷ ╷┼─╴
 ╰─╰╰─╯╰─╯╰─╯╰─╯</a></pre>
-<pre class="art-block-tiny"> 
-▒
- </pre>
-<pre class="art-block-tiny"><a href="/archive/">╭─╮╭─╭─╴├─╮┐ ┐┌╭─╮
+    <pre class="art-block-tiny">▒</pre>
+    <pre class="art-block-tiny"><a href="/archive/">╭─╮╭─╭─╴├─╮┐ ┐┌╭─╮
 ╰─╵╵ ╰─╴╵ ╵╰╴└┘╰─╴</a></pre>
-<pre class="art-block-tiny"> 
-▒
- </pre>
-  <span class="themebuttons">    
-    Theme: 
-    <script type="text/javascript">
-      function changetheme(name){
-        document.getElementById('maincss').setAttribute('href',name);
-      }
-      function changepfont(font){
-        var eles = document.getElementsByTagName('p');
-        for (var i=0; i < eles.length; i++){
-          eles[i].style.fontFamily=font;
-          eles[i].style.letterSpacing=0;
-        }
-      }
-      function garishprompt(){
-        font = prompt("Insert custom fontname.");
-        changepfont(font);
-      }
-    </script>
-    <span class="themebutton">
-      <button onclick="changetheme('/css/main-light.css')"> light </button>
-    </span>  
     <pre class="art-block-tiny">▒</pre>
-    <span class="themebutton">
-      <button onclick="changetheme('/css/main.css')"> dark </button>
-    </span>
-    <pre class="art-block-tiny">▒</pre>
-    <span class="themebutton">
-      <button onclick="changepfont('veranda')"> veranda </button>
-    </span>
-    <pre class="art-block-tiny">▒</pre>
-    <span class="themebutton">
-      <button onclick="garishprompt()"> custom </button>
-    </span>
-    <pre class="art-block-tiny">▒</pre>
-  </span>
-  
-</div>
-
+    <div class="themebuttons">
+      <pre class="art-block-tiny">▒</pre>
+      <script src="/js/theme.js"> </script>
+      <button class="themebutton" onclick="toggleTheme()"> light/dark </button>
+      <pre class="art-block-tiny">▒</pre>
+      <button class="themebutton" id="toggleParaFontButton" onclick="toggleParaFont()"> verdana </button>
+      <pre class="art-block-tiny">▒</pre>
+      <button class="themebutton" onclick="customFontPrompt()"> custom </button>
+      <pre class="art-block-tiny">▒</pre>
+    </div>
+  </div>
 </header>
+
 
   <article>
     <p><center>
@@ -92,17 +63,17 @@
   </div>
 </div>
   <div class="index-excerpt">
-    
+    <p class="wide">
       I decided to make loading the comments system on my Jekyll blog site optional by making them load on a button press. No downloading of large scripts or contacting the third party comments service until the user decides to.
 
 
-    
-      <div class="right-align">
-        <a href="/article/2015/09/08/optional-muut-comments-loaded-using-a-button.html">
-          <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
+    </p>
+    <div class="right-align">
+      <a href="/article/2015/09/08/optional-muut-comments-loaded-using-a-button.html">
+        <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
 ╰─╴╰─╯╵ ╵╰╴╰╴╵ ╵╰─╯╰─╴╰─┘ ▘ ▝ ▝</pre>
-        </a>
-      </div>
+      </a>
+    </div>
     </div>
 </div>
 
@@ -119,15 +90,15 @@
   </div>
 </div>
   <div class="index-excerpt">
-    
+    <p class="wide">
       A quick look at the Vaughan BS150D double sided pullsaw that I recently acquired.
-    
-      <div class="right-align">
-        <a href="/article/2015/09/06/Vaughan-Bear-Saw.html">
-          <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
+    </p>
+    <div class="right-align">
+      <a href="/article/2015/09/06/Vaughan-Bear-Saw.html">
+        <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
 ╰─╴╰─╯╵ ╵╰╴╰╴╵ ╵╰─╯╰─╴╰─┘ ▘ ▝ ▝</pre>
-        </a>
-      </div>
+      </a>
+    </div>
     </div>
 </div>
 
@@ -144,18 +115,18 @@
   </div>
 </div>
   <div class="index-excerpt">
-    
+    <p class="wide">
       Setting a separate theme for a single filetype in Sublime 3 is quite simple.
 The Markdown Extended package combined the Monokai Extended colour scheme is great but I prefer a different colour scheme for everything else.
 
 
-    
-      <div class="right-align">
-        <a href="/note/2015/08/08/sublime-file-type-specific-theme.html">
-          <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
+    </p>
+    <div class="right-align">
+      <a href="/note/2015/08/08/sublime-file-type-specific-theme.html">
+        <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
 ╰─╴╰─╯╵ ╵╰╴╰╴╵ ╵╰─╯╰─╴╰─┘ ▘ ▝ ▝</pre>
-        </a>
-      </div>
+      </a>
+    </div>
     </div>
 </div>
 
@@ -172,15 +143,15 @@ The Markdown Extended package combined the Monokai Extended colour scheme is gre
   </div>
 </div>
   <div class="index-excerpt">
-    
+    <p class="wide">
       This is a test of the display of the theme and also a discussion of the design.
-    
-      <div class="right-align">
-        <a href="/article/2015/07/29/Test-Post.html">
-          <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
+    </p>
+    <div class="right-align">
+      <a href="/article/2015/07/29/Test-Post.html">
+        <pre class="art-block-tiny">╭─╴╭─╮┌─╮┼╴┐ ┌─╮╷ ╷╭─╮╭─┤
 ╰─╴╰─╯╵ ╵╰╴╰╴╵ ╵╰─╯╰─╴╰─┘ ▘ ▝ ▝</pre>
-        </a>
-      </div>
+      </a>
+    </div>
     </div>
 </div>
 
