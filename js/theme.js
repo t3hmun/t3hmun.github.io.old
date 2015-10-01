@@ -22,12 +22,12 @@ function changeParaFont(font) {
     var eles = document.getElementsByTagName('p');
     for (var i = 0; i < eles.length; i++) {
         eles[i].style.fontFamily = font;
-        eles[i].style.letterSpacing = 0;
+        eles[i].style.letterSpacing = 'normal';
     }
 }
 
 function customFontPrompt() {
-    font = prompt("Insert custom fontname.");
+    var font = prompt("Insert custom fontname.");
     changeParaFont(font);
 }
 
