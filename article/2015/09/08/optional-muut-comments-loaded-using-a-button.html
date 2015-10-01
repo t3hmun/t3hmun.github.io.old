@@ -66,7 +66,7 @@
 
 <p>I’m using <a href="https://muut.com/">Muut</a> for my comments, but a similar method should work for Disqus or any other system that just involves loading a JavaScript file. Previous to this my page has been entirely JavaScript free. Therefore it would be extreme and wasteful to use something such as JQuery.</p>
 
-<p>When loaded Muut looks for a link with the <code class="highlighter-rouge">class="muut"</code> attribute and then inserts itself at that link’s position. I have Muut on dynamic mode so the link doesn’t point to anywhere useful. Therefore I don’t want that link to be visible before Muut is loaded, so it is hidden with CSS and then restored in my JavaScript (otherwise the comments would be hidden). </p>
+<p>When loaded Muut looks for a link with the <code class="highlighter-rouge">class="muut"</code> attribute and then inserts itself at that link’s position. I have Muut on dynamic mode so the link doesn’t point to anywhere useful. Therefore I don’t want that link to be visible before Muut is loaded, so it is hidden with CSS and then restored in my JavaScript (otherwise the comments would be hidden).</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>
 <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"load-button"</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"load-button"</span><span class="o">&gt;</span>
@@ -105,7 +105,7 @@
 </code></pre>
 </div>
 
-<p>You may notice that I’ve changed the link Muut uses to position itself to a loading message. That message will stay on screen while the Muut js loads. Muut then replaces itself. Simple hack to keep the user informed. </p>
+<p>You may notice that I’ve changed the link Muut uses to position itself to a loading message. That message will stay on screen while the Muut js loads. Muut then replaces itself. Simple hack to keep the user informed.</p>
 
 <h2 id="muut-y-u-no-disqus">Muut? Y u no Disqus</h2>
 

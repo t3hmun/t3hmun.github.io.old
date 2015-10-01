@@ -5,9 +5,9 @@
     <description>A Jekyll theme simple enough to understand and edit, even if you find the default Jekyll site complicated. Intended for learning and use.</description>
     <link>http://t3hmun.github.io/</link>
     <atom:link href="http://t3hmun.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 14 Sep 2015 01:00:48 +0100</pubDate>
-    <lastBuildDate>Mon, 14 Sep 2015 01:00:48 +0100</lastBuildDate>
-    <generator>Jekyll v2.4.0</generator>
+    <pubDate>Thu, 01 Oct 2015 14:55:44 +0100</pubDate>
+    <lastBuildDate>Thu, 01 Oct 2015 14:55:44 +0100</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>Optional Muut Comments Loaded using a Button</title>
@@ -25,7 +25,7 @@
 
 &lt;p&gt;I’m using &lt;a href=&quot;https://muut.com/&quot;&gt;Muut&lt;/a&gt; for my comments, but a similar method should work for Disqus or any other system that just involves loading a JavaScript file. Previous to this my page has been entirely JavaScript free. Therefore it would be extreme and wasteful to use something such as JQuery.&lt;/p&gt;
 
-&lt;p&gt;When loaded Muut looks for a link with the &lt;code class=&quot;highlighter-rouge&quot;&gt;class=&quot;muut&quot;&lt;/code&gt; attribute and then inserts itself at that link’s position. I have Muut on dynamic mode so the link doesn’t point to anywhere useful. Therefore I don’t want that link to be visible before Muut is loaded, so it is hidden with CSS and then restored in my JavaScript (otherwise the comments would be hidden). &lt;/p&gt;
+&lt;p&gt;When loaded Muut looks for a link with the &lt;code class=&quot;highlighter-rouge&quot;&gt;class=&quot;muut&quot;&lt;/code&gt; attribute and then inserts itself at that link’s position. I have Muut on dynamic mode so the link doesn’t point to anywhere useful. Therefore I don’t want that link to be visible before Muut is loaded, so it is hidden with CSS and then restored in my JavaScript (otherwise the comments would be hidden).&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;load-button&quot;&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;load-button&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
@@ -64,7 +64,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;You may notice that I’ve changed the link Muut uses to position itself to a loading message. That message will stay on screen while the Muut js loads. Muut then replaces itself. Simple hack to keep the user informed. &lt;/p&gt;
+&lt;p&gt;You may notice that I’ve changed the link Muut uses to position itself to a loading message. That message will stay on screen while the Muut js loads. Muut then replaces itself. Simple hack to keep the user informed.&lt;/p&gt;
 
 &lt;h2 id=&quot;muut-y-u-no-disqus&quot;&gt;Muut? Y u no Disqus&lt;/h2&gt;
 
@@ -105,7 +105,7 @@
 
 &lt;div&gt;&lt;img alt=&quot;BS150D front&quot; src=&quot;/images/BS150D-front.png&quot; /&gt;&lt;/div&gt;
 
-&lt;p&gt;And the back seem boring enough.. &lt;/p&gt;
+&lt;p&gt;And the back seem boring enough..&lt;/p&gt;
 
 &lt;div&gt;&lt;img alt=&quot;BS150D back&quot; src=&quot;/images/BS150D-back.png&quot; /&gt;&lt;/div&gt;
 
