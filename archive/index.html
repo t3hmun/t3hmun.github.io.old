@@ -1,0 +1,18 @@
+---
+layout: base
+---
+
+<section>
+  <!-- The header levels follow sectioning depth. -->
+  <h2>Archive</h2>
+  <!-- 
+  Use Liquid to iterate through the posts in the site.
+  The title date and description for each page is also extracted using Liquid. 
+  -->
+  {% for post in site.posts %}
+
+    {% include index-entry.html %}
+
+  {% endfor %}
+
+</section>

@@ -1,19 +1,28 @@
 ---
-layout: default
+layout: base
+title: "t3hsite, t3hmun's project to learn and make good quality html5 and css/sass with Jekyll."
 ---
 
-<p><center>
-  Welcome to my weblog.
-</center></p>
-<h1 class="post-title">
-<pre class="art-block-small">╭─╭─╮╭─╴╭─╮┌─╮┼╴
-╵ ╰─╴╰─╴╰─╴╵ ╵╰╴</pre>
-<pre class="art-block-small">┌─╮╭─╮╭─╴┼╴╭─╴
-├─╯╰─╯╶─╯╰╴╶─╯</pre></h1>
+<!-- 
+Nothing on this page is an article of any sort.
+This is simply a welcome mat.
 
-{% for post in site.posts limit:5 %}
-{% include index-core.html %}
-{% endfor %}
+This description is part of the top level of the site (H1 rank).
+-->
+<p>{{ site.description }}</p>
 
+<section>
+  <!-- The header levels follow sectioning depth. -->
+  <h2>Recent Posts</h2>
+  <!-- 
+  Use Liquid to iterate through the 10 most recent posts in the site.
+  The code to extract the title and description of each post has been moved into an include.
+  This allows the same markup to be used on the archive page.
+  -->
+  {% for post in site.posts limit:10 %}
 
+    {% include index-entry.html %}
 
+  {% endfor %}
+
+</section>

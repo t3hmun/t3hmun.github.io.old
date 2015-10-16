@@ -1,0 +1,11 @@
+    <section>
+      <!-- <header> tag should only be used if the header is more than a single <h#> tag. -->
+      <h3><a class="post-link" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+      <!-- Footer tag used for information about the article. -->
+      <footer>
+        <span class="heading-footer">Posted on:
+        <!-- The datetime attribute contains a machine readable date. -->
+        <time datetime="{{ post.date | date: " %F %H:%M " }}">{{ post.date | date: "%F at %H:%M" }}</time></span>
+      </footer>
+      <p>{{ post.description }}</p>
+    </section>
