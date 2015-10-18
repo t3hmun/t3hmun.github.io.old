@@ -226,6 +226,18 @@ h6 {
   border-top: solid $site-footer-top-border $highlight-colour;
 }
 
+.hatchbox {
+  background: repeating-linear-gradient(120deg, $background-colour, $background-colour 3px, $subtle-back-colour 2px, $subtle-back-colour 4px);
+}
+
+.bar {
+  @extend .hatchbox;
+
+  line-height: $line-height;
+  min-width: 100px;
+}
+
+
 // The meta-sub-title for a heading.
 .heading-footer {
   // Small italic text, this is extra info that can be ignored.
@@ -234,16 +246,14 @@ h6 {
 
   // Restrict to content width, lines up with heading.
   max-width: $content-width;
+  
+  line-height: $line-height;
 
   // Center block.
   display: block;
-  float: left;
   margin: 0 auto;
   padding: 0 $gutter;
-}
-
-.float-right{
-  float: right;
+  background: none;
 }
 
 // A centred block where the content is also centred.
@@ -292,17 +302,6 @@ h6 {
   padding: 0;
 }
 
-.hatchbox {
-  background: repeating-linear-gradient(120deg, $background-colour, $background-colour 3px, $subtle-back-colour 2px, $subtle-back-colour 4px);
-}
-
-.bar {
-  @extend .hatchbox;
-
-  line-height: $line-height;
-  overflow: hidden;
-  width: 100%;
-}
 
 // The following three divs are for resizing element to fit different widths.
 // They can be inserted into Markdown using `{: .other-text-width }` to add the appropriate div to the most recent block.
@@ -322,4 +321,47 @@ h6 {
   max-width: $other-text-width;
   margin: $vspace auto;
   padding: 0 $gutter;
+}
+
+
+.archive-container {
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: 0;
+
+
+  .description {
+    display: block;
+    clear: both;
+    margin: 0  auto;
+    padding: 0 $gutter;
+    max-width: $other-text-width;
+    line-height: $line-height;
+  }
+  
+  
+  // The meta-sub-title for a heading.
+  .foot {
+    font-size: $small-font-size;
+    width: 100%;
+    
+    display: block;
+    
+    margin: 0;
+    padding: 0;
+    
+    //@extend .hatchbox;
+    
+    overflow: auto;
+    
+    .date {
+      float: left;
+      margin: 0 $gutter;
+    }
+    
+    .tags {
+      float: right;
+      
+    }
+  }
 }

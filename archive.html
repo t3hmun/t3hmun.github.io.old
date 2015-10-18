@@ -2,7 +2,6 @@
 layout: base
 permalink: /archive/
 ---
-
 <section>
   <h2>Archive</h2>
   <section>
@@ -21,4 +20,19 @@ permalink: /archive/
       {% endif %}
     {% endfor %}  
   </section>
+</section>
+<section>  
+  <h2>Posts by Tag</h2>
+  {% for tag in site.tags %}
+    <section>
+    <h3 id="{{ tag[0] }}">{{ tag[0] }}</h3>
+    {% for post in site.posts %}
+      {% for posttag in post.tags %}
+        {% if posttag == tag[0] %}
+          {% include index-entry.html %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    </section>
+  {% endfor %}
 </section>

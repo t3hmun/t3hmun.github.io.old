@@ -1,24 +1,22 @@
 <section>
-  <!-- <header> tag should only be used if the header is more than a single <h#> tag. -->
   <h4><a class="post-link" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
-  <!-- Footer tag used for information about the article. -->
-  <footer>
-    <div class="bar">
-      
-      <span class="heading-footer">
-        Posted on:
-        <time datetime="{{ post.date | date: " %F %H:%M " }}">{{ post.date | date: "%F at %H:%M" }}</time>
-      </span>
+  
+  <div class="archive-container">
+    <footer>
+      <div class="foot">
+        <span class="date"> Posted on:
+          <time datetime="{{ post.date | date: " %F %H:%M " }}">{{ post.date | date: "%F at %H:%M" }}</time>
+        </span>
+        <span class="tags">
+          <a href="{{ site.baseurl }}/archive/#{{ post.categories }}">[{{ post.categories }}]</a>
+          {% for tag in post.tags %}  [{{tag}}] {% endfor %}
+        </span>
+      </div>
+    </footer>
 
-      <span class="heading-footer float-right">
-        <a href="{{ site.baseurl }}/archive/#{{ post.categories }}">[{{ post.categories }}]</a> {% for tag in post.tags %}  [{{tag}}] {% endfor %}
-      </span>
-      
-    </div>
-  </footer>
-  
-  <p class="other-text-width">
-    {{ post.description }}
-  </p>
-  
+    <span class="description">
+      {{ post.description }}
+    </span>
+  </div>
+
 </section>
