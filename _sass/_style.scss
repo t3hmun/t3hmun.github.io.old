@@ -229,7 +229,7 @@ h6 {
 // The meta-sub-title for a heading.
 .heading-footer {
   // Small italic text, this is extra info that can be ignored.
-  font-style: italic;
+  //font-style: italic;
   font-size: $small-font-size;
 
   // Restrict to content width, lines up with heading.
@@ -237,8 +237,13 @@ h6 {
 
   // Center block.
   display: block;
+  float: left;
   margin: 0 auto;
   padding: 0 $gutter;
+}
+
+.float-right{
+  float: right;
 }
 
 // A centred block where the content is also centred.
@@ -295,6 +300,8 @@ h6 {
   @extend .hatchbox;
 
   line-height: $line-height;
+  overflow: hidden;
+  width: 100%;
 }
 
 // The following three divs are for resizing element to fit different widths.

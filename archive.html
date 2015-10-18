@@ -6,7 +6,7 @@ permalink: /archive/
 <section>
   <h2>Archive</h2>
   <section>
-    <h3>Articles</h3>
+    <h3 id="article">Articles</h3>
     {% for post in site.posts %}
       {% if post.category == "article" %}
         {% include index-entry.html %}
@@ -14,7 +14,7 @@ permalink: /archive/
     {% endfor %}
   </section>
   <section>
-    <h3>Notes</h3>
+    <h3 id="note">Notes</h3>
     {% for post in site.posts %}
       {% if post.category == "note" %}
         {% include index-entry.html %}
