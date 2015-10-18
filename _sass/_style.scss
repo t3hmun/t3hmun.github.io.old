@@ -163,6 +163,7 @@ h2 {
   border: solid $header-border $highlight-colour;
   margin-right: 5px;
   box-shadow: 5px 5px 0 $highlight-colour;
+  line-height: $line-height * 2 - $header-border * 2;
 
   // Neatly follows on from the masthead and nav.
   text-align: center;
@@ -326,42 +327,49 @@ h6 {
 
 .archive-container {
   max-width: $content-width;
-  margin: 0 auto;
-  padding: 0;
-
+  margin: $vspace auto;
+  padding: 0 $gutter;
+  border-left: solid $base $subtle-back-colour;
 
   .description {
     display: block;
-    clear: both;
     margin: 0  auto;
     padding: 0 $gutter;
-    max-width: $other-text-width;
+    //max-width: $other-text-width;
     line-height: $line-height;
+    clear: both;
   }
   
-  
-  // The meta-sub-title for a heading.
-  .foot {
-    font-size: $small-font-size;
-    width: 100%;
-    
-    display: block;
-    
-    margin: 0;
-    padding: 0;
-    
-    //@extend .hatchbox;
-    
-    overflow: auto;
-    
-    .date {
-      float: left;
-      margin: 0 $gutter;
+  .title
+  {    
+    h4 {
+      border: none;
+      margin: 0;
+      padding: 0;
+      line-height: $line-height;
     }
     
-    .tags {
-      float: right;
+    // The meta-sub-title for a heading.
+    .foot {
+      display: block;
+      font-size: $small-font-size;
+      color: $subtle-fore-colour;
       
+      .date {
+        display: block;
+        float: left;
+        margin: 0;
+        padding: 0 $gutter;
+        line-height: $line-height;
+      }
+      
+      .tags {
+        display: block;
+        float: right;
+        margin: 0;
+        padding: 0 $gutter;
+        line-height: $line-height;
+      }
     }
   }
 }
