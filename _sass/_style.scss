@@ -172,6 +172,10 @@ h2 {
     text-decoration: none;
     color: $highlight-colour;
   }
+  
+  &.triple-height {
+    line-height: $line-height*2 - $header-border * 2;
+  }
 }
 
 h3 {
@@ -256,6 +260,7 @@ h6 {
   display: inline-block;
   margin: 0;
   padding: 0;
+  vertical-align: middle;
 
   a {
     color: $highlight-colour;

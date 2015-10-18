@@ -1,29 +1,12 @@
 <!DOCTYPE html>
-<!-- 
-This is the base HTML file serves as the template for all pages on the site.
 
-The language of the site is set in the HTML tag. 
-Specifying GB so that robots read the page in an British accent.
-Useful for translating, spell-checking, screen reading among other things. 
--->
 <html lang="en-GB">
 
-  <!-- 
-  The head included using Liquid Markup.
-  The head is chunky with long lines, much easier to maintain in a separate file.
-  -->
   {% include head.html %}
-
-  <!-- HTML requires all visible content to occur within the body. -->
+  
   <body>
     <div class="body-wrapper">
-    <!-- 
-    The visible content is split between the nav, main and a footer sectioning elements.
-    
-    Header tag is not needed if the header is fully contained in a h# tag.
-    It is conventional (and useful) for the masthead to link to the homepage.
-    -->
-    <!-- The navigation for a personal blog is small. -->
+      
 <header>
   <div class="centre-block"><div class="art bigart"><a href="{{ site.baseurl }}/">
 ╭───────────────────╮
@@ -42,20 +25,11 @@ Useful for translating, spell-checking, screen reading among other things.
     </nav>
   </div>
 </header>
-    <!-- 
-    Pages using this layout will have their primary content inserted here.
-    The main tag helps machines separate the real content from the surrounding fluff.
-    A sectioning element should wrap the content in the content file (article or section).
-    -->
+
     <main>
-      {{ content }} <!-- It is a variable, not magic. -->
+      {{ content }}
     </main>
     
-    <!-- 
-    The footer contains unimportant links and external links. 
-    Content links live in the nav at the top of the page.
-    This is not for navigation but for other things of interest.
-    -->
     <footer>
       <div class="site-footer">
 

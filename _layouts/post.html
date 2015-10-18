@@ -8,23 +8,10 @@ The base layout has this wrapped in a main section.
 This layout contains a single main article. 
 -->
 <article>
-	<!-- 
-	This article tag is nested once making the H2 the correct heading level.
-	Following the recommendations and warnings in the HTML5.1 spec [1] the header level must follow the section level.
-	H1 cannot be used here because the sectioning would cause it to shrink to H2 level.
-	[1](http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#headings-and-sections) - October 2015
-	-->
-	<h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
+  <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
   <footer>
     <span class="heading-footer">Posted on:
-    <!-- The datetime attribute contains a machine readable date. -->
     <time datetime="{{ page.date | date: " %F %H:%M " }}">{{ page.date | date: "%F at %H:%M" }}</time></span>
   </footer>
-	<!--
-	The Kramdown html output of a blog page written in markdown will be inserted as the content variable (the page must reference this file as layout). 
-	To ensure that Kramdown begins with the correct heading levels the following option can be inserted in _config.yml.
-	kramdown:
-	  header_offset: 1
-	-->
-	{{ content }}
+  {{ content }}
 </article>
