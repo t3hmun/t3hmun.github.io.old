@@ -1,0 +1,24 @@
+---
+layout: base
+permalink: /archive/
+---
+
+<section>
+  <h2>Archive</h2>
+  <section>
+    <h3>Articles</h3>
+    {% for post in site.posts %}
+      {% if post.category == "article" %}
+        {% include index-entry.html %}
+      {% endif %}
+    {% endfor %}
+  </section>
+  <section>
+    <h3>Notes</h3>
+    {% for post in site.posts %}
+      {% if post.category == "note" %}
+        {% include index-entry.html %}
+      {% endif %}
+    {% endfor %}  
+  </section>
+</section>

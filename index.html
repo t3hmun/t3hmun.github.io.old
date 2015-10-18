@@ -3,16 +3,16 @@ layout: base
 title: "t3hsite, t3hmun's project to learn and make good quality html5 and css/sass with Jekyll."
 ---
 
-{% capture motd %}{% include motd.md %}{% endcapture %}
-{{ motd | markdownify }}
-
 <section>
-  <h2>Recent Posts</h2>
-
-  {% for post in site.posts limit:10 %}
-
-    {% include index-entry.html %}
-
-  {% endfor %}
-
+  <h2>Home</h2>
+  {% capture motd %}{% include motd.md %}{% endcapture %}
+  {{ motd | markdownify }}
+  <section>
+    <h3>Recent Posts</h3>
+    {% for post in site.posts limit:10 %}
+  
+      {% include index-entry.html %}
+  
+    {% endfor %}
+  </section>
 </section>
