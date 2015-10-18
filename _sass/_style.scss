@@ -173,9 +173,9 @@ h2 {
     text-decoration: none;
     color: $highlight-colour;
   }
-  
+
   &.triple-height {
-    line-height: $line-height*2 - $header-border * 2;
+    line-height: $line-height * 2 - $header-border * 2;
   }
 }
 
@@ -238,16 +238,12 @@ h6 {
   min-width: 100px;
 }
 
-
 // The meta-sub-title for a heading.
 .heading-footer {
-  // Small italic text, this is extra info that can be ignored.
-  //font-style: italic;
   font-size: $small-font-size;
 
   // Restrict to content width, lines up with heading.
   max-width: $content-width;
-  
   line-height: $line-height;
 
   // Center block.
@@ -303,7 +299,6 @@ h6 {
   padding: 0;
 }
 
-
 // The following three divs are for resizing element to fit different widths.
 // They can be inserted into Markdown using `{: .other-text-width }` to add the appropriate div to the most recent block.
 .reading-width {
@@ -324,7 +319,7 @@ h6 {
   padding: 0 $gutter;
 }
 
-
+// Styling for the archive page.
 .archive-container {
   max-width: $content-width;
   margin: $vspace auto;
@@ -335,26 +330,25 @@ h6 {
     display: block;
     margin: 0  auto;
     padding: 0 $gutter;
+
     //max-width: $other-text-width;
     line-height: $line-height;
     clear: both;
   }
-  
-  .title
-  {    
+
+  .title {
     h4 {
       border: none;
       margin: 0;
       padding: 0;
       line-height: $line-height;
     }
-    
-    // The meta-sub-title for a heading.
+
     .foot {
       display: block;
       font-size: $small-font-size;
       color: $subtle-fore-colour;
-      
+
       .date {
         display: block;
         float: left;
@@ -362,7 +356,7 @@ h6 {
         padding: 0 $gutter;
         line-height: $line-height;
       }
-      
+
       .tags {
         display: block;
         float: right;
