@@ -334,6 +334,10 @@ h6 {
     //max-width: $other-text-width;
     line-height: $line-height;
     clear: both;
+    
+    p {
+      max-width: none;
+    }
   }
 
   .title {
@@ -366,4 +370,15 @@ h6 {
       }
     }
   }
+}
+
+.scripty {
+  font-size: $small-font-size;
+  color: $subtle-fore-colour;
+  margin: $vspace auto;
+  padding: 0 $gutter;
+  line-height: $line-height;
+  text-align: center;
+  
+  display: none;
 }
