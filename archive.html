@@ -23,7 +23,8 @@ permalink: /archive/
 </section>
 <section>  
   <h2>Posts by Tag</h2>
-  {% for tag in site.tags %}
+  {% assign taglist = site.tags | sort  %}
+  {% for tag in taglist %}
     <section>
     <h3 id="{{ tag[0] }}">{{ tag[0] }}</h3>
     {% for post in site.posts %}
