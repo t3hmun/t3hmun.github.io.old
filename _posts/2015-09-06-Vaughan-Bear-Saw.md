@@ -7,6 +7,8 @@ tags: diy saw pullsaw zsaw
 description: A quick look at the Vaughan BS150D double sided pullsaw that I recently acquired.
 ---
 
+* TOC
+{:toc .toc}
 
 ## Background
 

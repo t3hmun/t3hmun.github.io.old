@@ -334,7 +334,7 @@ h6 {
     //max-width: $other-text-width;
     line-height: $line-height;
     clear: both;
-    
+
     p {
       max-width: none;
     }
@@ -373,12 +373,40 @@ h6 {
 }
 
 .scripty {
+  @extend .hatchbox;
+
   font-size: $small-font-size;
   color: $subtle-fore-colour;
-  margin: $vspace auto;
-  padding: 0 $gutter;
+  margin: 0;
+  padding: $gutter $gutter;
   line-height: $line-height;
   text-align: center;
-  
+  position: fixed;
+  left: 0;
+  bottom: 0;
   display: none;
+}
+
+.toc {
+  @extend .hatchbox;
+
+  display: none;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  
+  bottom: $line-height;
+  
+  padding: $gutter $gutter;
+}
+
+.toc-toggle {
+  @extend .hatchbox;
+
+  display: none;
+  position: fixed;
+  right: 0;
+  bottom:0;
+  
+  padding: $gutter $gutter;
 }
