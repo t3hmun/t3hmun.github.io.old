@@ -88,7 +88,7 @@ ol, ul, blockquote, dl {
 
 blockquote {
   // A chunky line on the left side to denote blockquotes.
-  border-left: solid $blockquote-side-line $medium-colour;
+  border-left: solid $blockquote-side-line $subtle-fore-colour;
 
   // The border increases the width, so it must be shrunk by that much.
   max-width: $other-text-width - $blockquote-side-line;
