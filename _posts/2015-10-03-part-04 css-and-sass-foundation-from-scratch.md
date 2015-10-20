@@ -3,7 +3,12 @@ layout: post
 title: "Part 3: Laying a CSS and SASS Foundation from Scratch"
 date: 2015-10-04
 description: Removing the default CSS for a Jekyll site and laying a nice SASS foundation for building on.
+category: article
+tags: theme jekyll
 ---
+
+* TOC
+{:toc .toc}
 
 ## Creating a CSS base
 

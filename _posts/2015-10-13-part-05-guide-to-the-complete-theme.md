@@ -3,7 +3,12 @@ layout: post
 title: "Part 5: Guide to the Complete Theme"
 date: 2015-10-13
 description: "I completed the theme, documenting as I went along, this post details the features and how to use them."
+category: article
+tags: theme jekyll
 ---
+
+* TOC
+{:toc .toc}
 
 ## Overview
 
@@ -135,21 +140,21 @@ This was done by inserting `{: .reading-width}` as the line immediately after th
 
 By default images resize to fit the reading-with area. 
 `![A simple picture]({% raw %}{{ site.baseurl }}{% endraw %}/img/a_picture.png)`:
-![A simple picture]({{ site.baseurl }}/img/a_picture.png)
+![A simple picture]({{ site.baseurl }}/images/a_picture.png)
 
 However They can be made to scale to the other sizes by inserting them in a html div:
 
 ```html
-<div class="other-text-width"><img src="{% raw %}{{ site.baseurl }}{% endraw %}/img/a_picture.png" alt="A simple picture"></div>`
+<div class="other-text-width"><img src="{% raw %}{{ site.baseurl }}{% endraw %}/images/a_picture.png" alt="A simple picture"></div>`
 ```
 
-<div class="other-text-width"><img src="{{ site.baseurl }}/img/a_picture.png" alt="A simple picture"></div>
+<div class="other-text-width"><img src="{{ site.baseurl }}/images/a_picture.png" alt="A simple picture"></div>
 
 ```html
-<div><img src="{% raw %}{{ site.baseurl }}{% endraw %}/img/a_picture.png" alt="A simple picture"></div>
+<div><img src="{% raw %}{{ site.baseurl }}{% endraw %}/images/a_picture.png" alt="A simple picture"></div>
 ```
 
-<div><img src="{{ site.baseurl }}/img/a_picture.png" alt="A simple picture"></div>
+<div><img src="{{ site.baseurl }}/images/a_picture.png" alt="A simple picture"></div>
 
 The `<div>` is required to suppress Kramdown from automatically inserting a `<p>` and also for inserting the width class for the smaller sizes.
 

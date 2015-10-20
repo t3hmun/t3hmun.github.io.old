@@ -3,7 +3,12 @@ layout: post
 title: "Part 2: Tooling Up"
 date: 2015-10-02
 description: "Install Ruby, Jekyll and Rouge and a quick primer on what Jekyll gives you."
+category: article
+tags: theme jekyll
 ---
+
+* TOC
+{:toc .toc}
 
 ## A Quick Primer on Jekyll
 

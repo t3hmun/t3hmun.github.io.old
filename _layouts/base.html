@@ -2,85 +2,86 @@
 
 <html lang="en-GB">
 
-  {% include head.html %}
-  
-  <body>
-    <div class="body-wrapper">
-      
-<header>
-  <div class="centre-block" id="top-of-page"><div class="art bigart"><a href="{{ site.baseurl }}/">
+{% include head.html %}
+
+<body>
+  <div class="body-wrapper">
+
+    <header>
+      <div class="centre-block" id="top-of-page">
+        <div class="art bigart"><a href="{{ site.baseurl }}/">
 ╭───────────────────╮
 │   ╶─╮             │
 │ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
 │ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
 ╰───────────────────╯</a></div>
-    <nav><div class="art miniart "><a href="{{ site.baseurl }}/about/">         ╷                     
+        <nav>
+          <div class="art miniart "><a href="{{ site.baseurl }}/about/">         ╷                     
    ╭───╮ ├───╮╭───╮╷   ╷╶┼─╴   
 ▒  │   │ │   ││   ││   │ │    ▒
    ╰───╰ ╰───╯╰───╯╰───╯ ╰─╴   
-</a></div><div class="art miniart"><a href="{{ site.baseurl }}/archive/">                  ╷      .             
+</a></div>
+          <div class="art miniart"><a href="{{ site.baseurl }}/archive/">                  ╷      .             
    ╭───╮ ╭──╴╭───╴├───╮ ╶┐ ╷  ╷╭───╮   
 ▒  │   │ │   │    │   │  │ └┐┌┘├───╯  ▒
    ╰───╰ ╵   ╰───╴╵   ╵  ╰╴ └┘ ╰───╯   </a></div>
-    </nav>
-  </div>
-</header>
+        </nav>
+      </div>
+    </header>
 
-      <main>
-        {{ content }}
-      </main>
-    
-      <footer>
-        <div class="centre-block">
-          <div class="bar">
-            <div class="art"><a href="#top-of-page">▁▁
+    <main>
+      {{ content }}
+    </main>
+
+    <footer>
+      <div class="centre-block">
+        <div class="bar">
+          <div class="art"><a href="#top-of-page">▁▁
 scroll ╱╲ to top</a></div>
           <br>
           <br>
-          </div>
-          <br>
-          <div class="art">╭┬╮╭─╮┐│  ▝ 
-╵ ╵╰─╵╰╰╴ ▝ </div><span class="fblock">blog at t3hmun dot com</span>
-          <br>
-          See my code at
-          <div class="art"><a href="http://github.com/t3hmun"> ╭─╴.   ╷ ╷    
+        </div>
+        <br>
+        <div class="art">╭┬╮╭─╮┐│ ▝ 
+╵ ╵╰─╵╰╰╴▝ </div><span class="fblock">blog at t3hmun dot com</span>
+        <br> See my code at
+        <div class="art"><a href="http://github.com/t3hmun"> ╭─╴.   ╷ ╷    
  │ ┐┐ ┼ ├─┤╷╷├╮
  ╰─╯╰╴╰╴╵ ╵╰╯└╯</a></div>
-          <br>
-          Site content is licensed as 
-          <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴╭─╴ ╭─╮          
+        <br> Site content is licensed as
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴╭─╴ ╭─╮          
  │  │   ├─┤ttribution
  ╰─╴╰─╴ ╵ ╵          </a></div>
 
-          <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴     ╭─╮    
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴     ╭─╮    
  ╰─╮hare ├─┤like
  ╶─╯     ╵ ╵    </a></div>
-  
-          <div class="centre-block"><div class="art bigart"><a href="{{ site.baseurl }}/">
+
+        <div class="centre-block">
+          <div class="art bigart"><a href="{{ site.baseurl }}/">
 ╭───────────────────╮
 │   ╶─╮             │
 │ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
 │ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
-╰───────────────────╯</a></div></div>
-
+╰───────────────────╯</a></div>
         </div>
-      </footer>
-      
-      
-       <div id="theme-changer" class="scripty">
-        <a id="lightbutton">light</a>
-         - 
-        <a id="darkbutton">dark</a>
-         - 
-        <a href="#top-of-page">top</a>
+
       </div>
-      
-      <div id="toc-toggle-div" class="toc-toggle">
-        <a href="" id="toctogglebutton">toc</a>
-      </div>
-      
-      
+    </footer>
+
+
+    <div id="theme-changer" class="scripty">
+      <a id="lightbutton">light</a> -
+      <a id="darkbutton">dark</a> -
+      <a href="#top-of-page">top</a>
     </div>
-  </body>
+
+    <div id="toc-toggle-div" class="toc-toggle">
+      <a href="" id="toctogglebutton">toc</a>
+    </div>
+
+
+  </div>
+</body>
 
 </html>

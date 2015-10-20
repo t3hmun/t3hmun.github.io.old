@@ -3,7 +3,12 @@ layout: post
 title: "Part 4: Clean Basic HTML"
 date: 2015-10-03
 description: "Stripping out the basic HTML and starting with a clean and well understood structure."
+category: article
+tags: theme jekyll
 ---
+
+* TOC
+{:toc .toc}
 
 ## Strip to Minimal HTML
 

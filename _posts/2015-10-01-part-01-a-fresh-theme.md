@@ -3,7 +3,12 @@ layout: post
 title: "Part 1: A Fresh Jekyll Site"
 date: 2015-10-01
 description: "This is documentation of my attempt to make a Jekyll blog-site from scratch, deleting most of the default cruft, justifying every single line for maximum understanding. Learning good HTML5 and CSS along the way."
+category: article
+tags: theme jekyll
 ---
+
+* TOC
+{:toc .toc}
 
 ## What
 
