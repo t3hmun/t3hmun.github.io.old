@@ -4,6 +4,7 @@ title:  "Sublime File Type Specific Theme"
 date: 2015-08-08 17:00:00
 category: note
 tags: sublime theme markdown
+description: "How to set a separate theme for a specific syntax-type in Sublime 3."
 ---
 
 Setting a separate theme for a single filetype in Sublime 3 is quite simple.

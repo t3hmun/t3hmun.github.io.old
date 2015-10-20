@@ -1,0 +1,22 @@
+<section>
+  <div class="archive-container">
+    <div class="title">
+      <h4><a class="post-link" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
+      <footer>
+        <div class="foot">
+          <span class="date">
+            <time datetime="{{ post.date | date: " %F %H:%M " }}">{{ post.date | date: "%F at %H:%M" }}</time>
+          </span>
+          <span class="tags">
+            <a href="{{ site.baseurl }}/archive/#{{ post.categories }}">[{{ post.categories }}] - </a>
+            {% for tag in post.tags %}<a href="{{ site.baseurl }}/archive/#{{ tag }}">[{{ tag }}] </a>{% endfor %}
+          </span>
+        </div>
+      </footer>
+    </div>
+    <span class="description">
+        <p>{{ post.description }}</p>
+    </span>
+  </div>
+
+</section>

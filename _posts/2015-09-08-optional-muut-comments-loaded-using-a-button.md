@@ -4,7 +4,11 @@ title:  "Optional Muut Comments Loaded using a Button"
 date: 2015-09-08 13:00:00
 category: article
 tags: muut comments js
+description: "Adding comments to a static blog site, entirely loaded using a button."
 ---
+
+* TOC
+{:toc .toc}
 
 I decided to make loading the comments system on my Jekyll blog site optional by making them load on a button press. No downloading of large scripts or contacting the third party comments service until the user decides to.
 

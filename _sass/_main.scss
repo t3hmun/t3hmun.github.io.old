@@ -1,0 +1,52 @@
+// _main.scss written by t3hmun (Manish Parekh, t3hmun at gmail dot com)
+//
+// License:
+// 
+// Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+// http://creativecommons.org/licenses/by-sa/4.0/
+//
+// Relicensing to GPL3 permitted.
+
+@charset "utf-8";
+
+//----------------------------------------------------------------------------
+// Set fonts and sizes common to all themes.
+//----------------------------------------------------------------------------
+@import "fonts";
+@import "size";
+
+//----------------------------------------------------------------------------
+// Set colours for this theme (dark - default).
+//----------------------------------------------------------------------------
+
+// Only 4 colours to edit to make a new theme.
+$text-colour: #ddd;
+$background-colour: #272822;
+$highlight-colour: #fd971f;
+$link-colour: #a6e22e;
+
+$link-hover-colour: $highlight-colour;
+
+// These mixes may need tweaking on some themes.
+$subtle-back-colour: mix($highlight-colour, $background-colour, 10%);
+$subtle-fore-colour: mix($highlight-colour, $text-colour, 50%);
+
+$h2-colour: $highlight-colour;
+$h3-colour: mix($text-colour, $highlight-colour, 50%);
+$h4-colour: mix($text-colour, $highlight-colour, 50%);
+$h5-colour: mix($text-colour, $highlight-colour, 50%);
+$h6-colour: mix($text-colour, $highlight-colour, 100%);
+
+//----------------------------------------------------------------------------
+// NO CSS SHOULD BE SET BEFORE THIS POINT (except for @font-face).
+// Actual CSS is imported next.
+//----------------------------------------------------------------------------
+
+// Import normalize to create an identical baseline style.
+@import "normalize";
+
+// Import syntax-highlighting styles.
+@import "syntax";
+
+// Import all other styling.
+@import "style";

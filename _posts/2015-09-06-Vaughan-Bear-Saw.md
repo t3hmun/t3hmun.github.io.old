@@ -3,10 +3,12 @@ layout: post
 title:  "Vaughan Bear BS150D Pullsaw"
 date: 2015-09-06 12:00:00
 category: article
-tags: woodwork saw pullsaw zsaw
-excerpt: A quick look at the Vaughan BS150D double sided pullsaw that I recently acquired.
+tags: diy saw pullsaw zsaw
+description: A quick look at the Vaughan BS150D double sided pullsaw that I recently acquired.
 ---
 
+* TOC
+{:toc .toc}
 
 ## Background
 

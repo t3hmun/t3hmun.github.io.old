@@ -1,33 +1,25 @@
 ---
-layout: default
+# Uses the base layout so all of the content from this file will be inserted in the body.
+layout: base
 ---
 
-{% include titletagdate.html headerlevel='h1' pageorpost='page' %}
-
-{{ content }}
-
-<div id="load-button" class="load-button">
-  <script type="text/javascript">
-    function loadcomments(){
-      // Hide the load button.
-      document.getElementById('load-button').style.visibility='hidden'
-      // Unhide the muut link div (Muut will remove the link when loaded).
-      document.getElementById('mootdiv').style.display='block'
-      // Create an element for the script and insert into head.
-      var scriptele=document.createElement('script')
-      scriptele.setAttribute("type","text/javascript")
-      scriptele.setAttribute("src","//cdn.muut.com/1/moot.min.js")
-      document.getElementsByTagName("head")[0].appendChild(scriptele)
-    }
-  </script>
-  <br>
-  <span class="disclaimer"><center>
-    Comments use Muut subject to their <a href="{{ site.baseurl }}/muut-comments/">terms of use</a>.
-  </center></span>
-  <center><button onclick="loadcomments()">Click to load comments</button></center>
-  <br>
-</div>
-
-<div class="mootdiv" id="mootdiv">
-  <a href="https://muut.com/i/t3hmun/comments" class="muut" type="dynamic">Loading comments...</a>
-</div>
+<!-- 
+The base layout has this wrapped in a main section.
+This layout contains a single main article. 
+-->
+<article>
+  <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
+  <footer>
+    <div class="heading-footer">
+      <span class="date">
+        Posted on:
+        <time datetime="{{ page.date | date: " %F %H:%M " }}">{{ page.date | date: "%F at %H:%M" }}</time>
+      </span>
+      <span class="tags">      
+        <a href="{{ site.baseurl }}/archive/#{{ page.categories }}">[{{ page.categories }}] - </a>
+        {% for tag in page.tags %}<a href="{{ site.baseurl }}/archive/#{{ tag }}">[{{ tag }}] </a>{% endfor %}
+      </span>
+    </div>
+  </footer>
+  {{ content }}
+</article>

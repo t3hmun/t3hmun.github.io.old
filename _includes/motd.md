@@ -1,0 +1,1 @@
+Hello and **welcome**. I've re-written the site CSS / SASS / HTML, this time everything should be pass validation.

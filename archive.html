@@ -1,13 +1,39 @@
 ---
-layout: default
-title: Archive
+layout: base
 permalink: /archive/
 ---
-<h1 class="post-title"><pre class="art-block-small">╭─╮╭─╭─╴├─╮┐ ┐┌╭─╮
-╰─╵╵ ╰─╴╵ ╵╰╴└┘╰─╴</pre></h1>
-{% for post in site.posts %}
-{% include index-core.html headerlevel='h2' %}
-{% endfor %}
-
-
-
+<section>
+  <h2>Archive</h2>
+  <section>
+    <h3 id="article">Articles</h3>
+    {% for post in site.posts %}
+      {% if post.category == "article" %}
+        {% include index-entry.html %}
+      {% endif %}
+    {% endfor %}
+  </section>
+  <section>
+    <h3 id="note">Notes</h3>
+    {% for post in site.posts %}
+      {% if post.category == "note" %}
+        {% include index-entry.html %}
+      {% endif %}
+    {% endfor %}  
+  </section>
+</section>
+<section>  
+  <h2>Posts by Tag</h2>
+  {% assign taglist = site.tags | sort  %}
+  {% for tag in taglist %}
+    <section>
+    <h3 id="{{ tag[0] }}">{{ tag[0] }}</h3>
+    {% for post in site.posts %}
+      {% for posttag in post.tags %}
+        {% if posttag == tag[0] %}
+          {% include index-entry.html %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    </section>
+  {% endfor %}
+</section>

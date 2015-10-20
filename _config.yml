@@ -1,16 +1,15 @@
 # Site settings
 title: t3hmun
-email: blog at t3hmun dot com
-description: "A Jekyll theme simple enough to understand and edit, even if you find the default Jekyll site complicated. Intended for learning and use."
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://t3hmun.github.io" #"http://yourdomain.com" the base hostname & protocol for your site
-twitter_username: # Leaving this blank for fun.
-github_username:  t3hmun
-footer:
+description: "t3hmun's personal blog."
+baseurl: "http://t3hmun.github.io" # full path of the site
+
+# There is no need for the excessively long urls used by default.
+permalink: "/:categories/:year/:title/"
 
 # Build settings
 markdown: kramdown
 kramdown:
-  input: GFM
+  input: GFM # GithHub Flavored Markdown, support for Github style fenced code blocks.
   syntax_highlighter: rouge
-  hard_wrap: false
+  hard_wrap: false # Single line breaks are ignored as in standard Markdown.
+  header_offset: 1 # <h#> tags are offset down by one size.

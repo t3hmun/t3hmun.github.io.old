@@ -1,0 +1,65 @@
+// _size.scss written by t3hmun (Manish Parekh, t3hmun at gmail dot com)
+//
+// License:
+// 
+// Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+// http://creativecommons.org/licenses/by-sa/4.0/
+//
+// Relicensing to GPL3 permitted.
+
+// This is my basic size, it is used as the main font size and *all* other things are scaled off it (except the gutter).
+// The only size that should be set without a variable from this file is 0.
+$base: 20px;
+
+// This is the value that defines the vertical rhythm for the whole document.
+// All text sizes share this spacing, except for H2 that has double.
+// In order to maintain consistency a px size must be used.
+// $vspace is the vertical margin and should be the same as $line-height to maintain rhythm.
+$line-height: round($base * 1.6);
+$vspace: $line-height;
+
+// Gutter is the space from edge of screen. 
+// Fixed to look neat on all sizes without wasting screen space.
+$gutter: 5px;
+
+// The max width for pure text content.
+// I want roughly 60 characters per line for hard reading.
+// Normal fonts have a height width raio of around 2.2:1
+// The height is multiplied to achieve a rough CPL.
+$reading-width: $base * 27;
+
+// This is the max with for any content, including large images, code and titles.
+// These kinds of content like to exploit as much space as possible.
+// However using more than double the reading width looks clumsy and confusing.
+$content-width: $reading-width * 2;
+
+// Other text is things like bullets and blockquotes.
+// Bullets enjoy longer lines, better flow, they already have visual aids to help the eye.
+// Also gives space for the extra gutter parts of these elements.
+$other-text-width: $reading-width * 1.5;
+
+// Used for side information, such as post-date subtitle.
+$small-font-size: $base * 0.9;
+
+// Some highly specific adjustments:
+$blockquote-side-line: round($base / 2);
+$syntax-border-thickness: 1px;
+$bullet-padding: $base;
+
+// Monospace fonts can appear large inline with normal text.
+$syntax-font-size: $base * 0.9;
+
+// Tweaked to make parts of the website fit mobile phone screens.
+$small-art-size: round($base / 2.3);
+$big-art-size: round($base * 1.3);
+
+// Header 2 and 3 are boxed.
+$header-border: 1px;
+$header-shadow: 5px;
+
+// These header sizes are complemented by the colours.
+$h2-size: 1.5 * $base;
+$h3-size: 1.5 * $base;
+$h4-size: 1.2 * $base;
+$h5-size: 1 * $base;
+$h6-size: 1 * $base;

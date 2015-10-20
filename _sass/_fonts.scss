@@ -1,0 +1,65 @@
+// _fonts.scss by t3hmun. _fonts.scss is public domain.
+
+$base-font-family: "Source Sans Pro", sans-serif;
+$syntax-font-family: "Source Code Pro", monospace;
+$p-font-family: "Source Sans Pro", sans-serif;
+
+// Define hosted fonts (required for proper rendering of boxart).
+@font-face{
+    font-family: 'Source Code Pro';
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('fonts/EOT/SourceCodePro-Light.eot') format('embedded-opentype'),
+         url('fonts/WOFF2/OTF/SourceCodePro-Light.otf.woff2') format('woff2'),
+         url('fonts/WOFF/OTF/SourceCodePro-Light.otf.woff') format('woff'),
+         url('fonts/OTF/SourceCodePro-Light.otf') format('opentype'),
+         url('fonts/TTF/SourceCodePro-Light.ttf') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Code Pro';
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('fonts/EOT/SourceCodePro-Medium.eot') format('embedded-opentype'),
+         url('fonts/WOFF2/OTF/SourceCodePro-Medium.otf.woff2') format('woff2'),
+         url('fonts/WOFF/OTF/SourceCodePro-Medium.otf.woff') format('woff'),
+         url('fonts/OTF/SourceCodePro-Medium.otf') format('opentype'),
+         url('fonts/TTF/SourceCodePro-Medium.ttf') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Code Pro';
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('fonts/EOT/SourceCodePro-Bold.eot') format('embedded-opentype'),
+         url('fonts/WOFF2/OTF/SourceCodePro-Bold.otf.woff2') format('woff2'),
+         url('fonts/WOFF/OTF/SourceCodePro-Bold.otf.woff') format('woff'),
+         url('fonts/OTF/SourceCodePro-Bold.otf') format('opentype'),
+         url('fonts/TTF/SourceCodePro-Bold.ttf') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('fonts/EOT/SourceSansPro-Light.eot') format('embedded-opentype'),
+         url('fonts/WOFF/OTF/SourceSansPro-Light.otf.woff') format('woff'),
+         url('fonts/OTF/SourceSansPro-Light.otf') format('opentype'),
+         url('fonts/TTF/SourceSansPro-Light.ttf') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Code Pro';
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('fonts/EOT/SourceCodePro-Black.eot') format('embedded-opentype'),
+         url('fonts/WOFF2/OTF/SourceCodePro-Black.otf.woff2') format('woff2'),
+         url('fonts/WOFF/OTF/SourceCodePro-Black.otf.woff') format('woff'),
+         url('fonts/OTF/SourceCodePro-Black.otf') format('opentype'),
+         url('fonts/TTF/SourceCodePro-Black.ttf') format('truetype');
+}
