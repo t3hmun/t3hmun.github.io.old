@@ -10,8 +10,16 @@ This layout contains a single main article.
 <article>
   <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
   <footer>
-    <span class="heading-footer">Posted on:
-    <time datetime="{{ page.date | date: " %F %H:%M " }}">{{ page.date | date: "%F at %H:%M" }}</time></span>
+    <div class="heading-footer">
+      <span class="date">
+        Posted on:
+        <time datetime="{{ page.date | date: " %F %H:%M " }}">{{ page.date | date: "%F at %H:%M" }}</time>
+      </span>
+      <span class="tags">      
+        <a href="{{ site.baseurl }}/archive/#{{ page.categories }}">[{{ page.categories }}] - </a>
+        {% for tag in page.tags %}<a href="{{ site.baseurl }}/archive/#{{ tag }}">[{{ tag }}] </a>{% endfor %}
+      </span>
+    </div>
   </footer>
   {{ content }}
 </article>

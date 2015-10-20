@@ -218,6 +218,9 @@ h6 {
 .heading-footer {
   font-size: $small-font-size;
 
+  // Creates a block formatting context to contain the floating date ansd tags and give them a margin.
+  overflow: hidden;
+
   // Restrict to content width, lines up with heading.
   max-width: $content-width;
   line-height: $line-height;
@@ -227,6 +230,14 @@ h6 {
   margin: 0 auto;
   padding: 0 $gutter;
   background: none;
+
+  .date {
+    float: left;
+  }
+
+  .tags {
+    float: right;
+  }
 }
 
 // A centred block where the content is also centred.
@@ -260,7 +271,7 @@ h6 {
   }
 }
 
-// Used by the nav links, which are quad height. 
+// Used by the nav links, which are quad height.
 .miniart {
   font-size: $small-art-size;
   line-height: $small-art-size * 1.35;
@@ -273,6 +284,7 @@ h6 {
 
 .bigart {
   font-size: $big-art-size;
+
   // Slightly squashed, style.
   line-height: $big-art-size * 1.1;
   margin: 0;
