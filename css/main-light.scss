@@ -2,6 +2,8 @@
 # Files that are not in special directories require these YAML front matter to get special processing from Jekyll.
 ---
 
+// This file creates the optional light theme.
+
 // This is a stub bacause of the requirement for yaml front matter breaks Linters.
 // The real main fail is imported below from the partials directory.
 // In the partials directory there is no requiremnt for Yaml hence no issues with linters and IDEs.
