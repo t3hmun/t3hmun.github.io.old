@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<!-- This is an include file because all pages use the same head.
+Liquid Markup is used to customise it for each page. -->
+<head>
+  <!-- UTF-8 is the best supported modern character-set used almost everywhere. -->
+  <meta charset="utf-8">
+  <!-- This is needed to suppress Internet Explorer's compatibility mode and make it operate with minimum quirks. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- This informs small screen devices that the content is intended to wrap inside the screen-width without scaling. 
+  This prevents the phone from rendering a miniature parody of the desktop appearance of the site.
+  The design of the site must be suitable for this kind of wrapping in a smaller space. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- A description for search engines and other non-humans. If the page has not description set default to site description. -->
+  <meta name="description" content="Install Ruby, Jekyll and Rouge and a quick primer on what Jekyll gives you.">
+
+  <!-- Title used by the browser and also by search engines and non-humans. -->
+  <title>Part 2: Tooling Up</title>
+
+  <!-- The root relative url for the stylesheet. -->
+  <link id="maincss" rel="stylesheet" href="http://t3hmun.github.io/css/main.css">
+  <!-- The preferred URL for the page. Useful when there are multiple possible urls. -->
+  <link rel="canonical" href="http://t3hmun.github.io/article/2015/part-02-tooling-up/">
+  <!-- Handy link to the RSS for the site for browsers and non-humans. -->
+  <link rel="alternate" type="application/rss+xml" title="t3hmun" href="http://t3hmun.github.io/feed.xml" />
+  
+  <script src="http://t3hmun.github.io/js/theme.js"></script>
+</head>
+
+<body>
+  <div class="body-wrapper">
+
+    <header>
+      <div class="centre-block" id="top-of-page">
+        <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        <nav>
+          <div class="art miniart "><a href="http://t3hmun.github.io/about/">         ╷                     
+   ╭───╮ ├───╮╭───╮╷   ╷╶┼─╴   
+▒  │   │ │   ││   ││   │ │    ▒
+   ╰───╰ ╰───╯╰───╯╰───╯ ╰─╴   
+</a></div>
+          <div class="art miniart"><a href="http://t3hmun.github.io/archive/">                  ╷      .             
+   ╭───╮ ╭──╴╭───╴├───╮ ╶┐ ╷  ╷╭───╮   
+▒  │   │ │   │    │   │  │ └┐┌┘├───╯  ▒
+   ╰───╰ ╵   ╰───╴╵   ╵  ╰╴ └┘ ╰───╯   </a></div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- 
+The base layout has this wrapped in a main section.
+This layout contains a single main article. 
+-->
+<article>
+  <h2><a href="http://t3hmun.github.io/article/2015/part-02-tooling-up/">Part 2: Tooling Up</a></h2>
+  <footer>
+    <div class="heading-footer">
+      <span class="date">
+        Posted on:
+        <time datetime=" 2015-10-02 00:00 ">2015-10-02 at 00:00</time>
+      </span>
+      <span class="tags">      
+        <a href="http://t3hmun.github.io/archive/#article">[article] - </a>
+        <a href="http://t3hmun.github.io/archive/#theme">[theme] </a><a href="http://t3hmun.github.io/archive/#jekyll">[jekyll] </a>
+      </span>
+    </div>
+  </footer>
+  <ul class="toc" id="markdown-toc">
+  <li><a href="#a-quick-primer-on-jekyll" id="markdown-toc-a-quick-primer-on-jekyll">A Quick Primer on Jekyll</a></li>
+  <li><a href="#tooling-up" id="markdown-toc-tooling-up">Tooling Up</a>    <ul>
+      <li><a href="#ruby" id="markdown-toc-ruby">Ruby</a></li>
+      <li><a href="#jekyll-and-friends" id="markdown-toc-jekyll-and-friends">Jekyll and Friends</a></li>
+    </ul>
+  </li>
+  <li><a href="#create-a-not-so-fresh-new-jekyll-site" id="markdown-toc-create-a-not-so-fresh-new-jekyll-site">Create a Not So Fresh New Jekyll Site</a>    <ul>
+      <li><a href="#the-yml-config" id="markdown-toc-the-yml-config">The YML Config</a></li>
+    </ul>
+  </li>
+  <li><a href="#next" id="markdown-toc-next">Next</a></li>
+</ul>
+
+<h3 id="a-quick-primer-on-jekyll">A Quick Primer on Jekyll</h3>
+
+<p>Jekyll is a tool for making static blog sites.
+Static means no backing database, just served as files on a server.
+Jekyll is nice because it automatically does a bunch with a single command, <code class="highlighter-rouge">jekyll build</code>:</p>
+
+<ul>
+  <li>Processes Liquid Markup
+    <ul>
+      <li>Automatically creates many handy liquid variables</li>
+      <li>Processes the variables for automatically generating indexes, titles, summaries etc.</li>
+    </ul>
+  </li>
+  <li>Converts Markdown to HTML
+    <ul>
+      <li>Write your blog posts in markdown</li>
+      <li>Using markdown is easier and less distracting</li>
+    </ul>
+  </li>
+  <li>Processes CSS/SASS
+    <ul>
+      <li>SASS is a CSS generator, makes CSS maintainable</li>
+    </ul>
+  </li>
+  <li>Runs plugins
+    <ul>
+      <li>Does things such as syntax highlighting and minifying output.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>After a build the generated output can be pasted onto a static web-server and job done.</p>
+
+<p>Jekyll also has the handy <code class="highlighter-rouge">jekyll serve</code> command that monitors and rebuilds automatically, while hosting the result on a localhost server for previewing and testing.
+This means the result of all of the processing can be seen immediately.</p>
+
+<h3 id="tooling-up">Tooling Up</h3>
+
+<p><em>This is a Windows 7 installation, but only the Ruby installation is OS specific.</em></p>
+
+<h4 id="ruby">Ruby</h4>
+
+<p>Jekyll is written in Ruby so it is required.
+Acquire latest Ruby and DevKit installers from <a href="http://rubyinstaller.org/downloads/">rubyinstaller.org</a>.
+I used Ruby 2.2.3 x64, however any new version will probably work.</p>
+
+<p>Install Ruby to a directory with no white-space in the name (some Ruby packages require this).
+Now extract the DevKit to a permanent directory.
+The DevKit is required for the automatic building of some gems (RubyGems is Ruby’s package manager, a Gem is a package).</p>
+
+<p>Run <code class="highlighter-rouge">ruby -v</code> at the command-line should now display the installed version of Ruby.</p>
+
+<p>Next run the install script for the DevKit so that the Ruby installation can use it:</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>ruby dk.rb init
+ruby dk.rb install
+</code></pre>
+</div>
+
+<h4 id="jekyll-and-friends">Jekyll and Friends</h4>
+
+<p>Now install Jekyll and Rouge using RubyGems. 
+Rouge is a syntax highlighter, I’m assuming you want syntax highlighting on your blog.</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>gem install jekyll
+gem install rouge
+</code></pre>
+</div>
+
+<p>Run <code class="highlighter-rouge">jekyll -v</code> to see the version and confirm that it is installed.
+I installed Jekyll 2.5.3.</p>
+
+<h3 id="create-a-not-so-fresh-new-jekyll-site">Create a Not So Fresh New Jekyll Site</h3>
+
+<p>Create a new default blog-site with the <code class="highlighter-rouge">jekyll new</code> command.
+Run the <code class="highlighter-rouge">jekyll serve</code> in the blog folder. It builds the site and then hosts it at <code class="highlighter-rouge">localhost:4000</code>.
+It automatically rebuilds when changes are made so it can be left running in its own window.
+It will report the error if a build fails and then continue when the files are modified again.</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>jekyll new site-name
+<span class="nb">cd </span>new site-name
+jekyll serve
+</code></pre>
+</div>
+
+<p>View the site in a browser.</p>
+
+<p>This is a good time to make an initial Git commit.</p>
+
+<h4 id="the-yml-config">The YML Config</h4>
+
+<p>The <code class="highlighter-rouge">_config.yml</code> file is the basic config for the site.
+Strip it down to minimal content and customize as I have below.
+Most of it is self-explanatory.</p>
+
+<p>I have added some extra options to modify the behaviour of the Kramdown Markdown processor.</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>
+<span class="c1"># This title is used as the masthead on all pages.</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">t3hsite</span>
+
+<span class="c1"># This description us used in the index page, RSS and in the meta for any page lacking its own description.</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">A</span><span class="nv"> </span><span class="s">short</span><span class="nv"> </span><span class="s">description."</span>
+
+<span class="s">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span> <span class="c1"># This is temporarily left blank, should be filled in before hosting on the internet.</span>
+
+<span class="c1"># Build settings</span>
+<span class="s">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
+<span class="s">kramdown</span><span class="pi">:</span>
+  <span class="s">input</span><span class="pi">:</span> <span class="s">GFM</span> <span class="c1"># GithHub Flavored Markdown, support for Github style fenced code blocks.</span>
+  <span class="s">syntax_highlighter</span><span class="pi">:</span> <span class="s">rouge</span>
+  <span class="s">hard_wrap</span><span class="pi">:</span> <span class="s">false</span> <span class="c1"># Single line breaks are ignored as in standard Markdown.</span>
+  <span class="s">header_offset</span><span class="pi">:</span> <span class="s">1</span> <span class="c1"># &lt;h#&gt; tags are offset down by one size.</span>
+</code></pre>
+</div>
+
+<dl>
+  <dt><code class="highlight language-yaml highlighter-rouge"><span class="s">input</span><span class="pi">:</span> <span class="s">GFM</span></code></dt>
+  <dd>Allows processing of Github Flavored Markdown. Handy as this is the version of Markdown I most commonly use.</dd>
+  <dt><code class="highlight language-yaml highlighter-rouge"><span class="s">syntax_highlighter</span><span class="pi">:</span> <span class="s">rouge</span></code></dt>
+  <dd>Use Rouge to process the code blocks. I prefer this to the default (Coderay) because it can highlight more things such as bash.</dd>
+  <dt><code class="highlight language-yaml highlighter-rouge"><span class="s">hard_wrap</span><span class="pi">:</span> <span class="s">true</span></code></dt>
+  <dd>This is a personal preference. Tells Kramdown to ignore single new-lines. 
+Double new line is a new paragraph.
+The only way to get a single new line is to use <code class="highlighter-rouge">&lt;br&gt;</code>.
+This is they way Markdown is meant to behave (and my preference).</dd>
+  <dt><code class="highlight language-yaml highlighter-rouge"><span class="s">header_offset 1</span></code></dt>
+  <dd>This reduces the header level used in the markdown by one when converting it to HTML.
+This is done to demote the title of the blog post to H2; H1 is only suitable for use once as the site header (explained in detail later).</dd>
+</dl>
+
+<h3 id="next">Next</h3>
+
+<p>The <a href="http://t3hmun.github.io/article/2015/part-03-clean-basic-html/">next part</a> will involve deleting a lot and arranging some fresh clean HTML.</p>
+
+</article>
+
+    </main>
+
+    <footer>
+      <div class="centre-block">
+        <div class="bar">
+          <div class="art"><a href="#top-of-page">▁▁
+scroll ╱╲ to top</a></div>
+          <br>
+          <br>
+        </div>
+        <br>
+        <div class="art">╭┬╮╭─╮┐│ ▝ 
+╵ ╵╰─╵╰╰╴▝ </div><span class="fblock">blog at t3hmun dot com</span>
+        <br> See my code at
+        <div class="art"><a href="http://github.com/t3hmun"> ╭─╴.   ╷ ╷    
+ │ ┐┐ ┼ ├─┤╷╷├╮
+ ╰─╯╰╴╰╴╵ ╵╰╯└╯</a></div>
+        <br> Site content is licensed as
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴╭─╴ ╭─╮          
+ │  │   ├─┤ttribution
+ ╰─╴╰─╴ ╵ ╵          </a></div>
+
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴     ╭─╮    
+ ╰─╮hare ├─┤like
+ ╶─╯     ╵ ╵    </a></div>
+
+        <div class="centre-block">
+          <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        </div>
+
+      </div>
+    </footer>
+
+
+    <div id="theme-changer" class="scripty">
+      <a id="lightbutton">light</a> -
+      <a id="darkbutton">dark</a> -
+      <a href="#top-of-page">top</a>
+    </div>
+
+    <div id="toc-toggle-div" class="toc-toggle">
+      <a href="" id="toctogglebutton">toc</a>
+    </div>
+
+
+  </div>
+</body>
+
+</html>

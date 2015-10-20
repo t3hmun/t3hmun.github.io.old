@@ -2,18 +2,1103 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>t3hmun</title>
-    <description>A Jekyll theme simple enough to understand and edit, even if you find the default Jekyll site complicated. Intended for learning and use.</description>
+    <description>t3hmun&#39;s personal blog.</description>
     <link>http://t3hmun.github.io/</link>
     <atom:link href="http://t3hmun.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 01 Oct 2015 14:55:44 +0100</pubDate>
-    <lastBuildDate>Thu, 01 Oct 2015 14:55:44 +0100</lastBuildDate>
+    <pubDate>Tue, 20 Oct 2015 18:05:08 +0100</pubDate>
+    <lastBuildDate>Tue, 20 Oct 2015 18:05:08 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
-        <title>Optional Muut Comments Loaded using a Button</title>
-        <description>&lt;p&gt;I decided to make loading the comments system on my Jekyll blog site optional by making them load on a button press. No downloading of large scripts or contacting the third party comments service until the user decides to.&lt;/p&gt;
+        <title>Part 5: Guide to the Complete Theme</title>
+        <description>&lt;ul class=&quot;toc&quot; id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#overview&quot; id=&quot;markdown-toc-overview&quot;&gt;Overview&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#features-from-the-user-perspective&quot; id=&quot;markdown-toc-features-from-the-user-perspective&quot;&gt;Features From the User Perspective&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#features-from-the-developer-perspective&quot; id=&quot;markdown-toc-features-from-the-developer-perspective&quot;&gt;Features from the Developer Perspective&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#markdown-usage&quot; id=&quot;markdown-toc-markdown-usage&quot;&gt;Markdown Usage&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#basic-formatting&quot; id=&quot;markdown-toc-basic-formatting&quot;&gt;Basic Formatting&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#images&quot; id=&quot;markdown-toc-images&quot;&gt;Images&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#headings&quot; id=&quot;markdown-toc-headings&quot;&gt;Headings&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#heading--3&quot; id=&quot;markdown-toc-heading--3&quot;&gt;Heading &lt;code class=&quot;highlighter-rouge&quot;&gt;##&lt;/code&gt; 3&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#heading--4&quot; id=&quot;markdown-toc-heading--4&quot;&gt;Heading &lt;code class=&quot;highlighter-rouge&quot;&gt;###&lt;/code&gt; 4&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#heading--5&quot; id=&quot;markdown-toc-heading--5&quot;&gt;Heading &lt;code class=&quot;highlighter-rouge&quot;&gt;####&lt;/code&gt; 5&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#heading--6&quot; id=&quot;markdown-toc-heading--6&quot;&gt;Heading &lt;code class=&quot;highlighter-rouge&quot;&gt;#####&lt;/code&gt; 6&lt;/a&gt;                &lt;ul&gt;
+                  &lt;li&gt;&lt;a href=&quot;#heading--7&quot; id=&quot;markdown-toc-heading--7&quot;&gt;Heading &lt;code class=&quot;highlighter-rouge&quot;&gt;######&lt;/code&gt; 7&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#how-to-implement&quot; id=&quot;markdown-toc-how-to-implement&quot;&gt;How To Implement&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 id=&quot;what-why&quot;&gt;What, Why?&lt;/h2&gt;
+&lt;p&gt;The theme of this page is a developed derivative of the theme discussed in this article.
+The original is &lt;a href=&quot;http://t3hmun.github.io/t3hsite/&quot;&gt;t3hsite&lt;/a&gt; (repository &lt;a href=&quot;https://github.com/t3hmun/t3hsite&quot;&gt;link&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
+
+&lt;p&gt;After laying out the basics I proceeded to complete the theme using similar ideas to my original messy &lt;a href=&quot;http://t3hmun.github.io/rather-simple-jekyll-theme/&quot;&gt;Rather Simple Jekyll Theme&lt;/a&gt;.
+However this time I had a the plan in place before proceeding to write it, hence the theme layout is much neater.
+It is also comprehensively commented, most of the ideas are laid out at the top of &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/main.scss&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;_sass/_style.scss&lt;/code&gt;.
+Nevertheless an article is a much better format for such documentation.&lt;/p&gt;
+
+&lt;h4 id=&quot;features-from-the-user-perspective&quot;&gt;Features From the User Perspective&lt;/h4&gt;
+
+&lt;p&gt;I’ve accessibility and ease of use were high on my list of priorities in the design.&lt;/p&gt;
+
+&lt;p&gt;I’ve avoided justifying text, leaving a ragged right.
+Justified text has a much neater appearance but many people find difficult to read.&lt;/p&gt;
+
+&lt;p&gt;I’ve purposely avoided having menus or content on the sides of the page.
+There are many reasons for this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Side menus don’t flow with the page content.&lt;/li&gt;
+  &lt;li&gt;Side menus are distracting.&lt;/li&gt;
+  &lt;li&gt;Side menus are not small screen friendly.&lt;/li&gt;
+  &lt;li&gt;Side menus don’t work with special needs style-sheets.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This site looks acceptable with when the CSS is deleted; this is one way of knowing how well reading mode and accessibility tools will cope with the site.&lt;/p&gt;
+
+&lt;p&gt;The header hierarchy is rigorously obeyed. 
+Sadly the HTML5 section hierarchy is not created all the way through because Kramdown does not produce HTML5 sections.
+However I believe the header hierarchy is enough for most modern tools to work with.&lt;/p&gt;
+
+&lt;h4 id=&quot;features-from-the-developer-perspective&quot;&gt;Features from the Developer Perspective&lt;/h4&gt;
+
+&lt;p&gt;If you look at the source, the ridiculous amount of comments will be obvious.
+This was done to help people who are still learning CSS, HTML and the other stuff with Jekyll.&lt;/p&gt;
+
+&lt;p&gt;All sizes and colours are defined in variables in a single file &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/main.scss&lt;/code&gt; separate from the actual styling CSS.
+This means that you do not have to search through reams of CSS to change a size or colour.
+Simply find the relevant entry in the main file and change the value once for everything.&lt;/p&gt;
+
+&lt;p&gt;Switching to a dark theme requires changing 2 colours and using &lt;code class=&quot;highlighter-rouge&quot;&gt;rougify&lt;/code&gt; to output a suitable syntax stylesheet (see &lt;a href=&quot;http://t3hmun.github.io/article/2015/part-04-css-and-sass-foundation-from-scratch/#syntax&quot;&gt;Part 4 #Syntax&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;There are very few classes used for styling.
+I’ve tried to stick to the basic HTML tags for most things.
+This makes the purpose of the CSS more obvious as most elements things stick to their default use.&lt;/p&gt;
+
+&lt;h3 id=&quot;markdown-usage&quot;&gt;Markdown Usage&lt;/h3&gt;
+
+&lt;p&gt;To begin with a quick run-down of what the converted markdown looks like.&lt;/p&gt;
+
+&lt;h4 id=&quot;basic-formatting&quot;&gt;Basic Formatting&lt;/h4&gt;
+
+&lt;p&gt;There is &lt;em&gt;emphasis&lt;/em&gt; and &lt;strong&gt;strong&lt;/strong&gt; (Markdown: &lt;code class=&quot;highlighter-rouge&quot;&gt;_emphasis_&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;__strong__&lt;/code&gt;), all the &lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt; can be swapped for &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; as with standard Markdown.&lt;/p&gt;
+
+&lt;p&gt;This is a normal paragraph of text. I believe that roughly 60 characters per line is suitable for comfortable fast reading, hence these blocks of text are limited in width.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;As you may have noticed this is wider than the main text of this article.
+This is intentional.
+Blockquotes would not read well in the tiny width occupied by normal text.
+This element’s with is set via the &lt;code class=&quot;highlighter-rouge&quot;&gt;$other-text-with&lt;/code&gt; variable.&lt;/p&gt;
+
+  &lt;blockquote&gt;
+    &lt;p&gt;This is a blockquote inside a blockquote. 
+There must be an empty ` &amp;gt; ` line before starting this sub-blockquote.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;There are three widths that content is grouped and fit into:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Content width (&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;h#&amp;gt;&lt;/code&gt;):
+    &lt;ul&gt;
+      &lt;li&gt;This is the most wide width and bound all page content.&lt;/li&gt;
+      &lt;li&gt;Headings are left aligned at this width so they stand out on a wide screen.&lt;/li&gt;
+      &lt;li&gt;Code uses content width; code is best viewed in long unbroken lines.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Reading width (&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;p&amp;gt;&lt;/code&gt;):
+    &lt;ul&gt;
+      &lt;li&gt;This is the smallest width, should be between 60 to 80 characters wide.&lt;/li&gt;
+      &lt;li&gt;Intended for comfortable reading of lots of text.&lt;/li&gt;
+      &lt;li&gt;Too narrow for other content.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Other-text width (&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;ol&amp;gt;&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;dl&amp;gt;&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/code&gt;):
+    &lt;ul&gt;
+      &lt;li&gt;This is a mix between the other two widths.&lt;/li&gt;
+      &lt;li&gt;Intended for feature text element like lists and blockquotes.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;code&quot;&gt;Code&lt;/h4&gt;
+
+&lt;p&gt;Fenced code blocks of many kinds are supported. The following is an example of a fenced code block beginning with &lt;code class=&quot;highlighter-rouge&quot;&gt;~~~~~markdown&lt;/code&gt; and ending with &lt;code class=&quot;highlighter-rouge&quot;&gt;~~~~~&lt;/code&gt;, which results in the block being syntax highlighted as Markdown.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;This is some &lt;span class=&quot;ge&quot;&gt;*syntax highlighted*&lt;/span&gt; &lt;span class=&quot;gs&quot;&gt;**Markdown**&lt;/span&gt;.
+
+The following is the &lt;span class=&quot;gs&quot;&gt;**Markdown**&lt;/span&gt; to insert a Python code block using Github style fencing:
+
+&lt;span class=&quot;p&quot;&gt;```&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;python&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Some slightly verbose python code.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add_two_operands_together&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first_operand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second_operand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;result_of_adding_the_operands&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first_operand&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second_operand&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result_of_adding_the_operands&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;```&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If that Python example was not wrapped in another fenced code block it output would have been:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Some slightly verbose python code.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add_two_operands_together&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first_operand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second_operand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;result_of_adding_the_operands&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first_operand&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second_operand&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result_of_adding_the_operands&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There is also &lt;code class=&quot;highlighter-rouge&quot;&gt;inline-block monospace&lt;/code&gt; delimited with single back-ticks as with normal Markdown.
+However it is also possible to syntax highlight such blocks using some Kramdown specific syntax.&lt;/p&gt;
+
+&lt;p&gt;Take this example of an in-line syntax highlighted block of Python: &lt;code class=&quot;highlight language-python highlighter-rouge&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;.
+This was achieved by marking the code span with 2 classes that make Rouge take notice and select the correct language:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;... block of Python: &lt;span class=&quot;sb&quot;&gt;`def add(a, b)`&lt;/span&gt;{: .highlight .language-python}. This was...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If you have a particularly small block of code that does not require the full with given to code blocks, it is possible to make the block smaller by applying the &lt;code class=&quot;highlighter-rouge&quot;&gt;reading-width&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;other-text-width&lt;/code&gt; class to the block.&lt;/p&gt;
+
+&lt;div class=&quot;reading-width highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This was done by inserting &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.reading-width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; as the line immediately after the code block.&lt;/p&gt;
+
+&lt;h4 id=&quot;images&quot;&gt;Images&lt;/h4&gt;
+
+&lt;p&gt;By default images resize to fit the reading-with area. 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;![A simple picture]({{ site.baseurl }}/img/a_picture.png)&lt;/code&gt;:
+&lt;img src=&quot;http://t3hmun.github.io/images/a_picture.png&quot; alt=&quot;A simple picture&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;However They can be made to scale to the other sizes by inserting them in a html div:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;other-text-width&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}/images/a_picture.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A simple picture&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;other-text-width&quot;&gt;&lt;img src=&quot;http://t3hmun.github.io/images/a_picture.png&quot; alt=&quot;A simple picture&quot; /&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}/images/a_picture.png&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A simple picture&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div&gt;&lt;img src=&quot;http://t3hmun.github.io/images/a_picture.png&quot; alt=&quot;A simple picture&quot; /&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt;&lt;/code&gt; is required to suppress Kramdown from automatically inserting a &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;p&amp;gt;&lt;/code&gt; and also for inserting the width class for the smaller sizes.&lt;/p&gt;
+
+&lt;h4 id=&quot;headings&quot;&gt;Headings&lt;/h4&gt;
+
+&lt;p&gt;Although the markdown for the above header is &lt;code class=&quot;highlighter-rouge&quot;&gt;### Headings&lt;/code&gt; the html is actually &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;h4&amp;gt;&lt;/code&gt;.
+The &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; tag is only used for the site masthead in order to keep headers consistent with HTML section levels.
+The &lt;code class=&quot;highlighter-rouge&quot;&gt;header_offset 1&lt;/code&gt; option is set in &lt;code class=&quot;highlighter-rouge&quot;&gt;/_config.yml&lt;/code&gt; to make Kramdown output headings smaller by 1.&lt;/p&gt;
+
+&lt;p&gt;As a result of these settings the title of the article uses &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;h2&amp;gt;&lt;/code&gt;.
+This is automatically inserted using the title in the Yaml-Front-Matter, so the &lt;code class=&quot;highlighter-rouge&quot;&gt;# Markdown H1&lt;/code&gt; (which produces &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;h2&amp;gt;&lt;/code&gt;) should never be typed in the markdown article.&lt;/p&gt;
+
+&lt;h3 id=&quot;heading--3&quot;&gt;Heading &lt;code class=&quot;highlighter-rouge&quot;&gt;##&lt;/code&gt; 3&lt;/h3&gt;
+
+&lt;h4 id=&quot;heading--4&quot;&gt;Heading &lt;code class=&quot;highlighter-rouge&quot;&gt;###&lt;/code&gt; 4&lt;/h4&gt;
+
+&lt;h5 id=&quot;heading--5&quot;&gt;Heading &lt;code class=&quot;highlighter-rouge&quot;&gt;####&lt;/code&gt; 5&lt;/h5&gt;
+
+&lt;h6 id=&quot;heading--6&quot;&gt;Heading &lt;code class=&quot;highlighter-rouge&quot;&gt;#####&lt;/code&gt; 6&lt;/h6&gt;
+
+&lt;h6 id=&quot;heading--7&quot;&gt;Heading &lt;code class=&quot;highlighter-rouge&quot;&gt;######&lt;/code&gt; 7&lt;/h6&gt;
+
+&lt;p&gt;As you can see this is the same size as the previous heading; this is because it’s the seventh heading size on the HTML page, which can’t exist, so it is defaulted to &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;h6&amp;gt;&lt;/code&gt;.
+Ideally you don’t want to be using that many sizes of headings, but if you do then you must define a custom div for it and apply manually in the Markdown.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-implement&quot;&gt;How To Implement&lt;/h3&gt;
+
+&lt;p&gt;There are a few steps to make the theme your own:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Clone or download the &lt;a href=&quot;https://github.com/t3hmun/t3hsite&quot;&gt;repository&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Make sure you have Jekyll and rouge installed (see &lt;a href=&quot;http://t3hmun.github.io/article/2015/part-02-tooling-up/&quot;&gt;Part 2: Tooling Up&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Customize &lt;code class=&quot;highlighter-rouge&quot;&gt;/_config.yml&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Delete or rewrite &lt;code class=&quot;highlighter-rouge&quot;&gt;/about/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Title and Description in &lt;code class=&quot;highlighter-rouge&quot;&gt;/index.html&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Customise the footer in &lt;code class=&quot;highlighter-rouge&quot;&gt;/_layouts/base.html&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Customise the colours in &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/main.scss&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally you need to write your own blog posts.
+If there is anything else that I have forgotten, I’m sure you can figure it out.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 13 Oct 2015 00:00:00 +0100</pubDate>
+        <link>http://t3hmun.github.io/article/2015/part-05-guide-to-the-complete-theme/</link>
+        <guid isPermaLink="true">http://t3hmun.github.io/article/2015/part-05-guide-to-the-complete-theme/</guid>
+        
+        <category>theme</category>
+        
+        <category>jekyll</category>
+        
+        
+        <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>Part 4: Laying a CSS and SASS Foundation from Scratch</title>
+        <description>&lt;ul class=&quot;toc&quot; id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#creating-a-css-base&quot; id=&quot;markdown-toc-creating-a-css-base&quot;&gt;Creating a CSS base&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#normalize&quot; id=&quot;markdown-toc-normalize&quot;&gt;Normalize&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#syntax&quot; id=&quot;markdown-toc-syntax&quot;&gt;Syntax&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#main-css-file&quot; id=&quot;markdown-toc-main-css-file&quot;&gt;Main CSS File&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#include-in-the-head&quot; id=&quot;markdown-toc-include-in-the-head&quot;&gt;Include in the Head&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#custom-css&quot; id=&quot;markdown-toc-custom-css&quot;&gt;Custom CSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#using-sass-variables-for-maintainability-and-consistency&quot; id=&quot;markdown-toc-using-sass-variables-for-maintainability-and-consistency&quot;&gt;Using SASS Variables for Maintainability and Consistency&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#next&quot; id=&quot;markdown-toc-next&quot;&gt;Next&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;creating-a-css-base&quot;&gt;Creating a CSS base&lt;/h3&gt;
+
+&lt;p&gt;The default Jekyll blog site already has a load of CSS; it already has a formatted layout.
+This is neither wanted or needed, so it has all been deleted.&lt;/p&gt;
+
+&lt;p&gt;Begin by creating a new &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass/&lt;/code&gt; folder.
+The is the default folder set in Jekyll for files to be used by SASS and not directly used in the website. 
+A main stylesheet will be written that imports and combines these files.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;SASS&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://sass-lang.com/&quot;&gt;SASS&lt;/a&gt; is a language/tool for generating CSS files.
+CSS usually get ridiculously overcomplicated as a website grows.
+SASS is an extension to CSS adding variables and extra syntax to make it easier to maintain.
+The SASS files are automatically converted into standard CSS so no special support is required to use SASS.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;normalize&quot;&gt;Normalize&lt;/h4&gt;
+
+&lt;p&gt;The implementation of CSS and HTML is not consistent across web browsers.
+In order to create a consistent basic appearance the first CSS file will be &lt;a href=&quot;https://github.com/necolas/normalize.css/&quot;&gt;normalize.css&lt;/a&gt;. Rename it to &lt;code class=&quot;highlighter-rouge&quot;&gt;_normalize.scss&lt;/code&gt; and put it in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass/&lt;/code&gt; folder. The extension is changed to &lt;code class=&quot;highlighter-rouge&quot;&gt;scss&lt;/code&gt; because it is going to be processed with SASS.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;normalize.css&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;HTML is not an exact standard, it was slowly built up over time. 
+As a result many tags appear and behave differently in each browser.
+normalize.css is a project to maintain a CSS file that creates a consistent look and behaviour across browsers.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;An alternative approach is to use a CSS reset style-sheet that remove all formatting, forcing the developer to explicitly define everything.
+Normalize seems better suited to this project since it directly deals with oddities and bugs, while leaving useful standard behaviour intact.&lt;/p&gt;
+
+&lt;p&gt;While it would be educational to do a line by line analysis of &lt;code class=&quot;highlighter-rouge&quot;&gt;normalize.css&lt;/code&gt; , that is outside the scope of this project. Instead it will be referred to something it directly affects is modified in the CSS.&lt;/p&gt;
+
+&lt;h4 id=&quot;syntax&quot;&gt;Syntax&lt;/h4&gt;
+
+&lt;p&gt;Syntax highlighting is an essential feature of any code related blog.&lt;/p&gt;
+
+&lt;p&gt;This step assumes the Rouge is installed (&lt;code class=&quot;highlighter-rouge&quot;&gt;gem install rouge&lt;/code&gt;) and it is set as a build option for kramdown in &lt;code class=&quot;highlighter-rouge&quot;&gt;config.yml&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;syntax_highlighter: rouge&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;The syntax highlighter applies class attributes to segments of code and then a syntax stylesheet is used to apply approriate colours to those segments.&lt;br /&gt;
+Rouge will output syntax stylesheets using the rougify command:&lt;/p&gt;
+
+&lt;div class=&quot;reading-width highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;_sass
+rougify style monokai &amp;gt; _syntax.scss
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In this example the &lt;em&gt;monokai&lt;/em&gt; theme is chosen See &lt;a href=&quot;https://github.com/jneen/rouge/tree/master/lib/rouge/themes&quot;&gt;the rouge source&lt;/a&gt; for the names of other themes. Rouge supports the stylesheets used by&lt;/p&gt;
+
+&lt;h4 id=&quot;main-css-file&quot;&gt;Main CSS File&lt;/h4&gt;
+
+&lt;p&gt;Now create a &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/&lt;/code&gt; folder.
+Notice that the name of this folder does not start with a &lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt;, it is a normal folder and will be output as-is unless a file has YAML front matter, in which case Jekyll will attempt to process it first (the underscore is not magical, it is just a convention).&lt;/p&gt;
+
+&lt;p&gt;In the /css/ folder create &lt;code class=&quot;highlighter-rouge&quot;&gt;main.scss&lt;/code&gt; with the following content:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Files&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;special&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;directories&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;these&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;YAML&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;front&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;matter&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;processed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@charset&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// This is our main SASS file that brings together all the scss files to generate a main CSS file. 
+&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Import partials from `sass_dir` (defaults to `_sass`)
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;normalize&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;syntax&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This will generate a main.css, importing the specified scss files in order into the website output.&lt;/p&gt;
+
+&lt;h4 id=&quot;include-in-the-head&quot;&gt;Include in the Head&lt;/h4&gt;
+
+&lt;p&gt;Add the stylesheet next to the metadata in &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/head.html&lt;/code&gt; to apply it to the website:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}/css/main.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; in the project folder using the command line, then view it from &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:4000&lt;/code&gt; in a browser.&lt;/p&gt;
+
+&lt;p&gt;A simple website with a consistent appearance across browsers has been achieved (and pretty syntax colours).&lt;/p&gt;
+
+&lt;h3 id=&quot;custom-css&quot;&gt;Custom CSS&lt;/h3&gt;
+
+&lt;p&gt;So far no custom CSS has been written.
+Although this basic foundation is functional, there is a lot that can be improved in terms of usability and style.&lt;/p&gt;
+
+&lt;p&gt;Make a new scss file in the sass folder, for example: &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass/_style.scss&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Add the file to the bottom of the imports list in &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/main.scss&lt;/code&gt;.
+It is important to have it at the bottom of the list so that it overrides the CSS produced from the other files.&lt;/p&gt;
+
+&lt;p&gt;An obvious bit of CSS to start with is to give the body a margin:&lt;/p&gt;
+
+&lt;div class=&quot;reading-width highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Reading without a margin is uncomfortable.
+Here a set size in px, not em.
+This is because the size of the margin should not depend on the text size, this risks giant margins that fill up the page, or tiny margins that serve no real purpose. This is especially an issue on mobile phones where margins are competing for a tiny screen space.&lt;/p&gt;
+
+&lt;p&gt;Code blocks lack an internal margin so let that be the next addition:&lt;/p&gt;
+
+&lt;div class=&quot;reading-width highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;pre&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;It is important to understand the difference between padding and margin.&lt;/em&gt;
+&lt;em&gt;I have not had time to write about this, but you should make sure you fully understand and experiment with swapping the two.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;using-sass-variables-for-maintainability-and-consistency&quot;&gt;Using SASS Variables for Maintainability and Consistency&lt;/h3&gt;
+
+&lt;p&gt;Now there are 2 css elements with the same value.
+It seems likely that these values should stay the same.
+This is a nice opportunity to try out SASS variables.&lt;/p&gt;
+
+&lt;p&gt;Add this to the middle of the &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/main.scss&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;reading-width highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$base-gutter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now replace each occurrence of &lt;code class=&quot;highlighter-rouge&quot;&gt;10px&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;/style.css&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;$base-gutter&lt;/code&gt;.
+This is a SASS variable.&lt;/p&gt;
+
+&lt;p&gt;From this point on all sizes and colours will be defined in &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/main.scss&lt;/code&gt; as a variable.
+This allows instant modification of colours and sizes from a clean un-cluttered file.
+As the style customisation grows the &lt;code class=&quot;highlighter-rouge&quot;&gt;style.scss&lt;/code&gt; will grow large and hard coded colours and sizes can become very hard to track down.
+This also helps maintain consistency as it forces the developer to refer to their palette of sizes and colours defined in the main file.
+Prevents the proliferation of odd and mismatched features.&lt;/p&gt;
+
+&lt;h3 id=&quot;next&quot;&gt;Next&lt;/h3&gt;
+
+&lt;p&gt;Now this is a truly minimal Jekyll theme with syntax highlighting.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;http://t3hmun.github.io/article/2015/part-05-guide-to-the-complete-theme&quot;&gt;next part&lt;/a&gt; will be about appling formatting that &lt;em&gt;I believe&lt;/em&gt; is most suitable for a blog.
+Even if you disagree with it, it should be interesting.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 04 Oct 2015 00:00:00 +0100</pubDate>
+        <link>http://t3hmun.github.io/article/2015/part-04-css-and-sass-foundation-from-scratch/</link>
+        <guid isPermaLink="true">http://t3hmun.github.io/article/2015/part-04-css-and-sass-foundation-from-scratch/</guid>
+        
+        <category>theme</category>
+        
+        <category>jekyll</category>
+        
+        
+        <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>Part 3: Clean Basic HTML</title>
+        <description>&lt;ul class=&quot;toc&quot; id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#strip-to-minimal-html&quot; id=&quot;markdown-toc-strip-to-minimal-html&quot;&gt;Strip to Minimal HTML&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#no-css-yet&quot; id=&quot;markdown-toc-no-css-yet&quot;&gt;No CSS (yet)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#html5-and-the-spec&quot; id=&quot;markdown-toc-html5-and-the-spec&quot;&gt;HTML5 and the Spec&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-head&quot; id=&quot;markdown-toc-the-head&quot;&gt;The HEAD&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#line-by-line-analysis-of-the-head&quot; id=&quot;markdown-toc-line-by-line-analysis-of-the-head&quot;&gt;Line by Line Analysis of the Head&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#a-primer-on-html5-the-section-and-flow-model&quot; id=&quot;markdown-toc-a-primer-on-html5-the-section-and-flow-model&quot;&gt;A Primer on HTML5 the Section and Flow Model&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#hierarchy&quot; id=&quot;markdown-toc-hierarchy&quot;&gt;Hierarchy&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#magical-headings&quot; id=&quot;markdown-toc-magical-headings&quot;&gt;Magical Headings&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-base-layout&quot; id=&quot;markdown-toc-the-base-layout&quot;&gt;The Base Layout&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-post-layout&quot; id=&quot;markdown-toc-the-post-layout&quot;&gt;The Post Layout&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-index-page&quot; id=&quot;markdown-toc-the-index-page&quot;&gt;The Index Page&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#next&quot; id=&quot;markdown-toc-next&quot;&gt;Next&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;strip-to-minimal-html&quot;&gt;Strip to Minimal HTML&lt;/h3&gt;
+
+&lt;p&gt;The default Jekyll site includes the following HTML files:&lt;/p&gt;
+
+&lt;div class=&quot;reading-width highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/about.md
+/index.html
+/_includes/
+    footer.html
+    head.html
+    header.html
+/_layouts/
+    default.html
+    page.html
+    post.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Files and folders beinning with an underscore are not copied to the output.
+However the &lt;code class=&quot;highlighter-rouge&quot;&gt;/_includes&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/_layouts&lt;/code&gt; folder are configured as special by default.&lt;/p&gt;
+
+&lt;p&gt;The layouts serve as templates for creating other pages.
+These are useful as they allow quick modifcation of common elements of the pages such as titles and menus.
+All pages using the layout are automatically regenerated.&lt;/p&gt;
+
+&lt;p&gt;The inclides are just chunks of markup reused within other layouts.&lt;/p&gt;
+
+&lt;p&gt;Start by deleting &lt;code class=&quot;highlighter-rouge&quot;&gt;/about.md&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;/header.html&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;/footer.html&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/page.html&lt;/code&gt;.
+This simple design will not require these files.&lt;/p&gt;
+
+&lt;h3 id=&quot;no-css-yet&quot;&gt;No CSS (yet)&lt;/h3&gt;
+
+&lt;p&gt;Delete the &lt;code class=&quot;highlighter-rouge&quot;&gt;/css/&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/_sass/&lt;/code&gt; directories.
+To begin with the page will rely entirely on the browser’s own CSS (browsers use CSS internally to implement default styles).&lt;/p&gt;
+
+&lt;p&gt;It is a good sign if a site makes sense using only the default browser stylesheet.
+Although it is nice to use custom style to improve the readability and experience of a page, &lt;strong&gt;a webpage should not rely on custom style to convey information&lt;/strong&gt;.
+Reliance on style creates difficulty when attempting to deliver the content in different contexts.
+For accessibility purposes, style does not translate to speech very easily.
+People with sight issues may rely on simplified stylesheets (&lt;a href=&quot;http://people.ds.cam.ac.uk/ssb22/css/?whatLookLike&quot;&gt;check this out&lt;/a&gt;) that cannot interpret custom style nuances.&lt;/p&gt;
+
+&lt;p&gt;We will start building custom CSS / SASS in the next part.&lt;/p&gt;
+
+&lt;h3 id=&quot;html5-and-the-spec&quot;&gt;HTML5 and the Spec&lt;/h3&gt;
+
+&lt;p&gt;In an attempt to work with the most up-to-date HTML5 standard, references will be made to the &lt;em&gt;&lt;a href=&quot;http://www.w3.org/TR/2015/WD-html51-20151003/&quot;&gt;HTML 5.1 W3C Working Draft 03 October 2015&lt;/a&gt;&lt;/em&gt;, which is the most recent version as of writing.&lt;/p&gt;
+
+&lt;p&gt;The spec is continuously changing and being updated in a somewhat chaotic process; all the major browser companies tend to uniquely implement features according to their own interpretation and needs.
+As a result parts of the spec get revised and specified in different ways by different people, resulting in slow and messy progress.
+However this is not fundamentally bad, ideas get tested and proven in the real world before becoming permanent.&lt;/p&gt;
+
+&lt;p&gt;What this means to this project is that &lt;em&gt;good HTML5&lt;/em&gt; is not a perfect concept set in stone.
+A small amount of compromises and hacks have to be made to ensure compatibility and consistency in appearance.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-head&quot;&gt;The HEAD&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; of a HTML file is used for metadata.
+This is quite important as some of the metaadata tags can alter the way the browser displays the page.
+The head meta also affect how search engines look at the page; while this project is not particularly concerned with SEO, it is nice to have thing appear appropriately when they do appear in search results.&lt;/p&gt;
+
+&lt;p&gt;The default &lt;code class=&quot;highlighter-rouge&quot;&gt;/head.html&lt;/code&gt; generated by Jekyll is mostly kept intact.
+Some of the extra variable options have been removed because they are unnecessary.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;X-UA-Compatible&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IE=edge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;description&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{% if page.description == nil %}{{ site.description }}{% else %}{{ page.description }}{% endif %}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;{{ page.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}/css/main.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;canonical&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}{{ page.url | replace:&#39;index.html&#39;,&#39;&#39; }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alternate&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;application/rss+xml&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.title }}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}/feed.xml&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;line-by-line-analysis-of-the-head&quot;&gt;Line by Line Analysis of the Head&lt;/h4&gt;
+
+&lt;p&gt;Charset information required in HTML5, UTF-8 has wide language support and seems to be universally supported for everything internet: &lt;code class=&quot;highlight language-html highlighter-rouge&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;X-UA-Compatible&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IE=edge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This meta tag is required to prevent Internet Explorer from suggesting or using compatibility mode.
+It encourages Microsoft browsers to use an up-to-date standard mode, with (hopefully) less quirks.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is used to allow proper scaling and layout on mobile phones. &lt;code class=&quot;highlighter-rouge&quot;&gt;width=device-width&lt;/code&gt; tells the mobile phone that the intended width of the page should match the device. This is a good default for a blog where the content should wrap inside the screen, maintaining the sensible default text size. This should probably be changed if a exact pixel width layout is used (not recommended unless aesthetics is the only thing that matters). &lt;code class=&quot;highlighter-rouge&quot;&gt;initial-scale&lt;/code&gt; sets the initial zoom. With the page width matching the device, a basic zoom of 1 makes sense. See &lt;a href=&quot;https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag&quot;&gt;this Mozilla Developer page&lt;/a&gt; for a better description.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;description&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{% if page.description == nil %}{{ site.description }}{% else %}{{ page.description }}{% endif %}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The description meta tag is used by search engines to show a description of the page to a user.
+Most search engines don’t use the description for the search ranking (it is abusable), they look at the page contents directly.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Liquid Markup&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;This is the first encounter with liquid markup in this project. 
+Liquid markup is a templating language, which is used to arrange page content in Jekyll.
+It is processed when Jekyll builds the site.
+It has 2 types of tags , &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;aVariable&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt; double braces for output and &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; brace with a percent sign for logic commands.&lt;/p&gt;
+
+  &lt;p&gt;There are some &lt;a href=&quot;http://jekyllrb.com/docs/variables/&quot;&gt;automatically defined variables provided by Jekyll&lt;/a&gt;, which help layout the site and individual pages.
+Variables defined in the yaml section at the top of the page can be accessed as a child of the page variable.
+Most of Liquid Markup is self explanatory.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;base&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;t3hsite,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;t3hmun&#39;s&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;learn&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;make&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;good&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;quality&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;html5&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;css/sass&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Jekyll.&quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;don&#39;t&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;like&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;people&#39;s&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;themes&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;want&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;learn&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;how&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;make&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;properly&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;so&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;works&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;reliable&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;being&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;easy&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;maintain.&quot;&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The use of &lt;code class=&quot;highlighter-rouge&quot;&gt;page.description&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;page.title&lt;/code&gt; means that every page will need the title and description defined in the yaml section, for example the above is the what I put at the top of my &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;.
+This title and description will also be used in the site’s own index/archive pages. 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;site.description&lt;/code&gt; is the description variable set in the main &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;canonical&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}{{ page.url | replace:&#39;index.html&#39;,&#39;&#39; }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The canonical url is used by search engines to refer to the main version of a page and ignore duplicate urls.
+The liquid script removes &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; (if present) and adds the full url of the website.
+This might seem odd until you see the default directory and page structure that Jekyll uses.
+Canonical is also useful for creating permalink versions of paginated pages (a subject for another day).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Directory Named Pages&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;Although it is not compulsory Jekyll encourages the the use of directory-named pages instead of pages with file-names. For example &lt;code class=&quot;highlighter-rouge&quot;&gt;/about/index.html&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;/about.html&lt;/code&gt;. The version in the directory can be accessed using just the &lt;code class=&quot;highlighter-rouge&quot;&gt;/about/&lt;/code&gt; directory as the link; this is what the Liquid markup creates as the canonical link.&lt;/p&gt;
+
+  &lt;p&gt;Directory named pages are useful because the extension for the page file can change over time; say you decide to start using PHP, &lt;code class=&quot;highlighter-rouge&quot;&gt;/about/index.php&lt;/code&gt; would work with the same canonical &lt;code class=&quot;highlighter-rouge&quot;&gt;/about/&lt;/code&gt; link (well this actually depends on the server configuration).&lt;/p&gt;
+
+  &lt;p&gt;Also they are shorter, look neat, and can be used to make flowing neat structures like &lt;code class=&quot;highlighter-rouge&quot;&gt;/about/more-info/&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;about-more-info.html&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alternate&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;application/rss+xml&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.title }}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}/feed.xml&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This simply allows the RSS page to be automatically detected.&lt;/p&gt;
+
+&lt;p&gt;And that is the standard head section, complete for any normal web-page.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-primer-on-html5-the-section-and-flow-model&quot;&gt;A Primer on HTML5 the Section and Flow Model&lt;/h3&gt;
+
+&lt;h4 id=&quot;hierarchy&quot;&gt;Hierarchy&lt;/h4&gt;
+
+&lt;p&gt;From the &lt;a href=&quot;http://www.w3.org/TR/2015/WD-html51-20151003/dom.html#sectioning-content&quot;&gt;HTML5 spec&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Sectioning content is content that defines the scope of headings and footers.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-article-element&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;article&lt;/code&gt;&lt;/a&gt; &lt;a href=&quot;http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-aside-element&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;aside&lt;/code&gt;&lt;/a&gt; &lt;a href=&quot;http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-nav-element&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nav&lt;/code&gt;&lt;/a&gt; &lt;a href=&quot;http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-section-element&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;section&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Sub-sections are defined by nesting these sectioning tags within one another. The heading ranks should shrink correspondingly.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;main&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;header&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;footer&lt;/code&gt; tags are &lt;strong&gt;not&lt;/strong&gt; sectioning tags, although they are very useful for logically separating content.
+These tags are used by machines to understand the context of high level content.
+This is intended to be used by accessibility aids such as screen readers to deliver content appropriately.
+This does not seem to be well supported yet so the addition of ARIA (accessibility standards) role attributes helps.
+It is also likely to be used by things such as Firefox’s reading feature in the future.&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;article&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;The article tag is any &lt;em&gt;self-contained composition&lt;/em&gt; that may be &lt;em&gt;suitable for syndication&lt;/em&gt; as the &lt;a href=&quot;http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-article-element&quot;&gt;spec puts it&lt;/a&gt;.
+This is not restricted to the English definition of the word article.
+Interestingly the spec considers individual blog comments as articles, possibly because they can be thought of a thread of posts.&lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;section&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;The least specific of the sectioning elements, could be anything that has a heading and is not one of the other sectioning elements.
+Often the child of other sectioning elements.&lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nav&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;This &lt;a href=&quot;http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-nav-element&quot;&gt;spec lists this&lt;/a&gt; as having 2 main purposes.
+Navigation between pages and navigation within a page.
+Ideally not all sections of links should be put in nav elements, only the ones immediately important to the site.
+This is good for assistive technologies that need to be able to recognise the most salient links for the user in each context.&lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;aside&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;Used for sidebar or tangential content that is not essential.
+The &lt;a href=&quot;http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-aside-element&quot;&gt;spec&lt;/a&gt; seems to encourage the use of asides to contain nav elements with lists of links to external sites.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h4 id=&quot;magical-headings&quot;&gt;Magical Headings&lt;/h4&gt;
+
+&lt;p&gt;In order to support the sectioning model and reduce redundancy in HTML5, the H1 tag is automatically shrunk by one header level for each parent sectioning tag. The idea here is that the designer only uses H1 and lets the hierarchy of sections automatically set the correct heading size.&lt;/p&gt;
+
+&lt;p&gt;This automatic shrinking only affects the H1 tag, the other heading elements maintain their default size. This results in an awkward quirk if sectioning and different header tags are mixed; the H1 tag can appear the same size or smaller than lower rank headers. In order to avoid this the &lt;a href=&quot;http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#headings-and-sections&quot;&gt;spec recommends&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Sections may contain headings of any rank, but authors are strongly encouraged to either use only h1 elements, or to use elements of the appropriate rank for the section’s nesting level.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is followed by :&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Authors are also encouraged to explicitly wrap sections in elements of sectioning content, instead of relying on the implicit sections generated by having multiple headings in one element of sectioning content.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Which is suggesting that sections should always be used. But then there is this warning:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;There are currently no known implementations of the outline algorithm in graphical browsers or assistive technology user agents, although the algorithm is implemented in other software such as conformance checkers. Therefore the outline algorithm cannot be relied upon to convey document structure to users. Authors are advised to use heading rank (h1-h6) to convey document structure.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This leaves a single possibility, use a sectioning hierarchy with a range of header tags perfectly reflecting that hierarchy. This also implies that the page as a whole will use the H1, forcing the first sectioning element to begin with H2, consequently the blog post will be forced to start with a H2. If the title of the blog is set as a H1 it will automatically shrink down to H2 size because the blog post will be contained within an &lt;code class=&quot;highlighter-rouge&quot;&gt;article&lt;/code&gt; sectioning element. In practice this will result in the need for CSS to bump up the header sizes.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-base-layout&quot;&gt;The Base Layout&lt;/h3&gt;
+
+&lt;p&gt;Start by re-naming &lt;code class=&quot;highlighter-rouge&quot;&gt;/default.html&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;/base.html&lt;/code&gt;.
+The intention of this file is to serve as the base for other files, so the naming should reflect that.&lt;/p&gt;
+
+&lt;p&gt;The base file contains the  essential HTML, including the head, header (site masthead), nav (site navigation links) and footer (external links and other information). In the middle is the main section which has a include for content, which could be the content of any page on the website that uses this layout. This is demonstrated in the spec in the [headings section]&lt;/p&gt;
+
+&lt;p&gt;This is a small blog site so the contents of the nav and footer are manually arranged. In a larger site with more links this would be done using Liquid Markup, pulling the content from a simple to edit data file.&lt;/p&gt;
+
+&lt;p&gt;The leading &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;&lt;/code&gt; is essential as the first test in any HTML5 file. Without it browsers may attempt to interpret the page in some king of compatibility quirk mode, resulting in an unpredictable layout.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 
+This is the base HTML file serves as the template for all pages on the site.
+
+The language of the site is set in the HTML tag. 
+Specifying GB so that robots read the page in an British accent.
+Useful for translating, spell-checking, screen reading among other things. 
+--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en-GB&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 
+  The head included using Liquid Markup.
+  The head is chunky with long lines, much easier to maintain in a separate file.
+  --&amp;gt;&lt;/span&gt;
+  {% include head.html %}
+
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- HTML requires all visible content to occur within the body. --&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 
+    The visible content is split between the nav, main and a footer sectioning elements.
+    
+    Header tag is not needed if the header is fully contained in a h# tag.
+    It is conventional (and useful) for the masthead to link to the homepage.
+    --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ site.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- The navigation for a personal blog is small. --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;site-nav&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}/about/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;About&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; │
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}/archive/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Archive&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 
+    Pages using this layout will have their primary content inserted here.
+    The main tag helps machines separate the real content from the surrounding fluff.
+    A sectioning element should wrap the content in the content file (article or section).
+    --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;main&amp;gt;&lt;/span&gt;
+      {{ content }} &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- It is a variable, not magic. --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/main&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 
+    The footer contains unimportant links and external links. 
+    Content links live in the nav at the top of the page.
+    This is not for navigation but for other things of interest.
+    --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;site-footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}/feed.xml&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;RSS&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; 
+        -
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://github.com/t3hmun&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;My Github&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; 
+        -
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://t3hmun.github.io&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;My Main Site&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; 
+        - 
+        blog &lt;span class=&quot;nt&quot;&gt;&amp;lt;em&amp;gt;&lt;/span&gt;at&lt;span class=&quot;nt&quot;&gt;&amp;lt;/em&amp;gt;&lt;/span&gt; t3hmun &lt;span class=&quot;nt&quot;&gt;&amp;lt;em&amp;gt;&lt;/span&gt;dot&lt;span class=&quot;nt&quot;&gt;&amp;lt;/em&amp;gt;&lt;/span&gt; com
+
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;the-post-layout&quot;&gt;The Post Layout&lt;/h3&gt;
+
+&lt;p&gt;The template for a blog post is very simple:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+# Uses the base layout so all of the content from this file will be inserted in the body.
+layout: base
+---
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 
+The base layout has this wrapped in a main section.
+This layout contains a single main article. 
+--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;article&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 
+  This article tag is nested once making the H2 the correct heading level.
+  Following the recommendations and warnings in the HTML5.1 spec [1] the header level must follow the section level.
+  H1 cannot be used here because the sectioning would cause it to shrink to H2 level.
+  [1](http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#headings-and-sections) - October 2015
+  --&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}{{ page.url }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ page.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;heading-footer&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Posted on:
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- The datetime attribute contains a machine readable date. --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;time&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;datetime=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ page.date | date: &quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;F&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;H:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;M&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ page.date | date: &quot;%F at %H:%M&quot; }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/time&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!--
+  The Kramdown html output of a blog page written in markdown will be inserted as the content variable (the page must reference this file as layout). 
+  To ensure that Kramdown begins with the correct heading levels the following option can be inserted in _config.yml.
+  kramdown:
+    header_offset: 1
+  --&amp;gt;&lt;/span&gt;
+  {{ content }}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/article&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;A the beginning is the yaml from matter, which specifies that this uses the base layout.
+That takes care of all of the essential HTML and site masthead, nav and so on.&lt;/p&gt;
+
+&lt;p&gt;The post is wrapped in an article tag, because it is an independently coherent section suitable for syndication.&lt;/p&gt;
+
+&lt;p&gt;The markdown of a blog post using this layout would be converted to HTML and inserted as the &lt;code class=&quot;highlighter-rouge&quot;&gt;content&lt;/code&gt; variable.
+The &lt;code class=&quot;highlighter-rouge&quot;&gt;header_offset: 1&lt;/code&gt; build option should have been added to &lt;code class=&quot;highlighter-rouge&quot;&gt;kramdown:&lt;/code&gt; section of &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; to ensure its headings follow on from the &lt;code class=&quot;highlighter-rouge&quot;&gt;h2&lt;/code&gt; title.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-index-page&quot;&gt;The Index Page&lt;/h3&gt;
+
+&lt;p&gt;The index page is written in html because it’s content is unique and not particularly suited to being written in markdown like blog posts. It uses the base layout like all other pages.&lt;/p&gt;
+
+&lt;p&gt;Liquid Markup is used to display the title description and date of the 10 most recent blog posts.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: base
+title: &quot;t3hsite, t3hmun&#39;s project to learn and make good quality html5 and css/sass with Jekyll.&quot;
+description: &quot;This is project to make a reliable, maintainable and most importantly user-friendly theme for Jekyll from scratch, while learning good HTML5 and SASS/CSS.&quot;
+---
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 
+Nothing on this page is an article of any sort.
+This is simply a welcome mat.
+
+This description is part of the top level of the site (H1 rank).
+--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;{{ page.description }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;section&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- The header levels follow sectioning depth. --&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;Recent Posts&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 
+  Use Liquid to iterate through the 10 most recent posts in the site.
+  The title date and description for each page is also extracted using Liquid. 
+  --&amp;gt;&lt;/span&gt;
+  {% for post in site.posts limit:10 %}
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;section&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- &amp;lt;header&amp;gt; tag should only be used if the header is more than a single &amp;lt;h#&amp;gt; tag. --&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-link&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}{{ post.url }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ post.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;{{ post.description }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Footer tag used for information about the article. --&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt;
+        Posted on:
+        &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- The datetime attribute contains a machine readable date. --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;time&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;datetime=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ post.date | date: &quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;F&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;H:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;M&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ post.date | date: &quot;%F at %H:%M&quot; }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/time&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
+
+  {% endfor %}
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;next&quot;&gt;Next&lt;/h3&gt;
+
+&lt;p&gt;If it has not been done already, now is a good time to make some basic test blog posts.&lt;/p&gt;
+
+&lt;p&gt;Next is &lt;a href=&quot;http://t3hmun.github.io/article/2015/part-04-css-and-sass-foundation-from-scratch/&quot;&gt;CSS and SASS&lt;/a&gt;. Colour and style, but never forgetting usability.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 03 Oct 2015 00:00:00 +0100</pubDate>
+        <link>http://t3hmun.github.io/article/2015/part-03-clean-basic-html/</link>
+        <guid isPermaLink="true">http://t3hmun.github.io/article/2015/part-03-clean-basic-html/</guid>
+        
+        <category>theme</category>
+        
+        <category>jekyll</category>
+        
+        
+        <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>Part 2: Tooling Up</title>
+        <description>&lt;ul class=&quot;toc&quot; id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#a-quick-primer-on-jekyll&quot; id=&quot;markdown-toc-a-quick-primer-on-jekyll&quot;&gt;A Quick Primer on Jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#tooling-up&quot; id=&quot;markdown-toc-tooling-up&quot;&gt;Tooling Up&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#ruby&quot; id=&quot;markdown-toc-ruby&quot;&gt;Ruby&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-and-friends&quot; id=&quot;markdown-toc-jekyll-and-friends&quot;&gt;Jekyll and Friends&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#create-a-not-so-fresh-new-jekyll-site&quot; id=&quot;markdown-toc-create-a-not-so-fresh-new-jekyll-site&quot;&gt;Create a Not So Fresh New Jekyll Site&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#the-yml-config&quot; id=&quot;markdown-toc-the-yml-config&quot;&gt;The YML Config&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#next&quot; id=&quot;markdown-toc-next&quot;&gt;Next&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;a-quick-primer-on-jekyll&quot;&gt;A Quick Primer on Jekyll&lt;/h3&gt;
+
+&lt;p&gt;Jekyll is a tool for making static blog sites.
+Static means no backing database, just served as files on a server.
+Jekyll is nice because it automatically does a bunch with a single command, &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Processes Liquid Markup
+    &lt;ul&gt;
+      &lt;li&gt;Automatically creates many handy liquid variables&lt;/li&gt;
+      &lt;li&gt;Processes the variables for automatically generating indexes, titles, summaries etc.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Converts Markdown to HTML
+    &lt;ul&gt;
+      &lt;li&gt;Write your blog posts in markdown&lt;/li&gt;
+      &lt;li&gt;Using markdown is easier and less distracting&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Processes CSS/SASS
+    &lt;ul&gt;
+      &lt;li&gt;SASS is a CSS generator, makes CSS maintainable&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Runs plugins
+    &lt;ul&gt;
+      &lt;li&gt;Does things such as syntax highlighting and minifying output.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After a build the generated output can be pasted onto a static web-server and job done.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also has the handy &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; command that monitors and rebuilds automatically, while hosting the result on a localhost server for previewing and testing.
+This means the result of all of the processing can be seen immediately.&lt;/p&gt;
+
+&lt;h3 id=&quot;tooling-up&quot;&gt;Tooling Up&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;This is a Windows 7 installation, but only the Ruby installation is OS specific.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;ruby&quot;&gt;Ruby&lt;/h4&gt;
+
+&lt;p&gt;Jekyll is written in Ruby so it is required.
+Acquire latest Ruby and DevKit installers from &lt;a href=&quot;http://rubyinstaller.org/downloads/&quot;&gt;rubyinstaller.org&lt;/a&gt;.
+I used Ruby 2.2.3 x64, however any new version will probably work.&lt;/p&gt;
+
+&lt;p&gt;Install Ruby to a directory with no white-space in the name (some Ruby packages require this).
+Now extract the DevKit to a permanent directory.
+The DevKit is required for the automatic building of some gems (RubyGems is Ruby’s package manager, a Gem is a package).&lt;/p&gt;
+
+&lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby -v&lt;/code&gt; at the command-line should now display the installed version of Ruby.&lt;/p&gt;
+
+&lt;p&gt;Next run the install script for the DevKit so that the Ruby installation can use it:&lt;/p&gt;
+
+&lt;div class=&quot;reading-width highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ruby dk.rb init
+ruby dk.rb install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;jekyll-and-friends&quot;&gt;Jekyll and Friends&lt;/h4&gt;
+
+&lt;p&gt;Now install Jekyll and Rouge using RubyGems. 
+Rouge is a syntax highlighter, I’m assuming you want syntax highlighting on your blog.&lt;/p&gt;
+
+&lt;div class=&quot;reading-width highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll
+gem install rouge
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll -v&lt;/code&gt; to see the version and confirm that it is installed.
+I installed Jekyll 2.5.3.&lt;/p&gt;
+
+&lt;h3 id=&quot;create-a-not-so-fresh-new-jekyll-site&quot;&gt;Create a Not So Fresh New Jekyll Site&lt;/h3&gt;
+
+&lt;p&gt;Create a new default blog-site with the &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll new&lt;/code&gt; command.
+Run the &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; in the blog folder. It builds the site and then hosts it at &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:4000&lt;/code&gt;.
+It automatically rebuilds when changes are made so it can be left running in its own window.
+It will report the error if a build fails and then continue when the files are modified again.&lt;/p&gt;
+
+&lt;div class=&quot;reading-width highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll new site-name
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;new site-name
+jekyll serve
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;View the site in a browser.&lt;/p&gt;
+
+&lt;p&gt;This is a good time to make an initial Git commit.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-yml-config&quot;&gt;The YML Config&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; file is the basic config for the site.
+Strip it down to minimal content and customize as I have below.
+Most of it is self-explanatory.&lt;/p&gt;
+
+&lt;p&gt;I have added some extra options to modify the behaviour of the Kramdown Markdown processor.&lt;/p&gt;
+
+&lt;div class=&quot;reading-width highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# This title is used as the masthead on all pages.&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;t3hsite&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# This description us used in the index page, RSS and in the meta for any page lacking its own description.&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;short&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;description.&quot;&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;baseurl&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# This is temporarily left blank, should be filled in before hosting on the internet.&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Build settings&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kramdown&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;GFM&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# GithHub Flavored Markdown, support for Github style fenced code blocks.&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;syntax_highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;hard_wrap&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Single line breaks are ignored as in standard Markdown.&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;header_offset&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;lt;h#&amp;gt; tags are offset down by one size.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlight language-yaml highlighter-rouge&quot;&gt;&lt;span class=&quot;s&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;GFM&lt;/span&gt;&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;Allows processing of Github Flavored Markdown. Handy as this is the version of Markdown I most commonly use.&lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlight language-yaml highlighter-rouge&quot;&gt;&lt;span class=&quot;s&quot;&gt;syntax_highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;Use Rouge to process the code blocks. I prefer this to the default (Coderay) because it can highlight more things such as bash.&lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlight language-yaml highlighter-rouge&quot;&gt;&lt;span class=&quot;s&quot;&gt;hard_wrap&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;This is a personal preference. Tells Kramdown to ignore single new-lines. 
+Double new line is a new paragraph.
+The only way to get a single new line is to use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt;.
+This is they way Markdown is meant to behave (and my preference).&lt;/dd&gt;
+  &lt;dt&gt;&lt;code class=&quot;highlight language-yaml highlighter-rouge&quot;&gt;&lt;span class=&quot;s&quot;&gt;header_offset 1&lt;/span&gt;&lt;/code&gt;&lt;/dt&gt;
+  &lt;dd&gt;This reduces the header level used in the markdown by one when converting it to HTML.
+This is done to demote the title of the blog post to H2; H1 is only suitable for use once as the site header (explained in detail later).&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&quot;next&quot;&gt;Next&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&quot;http://t3hmun.github.io/article/2015/part-03-clean-basic-html/&quot;&gt;next part&lt;/a&gt; will involve deleting a lot and arranging some fresh clean HTML.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 02 Oct 2015 00:00:00 +0100</pubDate>
+        <link>http://t3hmun.github.io/article/2015/part-02-tooling-up/</link>
+        <guid isPermaLink="true">http://t3hmun.github.io/article/2015/part-02-tooling-up/</guid>
+        
+        <category>theme</category>
+        
+        <category>jekyll</category>
+        
+        
+        <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>Part 1: A Fresh Jekyll Site</title>
+        <description>&lt;ul class=&quot;toc&quot; id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#what&quot; id=&quot;markdown-toc-what&quot;&gt;What&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#why&quot; id=&quot;markdown-toc-why&quot;&gt;Why?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#why-jekyll&quot; id=&quot;markdown-toc-why-jekyll&quot;&gt;Why Jekyll?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#next&quot; id=&quot;markdown-toc-next&quot;&gt;Next&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what&quot;&gt;What&lt;/h3&gt;
+
+&lt;p&gt;This is a guide through my attempt to build a Jekyll blog-site design from scratch, deleting most of the default cruft, justifying every single line written for maximum understanding.
+This is my way of creating a nice theme for my site and learning good HTML5 and CSS/SASS along the way.&lt;/p&gt;
+
+&lt;p&gt;I’ve added extra detail so that it can work as a tutorial to fast-forward people to my level of understanding on these topics. This is not for people who are unfamiliar with code, I assume that the reader is able to understand simple scripting such as a Liquid Markup for loop without help.
+I also assume that the reader can vaguely understand HTML and CSS.&lt;/p&gt;
+
+&lt;p&gt;This project is about finding out about looking at the details and nuances that make good site design.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;A short rant on responsive design:&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;Although I agree that a website should properly adapt to any screen type, I am not convinced by the ‘responsive design’ fad.
+Most of the responsive design I’ve seen encourages inconsistency, essentially hacking a page to act like totally different pages.
+I’m not interested in playing spot the hidden menu.
+Blog sites have no benefit in being as complicated as they are.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;why&quot;&gt;Why?&lt;/h3&gt;
+
+&lt;p&gt;I have tried modifying the themes made by others but it has never been a satisfying experience.
+Most of the CSS/SASS that I have encountered previously has been painful to modify, it’s impossible to know what the original designer was thinking.
+The edited CSS rapidly degenerates into an impenetrable mess with more quirks than Internet Explorer.
+On top of that it simply never feels like my own design, the original template is always echoing.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-jekyll&quot;&gt;Why Jekyll?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A static blog-site is all I need&lt;/li&gt;
+  &lt;li&gt;Convenient&lt;/li&gt;
+  &lt;li&gt;Easy to use&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’ve already fiddled with Jekyll and it is satisfactory.
+I’ve considered trying other things or even writing my own tool-chain, but that seems excessive, too many better things to be doing.&lt;/p&gt;
+
+&lt;p&gt;I’m not using GitHub’s version of Jekyll.
+GitHub is still fine to host the site, but the generation has to be offline.
+GitHub compatibility limits the features available and ends up being tedious.&lt;/p&gt;
+
+&lt;h3 id=&quot;next&quot;&gt;Next&lt;/h3&gt;
+
+&lt;p&gt;In the &lt;a href=&quot;http://t3hmun.github.io/article/2015/part-02-tooling-up/&quot;&gt;next part&lt;/a&gt; we begin by installing Ruby, Jekyll and related tools.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 01 Oct 2015 00:00:00 +0100</pubDate>
+        <link>http://t3hmun.github.io/article/2015/part-01-a-fresh-theme/</link>
+        <guid isPermaLink="true">http://t3hmun.github.io/article/2015/part-01-a-fresh-theme/</guid>
+        
+        <category>theme</category>
+        
+        <category>jekyll</category>
+        
+        
+        <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>Optional Muut Comments Loaded using a Button</title>
+        <description>&lt;ul class=&quot;toc&quot; id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#what-why&quot; id=&quot;markdown-toc-what-why&quot;&gt;What, Why?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#a-litte-bit-of-javascript&quot; id=&quot;markdown-toc-a-litte-bit-of-javascript&quot;&gt;A Litte Bit of Javascript&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#muut-y-u-no-disqus&quot; id=&quot;markdown-toc-muut-y-u-no-disqus&quot;&gt;Muut? Y u no Disqus&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I decided to make loading the comments system on my Jekyll blog site optional by making them load on a button press. No downloading of large scripts or contacting the third party comments service until the user decides to.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-why&quot;&gt;What, Why?&lt;/h3&gt;
 
 &lt;p&gt;Primary purpose of the page is to display content, comments are secondary and should not impact the loading and performance of the page. Also large comments blocks at the bottom of the page create marathon distances to the footer, which I find hurtful to the design of the page. These issues are especially significant on mobile phones where processing power, data and screen-space are precious commodities that should not be wasted.&lt;/p&gt;
 
@@ -21,7 +1106,7 @@
 
 &lt;p&gt;On top of all of this, users of my site may not want to have their activity tracked and profiled by the comments service that I use. Adding a button allows them to the user to opt in. Ideally I’d self-host the comments but that requires a good server and I’m not currently ready to spend the money and effort on making that reliable.&lt;/p&gt;
 
-&lt;h2 id=&quot;a-litte-bit-of-javascript&quot;&gt;A Litte Bit of Javascript&lt;/h2&gt;
+&lt;h3 id=&quot;a-litte-bit-of-javascript&quot;&gt;A Litte Bit of Javascript&lt;/h3&gt;
 
 &lt;p&gt;I’m using &lt;a href=&quot;https://muut.com/&quot;&gt;Muut&lt;/a&gt; for my comments, but a similar method should work for Disqus or any other system that just involves loading a JavaScript file. Previous to this my page has been entirely JavaScript free. Therefore it would be extreme and wasteful to use something such as JQuery.&lt;/p&gt;
 
@@ -66,7 +1151,7 @@
 
 &lt;p&gt;You may notice that I’ve changed the link Muut uses to position itself to a loading message. That message will stay on screen while the Muut js loads. Muut then replaces itself. Simple hack to keep the user informed.&lt;/p&gt;
 
-&lt;h2 id=&quot;muut-y-u-no-disqus&quot;&gt;Muut? Y u no Disqus&lt;/h2&gt;
+&lt;h3 id=&quot;muut-y-u-no-disqus&quot;&gt;Muut? Y u no Disqus&lt;/h3&gt;
 
 &lt;p&gt;Disqus irks me. By default it has that links to other articles detritus at the end of the comments block. These kinds of links conjure images of clickbait in my mind, most detrimental to my inner state of calm. Its also large and slow.&lt;/p&gt;
 
@@ -75,8 +1160,8 @@
 &lt;p&gt;Overall I don’t intend to stay with third party comments systems forever since there are all sorts of issues surrounding user tracking and content ownership. I’ll set up my own server eventually, but configuring everything properly can be quite a lot of work and I have other priorities at the moment.&lt;/p&gt;
 </description>
         <pubDate>Tue, 08 Sep 2015 14:00:00 +0100</pubDate>
-        <link>http://t3hmun.github.io/article/2015/09/08/optional-muut-comments-loaded-using-a-button.html</link>
-        <guid isPermaLink="true">http://t3hmun.github.io/article/2015/09/08/optional-muut-comments-loaded-using-a-button.html</guid>
+        <link>http://t3hmun.github.io/article/2015/optional-muut-comments-loaded-using-a-button/</link>
+        <guid isPermaLink="true">http://t3hmun.github.io/article/2015/optional-muut-comments-loaded-using-a-button/</guid>
         
         <category>muut</category>
         
@@ -91,7 +1176,14 @@
     
       <item>
         <title>Vaughan Bear BS150D Pullsaw</title>
-        <description>&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+        <description>&lt;ul class=&quot;toc&quot; id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#background&quot; id=&quot;markdown-toc-background&quot;&gt;Background&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#a-closer-look&quot; id=&quot;markdown-toc-a-closer-look&quot;&gt;A Closer Look&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#specifications&quot; id=&quot;markdown-toc-specifications&quot;&gt;Specifications&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#initial-opinion&quot; id=&quot;markdown-toc-initial-opinion&quot;&gt;Initial Opinion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
 
 &lt;p&gt;A few months ago I acquired a small &lt;a href=&quot;http://www.irwin.com/tools/handsaws/dovetaildetail-saw&quot;&gt;Irwin pullsaw&lt;/a&gt;, which was quite enjoyable to use for making small clean cuts and flush cutting. It is not great when cutting more than an inch in any direction, since the flexibility of the blade seems to make it wander. At odd angles and depth my stiff bladed tenon saw is much easier to control. However it has its use and the clean fast cuts it makes are delightful.&lt;/p&gt;
 
@@ -99,31 +1191,31 @@
 
 &lt;p&gt;Disturbingly I could not find any info on the pitch/type of the blade sides on the sales listings. Tis’ a small gamble.&lt;/p&gt;
 
-&lt;h2 id=&quot;a-closer-look&quot;&gt;A Closer Look&lt;/h2&gt;
+&lt;h3 id=&quot;a-closer-look&quot;&gt;A Closer Look&lt;/h3&gt;
 
 &lt;p&gt;A simple plastic handle, seems well made and solid enough.&lt;/p&gt;
 
-&lt;div&gt;&lt;img alt=&quot;BS150D front&quot; src=&quot;/images/BS150D-front.png&quot; /&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img alt=&quot;BS150D front&quot; src=&quot;http://t3hmun.github.io/images/BS150D-front.png&quot; /&gt;&lt;/div&gt;
 
 &lt;p&gt;And the back seem boring enough..&lt;/p&gt;
 
-&lt;div&gt;&lt;img alt=&quot;BS150D back&quot; src=&quot;/images/BS150D-back.png&quot; /&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img alt=&quot;BS150D back&quot; src=&quot;http://t3hmun.github.io/images/BS150D-back.png&quot; /&gt;&lt;/div&gt;
 
 &lt;p&gt;..well actually what’s that logo at the base of the handle?&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/z-saw-logo.png&quot; alt=&quot;Z-Saw logo&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://t3hmun.github.io/images/z-saw-logo.png&quot; alt=&quot;Z-Saw logo&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;It is Z-Saw, a well known Japanese saw brand. It seems apparent that they are the real manufacturers of this saw. This is supported by the ‘Made in Japan’ label on the blade and also that Vaughan &lt;a href=&quot;http://www.vaughanmfg.com/shopping/Departments/Dalluge-Tools/Z-Japanese-Hand-Saws.aspx&quot;&gt;directly sell&lt;/a&gt; Z-Saw’s products from their website.&lt;/p&gt;
 
 &lt;p&gt;I had a flick though the Z-Saw catalogue and the closest thing I could find was the unusually coloured &lt;a href=&quot;http://www.z-saw.co.jp/en/02b_30023_flash145.html&quot;&gt;Z-Saw Flush S-145&lt;/a&gt;. I can’t find the double a sided blade version on their website, however I did find a one on sale under the TopMan-Z brand on &lt;a href=&quot;http://www.woodworkprojects.co.uk/shop.htm#!/S-145-flush-double/p/2017677/category=162171&quot;&gt;British&lt;/a&gt; and &lt;a href=&quot;https://www.carbatec.com.au/handtools-and-handplanes/japanese-saws/saws/japanese-flush-cutting-saw&quot;&gt;Australian&lt;/a&gt; websites. It is either an old or export only model.&lt;/p&gt;
 
-&lt;div&gt;&lt;img alt=&quot;Z-Saw Flush S-145&quot; src=&quot;/images/Z-Saw-Flush-S-145.png&quot; /&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img alt=&quot;Z-Saw Flush S-145&quot; src=&quot;http://t3hmun.github.io/images/Z-Saw-Flush-S-145.png&quot; /&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/TopMan-Z.png&quot; alt=&quot;TopMan-Z Version of the saw&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://t3hmun.github.io/images/TopMan-Z.png&quot; alt=&quot;TopMan-Z Version of the saw&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;It’s nice to know that the saw is made by a well known company that presumably knows what it is doing.&lt;/p&gt;
 
-&lt;h2 id=&quot;specifications&quot;&gt;Specifications&lt;/h2&gt;
+&lt;h3 id=&quot;specifications&quot;&gt;Specifications&lt;/h3&gt;
 
 &lt;p&gt;Handily the listing for the TopMan-Z version show detail the blades as:&lt;/p&gt;
 
@@ -139,21 +1231,21 @@
 
 &lt;p&gt;I confirmed these measurements with callipers and a ruler. The TPI of the finer side is almost the same as the Irwin Dovetail saw, which is 22TPI.&lt;/p&gt;
 
-&lt;div&gt;&lt;img alt=&quot;Irwin and Vaughan saw teeth compared&quot; src=&quot;/images/Irwin-vs-Vaughan-tiny-TPI.png&quot; /&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img alt=&quot;Irwin and Vaughan saw teeth compared&quot; src=&quot;http://t3hmun.github.io/images/Irwin-vs-Vaughan-tiny-TPI.png&quot; /&gt;&lt;/div&gt;
 
 &lt;p&gt;I believe the teeth are for cross-cut sawing, with the typical rather aggressive rake of Japanese pullsaws.&lt;/p&gt;
 
-&lt;h2 id=&quot;initial-opinion&quot;&gt;Initial Opinion&lt;/h2&gt;
+&lt;h3 id=&quot;initial-opinion&quot;&gt;Initial Opinion&lt;/h3&gt;
 
 &lt;p&gt;Seems like a nice little saw, don’t seem to be any obvious issues. It’ll be a while before I’ve used it enough to say more. I’ll refrain from abusing it on chipboard this time.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 06 Sep 2015 13:00:00 +0100</pubDate>
-        <link>http://t3hmun.github.io/article/2015/09/06/Vaughan-Bear-Saw.html</link>
-        <guid isPermaLink="true">http://t3hmun.github.io/article/2015/09/06/Vaughan-Bear-Saw.html</guid>
+        <link>http://t3hmun.github.io/article/2015/Vaughan-Bear-Saw/</link>
+        <guid isPermaLink="true">http://t3hmun.github.io/article/2015/Vaughan-Bear-Saw/</guid>
         
-        <category>woodwork</category>
+        <category>diy</category>
         
         <category>saw</category>
         
@@ -201,8 +1293,8 @@ The Markdown Extended package combined the Monokai Extended colour scheme is gre
 
 </description>
         <pubDate>Sat, 08 Aug 2015 18:00:00 +0100</pubDate>
-        <link>http://t3hmun.github.io/note/2015/08/08/sublime-file-type-specific-theme.html</link>
-        <guid isPermaLink="true">http://t3hmun.github.io/note/2015/08/08/sublime-file-type-specific-theme.html</guid>
+        <link>http://t3hmun.github.io/note/2015/sublime-file-type-specific-theme/</link>
+        <guid isPermaLink="true">http://t3hmun.github.io/note/2015/sublime-file-type-specific-theme/</guid>
         
         <category>sublime</category>
         
@@ -217,19 +1309,51 @@ The Markdown Extended package combined the Monokai Extended colour scheme is gre
     
       <item>
         <title>Test Post</title>
-        <description>&lt;p&gt;Heading 1 is generally only used for the post title, hence it should not be used manually. The title H1 block is automatically generated from the yml front matter of the post.&lt;/p&gt;
+        <description>&lt;ul class=&quot;toc&quot; id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#heading-2&quot; id=&quot;markdown-toc-heading-2&quot;&gt;Heading 2&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#heading-3&quot; id=&quot;markdown-toc-heading-3&quot;&gt;Heading 3&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#heading-4&quot; id=&quot;markdown-toc-heading-4&quot;&gt;Heading 4&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#heading-1&quot; id=&quot;markdown-toc-heading-1&quot;&gt;Heading 1&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#heading-2-1&quot; id=&quot;markdown-toc-heading-2-1&quot;&gt;Heading 2&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#heading-3-1&quot; id=&quot;markdown-toc-heading-3-1&quot;&gt;Heading 3&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#heading-4-1&quot; id=&quot;markdown-toc-heading-4-1&quot;&gt;Heading 4&lt;/a&gt;                &lt;ul&gt;
+                  &lt;li&gt;&lt;a href=&quot;#heading-5&quot; id=&quot;markdown-toc-heading-5&quot;&gt;Heading 5&lt;/a&gt;                    &lt;ul&gt;
+                      &lt;li&gt;&lt;a href=&quot;#heading-6&quot; id=&quot;markdown-toc-heading-6&quot;&gt;Heading 6&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 id=&quot;heading-2&quot;&gt;Heading 2&lt;/h2&gt;
+&lt;h3 id=&quot;heading-2&quot;&gt;Heading 2&lt;/h3&gt;
 
-&lt;p&gt;This is the first level of headings that things would generally be inserted in a post. Here is a link back to the &lt;a href=&quot;/&quot;&gt;index page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Important&lt;/strong&gt;: The heading levels referred to in here correspond to the Markdown used. 
+The real heading levels are one smaller, matching the page sectioning levels.&lt;/p&gt;
 
-&lt;p&gt;The basic formatting includes &lt;strong&gt;bold&lt;/strong&gt; and &lt;em&gt;italic&lt;/em&gt; text denoted with underscores in markdown like this (&lt;code class=&quot;highlighter-rouge&quot;&gt;__bold__&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;_italic_&lt;/code&gt;). &lt;strong&gt;Bold&lt;/strong&gt; and &lt;em&gt;italic&lt;/em&gt; can also be denoted using asterisk (&lt;code class=&quot;highlighter-rouge&quot;&gt;**Bold**&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;*italic*&lt;/code&gt;). Inline code blocks are sytled as &lt;code class=&quot;highlighter-rouge&quot;&gt;inline-block&lt;/code&gt;, which prevents unnecessary line-breaks in the code block.&lt;/p&gt;
+&lt;p&gt;Heading 1 is generally only used for the post title, hence it should not be used manually. 
+The title H1 block is automatically generated from the yml front matter of the post.
+H2 is the first level of headings that things would generally be inserted in a post.&lt;/p&gt;
 
-&lt;p&gt;You may notice that blocks of text like this one are justified and centred in the screen, in a somewhat thin column. This is intended for efficient reading.&lt;/p&gt;
+&lt;p&gt;Here is a link back to the &lt;a href=&quot;http://t3hmun.github.io/&quot;&gt;index page&lt;/a&gt;.
+The basic formatting includes &lt;strong&gt;bold&lt;/strong&gt; and &lt;em&gt;italic&lt;/em&gt; text denoted with underscores in markdown like this (&lt;code class=&quot;highlighter-rouge&quot;&gt;__bold__&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;_italic_&lt;/code&gt;). &lt;strong&gt;Bold&lt;/strong&gt; and &lt;em&gt;italic&lt;/em&gt; can also be denoted using asterisk (&lt;code class=&quot;highlighter-rouge&quot;&gt;**Bold**&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;*italic*&lt;/code&gt;). Inline code blocks are sytled as &lt;code class=&quot;highlighter-rouge&quot;&gt;inline-block&lt;/code&gt;, which prevents unnecessary line-breaks in the code block.&lt;/p&gt;
 
-&lt;h3 id=&quot;heading-3&quot;&gt;Heading 3&lt;/h3&gt;
+&lt;p&gt;You may notice that blocks of text like this one are justified and centred in the screen, in a somewhat thin column. 
+This is intended for efficient reading.&lt;/p&gt;
 
-&lt;p&gt;Bullet lists generally benefit from having more space than a standard block of text. I will set out some reasoning for this using bullet points.&lt;/p&gt;
+&lt;h4 id=&quot;heading-3&quot;&gt;Heading 3&lt;/h4&gt;
+
+&lt;p&gt;Bullet lists generally benefit from having more space than a standard block of text.
+I will set out some reasoning for this using bullet points.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;The addition of the bullet point to a sentence results in the need for more horizontal space.&lt;/li&gt;
@@ -243,7 +1367,7 @@ The Markdown Extended package combined the Monokai Extended colour scheme is gre
 
 &lt;p&gt;I decided to give them a different background to help the eye cope with the change in column width.&lt;/p&gt;
 
-&lt;h4 id=&quot;heading-4&quot;&gt;Heading 4&lt;/h4&gt;
+&lt;h5 id=&quot;heading-4&quot;&gt;Heading 4&lt;/h5&gt;
 
 &lt;p&gt;This theme is intended for computer people who would find code very important. So here is a neat little C# code block.&lt;/p&gt;
 
@@ -256,17 +1380,21 @@ The Markdown Extended package combined the Monokai Extended colour scheme is gre
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;You may have observed that code is also allowed a lot more space than normal text. Code hates narrow screens, absolutely abhors being wrapped. Therefore code is allowed to consume more space and has its own scroll bar when a line is too long for the display.&lt;/p&gt;
+&lt;p&gt;You may have observed that code is also allowed a lot more space than normal text. 
+Code hates narrow screens, absolutely abhors being wrapped. 
+Therefore code is allowed to consume more space and has its own scroll bar when a line is too long for the display.&lt;/p&gt;
 
-&lt;h1 id=&quot;heading-1&quot;&gt;Heading 1&lt;/h1&gt;
+&lt;h2 id=&quot;heading-1&quot;&gt;Heading 1&lt;/h2&gt;
 
-&lt;h2 id=&quot;heading-2-1&quot;&gt;Heading 2&lt;/h2&gt;
+&lt;h3 id=&quot;heading-2-1&quot;&gt;Heading 2&lt;/h3&gt;
 
-&lt;h3 id=&quot;heading-3-1&quot;&gt;Heading 3&lt;/h3&gt;
+&lt;h4 id=&quot;heading-3-1&quot;&gt;Heading 3&lt;/h4&gt;
 
-&lt;h4 id=&quot;heading-4-1&quot;&gt;Heading 4&lt;/h4&gt;
+&lt;h5 id=&quot;heading-4-1&quot;&gt;Heading 4&lt;/h5&gt;
 
-&lt;h5 id=&quot;heading-5&quot;&gt;Heading 5&lt;/h5&gt;
+&lt;h6 id=&quot;heading-5&quot;&gt;Heading 5&lt;/h6&gt;
+
+&lt;p&gt;All the headings are one tier smaller so 5 and 6 are the same because there is no 7.&lt;/p&gt;
 
 &lt;h6 id=&quot;heading-6&quot;&gt;Heading 6&lt;/h6&gt;
 
@@ -286,8 +1414,8 @@ The Markdown Extended package combined the Monokai Extended colour scheme is gre
 &lt;p&gt;Some normal text so that one may observe the spacing between this text and the above blockquote.&lt;/p&gt;
 </description>
         <pubDate>Wed, 29 Jul 2015 16:16:00 +0100</pubDate>
-        <link>http://t3hmun.github.io/article/2015/07/29/Test-Post.html</link>
-        <guid isPermaLink="true">http://t3hmun.github.io/article/2015/07/29/Test-Post.html</guid>
+        <link>http://t3hmun.github.io/article/2015/Test-Post/</link>
+        <guid isPermaLink="true">http://t3hmun.github.io/article/2015/Test-Post/</guid>
         
         <category>theme</category>
         

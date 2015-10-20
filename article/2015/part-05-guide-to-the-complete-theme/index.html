@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<!-- This is an include file because all pages use the same head.
+Liquid Markup is used to customise it for each page. -->
+<head>
+  <!-- UTF-8 is the best supported modern character-set used almost everywhere. -->
+  <meta charset="utf-8">
+  <!-- This is needed to suppress Internet Explorer's compatibility mode and make it operate with minimum quirks. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- This informs small screen devices that the content is intended to wrap inside the screen-width without scaling. 
+  This prevents the phone from rendering a miniature parody of the desktop appearance of the site.
+  The design of the site must be suitable for this kind of wrapping in a smaller space. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- A description for search engines and other non-humans. If the page has not description set default to site description. -->
+  <meta name="description" content="I completed the theme, documenting as I went along, this post details the features and how to use them.">
+
+  <!-- Title used by the browser and also by search engines and non-humans. -->
+  <title>Part 5: Guide to the Complete Theme</title>
+
+  <!-- The root relative url for the stylesheet. -->
+  <link id="maincss" rel="stylesheet" href="http://t3hmun.github.io/css/main.css">
+  <!-- The preferred URL for the page. Useful when there are multiple possible urls. -->
+  <link rel="canonical" href="http://t3hmun.github.io/article/2015/part-05-guide-to-the-complete-theme/">
+  <!-- Handy link to the RSS for the site for browsers and non-humans. -->
+  <link rel="alternate" type="application/rss+xml" title="t3hmun" href="http://t3hmun.github.io/feed.xml" />
+  
+  <script src="http://t3hmun.github.io/js/theme.js"></script>
+</head>
+
+<body>
+  <div class="body-wrapper">
+
+    <header>
+      <div class="centre-block" id="top-of-page">
+        <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        <nav>
+          <div class="art miniart "><a href="http://t3hmun.github.io/about/">         ╷                     
+   ╭───╮ ├───╮╭───╮╷   ╷╶┼─╴   
+▒  │   │ │   ││   ││   │ │    ▒
+   ╰───╰ ╰───╯╰───╯╰───╯ ╰─╴   
+</a></div>
+          <div class="art miniart"><a href="http://t3hmun.github.io/archive/">                  ╷      .             
+   ╭───╮ ╭──╴╭───╴├───╮ ╶┐ ╷  ╷╭───╮   
+▒  │   │ │   │    │   │  │ └┐┌┘├───╯  ▒
+   ╰───╰ ╵   ╰───╴╵   ╵  ╰╴ └┘ ╰───╯   </a></div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- 
+The base layout has this wrapped in a main section.
+This layout contains a single main article. 
+-->
+<article>
+  <h2><a href="http://t3hmun.github.io/article/2015/part-05-guide-to-the-complete-theme/">Part 5: Guide to the Complete Theme</a></h2>
+  <footer>
+    <div class="heading-footer">
+      <span class="date">
+        Posted on:
+        <time datetime=" 2015-10-13 00:00 ">2015-10-13 at 00:00</time>
+      </span>
+      <span class="tags">      
+        <a href="http://t3hmun.github.io/archive/#article">[article] - </a>
+        <a href="http://t3hmun.github.io/archive/#theme">[theme] </a><a href="http://t3hmun.github.io/archive/#jekyll">[jekyll] </a>
+      </span>
+    </div>
+  </footer>
+  <ul class="toc" id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a>    <ul>
+      <li><a href="#features-from-the-user-perspective" id="markdown-toc-features-from-the-user-perspective">Features From the User Perspective</a></li>
+      <li><a href="#features-from-the-developer-perspective" id="markdown-toc-features-from-the-developer-perspective">Features from the Developer Perspective</a></li>
+    </ul>
+  </li>
+  <li><a href="#markdown-usage" id="markdown-toc-markdown-usage">Markdown Usage</a>    <ul>
+      <li><a href="#basic-formatting" id="markdown-toc-basic-formatting">Basic Formatting</a></li>
+      <li><a href="#code" id="markdown-toc-code">Code</a></li>
+      <li><a href="#images" id="markdown-toc-images">Images</a></li>
+      <li><a href="#headings" id="markdown-toc-headings">Headings</a></li>
+    </ul>
+  </li>
+  <li><a href="#heading--3" id="markdown-toc-heading--3">Heading <code class="highlighter-rouge">##</code> 3</a>    <ul>
+      <li><a href="#heading--4" id="markdown-toc-heading--4">Heading <code class="highlighter-rouge">###</code> 4</a>        <ul>
+          <li><a href="#heading--5" id="markdown-toc-heading--5">Heading <code class="highlighter-rouge">####</code> 5</a>            <ul>
+              <li><a href="#heading--6" id="markdown-toc-heading--6">Heading <code class="highlighter-rouge">#####</code> 6</a>                <ul>
+                  <li><a href="#heading--7" id="markdown-toc-heading--7">Heading <code class="highlighter-rouge">######</code> 7</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#how-to-implement" id="markdown-toc-how-to-implement">How To Implement</a></li>
+</ul>
+
+<p>The theme of this page is a developed derivative of the theme discussed in this article.
+The original is <a href="http://t3hmun.github.io/t3hsite/">t3hsite</a> (repository <a href="https://github.com/t3hmun/t3hsite">link</a>).</p>
+
+<h3 id="overview">Overview</h3>
+
+<p>After laying out the basics I proceeded to complete the theme using similar ideas to my original messy <a href="http://t3hmun.github.io/rather-simple-jekyll-theme/">Rather Simple Jekyll Theme</a>.
+However this time I had a the plan in place before proceeding to write it, hence the theme layout is much neater.
+It is also comprehensively commented, most of the ideas are laid out at the top of <code class="highlighter-rouge">/css/main.scss</code> and <code class="highlighter-rouge">_sass/_style.scss</code>.
+Nevertheless an article is a much better format for such documentation.</p>
+
+<h4 id="features-from-the-user-perspective">Features From the User Perspective</h4>
+
+<p>I’ve accessibility and ease of use were high on my list of priorities in the design.</p>
+
+<p>I’ve avoided justifying text, leaving a ragged right.
+Justified text has a much neater appearance but many people find difficult to read.</p>
+
+<p>I’ve purposely avoided having menus or content on the sides of the page.
+There are many reasons for this:</p>
+
+<ul>
+  <li>Side menus don’t flow with the page content.</li>
+  <li>Side menus are distracting.</li>
+  <li>Side menus are not small screen friendly.</li>
+  <li>Side menus don’t work with special needs style-sheets.</li>
+</ul>
+
+<p>This site looks acceptable with when the CSS is deleted; this is one way of knowing how well reading mode and accessibility tools will cope with the site.</p>
+
+<p>The header hierarchy is rigorously obeyed. 
+Sadly the HTML5 section hierarchy is not created all the way through because Kramdown does not produce HTML5 sections.
+However I believe the header hierarchy is enough for most modern tools to work with.</p>
+
+<h4 id="features-from-the-developer-perspective">Features from the Developer Perspective</h4>
+
+<p>If you look at the source, the ridiculous amount of comments will be obvious.
+This was done to help people who are still learning CSS, HTML and the other stuff with Jekyll.</p>
+
+<p>All sizes and colours are defined in variables in a single file <code class="highlighter-rouge">/css/main.scss</code> separate from the actual styling CSS.
+This means that you do not have to search through reams of CSS to change a size or colour.
+Simply find the relevant entry in the main file and change the value once for everything.</p>
+
+<p>Switching to a dark theme requires changing 2 colours and using <code class="highlighter-rouge">rougify</code> to output a suitable syntax stylesheet (see <a href="http://t3hmun.github.io/article/2015/part-04-css-and-sass-foundation-from-scratch/#syntax">Part 4 #Syntax</a>).</p>
+
+<p>There are very few classes used for styling.
+I’ve tried to stick to the basic HTML tags for most things.
+This makes the purpose of the CSS more obvious as most elements things stick to their default use.</p>
+
+<h3 id="markdown-usage">Markdown Usage</h3>
+
+<p>To begin with a quick run-down of what the converted markdown looks like.</p>
+
+<h4 id="basic-formatting">Basic Formatting</h4>
+
+<p>There is <em>emphasis</em> and <strong>strong</strong> (Markdown: <code class="highlighter-rouge">_emphasis_</code> and <code class="highlighter-rouge">__strong__</code>), all the <code class="highlighter-rouge">_</code> can be swapped for <code class="highlighter-rouge">*</code> as with standard Markdown.</p>
+
+<p>This is a normal paragraph of text. I believe that roughly 60 characters per line is suitable for comfortable fast reading, hence these blocks of text are limited in width.</p>
+
+<blockquote>
+  <p>As you may have noticed this is wider than the main text of this article.
+This is intentional.
+Blockquotes would not read well in the tiny width occupied by normal text.
+This element’s with is set via the <code class="highlighter-rouge">$other-text-with</code> variable.</p>
+
+  <blockquote>
+    <p>This is a blockquote inside a blockquote. 
+There must be an empty ` &gt; ` line before starting this sub-blockquote.</p>
+  </blockquote>
+</blockquote>
+
+<p>There are three widths that content is grouped and fit into:</p>
+
+<ol>
+  <li>Content width (<code class="highlighter-rouge">&lt;h#&gt;</code>):
+    <ul>
+      <li>This is the most wide width and bound all page content.</li>
+      <li>Headings are left aligned at this width so they stand out on a wide screen.</li>
+      <li>Code uses content width; code is best viewed in long unbroken lines.</li>
+    </ul>
+  </li>
+  <li>Reading width (<code class="highlighter-rouge">&lt;p&gt;</code>):
+    <ul>
+      <li>This is the smallest width, should be between 60 to 80 characters wide.</li>
+      <li>Intended for comfortable reading of lots of text.</li>
+      <li>Too narrow for other content.</li>
+    </ul>
+  </li>
+  <li>Other-text width (<code class="highlighter-rouge">&lt;ol&gt;</code>,<code class="highlighter-rouge">&lt;ul&gt;</code>,<code class="highlighter-rouge">&lt;dl&gt;</code>,<code class="highlighter-rouge">&lt;blockquote&gt;</code>):
+    <ul>
+      <li>This is a mix between the other two widths.</li>
+      <li>Intended for feature text element like lists and blockquotes.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="code">Code</h4>
+
+<p>Fenced code blocks of many kinds are supported. The following is an example of a fenced code block beginning with <code class="highlighter-rouge">~~~~~markdown</code> and ending with <code class="highlighter-rouge">~~~~~</code>, which results in the block being syntax highlighted as Markdown.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>This is some <span class="ge">*syntax highlighted*</span> <span class="gs">**Markdown**</span>.
+
+The following is the <span class="gs">**Markdown**</span> to insert a Python code block using Github style fencing:
+
+<span class="p">```</span><span class="nl">python</span>
+<span class="c"># Some slightly verbose python code.</span>
+<span class="k">def</span> <span class="nf">add_two_operands_together</span><span class="p">(</span><span class="n">first_operand</span><span class="p">,</span> <span class="n">second_operand</span><span class="p">):</span>
+    <span class="n">result_of_adding_the_operands</span> <span class="o">=</span> <span class="n">first_operand</span> <span class="o">+</span> <span class="n">second_operand</span>
+    <span class="k">return</span> <span class="n">result_of_adding_the_operands</span>
+<span class="p">```</span>
+</code></pre>
+</div>
+
+<p>If that Python example was not wrapped in another fenced code block it output would have been:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># Some slightly verbose python code.</span>
+<span class="k">def</span> <span class="nf">add_two_operands_together</span><span class="p">(</span><span class="n">first_operand</span><span class="p">,</span> <span class="n">second_operand</span><span class="p">):</span>
+    <span class="n">result_of_adding_the_operands</span> <span class="o">=</span> <span class="n">first_operand</span> <span class="o">+</span> <span class="n">second_operand</span>
+    <span class="k">return</span> <span class="n">result_of_adding_the_operands</span>
+</code></pre>
+</div>
+
+<p>There is also <code class="highlighter-rouge">inline-block monospace</code> delimited with single back-ticks as with normal Markdown.
+However it is also possible to syntax highlight such blocks using some Kramdown specific syntax.</p>
+
+<p>Take this example of an in-line syntax highlighted block of Python: <code class="highlight language-python highlighter-rouge"><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code>.
+This was achieved by marking the code span with 2 classes that make Rouge take notice and select the correct language:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>... block of Python: <span class="sb">`def add(a, b)`</span>{: .highlight .language-python}. This was...
+</code></pre>
+</div>
+
+<p>If you have a particularly small block of code that does not require the full with given to code blocks, it is possible to make the block smaller by applying the <code class="highlighter-rouge">reading-width</code> or <code class="highlighter-rouge">other-text-width</code> class to the block.</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre>
+</div>
+
+<p>This was done by inserting <code class="highlighter-rouge"><span class="p">{</span><span class="err">:</span><span class="w"> </span><span class="err">.reading-width</span><span class="p">}</span></code> as the line immediately after the code block.</p>
+
+<h4 id="images">Images</h4>
+
+<p>By default images resize to fit the reading-with area. 
+<code class="highlighter-rouge">![A simple picture]({{ site.baseurl }}/img/a_picture.png)</code>:
+<img src="http://t3hmun.github.io/images/a_picture.png" alt="A simple picture" /></p>
+
+<p>However They can be made to scale to the other sizes by inserting them in a html div:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"other-text-width"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"{{ site.baseurl }}/images/a_picture.png"</span> <span class="na">alt=</span><span class="s">"A simple picture"</span><span class="nt">&gt;&lt;/div&gt;</span>`
+</code></pre>
+</div>
+
+<div class="other-text-width"><img src="http://t3hmun.github.io/images/a_picture.png" alt="A simple picture" /></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div&gt;&lt;img</span> <span class="na">src=</span><span class="s">"{{ site.baseurl }}/images/a_picture.png"</span> <span class="na">alt=</span><span class="s">"A simple picture"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<div><img src="http://t3hmun.github.io/images/a_picture.png" alt="A simple picture" /></div>
+
+<p>The <code class="highlighter-rouge">&lt;div&gt;</code> is required to suppress Kramdown from automatically inserting a <code class="highlighter-rouge">&lt;p&gt;</code> and also for inserting the width class for the smaller sizes.</p>
+
+<h4 id="headings">Headings</h4>
+
+<p>Although the markdown for the above header is <code class="highlighter-rouge">### Headings</code> the html is actually <code class="highlighter-rouge">&lt;h4&gt;</code>.
+The <code class="highlighter-rouge">&lt;h1&gt;</code> tag is only used for the site masthead in order to keep headers consistent with HTML section levels.
+The <code class="highlighter-rouge">header_offset 1</code> option is set in <code class="highlighter-rouge">/_config.yml</code> to make Kramdown output headings smaller by 1.</p>
+
+<p>As a result of these settings the title of the article uses <code class="highlighter-rouge">&lt;h2&gt;</code>.
+This is automatically inserted using the title in the Yaml-Front-Matter, so the <code class="highlighter-rouge"># Markdown H1</code> (which produces <code class="highlighter-rouge">&lt;h2&gt;</code>) should never be typed in the markdown article.</p>
+
+<h3 id="heading--3">Heading <code class="highlighter-rouge">##</code> 3</h3>
+
+<h4 id="heading--4">Heading <code class="highlighter-rouge">###</code> 4</h4>
+
+<h5 id="heading--5">Heading <code class="highlighter-rouge">####</code> 5</h5>
+
+<h6 id="heading--6">Heading <code class="highlighter-rouge">#####</code> 6</h6>
+
+<h6 id="heading--7">Heading <code class="highlighter-rouge">######</code> 7</h6>
+
+<p>As you can see this is the same size as the previous heading; this is because it’s the seventh heading size on the HTML page, which can’t exist, so it is defaulted to <code class="highlighter-rouge">&lt;h6&gt;</code>.
+Ideally you don’t want to be using that many sizes of headings, but if you do then you must define a custom div for it and apply manually in the Markdown.</p>
+
+<h3 id="how-to-implement">How To Implement</h3>
+
+<p>There are a few steps to make the theme your own:</p>
+
+<ul>
+  <li>Clone or download the <a href="https://github.com/t3hmun/t3hsite">repository</a></li>
+  <li>Make sure you have Jekyll and rouge installed (see <a href="http://t3hmun.github.io/article/2015/part-02-tooling-up/">Part 2: Tooling Up</a>)</li>
+  <li>Customize <code class="highlighter-rouge">/_config.yml</code></li>
+  <li>Delete or rewrite <code class="highlighter-rouge">/about/</code></li>
+  <li>Title and Description in <code class="highlighter-rouge">/index.html</code></li>
+  <li>Customise the footer in <code class="highlighter-rouge">/_layouts/base.html</code></li>
+  <li>Customise the colours in <code class="highlighter-rouge">/css/main.scss</code></li>
+</ul>
+
+<p>Finally you need to write your own blog posts.
+If there is anything else that I have forgotten, I’m sure you can figure it out.</p>
+
+</article>
+
+    </main>
+
+    <footer>
+      <div class="centre-block">
+        <div class="bar">
+          <div class="art"><a href="#top-of-page">▁▁
+scroll ╱╲ to top</a></div>
+          <br>
+          <br>
+        </div>
+        <br>
+        <div class="art">╭┬╮╭─╮┐│ ▝ 
+╵ ╵╰─╵╰╰╴▝ </div><span class="fblock">blog at t3hmun dot com</span>
+        <br> See my code at
+        <div class="art"><a href="http://github.com/t3hmun"> ╭─╴.   ╷ ╷    
+ │ ┐┐ ┼ ├─┤╷╷├╮
+ ╰─╯╰╴╰╴╵ ╵╰╯└╯</a></div>
+        <br> Site content is licensed as
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴╭─╴ ╭─╮          
+ │  │   ├─┤ttribution
+ ╰─╴╰─╴ ╵ ╵          </a></div>
+
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴     ╭─╮    
+ ╰─╮hare ├─┤like
+ ╶─╯     ╵ ╵    </a></div>
+
+        <div class="centre-block">
+          <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        </div>
+
+      </div>
+    </footer>
+
+
+    <div id="theme-changer" class="scripty">
+      <a id="lightbutton">light</a> -
+      <a id="darkbutton">dark</a> -
+      <a href="#top-of-page">top</a>
+    </div>
+
+    <div id="toc-toggle-div" class="toc-toggle">
+      <a href="" id="toctogglebutton">toc</a>
+    </div>
+
+
+  </div>
+</body>
+
+</html>

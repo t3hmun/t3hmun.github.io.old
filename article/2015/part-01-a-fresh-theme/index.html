@@ -14,15 +14,15 @@ Liquid Markup is used to customise it for each page. -->
   The design of the site must be suitable for this kind of wrapping in a smaller space. -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- A description for search engines and other non-humans. If the page has not description set default to site description. -->
-  <meta name="description" content="t3hmun's personal blog.">
+  <meta name="description" content="This is documentation of my attempt to make a Jekyll blog-site from scratch, deleting most of the default cruft, justifying every single line for maximum understanding. Learning good HTML5 and CSS along the way.">
 
   <!-- Title used by the browser and also by search engines and non-humans. -->
-  <title>Muut-Comments</title>
+  <title>Part 1: A Fresh Jekyll Site</title>
 
   <!-- The root relative url for the stylesheet. -->
   <link id="maincss" rel="stylesheet" href="http://t3hmun.github.io/css/main.css">
   <!-- The preferred URL for the page. Useful when there are multiple possible urls. -->
-  <link rel="canonical" href="http://t3hmun.github.io/muut-comments/">
+  <link rel="canonical" href="http://t3hmun.github.io/article/2015/part-01-a-fresh-theme/">
   <!-- Handy link to the RSS for the site for browsers and non-humans. -->
   <link rel="alternate" type="application/rss+xml" title="t3hmun" href="http://t3hmun.github.io/feed.xml" />
   
@@ -55,31 +55,77 @@ Liquid Markup is used to customise it for each page. -->
     </header>
 
     <main>
-      <h1 class="post-title">Muut Comments</h1>
-<h2>Things You Should be Aware of Before Using Comments</h2>
-<p>
-  Muut is a system run by a third party (Muut.inc). It is an easy way for me to accept comments at the bottom of each blog post. The comments are saved on their servers.
-</p>
-<p>
-  This also means that we are subject to their <a alt="terms of use" href="https://muut.com/terms/">terms of use</a>. A particularly significant clause being:
-</p>
-<p>
-  An extract of their terms of use 8th September 2015:
-  <blockquote>When providing us with content or posting content on Muut’s site or related third-party sites, you grant us a non-exclusive, worldwide, perpetual, irrevocable, royalty-free, sublicensable (through multiple tiers) right AND LICENSE to exercise any and all copyright, trademark, publicity, and database rights you have in the content, in any media known now or in the future.</blockquote>
-</p>
-<p>
-  This basically means that you don't want to put anything valuable in the comments. Since this is just comments, which should just be simple conversation, it shouldn't be a serious issue.
-</p>
-<p>
-  Most comment systems track the websites that you visit (it is commercially valuable data). I don't know Muut's policy on this. 
-</p>
+      <!-- 
+The base layout has this wrapped in a main section.
+This layout contains a single main article. 
+-->
+<article>
+  <h2><a href="http://t3hmun.github.io/article/2015/part-01-a-fresh-theme/">Part 1: A Fresh Jekyll Site</a></h2>
+  <footer>
+    <div class="heading-footer">
+      <span class="date">
+        Posted on:
+        <time datetime=" 2015-10-01 00:00 ">2015-10-01 at 00:00</time>
+      </span>
+      <span class="tags">      
+        <a href="http://t3hmun.github.io/archive/#article">[article] - </a>
+        <a href="http://t3hmun.github.io/archive/#theme">[theme] </a><a href="http://t3hmun.github.io/archive/#jekyll">[jekyll] </a>
+      </span>
+    </div>
+  </footer>
+  <ul class="toc" id="markdown-toc">
+  <li><a href="#what" id="markdown-toc-what">What</a></li>
+  <li><a href="#why" id="markdown-toc-why">Why?</a></li>
+  <li><a href="#why-jekyll" id="markdown-toc-why-jekyll">Why Jekyll?</a></li>
+  <li><a href="#next" id="markdown-toc-next">Next</a></li>
+</ul>
 
-<h2>Why Am I Using a Third-Party System</h2>
-<p>
-  My website is statically hosted on GitHub. This kind of hosting does not have the data saving ability required for comments. Therefore, like many people I rely on a third party.
+<h3 id="what">What</h3>
 
-  Eventually I will set up my own server, eliminating my need to rely on a third party. However this will cost money and time. It may be a while before I get around to it.
-</p>
+<p>This is a guide through my attempt to build a Jekyll blog-site design from scratch, deleting most of the default cruft, justifying every single line written for maximum understanding.
+This is my way of creating a nice theme for my site and learning good HTML5 and CSS/SASS along the way.</p>
+
+<p>I’ve added extra detail so that it can work as a tutorial to fast-forward people to my level of understanding on these topics. This is not for people who are unfamiliar with code, I assume that the reader is able to understand simple scripting such as a Liquid Markup for loop without help.
+I also assume that the reader can vaguely understand HTML and CSS.</p>
+
+<p>This project is about finding out about looking at the details and nuances that make good site design.</p>
+
+<blockquote>
+  <p><strong>A short rant on responsive design:</strong></p>
+
+  <p>Although I agree that a website should properly adapt to any screen type, I am not convinced by the ‘responsive design’ fad.
+Most of the responsive design I’ve seen encourages inconsistency, essentially hacking a page to act like totally different pages.
+I’m not interested in playing spot the hidden menu.
+Blog sites have no benefit in being as complicated as they are.</p>
+</blockquote>
+
+<h3 id="why">Why?</h3>
+
+<p>I have tried modifying the themes made by others but it has never been a satisfying experience.
+Most of the CSS/SASS that I have encountered previously has been painful to modify, it’s impossible to know what the original designer was thinking.
+The edited CSS rapidly degenerates into an impenetrable mess with more quirks than Internet Explorer.
+On top of that it simply never feels like my own design, the original template is always echoing.</p>
+
+<h3 id="why-jekyll">Why Jekyll?</h3>
+
+<ul>
+  <li>A static blog-site is all I need</li>
+  <li>Convenient</li>
+  <li>Easy to use</li>
+</ul>
+
+<p>I’ve already fiddled with Jekyll and it is satisfactory.
+I’ve considered trying other things or even writing my own tool-chain, but that seems excessive, too many better things to be doing.</p>
+
+<p>I’m not using GitHub’s version of Jekyll.
+GitHub is still fine to host the site, but the generation has to be offline.
+GitHub compatibility limits the features available and ends up being tedious.</p>
+
+<h3 id="next">Next</h3>
+
+<p>In the <a href="http://t3hmun.github.io/article/2015/part-02-tooling-up/">next part</a> we begin by installing Ruby, Jekyll and related tools.</p>
+
+</article>
 
     </main>
 

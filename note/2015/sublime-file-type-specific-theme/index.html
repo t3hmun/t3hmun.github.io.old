@@ -14,15 +14,15 @@ Liquid Markup is used to customise it for each page. -->
   The design of the site must be suitable for this kind of wrapping in a smaller space. -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- A description for search engines and other non-humans. If the page has not description set default to site description. -->
-  <meta name="description" content="t3hmun's personal blog.">
+  <meta name="description" content="How to set a separate theme for a specific syntax-type in Sublime 3.">
 
   <!-- Title used by the browser and also by search engines and non-humans. -->
-  <title>Muut-Comments</title>
+  <title>Sublime File Type Specific Theme</title>
 
   <!-- The root relative url for the stylesheet. -->
   <link id="maincss" rel="stylesheet" href="http://t3hmun.github.io/css/main.css">
   <!-- The preferred URL for the page. Useful when there are multiple possible urls. -->
-  <link rel="canonical" href="http://t3hmun.github.io/muut-comments/">
+  <link rel="canonical" href="http://t3hmun.github.io/note/2015/sublime-file-type-specific-theme/">
   <!-- Handy link to the RSS for the site for browsers and non-humans. -->
   <link rel="alternate" type="application/rss+xml" title="t3hmun" href="http://t3hmun.github.io/feed.xml" />
   
@@ -55,31 +55,57 @@ Liquid Markup is used to customise it for each page. -->
     </header>
 
     <main>
-      <h1 class="post-title">Muut Comments</h1>
-<h2>Things You Should be Aware of Before Using Comments</h2>
-<p>
-  Muut is a system run by a third party (Muut.inc). It is an easy way for me to accept comments at the bottom of each blog post. The comments are saved on their servers.
-</p>
-<p>
-  This also means that we are subject to their <a alt="terms of use" href="https://muut.com/terms/">terms of use</a>. A particularly significant clause being:
-</p>
-<p>
-  An extract of their terms of use 8th September 2015:
-  <blockquote>When providing us with content or posting content on Muut’s site or related third-party sites, you grant us a non-exclusive, worldwide, perpetual, irrevocable, royalty-free, sublicensable (through multiple tiers) right AND LICENSE to exercise any and all copyright, trademark, publicity, and database rights you have in the content, in any media known now or in the future.</blockquote>
-</p>
-<p>
-  This basically means that you don't want to put anything valuable in the comments. Since this is just comments, which should just be simple conversation, it shouldn't be a serious issue.
-</p>
-<p>
-  Most comment systems track the websites that you visit (it is commercially valuable data). I don't know Muut's policy on this. 
-</p>
+      <!-- 
+The base layout has this wrapped in a main section.
+This layout contains a single main article. 
+-->
+<article>
+  <h2><a href="http://t3hmun.github.io/note/2015/sublime-file-type-specific-theme/">Sublime File Type Specific Theme</a></h2>
+  <footer>
+    <div class="heading-footer">
+      <span class="date">
+        Posted on:
+        <time datetime=" 2015-08-08 18:00 ">2015-08-08 at 18:00</time>
+      </span>
+      <span class="tags">      
+        <a href="http://t3hmun.github.io/archive/#note">[note] - </a>
+        <a href="http://t3hmun.github.io/archive/#sublime">[sublime] </a><a href="http://t3hmun.github.io/archive/#theme">[theme] </a><a href="http://t3hmun.github.io/archive/#markdown">[markdown] </a>
+      </span>
+    </div>
+  </footer>
+  <p>Setting a separate theme for a single filetype in Sublime 3 is quite simple.
+The Markdown Extended package combined the Monokai Extended colour scheme is great but I prefer a different colour scheme for everything else.</p>
 
-<h2>Why Am I Using a Third-Party System</h2>
-<p>
-  My website is statically hosted on GitHub. This kind of hosting does not have the data saving ability required for comments. Therefore, like many people I rely on a third party.
+<ul>
+  <li>Open a file of the relevant type.</li>
+  <li>Preferences &gt; Settings - More &gt; Syntax Specific - User</li>
+  <li>Add: <code class="highlighter-rouge">"color_scheme" : "Packages/Name of package/Name of theme.tmTheme"</code></li>
+</ul>
 
-  Eventually I will set up my own server, eliminating my need to rely on a third party. However this will cost money and time. It may be a while before I get around to it.
-</p>
+<p>Finding out the name of the theme:</p>
+
+<ul>
+  <li>Prefences &gt; <code class="highlighter-rouge">Browse Packages</code> to open package folder.</li>
+  <li>If the package has its own folder there, just find the filename.</li>
+  <li>Otherwise visit the <code class="highlighter-rouge">../Installed Packages</code> folder.</li>
+  <li>Find the package, open with 7zip and find the filename.</li>
+</ul>
+
+<p>This is what my <code class="highlighter-rouge">Markdown Extended.sublime-settings</code> file looks like now:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"extensions"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"md"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+
+    </span><span class="nt">"color_scheme"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Packages/Monokai Extended/Monokai Extended.tmTheme"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+
+</article>
 
     </main>
 

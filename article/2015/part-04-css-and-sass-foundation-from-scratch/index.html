@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<!-- This is an include file because all pages use the same head.
+Liquid Markup is used to customise it for each page. -->
+<head>
+  <!-- UTF-8 is the best supported modern character-set used almost everywhere. -->
+  <meta charset="utf-8">
+  <!-- This is needed to suppress Internet Explorer's compatibility mode and make it operate with minimum quirks. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- This informs small screen devices that the content is intended to wrap inside the screen-width without scaling. 
+  This prevents the phone from rendering a miniature parody of the desktop appearance of the site.
+  The design of the site must be suitable for this kind of wrapping in a smaller space. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- A description for search engines and other non-humans. If the page has not description set default to site description. -->
+  <meta name="description" content="Removing the default CSS for a Jekyll site and laying a nice SASS foundation for building on.">
+
+  <!-- Title used by the browser and also by search engines and non-humans. -->
+  <title>Part 4: Laying a CSS and SASS Foundation from Scratch</title>
+
+  <!-- The root relative url for the stylesheet. -->
+  <link id="maincss" rel="stylesheet" href="http://t3hmun.github.io/css/main.css">
+  <!-- The preferred URL for the page. Useful when there are multiple possible urls. -->
+  <link rel="canonical" href="http://t3hmun.github.io/article/2015/part-04-css-and-sass-foundation-from-scratch/">
+  <!-- Handy link to the RSS for the site for browsers and non-humans. -->
+  <link rel="alternate" type="application/rss+xml" title="t3hmun" href="http://t3hmun.github.io/feed.xml" />
+  
+  <script src="http://t3hmun.github.io/js/theme.js"></script>
+</head>
+
+<body>
+  <div class="body-wrapper">
+
+    <header>
+      <div class="centre-block" id="top-of-page">
+        <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        <nav>
+          <div class="art miniart "><a href="http://t3hmun.github.io/about/">         ╷                     
+   ╭───╮ ├───╮╭───╮╷   ╷╶┼─╴   
+▒  │   │ │   ││   ││   │ │    ▒
+   ╰───╰ ╰───╯╰───╯╰───╯ ╰─╴   
+</a></div>
+          <div class="art miniart"><a href="http://t3hmun.github.io/archive/">                  ╷      .             
+   ╭───╮ ╭──╴╭───╴├───╮ ╶┐ ╷  ╷╭───╮   
+▒  │   │ │   │    │   │  │ └┐┌┘├───╯  ▒
+   ╰───╰ ╵   ╰───╴╵   ╵  ╰╴ └┘ ╰───╯   </a></div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- 
+The base layout has this wrapped in a main section.
+This layout contains a single main article. 
+-->
+<article>
+  <h2><a href="http://t3hmun.github.io/article/2015/part-04-css-and-sass-foundation-from-scratch/">Part 4: Laying a CSS and SASS Foundation from Scratch</a></h2>
+  <footer>
+    <div class="heading-footer">
+      <span class="date">
+        Posted on:
+        <time datetime=" 2015-10-04 00:00 ">2015-10-04 at 00:00</time>
+      </span>
+      <span class="tags">      
+        <a href="http://t3hmun.github.io/archive/#article">[article] - </a>
+        <a href="http://t3hmun.github.io/archive/#theme">[theme] </a><a href="http://t3hmun.github.io/archive/#jekyll">[jekyll] </a>
+      </span>
+    </div>
+  </footer>
+  <ul class="toc" id="markdown-toc">
+  <li><a href="#creating-a-css-base" id="markdown-toc-creating-a-css-base">Creating a CSS base</a>    <ul>
+      <li><a href="#normalize" id="markdown-toc-normalize">Normalize</a></li>
+      <li><a href="#syntax" id="markdown-toc-syntax">Syntax</a></li>
+      <li><a href="#main-css-file" id="markdown-toc-main-css-file">Main CSS File</a></li>
+      <li><a href="#include-in-the-head" id="markdown-toc-include-in-the-head">Include in the Head</a></li>
+    </ul>
+  </li>
+  <li><a href="#custom-css" id="markdown-toc-custom-css">Custom CSS</a></li>
+  <li><a href="#using-sass-variables-for-maintainability-and-consistency" id="markdown-toc-using-sass-variables-for-maintainability-and-consistency">Using SASS Variables for Maintainability and Consistency</a></li>
+  <li><a href="#next" id="markdown-toc-next">Next</a></li>
+</ul>
+
+<h3 id="creating-a-css-base">Creating a CSS base</h3>
+
+<p>The default Jekyll blog site already has a load of CSS; it already has a formatted layout.
+This is neither wanted or needed, so it has all been deleted.</p>
+
+<p>Begin by creating a new <code class="highlighter-rouge">/_sass/</code> folder.
+The is the default folder set in Jekyll for files to be used by SASS and not directly used in the website. 
+A main stylesheet will be written that imports and combines these files.</p>
+
+<blockquote>
+  <p><strong>SASS</strong></p>
+
+  <p><a href="http://sass-lang.com/">SASS</a> is a language/tool for generating CSS files.
+CSS usually get ridiculously overcomplicated as a website grows.
+SASS is an extension to CSS adding variables and extra syntax to make it easier to maintain.
+The SASS files are automatically converted into standard CSS so no special support is required to use SASS.</p>
+</blockquote>
+
+<h4 id="normalize">Normalize</h4>
+
+<p>The implementation of CSS and HTML is not consistent across web browsers.
+In order to create a consistent basic appearance the first CSS file will be <a href="https://github.com/necolas/normalize.css/">normalize.css</a>. Rename it to <code class="highlighter-rouge">_normalize.scss</code> and put it in the <code class="highlighter-rouge">/_sass/</code> folder. The extension is changed to <code class="highlighter-rouge">scss</code> because it is going to be processed with SASS.</p>
+
+<blockquote>
+  <p><strong>normalize.css</strong></p>
+
+  <p>HTML is not an exact standard, it was slowly built up over time. 
+As a result many tags appear and behave differently in each browser.
+normalize.css is a project to maintain a CSS file that creates a consistent look and behaviour across browsers.</p>
+</blockquote>
+
+<p>An alternative approach is to use a CSS reset style-sheet that remove all formatting, forcing the developer to explicitly define everything.
+Normalize seems better suited to this project since it directly deals with oddities and bugs, while leaving useful standard behaviour intact.</p>
+
+<p>While it would be educational to do a line by line analysis of <code class="highlighter-rouge">normalize.css</code> , that is outside the scope of this project. Instead it will be referred to something it directly affects is modified in the CSS.</p>
+
+<h4 id="syntax">Syntax</h4>
+
+<p>Syntax highlighting is an essential feature of any code related blog.</p>
+
+<p>This step assumes the Rouge is installed (<code class="highlighter-rouge">gem install rouge</code>) and it is set as a build option for kramdown in <code class="highlighter-rouge">config.yml</code> (<code class="highlighter-rouge">syntax_highlighter: rouge</code>).</p>
+
+<p>The syntax highlighter applies class attributes to segments of code and then a syntax stylesheet is used to apply approriate colours to those segments.<br />
+Rouge will output syntax stylesheets using the rougify command:</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>_sass
+rougify style monokai &gt; _syntax.scss
+</code></pre>
+</div>
+
+<p>In this example the <em>monokai</em> theme is chosen See <a href="https://github.com/jneen/rouge/tree/master/lib/rouge/themes">the rouge source</a> for the names of other themes. Rouge supports the stylesheets used by</p>
+
+<h4 id="main-css-file">Main CSS File</h4>
+
+<p>Now create a <code class="highlighter-rouge">/css/</code> folder.
+Notice that the name of this folder does not start with a <code class="highlighter-rouge">_</code>, it is a normal folder and will be output as-is unless a file has YAML front matter, in which case Jekyll will attempt to process it first (the underscore is not magical, it is just a convention).</p>
+
+<p>In the /css/ folder create <code class="highlighter-rouge">main.scss</code> with the following content:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">---</span>
+<span class="nn">#</span> <span class="nt">Files</span> <span class="nt">that</span> <span class="nt">are</span> <span class="nt">not</span> <span class="nt">in</span> <span class="nt">special</span> <span class="nt">directories</span> <span class="nt">require</span> <span class="nt">these</span> <span class="nt">YAML</span> <span class="nt">front</span> <span class="nt">matter</span> <span class="nt">to</span> <span class="nt">be</span> <span class="nt">processed</span> <span class="nt">by</span> <span class="nt">Jekyll</span><span class="nc">.</span>
+<span class="nt">---</span>
+<span class="k">@charset</span> <span class="s2">"utf-8"</span><span class="o">;</span>
+<span class="c1">// This is our main SASS file that brings together all the scss files to generate a main CSS file. 
+</span>
+
+<span class="c1">// Import partials from `sass_dir` (defaults to `_sass`)
+</span><span class="k">@import</span>
+        <span class="s2">"normalize"</span><span class="o">,</span>
+        <span class="s2">"syntax"</span>
+<span class="o">;</span>
+</code></pre>
+</div>
+
+<p>This will generate a main.css, importing the specified scss files in order into the website output.</p>
+
+<h4 id="include-in-the-head">Include in the Head</h4>
+
+<p>Add the stylesheet next to the metadata in <code class="highlighter-rouge">_includes/head.html</code> to apply it to the website:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}/css/main.css"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>Run <code class="highlighter-rouge">jekyll serve</code> in the project folder using the command line, then view it from <code class="highlighter-rouge">localhost:4000</code> in a browser.</p>
+
+<p>A simple website with a consistent appearance across browsers has been achieved (and pretty syntax colours).</p>
+
+<h3 id="custom-css">Custom CSS</h3>
+
+<p>So far no custom CSS has been written.
+Although this basic foundation is functional, there is a lot that can be improved in terms of usability and style.</p>
+
+<p>Make a new scss file in the sass folder, for example: <code class="highlighter-rouge">/_sass/_style.scss</code>.</p>
+
+<p>Add the file to the bottom of the imports list in <code class="highlighter-rouge">/css/main.scss</code>.
+It is important to have it at the bottom of the list so that it overrides the CSS produced from the other files.</p>
+
+<p>An obvious bit of CSS to start with is to give the body a margin:</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Reading without a margin is uncomfortable.
+Here a set size in px, not em.
+This is because the size of the margin should not depend on the text size, this risks giant margins that fill up the page, or tiny margins that serve no real purpose. This is especially an issue on mobile phones where margins are competing for a tiny screen space.</p>
+
+<p>Code blocks lack an internal margin so let that be the next addition:</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code><span class="nt">pre</span> <span class="p">{</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><em>It is important to understand the difference between padding and margin.</em>
+<em>I have not had time to write about this, but you should make sure you fully understand and experiment with swapping the two.</em></p>
+
+<h3 id="using-sass-variables-for-maintainability-and-consistency">Using SASS Variables for Maintainability and Consistency</h3>
+
+<p>Now there are 2 css elements with the same value.
+It seems likely that these values should stay the same.
+This is a nice opportunity to try out SASS variables.</p>
+
+<p>Add this to the middle of the <code class="highlighter-rouge">/css/main.scss</code> file:</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code><span class="nv">$base-gutter</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Now replace each occurrence of <code class="highlighter-rouge">10px</code> in <code class="highlighter-rouge">/style.css</code> with <code class="highlighter-rouge">$base-gutter</code>.
+This is a SASS variable.</p>
+
+<p>From this point on all sizes and colours will be defined in <code class="highlighter-rouge">/css/main.scss</code> as a variable.
+This allows instant modification of colours and sizes from a clean un-cluttered file.
+As the style customisation grows the <code class="highlighter-rouge">style.scss</code> will grow large and hard coded colours and sizes can become very hard to track down.
+This also helps maintain consistency as it forces the developer to refer to their palette of sizes and colours defined in the main file.
+Prevents the proliferation of odd and mismatched features.</p>
+
+<h3 id="next">Next</h3>
+
+<p>Now this is a truly minimal Jekyll theme with syntax highlighting.</p>
+
+<p>The <a href="http://t3hmun.github.io/article/2015/part-05-guide-to-the-complete-theme">next part</a> will be about appling formatting that <em>I believe</em> is most suitable for a blog.
+Even if you disagree with it, it should be interesting.</p>
+
+</article>
+
+    </main>
+
+    <footer>
+      <div class="centre-block">
+        <div class="bar">
+          <div class="art"><a href="#top-of-page">▁▁
+scroll ╱╲ to top</a></div>
+          <br>
+          <br>
+        </div>
+        <br>
+        <div class="art">╭┬╮╭─╮┐│ ▝ 
+╵ ╵╰─╵╰╰╴▝ </div><span class="fblock">blog at t3hmun dot com</span>
+        <br> See my code at
+        <div class="art"><a href="http://github.com/t3hmun"> ╭─╴.   ╷ ╷    
+ │ ┐┐ ┼ ├─┤╷╷├╮
+ ╰─╯╰╴╰╴╵ ╵╰╯└╯</a></div>
+        <br> Site content is licensed as
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴╭─╴ ╭─╮          
+ │  │   ├─┤ttribution
+ ╰─╴╰─╴ ╵ ╵          </a></div>
+
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴     ╭─╮    
+ ╰─╮hare ├─┤like
+ ╶─╯     ╵ ╵    </a></div>
+
+        <div class="centre-block">
+          <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        </div>
+
+      </div>
+    </footer>
+
+
+    <div id="theme-changer" class="scripty">
+      <a id="lightbutton">light</a> -
+      <a id="darkbutton">dark</a> -
+      <a href="#top-of-page">top</a>
+    </div>
+
+    <div id="toc-toggle-div" class="toc-toggle">
+      <a href="" id="toctogglebutton">toc</a>
+    </div>
+
+
+  </div>
+</body>
+
+</html>

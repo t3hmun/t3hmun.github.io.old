@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<!-- This is an include file because all pages use the same head.
+Liquid Markup is used to customise it for each page. -->
+<head>
+  <!-- UTF-8 is the best supported modern character-set used almost everywhere. -->
+  <meta charset="utf-8">
+  <!-- This is needed to suppress Internet Explorer's compatibility mode and make it operate with minimum quirks. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- This informs small screen devices that the content is intended to wrap inside the screen-width without scaling. 
+  This prevents the phone from rendering a miniature parody of the desktop appearance of the site.
+  The design of the site must be suitable for this kind of wrapping in a smaller space. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- A description for search engines and other non-humans. If the page has not description set default to site description. -->
+  <meta name="description" content="Stripping out the basic HTML and starting with a clean and well understood structure.">
+
+  <!-- Title used by the browser and also by search engines and non-humans. -->
+  <title>Part 3: Clean Basic HTML</title>
+
+  <!-- The root relative url for the stylesheet. -->
+  <link id="maincss" rel="stylesheet" href="http://t3hmun.github.io/css/main.css">
+  <!-- The preferred URL for the page. Useful when there are multiple possible urls. -->
+  <link rel="canonical" href="http://t3hmun.github.io/article/2015/part-03-clean-basic-html/">
+  <!-- Handy link to the RSS for the site for browsers and non-humans. -->
+  <link rel="alternate" type="application/rss+xml" title="t3hmun" href="http://t3hmun.github.io/feed.xml" />
+  
+  <script src="http://t3hmun.github.io/js/theme.js"></script>
+</head>
+
+<body>
+  <div class="body-wrapper">
+
+    <header>
+      <div class="centre-block" id="top-of-page">
+        <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        <nav>
+          <div class="art miniart "><a href="http://t3hmun.github.io/about/">         ╷                     
+   ╭───╮ ├───╮╭───╮╷   ╷╶┼─╴   
+▒  │   │ │   ││   ││   │ │    ▒
+   ╰───╰ ╰───╯╰───╯╰───╯ ╰─╴   
+</a></div>
+          <div class="art miniart"><a href="http://t3hmun.github.io/archive/">                  ╷      .             
+   ╭───╮ ╭──╴╭───╴├───╮ ╶┐ ╷  ╷╭───╮   
+▒  │   │ │   │    │   │  │ └┐┌┘├───╯  ▒
+   ╰───╰ ╵   ╰───╴╵   ╵  ╰╴ └┘ ╰───╯   </a></div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- 
+The base layout has this wrapped in a main section.
+This layout contains a single main article. 
+-->
+<article>
+  <h2><a href="http://t3hmun.github.io/article/2015/part-03-clean-basic-html/">Part 3: Clean Basic HTML</a></h2>
+  <footer>
+    <div class="heading-footer">
+      <span class="date">
+        Posted on:
+        <time datetime=" 2015-10-03 00:00 ">2015-10-03 at 00:00</time>
+      </span>
+      <span class="tags">      
+        <a href="http://t3hmun.github.io/archive/#article">[article] - </a>
+        <a href="http://t3hmun.github.io/archive/#theme">[theme] </a><a href="http://t3hmun.github.io/archive/#jekyll">[jekyll] </a>
+      </span>
+    </div>
+  </footer>
+  <ul class="toc" id="markdown-toc">
+  <li><a href="#strip-to-minimal-html" id="markdown-toc-strip-to-minimal-html">Strip to Minimal HTML</a></li>
+  <li><a href="#no-css-yet" id="markdown-toc-no-css-yet">No CSS (yet)</a></li>
+  <li><a href="#html5-and-the-spec" id="markdown-toc-html5-and-the-spec">HTML5 and the Spec</a></li>
+  <li><a href="#the-head" id="markdown-toc-the-head">The HEAD</a>    <ul>
+      <li><a href="#line-by-line-analysis-of-the-head" id="markdown-toc-line-by-line-analysis-of-the-head">Line by Line Analysis of the Head</a></li>
+    </ul>
+  </li>
+  <li><a href="#a-primer-on-html5-the-section-and-flow-model" id="markdown-toc-a-primer-on-html5-the-section-and-flow-model">A Primer on HTML5 the Section and Flow Model</a>    <ul>
+      <li><a href="#hierarchy" id="markdown-toc-hierarchy">Hierarchy</a></li>
+      <li><a href="#magical-headings" id="markdown-toc-magical-headings">Magical Headings</a></li>
+    </ul>
+  </li>
+  <li><a href="#the-base-layout" id="markdown-toc-the-base-layout">The Base Layout</a></li>
+  <li><a href="#the-post-layout" id="markdown-toc-the-post-layout">The Post Layout</a></li>
+  <li><a href="#the-index-page" id="markdown-toc-the-index-page">The Index Page</a></li>
+  <li><a href="#next" id="markdown-toc-next">Next</a></li>
+</ul>
+
+<h3 id="strip-to-minimal-html">Strip to Minimal HTML</h3>
+
+<p>The default Jekyll site includes the following HTML files:</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>/about.md
+/index.html
+/_includes/
+    footer.html
+    head.html
+    header.html
+/_layouts/
+    default.html
+    page.html
+    post.html
+</code></pre>
+</div>
+
+<p>Files and folders beinning with an underscore are not copied to the output.
+However the <code class="highlighter-rouge">/_includes</code> and <code class="highlighter-rouge">/_layouts</code> folder are configured as special by default.</p>
+
+<p>The layouts serve as templates for creating other pages.
+These are useful as they allow quick modifcation of common elements of the pages such as titles and menus.
+All pages using the layout are automatically regenerated.</p>
+
+<p>The inclides are just chunks of markup reused within other layouts.</p>
+
+<p>Start by deleting <code class="highlighter-rouge">/about.md</code>, <code class="highlighter-rouge">/header.html</code>, <code class="highlighter-rouge">/footer.html</code> and <code class="highlighter-rouge">/page.html</code>.
+This simple design will not require these files.</p>
+
+<h3 id="no-css-yet">No CSS (yet)</h3>
+
+<p>Delete the <code class="highlighter-rouge">/css/</code> and <code class="highlighter-rouge">/_sass/</code> directories.
+To begin with the page will rely entirely on the browser’s own CSS (browsers use CSS internally to implement default styles).</p>
+
+<p>It is a good sign if a site makes sense using only the default browser stylesheet.
+Although it is nice to use custom style to improve the readability and experience of a page, <strong>a webpage should not rely on custom style to convey information</strong>.
+Reliance on style creates difficulty when attempting to deliver the content in different contexts.
+For accessibility purposes, style does not translate to speech very easily.
+People with sight issues may rely on simplified stylesheets (<a href="http://people.ds.cam.ac.uk/ssb22/css/?whatLookLike">check this out</a>) that cannot interpret custom style nuances.</p>
+
+<p>We will start building custom CSS / SASS in the next part.</p>
+
+<h3 id="html5-and-the-spec">HTML5 and the Spec</h3>
+
+<p>In an attempt to work with the most up-to-date HTML5 standard, references will be made to the <em><a href="http://www.w3.org/TR/2015/WD-html51-20151003/">HTML 5.1 W3C Working Draft 03 October 2015</a></em>, which is the most recent version as of writing.</p>
+
+<p>The spec is continuously changing and being updated in a somewhat chaotic process; all the major browser companies tend to uniquely implement features according to their own interpretation and needs.
+As a result parts of the spec get revised and specified in different ways by different people, resulting in slow and messy progress.
+However this is not fundamentally bad, ideas get tested and proven in the real world before becoming permanent.</p>
+
+<p>What this means to this project is that <em>good HTML5</em> is not a perfect concept set in stone.
+A small amount of compromises and hacks have to be made to ensure compatibility and consistency in appearance.</p>
+
+<h3 id="the-head">The HEAD</h3>
+
+<p>The <code class="highlighter-rouge">&lt;head&gt;</code> of a HTML file is used for metadata.
+This is quite important as some of the metaadata tags can alter the way the browser displays the page.
+The head meta also affect how search engines look at the page; while this project is not particularly concerned with SEO, it is nice to have thing appear appropriately when they do appear in search results.</p>
+
+<p>The default <code class="highlighter-rouge">/head.html</code> generated by Jekyll is mostly kept intact.
+Some of the extra variable options have been removed because they are unnecessary.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"{% if page.description == nil %}{{ site.description }}{% else %}{{ page.description }}{% endif %}"</span><span class="nt">&gt;</span>
+
+  <span class="nt">&lt;title&gt;</span>{{ page.title }}<span class="nt">&lt;/title&gt;</span>
+
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}/css/main.css"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}{{ page.url | replace:'index.html','' }}"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"alternate"</span> <span class="na">type=</span><span class="s">"application/rss+xml"</span> <span class="na">title=</span><span class="s">"{{ site.title }}"</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}/feed.xml"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="line-by-line-analysis-of-the-head">Line by Line Analysis of the Head</h4>
+
+<p>Charset information required in HTML5, UTF-8 has wide language support and seems to be universally supported for everything internet: <code class="highlight language-html highlighter-rouge"><span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span></code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>This meta tag is required to prevent Internet Explorer from suggesting or using compatibility mode.
+It encourages Microsoft browsers to use an up-to-date standard mode, with (hopefully) less quirks.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>This is used to allow proper scaling and layout on mobile phones. <code class="highlighter-rouge">width=device-width</code> tells the mobile phone that the intended width of the page should match the device. This is a good default for a blog where the content should wrap inside the screen, maintaining the sensible default text size. This should probably be changed if a exact pixel width layout is used (not recommended unless aesthetics is the only thing that matters). <code class="highlighter-rouge">initial-scale</code> sets the initial zoom. With the page width matching the device, a basic zoom of 1 makes sense. See <a href="https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag">this Mozilla Developer page</a> for a better description.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"{% if page.description == nil %}{{ site.description }}{% else %}{{ page.description }}{% endif %}"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>The description meta tag is used by search engines to show a description of the page to a user.
+Most search engines don’t use the description for the search ranking (it is abusable), they look at the page contents directly.</p>
+
+<blockquote>
+  <p><strong>Liquid Markup</strong></p>
+
+  <p>This is the first encounter with liquid markup in this project. 
+Liquid markup is a templating language, which is used to arrange page content in Jekyll.
+It is processed when Jekyll builds the site.
+It has 2 types of tags , <code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">aVariable</span><span class="w"> </span><span class="p">}</span><span class="err">}</span></code> double braces for output and <code class="highlighter-rouge"><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">%</span><span class="p">}</span></code> brace with a percent sign for logic commands.</p>
+
+  <p>There are some <a href="http://jekyllrb.com/docs/variables/">automatically defined variables provided by Jekyll</a>, which help layout the site and individual pages.
+Variables defined in the yaml section at the top of the page can be accessed as a child of the page variable.
+Most of Liquid Markup is self explanatory.</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nn">---</span>
+<span class="s">layout</span><span class="pi">:</span> <span class="s">base</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">t3hsite,</span><span class="nv"> </span><span class="s">t3hmun's</span><span class="nv"> </span><span class="s">project</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">learn</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">make</span><span class="nv"> </span><span class="s">good</span><span class="nv"> </span><span class="s">quality</span><span class="nv"> </span><span class="s">html5</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">css/sass</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">Jekyll."</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">I</span><span class="nv"> </span><span class="s">don't</span><span class="nv"> </span><span class="s">like</span><span class="nv"> </span><span class="s">other</span><span class="nv"> </span><span class="s">people's</span><span class="nv"> </span><span class="s">themes</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">I</span><span class="nv"> </span><span class="s">want</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">learn</span><span class="nv"> </span><span class="s">how</span><span class="nv"> </span><span class="s">make</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">site</span><span class="nv"> </span><span class="s">properly</span><span class="nv"> </span><span class="s">so</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">works</span><span class="nv"> </span><span class="s">reliable</span><span class="nv"> </span><span class="s">while</span><span class="nv"> </span><span class="s">being</span><span class="nv"> </span><span class="s">easy</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">maintain."</span>
+<span class="nn">---</span>
+</code></pre>
+</div>
+
+<p>The use of <code class="highlighter-rouge">page.description</code> and <code class="highlighter-rouge">page.title</code> means that every page will need the title and description defined in the yaml section, for example the above is the what I put at the top of my <code class="highlighter-rouge">index.html</code>.
+This title and description will also be used in the site’s own index/archive pages. 
+<code class="highlighter-rouge">site.description</code> is the description variable set in the main <code class="highlighter-rouge">_config.yml</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}{{ page.url | replace:'index.html','' }}"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>The canonical url is used by search engines to refer to the main version of a page and ignore duplicate urls.
+The liquid script removes <code class="highlighter-rouge">index.html</code> (if present) and adds the full url of the website.
+This might seem odd until you see the default directory and page structure that Jekyll uses.
+Canonical is also useful for creating permalink versions of paginated pages (a subject for another day).</p>
+
+<blockquote>
+  <p><strong>Directory Named Pages</strong></p>
+
+  <p>Although it is not compulsory Jekyll encourages the the use of directory-named pages instead of pages with file-names. For example <code class="highlighter-rouge">/about/index.html</code> instead of <code class="highlighter-rouge">/about.html</code>. The version in the directory can be accessed using just the <code class="highlighter-rouge">/about/</code> directory as the link; this is what the Liquid markup creates as the canonical link.</p>
+
+  <p>Directory named pages are useful because the extension for the page file can change over time; say you decide to start using PHP, <code class="highlighter-rouge">/about/index.php</code> would work with the same canonical <code class="highlighter-rouge">/about/</code> link (well this actually depends on the server configuration).</p>
+
+  <p>Also they are shorter, look neat, and can be used to make flowing neat structures like <code class="highlighter-rouge">/about/more-info/</code> instead of <code class="highlighter-rouge">about-more-info.html</code>.</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"alternate"</span> <span class="na">type=</span><span class="s">"application/rss+xml"</span> <span class="na">title=</span><span class="s">"{{ site.title }}"</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}/feed.xml"</span> <span class="nt">/&gt;</span>
+</code></pre>
+</div>
+
+<p>This simply allows the RSS page to be automatically detected.</p>
+
+<p>And that is the standard head section, complete for any normal web-page.</p>
+
+<h3 id="a-primer-on-html5-the-section-and-flow-model">A Primer on HTML5 the Section and Flow Model</h3>
+
+<h4 id="hierarchy">Hierarchy</h4>
+
+<p>From the <a href="http://www.w3.org/TR/2015/WD-html51-20151003/dom.html#sectioning-content">HTML5 spec</a>:</p>
+
+<blockquote>
+  <p>Sectioning content is content that defines the scope of headings and footers.</p>
+
+  <p><a href="http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-article-element"><code class="highlighter-rouge">article</code></a> <a href="http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-aside-element"><code class="highlighter-rouge">aside</code></a> <a href="http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-nav-element"><code class="highlighter-rouge">nav</code></a> <a href="http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-section-element"><code class="highlighter-rouge">section</code></a></p>
+</blockquote>
+
+<p>Sub-sections are defined by nesting these sectioning tags within one another. The heading ranks should shrink correspondingly.</p>
+
+<p>The <code class="highlighter-rouge">main</code>, <code class="highlighter-rouge">header</code> and <code class="highlighter-rouge">footer</code> tags are <strong>not</strong> sectioning tags, although they are very useful for logically separating content.
+These tags are used by machines to understand the context of high level content.
+This is intended to be used by accessibility aids such as screen readers to deliver content appropriately.
+This does not seem to be well supported yet so the addition of ARIA (accessibility standards) role attributes helps.
+It is also likely to be used by things such as Firefox’s reading feature in the future.</p>
+
+<dl>
+  <dt><code class="highlighter-rouge">article</code></dt>
+  <dd>The article tag is any <em>self-contained composition</em> that may be <em>suitable for syndication</em> as the <a href="http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-article-element">spec puts it</a>.
+This is not restricted to the English definition of the word article.
+Interestingly the spec considers individual blog comments as articles, possibly because they can be thought of a thread of posts.</dd>
+  <dt><code class="highlighter-rouge">section</code></dt>
+  <dd>The least specific of the sectioning elements, could be anything that has a heading and is not one of the other sectioning elements.
+Often the child of other sectioning elements.</dd>
+  <dt><code class="highlighter-rouge">nav</code></dt>
+  <dd>This <a href="http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-nav-element">spec lists this</a> as having 2 main purposes.
+Navigation between pages and navigation within a page.
+Ideally not all sections of links should be put in nav elements, only the ones immediately important to the site.
+This is good for assistive technologies that need to be able to recognise the most salient links for the user in each context.</dd>
+  <dt><code class="highlighter-rouge">aside</code></dt>
+  <dd>Used for sidebar or tangential content that is not essential.
+The <a href="http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#the-aside-element">spec</a> seems to encourage the use of asides to contain nav elements with lists of links to external sites.</dd>
+</dl>
+
+<h4 id="magical-headings">Magical Headings</h4>
+
+<p>In order to support the sectioning model and reduce redundancy in HTML5, the H1 tag is automatically shrunk by one header level for each parent sectioning tag. The idea here is that the designer only uses H1 and lets the hierarchy of sections automatically set the correct heading size.</p>
+
+<p>This automatic shrinking only affects the H1 tag, the other heading elements maintain their default size. This results in an awkward quirk if sectioning and different header tags are mixed; the H1 tag can appear the same size or smaller than lower rank headers. In order to avoid this the <a href="http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#headings-and-sections">spec recommends</a>:</p>
+
+<blockquote>
+  <p>Sections may contain headings of any rank, but authors are strongly encouraged to either use only h1 elements, or to use elements of the appropriate rank for the section’s nesting level.</p>
+</blockquote>
+
+<p>This is followed by :</p>
+
+<blockquote>
+  <p>Authors are also encouraged to explicitly wrap sections in elements of sectioning content, instead of relying on the implicit sections generated by having multiple headings in one element of sectioning content.</p>
+</blockquote>
+
+<p>Which is suggesting that sections should always be used. But then there is this warning:</p>
+
+<blockquote>
+  <p>There are currently no known implementations of the outline algorithm in graphical browsers or assistive technology user agents, although the algorithm is implemented in other software such as conformance checkers. Therefore the outline algorithm cannot be relied upon to convey document structure to users. Authors are advised to use heading rank (h1-h6) to convey document structure.</p>
+</blockquote>
+
+<p>This leaves a single possibility, use a sectioning hierarchy with a range of header tags perfectly reflecting that hierarchy. This also implies that the page as a whole will use the H1, forcing the first sectioning element to begin with H2, consequently the blog post will be forced to start with a H2. If the title of the blog is set as a H1 it will automatically shrink down to H2 size because the blog post will be contained within an <code class="highlighter-rouge">article</code> sectioning element. In practice this will result in the need for CSS to bump up the header sizes.</p>
+
+<h3 id="the-base-layout">The Base Layout</h3>
+
+<p>Start by re-naming <code class="highlighter-rouge">/default.html</code> to <code class="highlighter-rouge">/base.html</code>.
+The intention of this file is to serve as the base for other files, so the naming should reflect that.</p>
+
+<p>The base file contains the  essential HTML, including the head, header (site masthead), nav (site navigation links) and footer (external links and other information). In the middle is the main section which has a include for content, which could be the content of any page on the website that uses this layout. This is demonstrated in the spec in the [headings section]</p>
+
+<p>This is a small blog site so the contents of the nav and footer are manually arranged. In a larger site with more links this would be done using Liquid Markup, pulling the content from a simple to edit data file.</p>
+
+<p>The leading <code class="highlighter-rouge"><span class="cp">&lt;!DOCTYPE html&gt;</span></code> is essential as the first test in any HTML5 file. Without it browsers may attempt to interpret the page in some king of compatibility quirk mode, resulting in an unpredictable layout.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="c">&lt;!-- 
+This is the base HTML file serves as the template for all pages on the site.
+
+The language of the site is set in the HTML tag. 
+Specifying GB so that robots read the page in an British accent.
+Useful for translating, spell-checking, screen reading among other things. 
+--&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en-GB"</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!-- 
+  The head included using Liquid Markup.
+  The head is chunky with long lines, much easier to maintain in a separate file.
+  --&gt;</span>
+  {% include head.html %}
+
+  <span class="c">&lt;!-- HTML requires all visible content to occur within the body. --&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="c">&lt;!-- 
+    The visible content is split between the nav, main and a footer sectioning elements.
+    
+    Header tag is not needed if the header is fully contained in a h# tag.
+    It is conventional (and useful) for the masthead to link to the homepage.
+    --&gt;</span>
+    <span class="nt">&lt;h1&gt;&lt;a</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}/"</span><span class="nt">&gt;</span>{{ site.title }}<span class="nt">&lt;/a&gt;&lt;/h1&gt;</span>
+
+    <span class="c">&lt;!-- The navigation for a personal blog is small. --&gt;</span>
+    <span class="nt">&lt;nav&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"site-nav"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}/about/"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span> │
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}/archive/"</span><span class="nt">&gt;</span>Archive<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/nav&gt;</span>
+
+    <span class="c">&lt;!-- 
+    Pages using this layout will have their primary content inserted here.
+    The main tag helps machines separate the real content from the surrounding fluff.
+    A sectioning element should wrap the content in the content file (article or section).
+    --&gt;</span>
+    <span class="nt">&lt;main&gt;</span>
+      {{ content }} <span class="c">&lt;!-- It is a variable, not magic. --&gt;</span>
+    <span class="nt">&lt;/main&gt;</span>
+    
+    <span class="c">&lt;!-- 
+    The footer contains unimportant links and external links. 
+    Content links live in the nav at the top of the page.
+    This is not for navigation but for other things of interest.
+    --&gt;</span>
+    <span class="nt">&lt;footer&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"site-footer"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}/feed.xml"</span><span class="nt">&gt;</span>RSS<span class="nt">&lt;/a&gt;</span> 
+        -
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://github.com/t3hmun"</span><span class="nt">&gt;</span>My Github<span class="nt">&lt;/a&gt;</span> 
+        -
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://t3hmun.github.io"</span><span class="nt">&gt;</span>My Main Site<span class="nt">&lt;/a&gt;</span> 
+        - 
+        blog <span class="nt">&lt;em&gt;</span>at<span class="nt">&lt;/em&gt;</span> t3hmun <span class="nt">&lt;em&gt;</span>dot<span class="nt">&lt;/em&gt;</span> com
+
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/footer&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="the-post-layout">The Post Layout</h3>
+
+<p>The template for a blog post is very simple:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+# Uses the base layout so all of the content from this file will be inserted in the body.
+layout: base
+---
+
+<span class="c">&lt;!-- 
+The base layout has this wrapped in a main section.
+This layout contains a single main article. 
+--&gt;</span>
+<span class="nt">&lt;article&gt;</span>
+  <span class="c">&lt;!-- 
+  This article tag is nested once making the H2 the correct heading level.
+  Following the recommendations and warnings in the HTML5.1 spec [1] the header level must follow the section level.
+  H1 cannot be used here because the sectioning would cause it to shrink to H2 level.
+  [1](http://www.w3.org/TR/2015/WD-html51-20151003/semantics.html#headings-and-sections) - October 2015
+  --&gt;</span>
+  <span class="nt">&lt;h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}{{ page.url }}"</span><span class="nt">&gt;</span>{{ page.title }}<span class="nt">&lt;/a&gt;&lt;/h2&gt;</span>
+  <span class="nt">&lt;footer&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"heading-footer"</span><span class="nt">&gt;</span>Posted on:
+    <span class="c">&lt;!-- The datetime attribute contains a machine readable date. --&gt;</span>
+    <span class="nt">&lt;time</span> <span class="na">datetime=</span><span class="s">"{{ page.date | date: "</span> <span class="err">%</span><span class="na">F</span> <span class="err">%</span><span class="na">H:</span><span class="err">%</span><span class="na">M</span> <span class="err">"</span> <span class="err">}}"</span><span class="nt">&gt;</span>{{ page.date | date: "%F at %H:%M" }}<span class="nt">&lt;/time&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;/footer&gt;</span>
+  <span class="c">&lt;!--
+  The Kramdown html output of a blog page written in markdown will be inserted as the content variable (the page must reference this file as layout). 
+  To ensure that Kramdown begins with the correct heading levels the following option can be inserted in _config.yml.
+  kramdown:
+    header_offset: 1
+  --&gt;</span>
+  {{ content }}
+<span class="nt">&lt;/article&gt;</span>
+
+</code></pre>
+</div>
+
+<p>A the beginning is the yaml from matter, which specifies that this uses the base layout.
+That takes care of all of the essential HTML and site masthead, nav and so on.</p>
+
+<p>The post is wrapped in an article tag, because it is an independently coherent section suitable for syndication.</p>
+
+<p>The markdown of a blog post using this layout would be converted to HTML and inserted as the <code class="highlighter-rouge">content</code> variable.
+The <code class="highlighter-rouge">header_offset: 1</code> build option should have been added to <code class="highlighter-rouge">kramdown:</code> section of <code class="highlighter-rouge">_config.yml</code> to ensure its headings follow on from the <code class="highlighter-rouge">h2</code> title.</p>
+
+<h3 id="the-index-page">The Index Page</h3>
+
+<p>The index page is written in html because it’s content is unique and not particularly suited to being written in markdown like blog posts. It uses the base layout like all other pages.</p>
+
+<p>Liquid Markup is used to display the title description and date of the 10 most recent blog posts.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+layout: base
+title: "t3hsite, t3hmun's project to learn and make good quality html5 and css/sass with Jekyll."
+description: "This is project to make a reliable, maintainable and most importantly user-friendly theme for Jekyll from scratch, while learning good HTML5 and SASS/CSS."
+---
+
+<span class="c">&lt;!-- 
+Nothing on this page is an article of any sort.
+This is simply a welcome mat.
+
+This description is part of the top level of the site (H1 rank).
+--&gt;</span>
+<span class="nt">&lt;p&gt;</span>{{ page.description }}<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;section&gt;</span>
+  <span class="c">&lt;!-- The header levels follow sectioning depth. --&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>Recent Posts<span class="nt">&lt;/h2&gt;</span>
+  <span class="c">&lt;!-- 
+  Use Liquid to iterate through the 10 most recent posts in the site.
+  The title date and description for each page is also extracted using Liquid. 
+  --&gt;</span>
+  {% for post in site.posts limit:10 %}
+
+    <span class="nt">&lt;section&gt;</span>
+      <span class="c">&lt;!-- &lt;header&gt; tag should only be used if the header is more than a single &lt;h#&gt; tag. --&gt;</span>
+      <span class="nt">&lt;h3&gt;&lt;a</span> <span class="na">class=</span><span class="s">"post-link"</span> <span class="na">href=</span><span class="s">"{{ site.baseurl }}{{ post.url }}"</span><span class="nt">&gt;</span>{{ post.title }}<span class="nt">&lt;/a&gt;&lt;/h3&gt;</span>
+      <span class="nt">&lt;p&gt;</span>{{ post.description }}<span class="nt">&lt;/p&gt;</span>
+      <span class="c">&lt;!-- Footer tag used for information about the article. --&gt;</span>
+      <span class="nt">&lt;footer&gt;</span>
+        Posted on:
+        <span class="c">&lt;!-- The datetime attribute contains a machine readable date. --&gt;</span>
+        <span class="nt">&lt;time</span> <span class="na">datetime=</span><span class="s">"{{ post.date | date: "</span> <span class="err">%</span><span class="na">F</span> <span class="err">%</span><span class="na">H:</span><span class="err">%</span><span class="na">M</span> <span class="err">"</span> <span class="err">}}"</span><span class="nt">&gt;</span>{{ post.date | date: "%F at %H:%M" }}<span class="nt">&lt;/time&gt;</span>
+      <span class="nt">&lt;/footer&gt;</span>
+    <span class="nt">&lt;/section&gt;</span>
+
+  {% endfor %}
+
+<span class="nt">&lt;/section&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="next">Next</h3>
+
+<p>If it has not been done already, now is a good time to make some basic test blog posts.</p>
+
+<p>Next is <a href="http://t3hmun.github.io/article/2015/part-04-css-and-sass-foundation-from-scratch/">CSS and SASS</a>. Colour and style, but never forgetting usability.</p>
+
+</article>
+
+    </main>
+
+    <footer>
+      <div class="centre-block">
+        <div class="bar">
+          <div class="art"><a href="#top-of-page">▁▁
+scroll ╱╲ to top</a></div>
+          <br>
+          <br>
+        </div>
+        <br>
+        <div class="art">╭┬╮╭─╮┐│ ▝ 
+╵ ╵╰─╵╰╰╴▝ </div><span class="fblock">blog at t3hmun dot com</span>
+        <br> See my code at
+        <div class="art"><a href="http://github.com/t3hmun"> ╭─╴.   ╷ ╷    
+ │ ┐┐ ┼ ├─┤╷╷├╮
+ ╰─╯╰╴╰╴╵ ╵╰╯└╯</a></div>
+        <br> Site content is licensed as
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴╭─╴ ╭─╮          
+ │  │   ├─┤ttribution
+ ╰─╴╰─╴ ╵ ╵          </a></div>
+
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴     ╭─╮    
+ ╰─╮hare ├─┤like
+ ╶─╯     ╵ ╵    </a></div>
+
+        <div class="centre-block">
+          <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        </div>
+
+      </div>
+    </footer>
+
+
+    <div id="theme-changer" class="scripty">
+      <a id="lightbutton">light</a> -
+      <a id="darkbutton">dark</a> -
+      <a href="#top-of-page">top</a>
+    </div>
+
+    <div id="toc-toggle-div" class="toc-toggle">
+      <a href="" id="toctogglebutton">toc</a>
+    </div>
+
+
+  </div>
+</body>
+
+</html>
