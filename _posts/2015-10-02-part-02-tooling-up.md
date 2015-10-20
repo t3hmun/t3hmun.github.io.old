@@ -138,4 +138,4 @@ This is done to demote the title of the blog post to H2; H1 is only suitable for
 
 ## Next
 
-The [next part]({{ site.baseurl }}/2015/part-03-clean-basic-html/) will involve deleting a lot and arranging some fresh clean HTML.
+The [next part]({{ site.baseurl }}/article/2015/part-03-clean-basic-html/) will involve deleting a lot and arranging some fresh clean HTML.

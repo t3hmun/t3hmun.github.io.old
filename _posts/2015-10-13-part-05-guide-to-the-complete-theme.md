@@ -10,9 +10,12 @@ tags: theme jekyll
 * TOC
 {:toc .toc}
 
+The theme of this page is a developed derivative of the theme discussed in this article.
+The original is [t3hsite](http://t3hmun.github.io/t3hsite/) (repository [link](https://github.com/t3hmun/t3hsite)).
+
 ## Overview
 
-After laying out the basics I proceeded to complete the theme using similar ideas to my original messy [Rather Simple Jekyll Theme]().
+After laying out the basics I proceeded to complete the theme using similar ideas to my original messy [Rather Simple Jekyll Theme](http://t3hmun.github.io/rather-simple-jekyll-theme/).
 However this time I had a the plan in place before proceeding to write it, hence the theme layout is much neater.
 It is also comprehensively commented, most of the ideas are laid out at the top of `/css/main.scss` and `_sass/_style.scss`.
 Nevertheless an article is a much better format for such documentation.
@@ -49,7 +52,7 @@ All sizes and colours are defined in variables in a single file `/css/main.scss`
 This means that you do not have to search through reams of CSS to change a size or colour.
 Simply find the relevant entry in the main file and change the value once for everything.
 
-Switching to a dark theme requires changing 2 colours and using `rougify` to output a suitable syntax stylesheet (see [Part 4 #Syntax]({{ site.baseurl }}/2015/part-04 css-and-sass-foundation-from-scratch.html#syntax)).
+Switching to a dark theme requires changing 2 colours and using `rougify` to output a suitable syntax stylesheet (see [Part 4 #Syntax]({{ site.baseurl }}/article/2015/part-04-css-and-sass-foundation-from-scratch/#syntax)).
 
 There are very few classes used for styling.
 I've tried to stick to the basic HTML tags for most things.
@@ -182,10 +185,10 @@ Ideally you don't want to be using that many sizes of headings, but if you do th
 
 ## How To Implement
 
-There are a few steps to make this theme your own:
+There are a few steps to make the theme your own:
 
- * Clone or download this repository
- * Make sure you have Jekyll and rouge installed (see [Part 2: Tooling Up]({{ site.baseurl }}/2015/part-02-tooling-up.html))
+ * Clone or download the [repository](https://github.com/t3hmun/t3hsite)
+ * Make sure you have Jekyll and rouge installed (see [Part 2: Tooling Up]({{ site.baseurl }}/article/2015/part-02-tooling-up/))
  * Customize `/_config.yml`
  * Delete or rewrite `/about/`
  * Title and Description in `/index.html`

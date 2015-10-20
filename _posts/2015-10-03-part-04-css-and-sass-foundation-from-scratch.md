@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Part 3: Laying a CSS and SASS Foundation from Scratch"
+title: "Part 4: Laying a CSS and SASS Foundation from Scratch"
 date: 2015-10-04
 description: Removing the default CSS for a Jekyll site and laying a nice SASS foundation for building on.
 category: article
@@ -164,5 +164,5 @@ Prevents the proliferation of odd and mismatched features.
 
 Now this is a truly minimal Jekyll theme with syntax highlighting.
 
-The [next part]({{ site.baseurl }}/2015/part-05-guide-to-the-complete-theme) will be about appling formatting that _I believe_ is most suitable for a blog.
+The [next part]({{ site.baseurl }}/article/2015/part-05-guide-to-the-complete-theme) will be about appling formatting that _I believe_ is most suitable for a blog.
 Even if you disagree with it, it should be interesting. 

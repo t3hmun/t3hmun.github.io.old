@@ -52,4 +52,4 @@ GitHub compatibility limits the features available and ends up being tedious.
 
 ## Next
 
-In the [next part]({{ site.baseurl }}/2015/part-02-tooling-up/) we begin by installing Ruby, Jekyll and related tools.
+In the [next part]({{ site.baseurl }}/article/2015/part-02-tooling-up/) we begin by installing Ruby, Jekyll and related tools.

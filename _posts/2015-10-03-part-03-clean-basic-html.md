@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Part 4: Clean Basic HTML"
+title: "Part 3: Clean Basic HTML"
 date: 2015-10-03
 description: "Stripping out the basic HTML and starting with a clean and well understood structure."
 category: article
@@ -406,4 +406,4 @@ This description is part of the top level of the site (H1 rank).
 
 If it has not been done already, now is a good time to make some basic test blog posts.
 
-Next is CSS and SASS. Colour and style, but never forgetting usability.
+Next is [CSS and SASS]({{ site.baseurl }}/article/2015/part-04-css-and-sass-foundation-from-scratch/). Colour and style, but never forgetting usability.
