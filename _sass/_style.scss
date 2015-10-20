@@ -147,7 +147,7 @@ pre {
   margin: $vspace auto;
   padding: 0 $gutter;
   font-family: $syntax-font-family;
-  border: solid 1px $subtle-back-colour;
+  border: solid $syntax-border-thickness $subtle-back-colour;
 }
 
 h2, h3, h4, h5, h6 {
@@ -163,8 +163,8 @@ h2 {
   font-size: $h2-size;
   color: $h2-colour;
   border: solid $header-border $highlight-colour;
-  margin-right: 5px;
-  box-shadow: 5px 5px 0 $highlight-colour;
+  margin-right: $header-shadow;
+  box-shadow: $header-shadow $header-shadow 0 $highlight-colour;
   line-height: $line-height * 2 - $header-border * 2;
 
   // Neatly follows on from the masthead and nav.
@@ -175,20 +175,16 @@ h2 {
     text-decoration: none;
     color: $highlight-colour;
   }
-
-  &.triple-height {
-    line-height: $line-height * 2 - $header-border * 2;
-  }
 }
 
 h3 {
   font-size: $h3-size;
   color: $h3-colour;
-  margin-right: 5px;
+  margin-right: $header-shadow;
 
   // H3 gets box shadow as main article section title.
-  box-shadow: 5px 5px 0 $subtle-back-colour;
-  margin-right: 5px;
+  box-shadow: $header-shadow $header-shadow 0 $subtle-back-colour;
+  margin-right: $header-shadow;
 }
 
 h4 {
@@ -206,38 +202,16 @@ h6 {
   color: $h6-colour;
 }
 
-// Top level site <footer>.
-.site-footer {
-  text-align: center;
-
-  // Centre text.
-  // Width needs to match content area due to dividing border line.
-  max-width: $content-width;
-
-  //Extra margin to space footer away from content.
-  display: block;
-  margin: $vspace auto;
-
-  // Vertical padding to space text away from border line.
-  // Horizontal padding for gutter.
-  padding: $vspace $gutter;
-
-  // Smaller font size for non-main-content information.
-  font-size: $small-font-size;
-
-  // A line to separate the footer from the main body.
-  border-top: solid $site-footer-top-border $highlight-colour;
-}
-
+// Neat diagonal line background.
 .hatchbox {
   background: repeating-linear-gradient(120deg, $background-colour, $background-colour 3px, $subtle-back-colour 2px, $subtle-back-colour 4px);
 }
 
+// Used by the scroll to top link just before the footer.
 .bar {
   @extend .hatchbox;
 
   line-height: $line-height;
-  min-width: 100px;
 }
 
 // The meta-sub-title for a heading.
@@ -286,16 +260,20 @@ h6 {
   }
 }
 
+// Used by the nav links, which are quad height. 
 .miniart {
   font-size: $small-art-size;
   line-height: $small-art-size * 1.35;
   margin: 0;
   padding: 0;
+
+  // Tiny text requires maximum weight.
   font-weight: 900;
 }
 
 .bigart {
   font-size: $big-art-size;
+  // Slightly squashed, style.
   line-height: $big-art-size * 1.1;
   margin: 0;
   padding: 0;
@@ -339,6 +317,7 @@ h6 {
 
     p {
       max-width: none;
+      padding: 0;
     }
   }
 
