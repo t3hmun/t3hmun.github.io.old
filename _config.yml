@@ -13,3 +13,6 @@ kramdown:
   syntax_highlighter: rouge
   hard_wrap: false # Single line breaks are ignored as in standard Markdown.
   header_offset: 1 # <h#> tags are offset down by one size.
+
+sass:
+  style: compressed
