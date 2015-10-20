@@ -394,9 +394,7 @@ h6 {
   position: fixed;
   right: 0;
   bottom: 0;
-  
   bottom: $line-height;
-  
   padding: $gutter $gutter;
 }
 
@@ -406,7 +404,6 @@ h6 {
   display: none;
   position: fixed;
   right: 0;
-  bottom:0;
-  
+  bottom: 0;
   padding: $gutter $gutter;
 }
