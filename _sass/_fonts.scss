@@ -1,5 +1,10 @@
-// Define hosted fonts (required for proper rendering of boxart).
+// _fonts.scss by t3hmun. _fonts.scss is public domain.
 
+$base-font-family: "Source Sans Pro", sans-serif;
+$syntax-font-family: "Source Code Pro", monospace;
+$p-font-family: "Source Sans Pro", sans-serif;
+
+// Define hosted fonts (required for proper rendering of boxart).
 @font-face{
     font-family: 'Source Code Pro';
     font-weight: 300;
