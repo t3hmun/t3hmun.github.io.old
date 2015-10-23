@@ -5,6 +5,7 @@ date: 2015-10-03
 description: "Stripping out the basic HTML and starting with a clean and well understood structure."
 category: article
 tags: theme jekyll
+comments_enabled: true
 ---
 
 * TOC

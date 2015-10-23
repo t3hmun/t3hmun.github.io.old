@@ -5,10 +5,16 @@ date: 2015-09-08 13:00:00
 category: article
 tags: muut comments js
 description: "Adding comments to a static blog site, entirely loaded using a button."
+comments_enabled: true
 ---
 
 * TOC
 {:toc .toc}
+
+> Update [2015-23-10]:
+> 
+> Muut didnt feel right so I've moved back to disqus. 
+> I'm still committed to making it an optional load on demand, since I don't like third part connections on a site by default.
 
 I decided to make loading the comments system on my Jekyll blog site optional by making them load on a button press. No downloading of large scripts or contacting the third party comments service until the user decides to.
 
@@ -49,7 +55,7 @@ When loaded Muut looks for a link with the `class="muut"` attribute and then ins
     }
   </script>
  
-  <center><button onclick="loadcomments()">Click to load comments</button></center>
+  <button onclick="loadcomments()">Click to load comments</button>
  
 </div>
 

@@ -22,4 +22,7 @@ This layout contains a single main article.
     </div>
   </footer>
   {{ content }}
+
+  {% if page.comments_enabled %}{% include comments.html %}{% endif %}
+
 </article>

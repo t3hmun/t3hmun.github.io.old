@@ -5,6 +5,7 @@ date: 2015-10-13 14:15:00
 description: "An extract, the part on: The right use of it, mutual charity and forbearance, in a necessary diversity of opinions."
 category: article
 tags: philosophy locke
+comments_enabled: true
 ---
 
 An extract from John Locke's Essay of Human Understanding, Book 4 Chapter XVI Part 4.

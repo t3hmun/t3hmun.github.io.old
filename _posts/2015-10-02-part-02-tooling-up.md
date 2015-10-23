@@ -5,6 +5,7 @@ date: 2015-10-02
 description: "Install Ruby, Jekyll and Rouge and a quick primer on what Jekyll gives you."
 category: article
 tags: theme jekyll
+comments_enabled: true
 ---
 
 * TOC

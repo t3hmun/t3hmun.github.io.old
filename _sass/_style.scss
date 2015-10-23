@@ -404,3 +404,30 @@ h6 {
 .highlight {
   background-color: $subtle-back-colour;
 }
+
+// Applied to the Disqus div.
+.comments-block {
+  display: none;
+  margin: $vspace auto;
+  padding: 0 $gutter;
+}
+
+// The entire div containing the button and discaimer.
+.comments-load-button {
+  max-width: $other-text-width;
+  margin: $vspace auto;
+  padding: $vspace $gutter;
+  @extend .hatchbox;
+  color: $highlight-colour;
+}
+
+button {
+  background: $subtle-back-colour;
+  border: solid 1px $highlight-colour;
+  color: $text-colour;
+
+  &:hover {
+    color: $highlight-colour;
+    border: solid 1px $link-colour;
+  }
+}

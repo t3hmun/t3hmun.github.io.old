@@ -5,6 +5,7 @@ date: 2015-10-13
 description: "I completed the theme, documenting as I went along, this post details the features and how to use them."
 category: article
 tags: theme jekyll
+comments_enabled: true
 ---
 
 * TOC
