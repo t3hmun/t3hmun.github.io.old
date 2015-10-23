@@ -11,7 +11,7 @@ An extract from John Locke's Essay of Human Understanding, Book 4 Chapter XVI Pa
 
 I've added paragraph breaks at the end of every sentence to to the sheer length.
 
-This is a great instruction on how you should temper yourself when trying to convince another of your opinions.
+This is a nice look at how you should temper yourself when trying to convince another of your opinions.
 It takes time, patience, effort and understanding, the fact that your are wholly convinced by your own opinion does not make it obviously correct to another.  
 
 ## 4. The right use of it, mutual charity and forbearance, in a necessary diversity of opinions
