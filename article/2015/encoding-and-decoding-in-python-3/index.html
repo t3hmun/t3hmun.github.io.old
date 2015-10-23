@@ -73,7 +73,18 @@ This layout contains a single main article.
       </span>
     </div>
   </footer>
-  <p>This is an article for people wanting to understand the following error with Python 3:</p>
+  <ul class="toc" id="markdown-toc">
+  <li><a href="#the-problem" id="markdown-toc-the-problem">The Problem</a></li>
+  <li><a href="#changing-the-console-for-the-text" id="markdown-toc-changing-the-console-for-the-text">Changing the Console for the Text</a></li>
+  <li><a href="#changing-the-text-for-the-console" id="markdown-toc-changing-the-text-for-the-console">Changing the Text for the Console</a></li>
+  <li><a href="#starting-to-grok-encode-decode" id="markdown-toc-starting-to-grok-encode-decode">Starting to Grok Encode Decode</a>    <ul>
+      <li><a href="#stringencode" id="markdown-toc-stringencode">string.encode()</a></li>
+      <li><a href="#stringdecode" id="markdown-toc-stringdecode">string.decode()</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>This is an article for people wanting to understand the following error with Python 3:</p>
 
 <div class="other-text-width highlighter-rouge"><pre class="highlight"><code>...
 UnicodeEncodeError: 'charmap' codec can't encode character
@@ -253,6 +264,46 @@ Most encodings are purposely designed to act like this, it creates a tolerance f
 </div>
 
 
+
+  <section>
+    <div id="comments-load-button" class="comments-load-button">
+        <script type="text/javascript">
+        function loadcomments() {
+
+            //Hide the load button, it is no longer needed.
+            document.getElementById('comments-load-button').style.display = 'none'
+
+            //Unhide the comments div.
+            document.getElementById('disqus_thread').style.display = 'block'
+
+            //Page-specific configuration for Disqus comments.
+            var disqus_config = function() {
+                //Base url is a mess when testing and i might sqitch domain anyway.
+                //this.page.url = http://t3hmun.github.io/article/2015/encoding-and-decoding-in-python-3/;
+                this.page.identifier = "2015-10-13 15:15:00 +0100-Encoding and Decoding in Python 3";
+            };
+
+
+            //Create an element for the script and then shove it in the head.
+            var scriptele = document.createElement('script')
+            scriptele.setAttribute("type", "text/javascript")
+            scriptele.setAttribute("src", "http://t3hmun.github.io/js/disqus.js")
+            document.getElementsByTagName("head")[0].appendChild(scriptele)
+        }
+        </script>
+        <div class="centre-block">
+            Loading comments will open connections to <a href="https://help.disqus.com/customer/portal/topics/215159-terms-and-policies/articles">Disqus</a> and <a href="https://support.google.com/analytics/answer/6004245?hl=en">Google</a>.
+            <br>
+            <a href="http://t3hmun.github.io/images/nudgenudge.png">It may be possible</a> that they will datamine and track you and your comments.
+            <br>
+            <br>
+            <button onclick="loadcomments()">Click to load Disqus comments</button>
+        </div>
+    </div>
+    <div id="disqus_thread" class="comments-block"></div>
+</section>
+
+
 </article>
 
     </main>
@@ -303,7 +354,6 @@ scroll ╱╲ to top</a></div>
     <div id="toc-toggle-div" class="toc-toggle">
       <a href="" id="toctogglebutton">toc</a>
     </div>
-
 
   </div>
 </body>

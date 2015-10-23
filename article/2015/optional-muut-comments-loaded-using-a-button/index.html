@@ -79,6 +79,13 @@ This layout contains a single main article.
   <li><a href="#muut-y-u-no-disqus" id="markdown-toc-muut-y-u-no-disqus">Muut? Y u no Disqus</a></li>
 </ul>
 
+<blockquote>
+  <p>Update [2015-23-10]:</p>
+
+  <p>Muut didnt feel right so I’ve moved back to disqus. 
+I’m still committed to making it an optional load on demand, since I don’t like third part connections on a site by default.</p>
+</blockquote>
+
 <p>I decided to make loading the comments system on my Jekyll blog site optional by making them load on a button press. No downloading of large scripts or contacting the third party comments service until the user decides to.</p>
 
 <h3 id="what-why">What, Why?</h3>
@@ -115,8 +122,8 @@ This layout contains a single main article.
     <span class="p">}</span>
   <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
 </span> 
-  <span class="o">&lt;</span><span class="nx">center</span><span class="o">&gt;&lt;</span><span class="nx">button</span> <span class="nx">onclick</span><span class="o">=</span><span class="s2">"loadcomments()"</span><span class="o">&gt;</span><span class="nx">Click</span> <span class="nx">to</span> <span class="nx">load</span> <span class="nx">comments</span><span class="o">&lt;</span><span class="sr">/button&gt;&lt;/</span><span class="nx">center</span><span class="o">&gt;</span>
- 
+  <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onclick</span><span class="o">=</span><span class="s2">"loadcomments()"</span><span class="o">&gt;</span><span class="nx">Click</span> <span class="nx">to</span> <span class="nx">load</span> <span class="nx">comments</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span> 
 <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
 </span>
 <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"mootdiv"</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"mootdiv"</span><span class="o">&gt;</span>
@@ -141,6 +148,46 @@ This layout contains a single main article.
 <p>Muut appears to be smaller, and it has some neat markdown support. I like the idea of being able to drop code snippets in the comments. Its under heavy development, probably has a few bugs but it is an experiment.</p>
 
 <p>Overall I don’t intend to stay with third party comments systems forever since there are all sorts of issues surrounding user tracking and content ownership. I’ll set up my own server eventually, but configuring everything properly can be quite a lot of work and I have other priorities at the moment.</p>
+
+
+  <section>
+    <div id="comments-load-button" class="comments-load-button">
+        <script type="text/javascript">
+        function loadcomments() {
+
+            //Hide the load button, it is no longer needed.
+            document.getElementById('comments-load-button').style.display = 'none'
+
+            //Unhide the comments div.
+            document.getElementById('disqus_thread').style.display = 'block'
+
+            //Page-specific configuration for Disqus comments.
+            var disqus_config = function() {
+                //Base url is a mess when testing and i might sqitch domain anyway.
+                //this.page.url = http://t3hmun.github.io/article/2015/optional-muut-comments-loaded-using-a-button/;
+                this.page.identifier = "2015-09-08 14:00:00 +0100-Optional Muut Comments Loaded using a Button";
+            };
+
+
+            //Create an element for the script and then shove it in the head.
+            var scriptele = document.createElement('script')
+            scriptele.setAttribute("type", "text/javascript")
+            scriptele.setAttribute("src", "http://t3hmun.github.io/js/disqus.js")
+            document.getElementsByTagName("head")[0].appendChild(scriptele)
+        }
+        </script>
+        <div class="centre-block">
+            Loading comments will open connections to <a href="https://help.disqus.com/customer/portal/topics/215159-terms-and-policies/articles">Disqus</a> and <a href="https://support.google.com/analytics/answer/6004245?hl=en">Google</a>.
+            <br>
+            <a href="http://t3hmun.github.io/images/nudgenudge.png">It may be possible</a> that they will datamine and track you and your comments.
+            <br>
+            <br>
+            <button onclick="loadcomments()">Click to load Disqus comments</button>
+        </div>
+    </div>
+    <div id="disqus_thread" class="comments-block"></div>
+</section>
+
 
 </article>
 
@@ -192,7 +239,6 @@ scroll ╱╲ to top</a></div>
     <div id="toc-toggle-div" class="toc-toggle">
       <a href="" id="toctogglebutton">toc</a>
     </div>
-
 
   </div>
 </body>
