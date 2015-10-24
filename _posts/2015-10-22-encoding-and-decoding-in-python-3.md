@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Encoding and Decoding in Python 3"
-date: 2015-10-13 14:15:00
+date: 2015-10-22 12:00:00
 description: "Clear up the confusing and troublesome nature of encoding and decoding in Python 3, especially when utf-8 and the console is involved."
 category: article
 tags: python

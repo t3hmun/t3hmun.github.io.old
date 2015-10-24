@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Locke - Essay On Human Understanding - Reasonable Tolerance of Other Opinions"
-date: 2015-10-13 14:15:00
+date: 2015-10-21 12:00:00
 description: "An extract, the part on: The right use of it, mutual charity and forbearance, in a necessary diversity of opinions."
 category: article
 tags: philosophy locke
