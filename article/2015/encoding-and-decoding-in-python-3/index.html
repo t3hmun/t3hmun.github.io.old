@@ -65,7 +65,7 @@ This layout contains a single main article.
     <div class="heading-footer">
       <span class="date">
         Posted on:
-        <time datetime=" 2015-10-13 15:15 ">2015-10-13 at 15:15</time>
+        <time datetime=" 2015-10-22 13:00 ">2015-10-22 at 13:00</time>
       </span>
       <span class="tags">      
         <a href="http://t3hmun.github.io/archive/#article">[article] - </a>
@@ -74,15 +74,30 @@ This layout contains a single main article.
     </div>
   </footer>
   <ul class="toc" id="markdown-toc">
-  <li><a href="#the-problem" id="markdown-toc-the-problem">The Problem</a></li>
+  <li><a href="#what" id="markdown-toc-what">What</a></li>
+  <li><a href="#the-problem" id="markdown-toc-the-problem">The Problem</a>    <ul>
+      <li><a href="#how-print-works" id="markdown-toc-how-print-works">How <code class="highlighter-rouge">print</code> Works</a></li>
+      <li><a href="#simple-error-example-with-print" id="markdown-toc-simple-error-example-with-print">Simple Error Example With <code class="highlighter-rouge">print</code></a></li>
+    </ul>
+  </li>
   <li><a href="#changing-the-console-for-the-text" id="markdown-toc-changing-the-console-for-the-text">Changing the Console for the Text</a></li>
-  <li><a href="#changing-the-text-for-the-console" id="markdown-toc-changing-the-text-for-the-console">Changing the Text for the Console</a></li>
-  <li><a href="#starting-to-grok-encode-decode" id="markdown-toc-starting-to-grok-encode-decode">Starting to Grok Encode Decode</a>    <ul>
+  <li><a href="#cleaning-the-text-for-the-console" id="markdown-toc-cleaning-the-text-for-the-console">Cleaning the Text for the Console</a></li>
+  <li><a href="#lets-grok-encode-decode" id="markdown-toc-lets-grok-encode-decode">Let’s Grok Encode Decode</a>    <ul>
       <li><a href="#stringencode" id="markdown-toc-stringencode">string.encode()</a></li>
       <li><a href="#stringdecode" id="markdown-toc-stringdecode">string.decode()</a></li>
     </ul>
   </li>
+  <li><a href="#direct-output-to-stdout" id="markdown-toc-direct-output-to-stdout">Direct Output To <code class="highlighter-rouge">stdout</code></a>    <ul>
+      <li><a href="#a-pitfall-of-writing-to-stdoutbuffer" id="markdown-toc-a-pitfall-of-writing-to-stdoutbuffer">A Pitfall of Writing to <code class="highlighter-rouge">stdout.buffer</code></a></li>
+    </ul>
+  </li>
 </ul>
+
+<blockquote>
+  <p>Update 2015-26-10: Added information about sys.stdout.buffer.write.</p>
+</blockquote>
+
+<h3 id="what">What</h3>
 
 <p>This is an article for people wanting to understand the following error with Python 3:</p>
 
@@ -92,32 +107,43 @@ UnicodeEncodeError: 'charmap' codec can't encode character
 </code></pre>
 </div>
 
-<p>Part of an error usually encountered when printing to a console, but possible in many other text situations.</p>
+<p>Part of an error usually encountered when printing to a console, but possible in many other text situations.
+If you are interested in deeply understanding the issue, instead of just copy-pasting SO posts, read on.</p>
 
 <h3 id="the-problem">The Problem</h3>
 
 <p>Internally Python 3 <strong>always</strong> uses UTF-8 for its strings.
 However the source and or destination of a string may have another encoding.</p>
 
+<p>Python 2 does not strictly store its strings as utf-8 so one may encounter all sorts of bizarre encoding decoding samples that are only applicable to Python 2. This article only concerns Python 3.</p>
+
+<h4 id="how-print-works">How <code class="highlighter-rouge">print</code> Works</h4>
+
+<p><a href="https://docs.python.org/3/library/functions.html#print">Print is a pretty basic function</a> that tries to convert whatever you give it to a string, adds a newline, and the passes it on to <code class="highlighter-rouge">sys.stdout.write</code>. It has other options, but we’re only interested in its default use at the moment.</p>
+
+<p>The <code class="highlighter-rouge">sys.stdout.write</code> function is <a href="https://docs.python.org/3/library/sys.html#sys.stdout">more interesting</a>:</p>
+
 <blockquote>
-  <p>Python 2 does not strictly store its strings as utf-8 so one may encounter all sorts of bizarre encoding decoding samples that are only applicable to Python 2. This article only concerns Python 3.</p>
+  <p>The character encoding is platform-dependent. Under Windows, if the stream is interactive (that is, if its isatty() method returns True), the console codepage is used, otherwise the ANSI code page. Under other platforms, the locale encoding is used (see locale.getpreferredencoding()).</p>
 </blockquote>
 
-<p>The most simple example is the print function which automatically re-encodes the string to the console’s encoding.</p>
+<p>This means that <code class="highlighter-rouge">sys.stdout.write</code> will re-encode whatever you give it to suit the context.
+As a result we are required to give it text that is suitable for re-encoding and if we don’t we get the encoding error that inspired this article.</p>
+
+<h4 id="simple-error-example-with-print">Simple Error Example With <code class="highlighter-rouge">print</code></h4>
 
 <div class="reading-width highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">encoding</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">encoding</span>
 <span class="s">'cp850'</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">'hello'</span><span class="p">)</span>
 <span class="n">hello</span>
-<span class="o">&gt;&gt;&gt;</span>
 </code></pre>
 </div>
 
 <p>In the above example <code class="highlighter-rouge">hello</code> is a utf-8 string, but the <code class="highlighter-rouge">hello</code> printed to the console has been re-encoded to <a href="https://en.wikipedia.org/wiki/Code_page_850">cp850</a>.
 This all works fine while the string only uses characters available in cp850.</p>
 
-<p>In the next example an attempt is made to print the mathematical delta increment sign (<code class="highlighter-rouge">∆</code>), which does not exist in cp850:</p>
+<p>In the next example an attempt is made to print the mathematical delta increment sign, which does not exist in cp850 (the character appears as a triangle “<code class="highlighter-rouge">∆</code>” the escape in python is <code class="highlighter-rouge">\u2206</code>):</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\u2206</span><span class="s">'</span><span class="p">)</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
@@ -130,7 +156,16 @@ This all works fine while the string only uses characters available in cp850.</p
 
 <h3 id="changing-the-console-for-the-text">Changing the Console for the Text</h3>
 
-<p>One solution is to change the console’s code page to Unicode (cp65001) before starting Python, which can be done in the windows command prompt using <code class="highlighter-rouge">chcp</code> (if using GitBash type <code class="highlighter-rouge">chcp.com</code> instead):</p>
+<p>There are two ways to output utf-8 to the console</p>
+
+<ul>
+  <li>Use <code class="highlighter-rouge">print</code> on a utf-8 console</li>
+  <li>Use <code class="highlighter-rouge">sys.stdout.buffer.write</code> to write the bytes of utf-8 encoded text.</li>
+</ul>
+
+<p>Both of these methods will allow redirection and piping of the utf-8 text, staying in utf-8, however only the text will only appear correctly on the console if the console is set to utf-8.</p>
+
+<p>In the windows command prompt the console’s code page can be changed to Unicode (cp65001) before starting Python using <code class="highlighter-rouge">chcp</code> (if using GitBash type <code class="highlighter-rouge">chcp.com</code> instead):</p>
 
 <div class="reading-width highlighter-rouge"><pre class="highlight"><code>&gt;chcp 65001
 Active code page: 65001
@@ -139,36 +174,40 @@ Python 3.4.2 ...
 </code></pre>
 </div>
 
-<p>After doing so you can work with Unicode to your hearts content:</p>
+<p>After doing so you can work with Unicode to your heart’s content:</p>
 
 <div class="reading-width highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">encoding</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">encoding</span>
 <span class="s">'cp65001'</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\u2206</span><span class="s">'</span><span class="p">)</span>
 <span class="err">∆</span>
 </code></pre>
 </div>
 
-<h3 id="changing-the-text-for-the-console">Changing the Text for the Console</h3>
+<p>Doing same in Linux involves setting UTF-8 as part of your locale.
+This is still something I need to play with myself, so I can’t provide more information.</p>
+
+<h3 id="cleaning-the-text-for-the-console">Cleaning the Text for the Console</h3>
 
 <p>It is not always practical to change to console for the text.
 One may want to reliably print whatever the console is capable of printing in the situation.
 My solution is a very simple function that replaces characters not compatible with the current console.
-Text cleaned in this manner will print without error (but incompatible characters may be replaced with ?).</p>
+Text cleaned in this manner will print without error (but incompatible characters will be replaced with <code class="highlighter-rouge">?</code>).</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'replace'</span><span class="p">):</span>
-    <span class="n">encoding</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">encoding</span>
+    <span class="n">encoding</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">encoding</span>
     <span class="k">if</span><span class="p">(</span><span class="n">encoding</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s">'utf-8'</span><span class="p">):</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">text</span>
 </code></pre>
 </div>
 
-<p>This causes the replaced characters to be lost so if you need to accurately pipe of view the Unicode characters this is no good.</p>
+<p>This causes the original value of the replaced characters to be lost, so if you need to accurately pipe, redirect or view the incompatible utf-8 characters, this is no good.
+Also this is inefficient, since the text will be encoded again. You could simply skip the decode and pass the bytes to <code class="highlighter-rouge">sys.stdout.buffer.write</code> instead of using <code class="highlighter-rouge">print</code> (more on this later).</p>
 
-<h3 id="starting-to-grok-encode-decode">Starting to Grok Encode Decode</h3>
+<h3 id="lets-grok-encode-decode">Let’s Grok Encode Decode</h3>
 
 <p>This is a series of little code samples that should clear up any misconceptions you might have about what the encode and decode functions do.</p>
 
@@ -204,10 +243,10 @@ The next code example it working in each encoding and the failures that occur wh
 You should be able to reproduce this example fine as long as your console is using one of these 2 encodings.</p>
 
 <blockquote>
-  <p><strong>print(byteArray)</strong></p>
+  <p><strong>print(bytes)</strong></p>
 
   <p>When you ask Python to print a bytes object it will show the corresponding ASCII text to each byte if it is a printable character.
-If the corresponding ASCII is non-printable, it is shown as an escaped hex number, for example <code class="highlighter-rouge">\x01</code> is <code class="highlighter-rouge">0x01</code>.
+If the corresponding ASCII is non-printable or the value is non-ASCII (above 127), it is shown as an escaped hex number, for example ASCII <code class="highlighter-rouge">0x01</code> (SOH) is escaped as<code class="highlighter-rouge">\x01</code>.
 Most encodings are compatible with the printable characters of ASCII so interpreting a byte as the ASCII is a good guess of what is meant by it (but by no means guaranteed).</p>
 </blockquote>
 
@@ -263,6 +302,81 @@ Most encodings are purposely designed to act like this, it creates a tolerance f
 </code></pre>
 </div>
 
+<h3 id="direct-output-to-stdout">Direct Output To <code class="highlighter-rouge">stdout</code></h3>
+
+<p>The final method of working with utf-8 or any specified encoding is to send raw bytes directly to <code class="highlighter-rouge">stdout</code> skipping the automatic encoding. This is the only way to guarantee that your encoding is kept intact, useful when the intent is to have utf-8 (or anything else) output piped or redirected to other places intact.</p>
+
+<p>As mentioned before <code class="highlighter-rouge">sys.stdout.write(string)</code> encodes by default, however using <code class="highlighter-rouge">sys.stdout.buffer.write(bytes)</code> skips the automatic encoding allowing you to output whatever you want intact.</p>
+
+<p>The following simple Python script:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'1 sys.stdout.encoding: '</span> <span class="o">+</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="nb">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'2 hello</span><span class="se">\n</span><span class="s">'</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="nb">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'3 delta triangle: </span><span class="se">\u2206\n</span><span class="s">'</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="nb">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'4 GPB currency symbol: £</span><span class="se">\n</span><span class="s">'</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="nb">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'5 delta triangle: </span><span class="se">\u2206\n</span><span class="s">'</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'cp850'</span><span class="p">,</span> <span class="s">'replace'</span><span class="p">))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="nb">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'6 GPB currency symbol: £</span><span class="se">\n</span><span class="s">'</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'cp850'</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<p>Has the output:</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>1 sys.stdout.encoding: cp850
+2 hello
+3 delta triangle: Ôêå
+4 GPB currency symbol: ┬ú
+5 delta triangle: ?
+6 GPB currency symbol: £
+</code></pre>
+</div>
+
+<p>Encode defaults to utf-8, so so <code class="highlighter-rouge">.encode()</code> is outputting utf-8 encoded text.
+This works fine for pure ASCII characters (<code class="highlighter-rouge">hello</code>) that are encoding-compatible with most code-pages but outputs garbage when it encounters anything beyond basic ASCII, as seen on output lines 3 and 4.</p>
+
+<p>The delta triangle is not compatible with cp850 so it is output as a <code class="highlighter-rouge">?</code> even when encoded properly.
+Note that if the <code class="highlighter-rouge">'replace'</code> option was not specified, it would have defaulted to <code class="highlighter-rouge">'strict'</code> mode and crashed with the error that inspired this article.</p>
+
+<p>Notably the British pound symbol <code class="highlighter-rouge">£</code> can be displayed in cp850 <code class="highlighter-rouge">print('£')</code>, however the encoding for this symbol is different so it only works when the correct encoding is specified.</p>
+
+<h4 id="a-pitfall-of-writing-to-stdoutbuffer">A Pitfall of Writing to <code class="highlighter-rouge">stdout.buffer</code></h4>
+
+<p>Now lets have a look at what happens when we redirect the output of the previous example to a text file (<code class="highlighter-rouge">example.py &gt; x.txt</code>):</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>2 hello
+3 delta triangle: âˆ†
+4 GPB currency symbol: Â£
+5 delta triangle: ?
+6 GPB currency symbol: œ
+1 sys.stdout.encoding: cp1252
+</code></pre>
+</div>
+
+<p>The output is in the wrong order, the text output with <code class="highlighter-rouge">print</code> appears last.
+<code class="highlighter-rouge">print</code> uses <code class="highlighter-rouge">sys.stdout.buffer</code> (by default) and this buffers the text before output.
+Since Python 3.3 <code class="highlighter-rouge">print</code> now has a flush argument that will prevent this disordering of output.
+Otherwise you can use <code class="highlighter-rouge">sys.stdout.flush()</code> after the print for the same effect.</p>
+
+<p>After doing a search I have found that people seem to be confused about what is buffered by python when and what is buffered by the console and when these bufferings come into effect.</p>
+
+<p>The <a href="https://docs.python.org/3/library/sys.html#sys.stdout">Python documentation on this</a> is a bit thin for my liking:</p>
+
+<blockquote>
+  <p>When interactive, standard streams are line-buffered. Otherwise, they are block-buffered like regular text files. You can override this value with the <code class="highlighter-rouge">-u</code> command-line option.</p>
+
+  <blockquote>
+    <p><strong>Note</strong></p>
+
+    <p>To write or read binary data from/to the standard streams, use the underlying binary buffer object. For example, to write bytes to stdout, use <code class="highlighter-rouge">sys.stdout.buffer.write(b'abc')</code>.</p>
+
+    <p>However, if you are writing a library (and do not control in which context its code will be executed), be aware that the standard streams may be replaced with file-like objects like <code class="highlighter-rouge">io.StringIO</code> which do not support the buffer attribute.</p>
+  </blockquote>
+</blockquote>
+
+<p>Now I’m lost. I intend to figure this out and update this article accordingly soon.</p>
+
 
 
   <section>
@@ -280,7 +394,7 @@ Most encodings are purposely designed to act like this, it creates a tolerance f
             var disqus_config = function() {
                 //Base url is a mess when testing and i might sqitch domain anyway.
                 //this.page.url = http://t3hmun.github.io/article/2015/encoding-and-decoding-in-python-3/;
-                this.page.identifier = "2015-10-13 15:15:00 +0100-Encoding and Decoding in Python 3";
+                this.page.identifier = "2015-10-22 13:00:00 +0100-Encoding and Decoding in Python 3";
             };
 
 
