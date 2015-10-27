@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<!-- This is an include file because all pages use the same head.
+Liquid Markup is used to customise it for each page. -->
+<head>
+  <!-- UTF-8 is the best supported modern character-set used almost everywhere. -->
+  <meta charset="utf-8">
+  <!-- This is needed to suppress Internet Explorer's compatibility mode and make it operate with minimum quirks. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- This informs small screen devices that the content is intended to wrap inside the screen-width without scaling. 
+  This prevents the phone from rendering a miniature parody of the desktop appearance of the site.
+  The design of the site must be suitable for this kind of wrapping in a smaller space. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- A description for search engines and other non-humans. If the page has not description set default to site description. -->
+  <meta name="description" content="The process of installing a minimal server on a DELL M1530 laptop and connecting the wifi.">
+
+  <!-- Title used by the browser and also by search engines and non-humans. -->
+  <title>Minimal Ubuntu on my Laptop Server</title>
+
+  <!-- The root relative url for the stylesheet. -->
+  <link id="maincss" rel="stylesheet" href="http://t3hmun.github.io/css/main.css">
+  <!-- The preferred URL for the page. Useful when there are multiple possible urls. -->
+  <link rel="canonical" href="http://t3hmun.github.io/note/2015/minimal-ubuntu-on-my-laptop-server/">
+  <!-- Handy link to the RSS for the site for browsers and non-humans. -->
+  <link rel="alternate" type="application/rss+xml" title="t3hmun" href="http://t3hmun.github.io/feed.xml" />
+  
+  <script src="http://t3hmun.github.io/js/theme.js"></script>
+</head>
+
+<body>
+  <div class="body-wrapper">
+
+    <header>
+      <div class="centre-block" id="top-of-page">
+        <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        <nav>
+          <div class="art miniart "><a href="http://t3hmun.github.io/about/">         ╷                     
+   ╭───╮ ├───╮╭───╮╷   ╷╶┼─╴   
+▒  │   │ │   ││   ││   │ │    ▒
+   ╰───╰ ╰───╯╰───╯╰───╯ ╰─╴   
+</a></div>
+          <div class="art miniart"><a href="http://t3hmun.github.io/archive/">                  ╷      .             
+   ╭───╮ ╭──╴╭───╴├───╮ ╶┐ ╷  ╷╭───╮   
+▒  │   │ │   │    │   │  │ └┐┌┘├───╯  ▒
+   ╰───╰ ╵   ╰───╴╵   ╵  ╰╴ └┘ ╰───╯   </a></div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- 
+The base layout has this wrapped in a main section.
+This layout contains a single main article. 
+-->
+<article>
+  <h2><a href="http://t3hmun.github.io/note/2015/minimal-ubuntu-on-my-laptop-server/">Minimal Ubuntu on my Laptop Server</a></h2>
+  <footer>
+    <div class="heading-footer">
+      <span class="date">
+        Posted on:
+        <time datetime=" 2015-07-24 00:00 ">2015-07-24 at 00:00</time>
+      </span>
+      <span class="tags">      
+        <a href="http://t3hmun.github.io/archive/#note">[note] - </a>
+        <a href="http://t3hmun.github.io/archive/#log">[log] </a><a href="http://t3hmun.github.io/archive/#ubuntu">[ubuntu] </a><a href="http://t3hmun.github.io/archive/#linux">[linux] </a><a href="http://t3hmun.github.io/archive/#server">[server] </a>
+      </span>
+    </div>
+  </footer>
+  <ul class="toc" id="markdown-toc">
+  <li><a href="#what" id="markdown-toc-what">What</a></li>
+  <li><a href="#image" id="markdown-toc-image">Image</a></li>
+  <li><a href="#booting" id="markdown-toc-booting">Booting</a></li>
+  <li><a href="#gb-keyboard-issue" id="markdown-toc-gb-keyboard-issue">GB Keyboard issue</a></li>
+  <li><a href="#partitioning" id="markdown-toc-partitioning">Partitioning</a></li>
+  <li><a href="#packages" id="markdown-toc-packages">Packages</a></li>
+  <li><a href="#waiting" id="markdown-toc-waiting">Waiting</a></li>
+  <li><a href="#bootloader" id="markdown-toc-bootloader">Bootloader</a></li>
+  <li><a href="#booting-1" id="markdown-toc-booting-1">Booting</a></li>
+  <li><a href="#login" id="markdown-toc-login">Login</a></li>
+  <li><a href="#wifi-from-the-terminal" id="markdown-toc-wifi-from-the-terminal">WiFi from the Terminal</a></li>
+  <li><a href="#config-and-installing-software" id="markdown-toc-config-and-installing-software">Config and Installing Software</a></li>
+</ul>
+
+<h3 id="what">What</h3>
+
+<ul>
+  <li>Using an old laptop (DELL M1530) as a low power server.</li>
+  <li>Minimal install of Ubuntu with only the essential packages for server.</li>
+  <li>This is a log to remind myself, but may be useful if you are doing something similar.</li>
+</ul>
+
+<h3 id="image">Image</h3>
+
+<p>Downloaded <a href="https://help.ubuntu.com/community/Installation/MinimalCD">Ubuntu 15.04 “Vivid Vervet” minimal iso</a> and used <a href="http://www.linuxliveusb.com/">Linux Live USB</a> to put it on a USB mass storage device.</p>
+
+<h3 id="booting">Booting</h3>
+
+<p><code class="highlighter-rouge">F2</code> is bios menu, <code class="highlighter-rouge">F11</code> is boot menu</p>
+
+<p>USB boot, normal install, WiFi detected and connected without issue.</p>
+
+<h3 id="gb-keyboard-issue">GB Keyboard issue</h3>
+
+<p>Used press keys to auto detect keyboard, <code class="highlighter-rouge">gb</code> detected. <strong>WARNING: The keyboard seems to be in US configuration when setting the user password.</strong></p>
+
+<h3 id="partitioning">Partitioning</h3>
+
+<p>Guided whole disk with LVM (total wipe starting fresh), all defaults, no issues (except for the GRUB issue later).
+<strong>Note down the name of the disk (if it is not <code class="highlighter-rouge">\dev\sda</code> then you may have to manually choose the it on the GRUB install stage).</strong></p>
+
+<h3 id="packages">Packages</h3>
+
+<ul>
+  <li>OpenSSH server</li>
+</ul>
+
+<p>Just SSH so that the server can be remotley configured from a more comfortable computer.</p>
+
+<p><strong>WARNING: This will boot to a blank screen. Ctrl-Alt-F1 to get tty1 up.</strong> This appears to be due to a <a href="https://bugs.launchpad.net/ubuntu/+source/grub2/+bug/695658">bug</a></p>
+
+<h3 id="waiting">Waiting</h3>
+
+<p>… install is a bit slow, at-least 30 minutes</p>
+
+<h3 id="bootloader">Bootloader</h3>
+
+<p>GRUB will fail to install. This appears to be a bug in the installer, automatically choosing <code class="highlighter-rouge">\dev\sda</code>, which is the memory stick I’m installing from.</p>
+
+<p>After failure the the installer shows its menu. Select install Grub again, then choose no to manaully choose the GRUB disk. Enter <code class="highlighter-rouge">\dev\sdb</code> (this should be correct for single disk systems).</p>
+
+<p>GRUB should install and the system restarts</p>
+
+<h3 id="booting-1">Booting</h3>
+
+<p>It may boot to a blank screen. Despair not. The computer may be configured to boot to a non-existent GUI. Press <code class="highlighter-rouge">Ctrl-Alt-F1</code> to get tty.</p>
+
+<h3 id="login">Login</h3>
+
+<p>If the password contains any characters that have different positions on a US keyboard, those letters may differ from what is expected. Refer to an image of a US keyboard to decode the password.</p>
+
+<h3 id="wifi-from-the-terminal">WiFi from the Terminal</h3>
+
+<p>No GUI WiFi application installed. I was hoping the installation would have setup the same WiFi. No Luck. On the bright side, the essential WiFi packages (<code class="highlighter-rouge">iw</code> and <code class="highlighter-rouge">wpasupplicant</code>) are installed.</p>
+
+<p><strong>It turns out that there is no need to fear configuring WiFi from the Terminal.</strong></p>
+
+<p>Let’s begin:</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>ifconfig
+</code></pre>
+</div>
+
+<p>No wlan entry, need to activate it.</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>sudo ifconfig wlan0 up
+ifconfig
+</code></pre>
+</div>
+
+<p>Now there is a <code class="highlighter-rouge">wlan0</code> entry.</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>sudo iwlist wlan0 scan
+</code></pre>
+</div>
+
+<p>That’s a lot of console spam.</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>sudo iwlist wlan0 scan | grep SSID
+</code></pre>
+</div>
+
+<p>This produces a nice list of wireless networks, confirming that my network is in range.</p>
+
+<p>The SSID-password pair for the wireless need to be appended to the <code class="highlighter-rouge">/ect/wpa_supplicant.conf</code>. Then a connection can be made using that config.</p>
+
+<p>The Internet suggested that I do:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo wpa_passphrase <span class="s2">"ssid"</span> <span class="s2">"password"</span> &gt;&gt; /etc/wpa_supplicant.conf
+</code></pre>
+</div>
+
+<p>However this results in <code class="highlighter-rouge">permission denied</code>, the sudo doesn’t apply to the redirection. I just created the file in <code class="highlighter-rouge">~</code> and then</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo cp ~/wpa_supplicant.conf /etc/wpa_supplicant.conf
+</code></pre>
+</div>
+
+<p>The way to append with sudo is to use <code class="highlighter-rouge">tee -a</code> (a for append). Also skip the <code class="highlighter-rouge">-a</code> if you want to discard old connections and overwrite. Tee also echoes the output.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>wpa_passphrase <span class="s2">"ssid"</span> <span class="s2">"password"</span> | sudo tee -a wpa_supplicant.conf
+</code></pre>
+</div>
+
+<p>Now to make the connection (add <code class="highlighter-rouge">-B</code> to run in background):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>wpa_supplicant -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">wext</code> is the generic Linux wireless driver that currently applies to most devices.</p>
+
+<p>It starts up, spews out some errors, but it rapidly get to <code class="highlighter-rouge">wlan0: CTRL-EVENT-CONNECTED</code>… which means a connection has happened. At this point i switch to the next tty <code class="highlighter-rouge">ctrl-alt-F2</code></p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>iw wlan0 link
+</code></pre>
+</div>
+
+<p>This shows that it is connected to the correct SSID.</p>
+
+<div class="reading-width highlighter-rouge"><pre class="highlight"><code>sudo dhclient wlan0
+</code></pre>
+</div>
+
+<p>This will get an ip address. Connection complete. I ping the router and then the BBC to check the local net and the Internet are working.</p>
+
+<p>Stuff all that in a script and it’s actually easier than using a fiddly icon in the system tray:</p>
+
+<p><strong>connect.sh</strong>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>wpa_supplicant -D wext -B -i wlan0 -c /etc/wpa_supplicant.conf
+</code></pre>
+</div>
+
+<p>Execute permission:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>chmod +x connect.sh
+</code></pre>
+</div>
+
+<p>Run: <code class="highlighter-rouge">./connect</code></p>
+
+<h3 id="config-and-installing-software">Config and Installing Software</h3>
+
+<p>Laptops aren’t fun to work on so after the network is connected I fold the laptop into a ventilated corner and SSH in from my Windows 7 PC.</p>
+
+<p>I don’t use putty for SSH. I’ve started using <a href="http://mobaxterm.mobatek.net/">MobaXterm</a>. It has a more friendly UI and a solid X-server; this means I can run GUI apps on the laptop but view them in a window on my PC.</p>
+
+<p>These are my core programs:</p>
+
+<ul>
+  <li>git</li>
+  <li>gitk</li>
+  <li>sublime-text - (type <code class="highlighter-rouge">subl</code> to launch from a terminal) sometimes its more convenient than vim.</li>
+  <li>a browser? (maybe something light I can run over ssh on MobaXterm)</li>
+</ul>
+
+<p>Logging temps is rather important on the laptop. The GPU (8600M GT) really heats up, might need to be repasted soon.</p>
+
+<ul>
+  <li>lm-sensors</li>
+  <li>psensor - this makes nice live charts. Not really necessary.</li>
+  <li>sensord - logs to syslog.</li>
+</ul>
+
+<p><strong>VirtualBox</strong>: Need to enable Vt-x, the option is in the POST section of the bios.</p>
+
+
+  <section>
+    <div id="comments-load-button" class="comments-load-button">
+        <script type="text/javascript">
+        function loadcomments() {
+
+            //Hide the load button, it is no longer needed.
+            document.getElementById('comments-load-button').style.display = 'none'
+
+            //Unhide the comments div.
+            document.getElementById('disqus_thread').style.display = 'block'
+
+            //Page-specific configuration for Disqus comments.
+            var disqus_config = function() {
+                //Base url is a mess when testing and i might sqitch domain anyway.
+                //this.page.url = http://t3hmun.github.io/note/2015/minimal-ubuntu-on-my-laptop-server/;
+                this.page.identifier = "2015-07-24 00:00:00 +0100-Minimal Ubuntu on my Laptop Server";
+            };
+
+
+            //Create an element for the script and then shove it in the head.
+            var scriptele = document.createElement('script')
+            scriptele.setAttribute("type", "text/javascript")
+            scriptele.setAttribute("src", "http://t3hmun.github.io/js/disqus.js")
+            document.getElementsByTagName("head")[0].appendChild(scriptele)
+        }
+        </script>
+        <div class="centre-block">
+            Loading comments will open connections to <a href="https://help.disqus.com/customer/portal/topics/215159-terms-and-policies/articles">Disqus</a> and <a href="https://support.google.com/analytics/answer/6004245?hl=en">Google</a>.
+            <br>
+            <a href="http://t3hmun.github.io/images/nudgenudge.png">It may be possible</a> that they will datamine and track you and your comments.
+            <br>
+            <br>
+            <button onclick="loadcomments()">Click to load Disqus comments</button>
+        </div>
+    </div>
+    <div id="disqus_thread" class="comments-block"></div>
+</section>
+
+
+</article>
+
+    </main>
+
+    <footer>
+      <div class="centre-block">
+        <div class="bar">
+          <div class="art"><a href="#top-of-page">▁▁
+scroll ╱╲ to top</a></div>
+          <br>
+          <br>
+        </div>
+        <br>
+        <div class="art">╭┬╮╭─╮┐│ ▝ 
+╵ ╵╰─╵╰╰╴▝ </div><span class="fblock">blog at t3hmun dot com</span>
+        <br> See my code at
+        <div class="art"><a href="http://github.com/t3hmun"> ╭─╴.   ╷ ╷    
+ │ ┐┐ ┼ ├─┤╷╷├╮
+ ╰─╯╰╴╰╴╵ ╵╰╯└╯</a></div>
+        <br> Site content is licensed as
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴╭─╴ ╭─╮          
+ │  │   ├─┤ttribution
+ ╰─╴╰─╴ ╵ ╵          </a></div>
+
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴     ╭─╮    
+ ╰─╮hare ├─┤like
+ ╶─╯     ╵ ╵    </a></div>
+
+        <div class="centre-block">
+          <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        </div>
+
+      </div>
+    </footer>
+
+
+    <div id="theme-changer" class="scripty">
+      <a id="lightbutton">light</a> -
+      <a id="darkbutton">dark</a> -
+      <a href="#top-of-page">top</a>
+    </div>
+
+    <div id="toc-toggle-div" class="toc-toggle">
+      <a href="" id="toctogglebutton">toc</a>
+    </div>
+
+  </div>
+</body>
+
+</html>

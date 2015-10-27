@@ -5,8 +5,8 @@
     <description>t3hmun&#39;s personal blog.</description>
     <link>http://t3hmun.github.io/</link>
     <atom:link href="http://t3hmun.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 27 Oct 2015 02:54:40 +0000</pubDate>
-    <lastBuildDate>Tue, 27 Oct 2015 02:54:40 +0000</lastBuildDate>
+    <pubDate>Tue, 27 Oct 2015 17:16:55 +0000</pubDate>
+    <lastBuildDate>Tue, 27 Oct 2015 17:16:55 +0000</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -188,6 +188,26 @@
         
         
         <category>article</category>
+        
+      </item>
+    
+      <item>
+        <title>Minimal Ubuntu on my Laptop Server</title>
+        <description>The process of installing a minimal server on a DELL M1530 laptop and connecting the wifi.</description>
+        <pubDate>Fri, 24 Jul 2015 00:00:00 +0100</pubDate>
+        <link>http://t3hmun.github.io/note/2015/minimal-ubuntu-on-my-laptop-server/</link>
+        <guid isPermaLink="true">http://t3hmun.github.io/note/2015/minimal-ubuntu-on-my-laptop-server/</guid>
+        
+        <category>log</category>
+        
+        <category>ubuntu</category>
+        
+        <category>linux</category>
+        
+        <category>server</category>
+        
+        
+        <category>note</category>
         
       </item>
     
