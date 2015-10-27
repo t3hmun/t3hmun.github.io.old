@@ -12,6 +12,7 @@ comments_enabled: true
 {:toc .toc}
 
 > Update 2015-26-10: Added information about sys.stdout.buffer.write.
+> Update 2015-27-10: Corrected a boat-load of mistakes, and added more information.
 
 ## What
 
@@ -25,7 +26,7 @@ UnicodeEncodeError: 'charmap' codec can't encode character
 {: .other-text-width}
 
 Part of an error usually encountered when printing to a console, but possible in many other text situations.
-If you are interested in deeply understanding the issue, instead of just copy-pasting SO posts, read on.
+If you are interested in fully understanding the root issue, instead of just copy-pasting SO posts, read on.
 
 ## The Problem
 
@@ -44,7 +45,45 @@ The `sys.stdout.write` function is [more interesting](https://docs.python.org/3/
 > The character encoding is platform-dependent. Under Windows, if the stream is interactive (that is, if its isatty() method returns True), the console codepage is used, otherwise the ANSI code page. Under other platforms, the locale encoding is used (see locale.getpreferredencoding()).
 
 This means that `sys.stdout.write` will re-encode whatever you give it to suit the context.
-As a result we are required to give it text that is suitable for re-encoding and if we don't we get the encoding error that inspired this article.
+As a result we are required to give it text that is suitable for re-encoding; if we don't we get the encoding error that inspired this article.
+
+Since the documentation is horrifyingly difficult to traverse we can investigate a bit using python itself:
+
+```python
+>>> import sys
+>>> type(sys.stdout)
+<class '_io.TextIOWrapper'>
+```
+{: .reading-width}
+
+As you can see, `sys.stdout` is actually a [TextIOWrapper](https://docs.python.org/2/library/io.html#io.TextIOWrapper), which has some further relevant documentation.
+
+```python
+>>> print(sys.stdout.errors)
+strict
+>>> print(sys.stdout.encoding)
+cp850
+>>> print(sys.stdout.line_buffering)
+True
+```
+{: .reading-width}
+
+Now we can see that errors is set to strict, which is the cause of the encoding error, it has detected my console's encoding and it is using line-buffering, which means that the TextIOWrapper buffer is flushed on every newline character.
+
+However, if we put all those lines into a script and then redirect the output to a file the file contains:
+
+```
+<class '_io.TextIOWrapper'>
+cp1252
+strict
+False
+```
+{: .reading-width}
+
+The encoding has changed and line buffering has turned off.
+The same happens when the script output is piped to another program.
+So much for predictability.
+We must be wary.
 
 
 ### Simple Error Example With `print`
@@ -75,12 +114,7 @@ UnicodeEncodeError: 'charmap' codec can't encode character '\u2206' in position 
 
 ## Changing the Console for the Text
 
-There are two ways to output utf-8 to the console
-
- * Use `print` on a utf-8 console
- * Use `sys.stdout.buffer.write` to write the bytes of utf-8 encoded text.
-
-Both of these methods will allow redirection and piping of the utf-8 text, staying in utf-8, however only the text will only appear correctly on the console if the console is set to utf-8.
+The only practical way to reliably display utf-8 text in a console is to change the console to utf-8 mode. 
 
 In the windows command prompt the console's code page can be changed to Unicode (cp65001) before starting Python using `chcp` (if using GitBash type `chcp.com` instead):
 
@@ -123,10 +157,10 @@ def clean(text, mode='replace'):
         text = text.encode(encoding, mode).decode(encoding)
     return text
 ```
+{: .other-text-width}
 
 This causes the original value of the replaced characters to be lost, so if you need to accurately pipe, redirect or view the incompatible utf-8 characters, this is no good.
 Also this is inefficient, since the text will be encoded again. You could simply skip the decode and pass the bytes to `sys.stdout.buffer.write` instead of using `print` (more on this later).
-
 
 
 ## Let's Grok Encode Decode
@@ -135,8 +169,10 @@ This is a series of little code samples that should clear up any misconceptions 
 
 ### string.encode()
 
-The `string.encode('encoding')` function encodes the string into a __bytes object__ of the specified encoding.
-It does not create a string, since Python 3 strings are always utf-8 (I stress this point because seeing contradictory Python2 code can result in confusion).
+The `string.encode('encoding')` function encodes the string into a __bytes object__ with the specified encoding. 
+Bytes are raw data, the bytes object does not have encoding, the data stored in the bytes represent text of an encoding.
+
+In Python 3 you encode from a __utf-8-encoded-string__ to bytes and decode from bytes to a __utf-8-encoded-string__ (I stress this point because seeing contradictory Python2 code can result in confusion).
 
 ```python
 >>> import sys
@@ -158,9 +194,9 @@ hello
 
 ### string.decode()
 
-The `string.decode('encoding')` function converts a bytes object representing text into an __utf-8__ string.
-It always decodes to utf-8 because that what strings are in Python 3.
-However the bytes object could be being used to represent any encoding (including utf-8) so that encoding must be specified.
+The `bytes.decode('encoding')` function converts a bytes object representing text into an __utf-8__ string.
+However the bytes data could be being used to represent any encoding (including utf-8) so that encoding must be specified.
+If you decode bytes representing utf-8 text, the data does not change, the underlying data is identical.
 
 The degrees symbol `º` exists in both Unicode and cp850 (everything should exist in Unicode).
 The next code example it working in each encoding and the failures that occur when it is decoded with the wrong encoding.
@@ -228,9 +264,11 @@ hello
 
 ## Direct Output To `stdout`
 
-The final method of working with utf-8 or any specified encoding is to send raw bytes directly to `stdout` skipping the automatic encoding. This is the only way to guarantee that your encoding is kept intact, useful when the intent is to have utf-8 (or anything else) output piped or redirected to other places intact.
+The final method of working with utf-8 or any specified encoding is to send raw bytes directly to the `stdout` buffer, skipping the automatic encoding. This is the only way to guarantee that your encoding is kept intact, useful when the intent is to have utf-8 (or anything else) output piped or redirected to other places unmodified.
 
-As mentioned before `sys.stdout.write(string)` encodes by default, however using `sys.stdout.buffer.write(bytes)` skips the automatic encoding allowing you to output whatever you want intact.
+As mentioned before `sys.stdout.write(string)` encodes by default, however using `sys.stdout.buffer.write(bytes)` delivers your bytes directly, unchanged. 
+
+In theory `string.encode('utf-8)` doesn't actually do anything to the data itself, since string is is already utf-8, it just creates a bytes var to so that we can make direct use of the data. The is the equivalent of 'outputting the string directly'.
 
 The following simple Python script:
 
@@ -258,16 +296,17 @@ Has the output:
 ```
 {: .reading-width}
 
-Encode defaults to utf-8, so so `.encode()` is outputting utf-8 encoded text.
+In this example lines 2, 3 and 4 were econded to the default utf-8 before being output.
 This works fine for pure ASCII characters (`hello`) that are encoding-compatible with most code-pages but outputs garbage when it encounters anything beyond basic ASCII, as seen on output lines 3 and 4.
 
-The delta triangle is not compatible with cp850 so it is output as a `?` even when encoded properly.
-Note that if the `'replace'` option was not specified, it would have defaulted to `'strict'` mode and crashed with the error that inspired this article.
+The delta triangle character does not exist in cp850 so it is output as a `?` when encoded correctly.
+Note that the `'replace'` option was specified. 
+The default `'strict'` mode would have broke the script with the error that inspired this article.
 
-Notably the British pound symbol `£` can be displayed in cp850 `print('£')`, however the encoding for this symbol is different so it only works when the correct encoding is specified.
+Notably the British pound symbol `£` can be displayed in cp850 `print('£')`, however the encoding for this symbol is not the same as in utf-8 so it only appears when encoded correctly.
 
 
-### A Pitfall of Writing to `stdout.buffer` 
+### Pitfalls of Writing to `stdout.buffer` 
 
 Now lets have a look at what happens when we redirect the output of the previous example to a text file (`example.py > x.txt`):
 
@@ -282,22 +321,85 @@ Now lets have a look at what happens when we redirect the output of the previous
 {: .reading-width}
 
 The output is in the wrong order, the text output with `print` appears last.
-`print` uses `sys.stdout.buffer` (by default) and this buffers the text before output.
-Since Python 3.3 `print` now has a flush argument that will prevent this disordering of output.
-Otherwise you can use `sys.stdout.flush()` after the print for the same effect.
+By default `stdout` is a [TextIOWrapper](https://docs.python.org/3/library/io.html#io.TextIOWrapper) which inherits from [TextIOBase](https://docs.python.org/3/library/io.html#io.TextIOBase).
+It has its own text buffer separate to the underlying [BufferedWriter](https://docs.python.org/3/library/io.html#io.BufferedWriter) (`sys.stdout.buffer`).
+This extra middle buffer must be flushed (`sys.stdout.flush()`) before writing directly to the underlying buffer.
 
-After doing a search I have found that people seem to be confused about what is buffered by python when and what is buffered by the console and when these bufferings come into effect.
+Since Python 3.3 `print` has a flush argument that will do the flush for you.
 
-The [Python documentation on this](https://docs.python.org/3/library/sys.html#sys.stdout) is a bit thin for my liking:
+I'm not sure if `sys.stdout.flush()` triggers `sys.stdout.buffer.flush()`, feel free to [investigate](https://github.com/python/cpython/blob/1fe0fd9feb6a4472a9a1b186502eb9c0b2366326/Modules/_io/textio.c#L1244) [further](https://github.com/python/cpython/blob/1fe0fd9feb6a4472a9a1b186502eb9c0b2366326/Modules/_io/textio.c#L2621).
+
+The [Python documentation on this](https://docs.python.org/3/library/sys.html#sys.stdout) mentions line-buffering:
 
 > When interactive, standard streams are line-buffered. Otherwise, they are block-buffered like regular text files. You can override this value with the `-u` command-line option.
-> 
-> > __Note__
-> > 
-> > To write or read binary data from/to the standard streams, use the underlying binary buffer object. For example, to write bytes to stdout, use `sys.stdout.buffer.write(b'abc')`.
-> > 
-> > However, if you are writing a library (and do not control in which context its code will be executed), be aware that the standard streams may be replaced with file-like objects like `io.StringIO` which do not support the buffer attribute.
 
-Now I'm lost. I intend to figure this out and update this article accordingly soon.
+However this seems to have nothing to do with this issue, the python interpreter and the console seems to always output immediately, regardless of the lack of line endings and files output out of order even with line endings.
 
 
+#### `_CHUNK_SIZE` hack
+
+Yet another sneaky method is to set the [undocumented](https://github.com/python/cpython/blob/1fe0fd9feb6a4472a9a1b186502eb9c0b2366326/Modules/_io/textio.c#L1347) chunk size to one:  `sys.stdout._CHUNK_SIZE = 1`.
+This is the variable in TextIOWrapper that controls the frequency of text buffer flushes.
+
+__However be careful, this requires at-least 2 characters to be sent at a time to guarantee a flush__; [it only triggers a flush](https://github.com/python/cpython/blob/1fe0fd9feb6a4472a9a1b186502eb9c0b2366326/Modules/_io/textio.c#L1347) when there are more than `chunk_size` characters pending to be written. The minimum allowed value of `chunk_size` is 1, which means the minimum pending characters must be 2 to flush. It handles the entire passed string at once, so strings that have a length of 2 or more will flush fully instantly.
+
+This is a handy hack if you have a lot of code lacking necessary flushes (and none of those string are smaller than 2 characters).
+
+I can't say I fully understand the code, so don't use this hack on any critical code.
+
+
+## Other Methods of Changing Output
+
+As [mentioned in the documentation](https://docs.python.org/3/library/sys.html#sys.stdout) the output encoding can be changed using the `PYTHONIOENCODING` environment variable.
+This approach is not recommended because it can have side effects, it may break other scripts.
+
+### Detach For Pure Binary
+
+It is possible to [detach the TextIOWrapper](https://docs.python.org/2/library/io.html#io.TextIOBase.detach) from stdout, however all this does is break `print` completely and change `sys.stdout.write()` so that it accepts bytes instead of string. This is only useful in porting awkward code from Python 2. 
+
+```python
+import sys
+# Detach returns the underlying stream, which is a _io.BufferedWriter
+# This is unlikely to be a good idea.
+sys.stdout = sys.stdout.detach()
+```
+{: .reading-width}
+
+
+### Detach and Replace With Encoder
+
+A more interesting idea than just detaching is to replace stdout with a utf-8 encoder:
+
+```python
+import sys
+import codecs
+sys.stdout = codecs.getwriter('utf-8')(sys.stdout.detach)
+```
+
+The `codecs.getwriter()` method returns a function for initialising a writer.
+The detached stream is passed as a parameter to create a writer that is then set as stdout.
+
+Now all `print` and `write` calls will be encoded as `utf-8` regardless of the context.
+This has the same output effect `sys.stdout.buffer.write(mystring.encode())`, non ASCII text becomes garbled in the console, but piped and redirected text is utf-8 so you can fully work in utf-8. 
+Keep in mind that `stdout.buffer` does not exist anymore, since stdout is now a `encodings.utf_8.StreamWriter`.
+
+This is useful when you have a script with many print statements and you want to force utf-8 output for all of them.
+This is especially when the output will be redirected to file, and you want that file to be utf-8.
+
+
+## A Pitfall When Piping 
+
+Be wary, if you pipe utf-8 to another script or program without changing the console codepage to utf-8, the second script's stdin won't magically change to utf-8.
+If the second program is a python script it will detect the code-page from the console the same as always and the input will be decoded accordingly.
+You will have to force its stdin into utf-8 mode.
+
+
+## Last Words
+
+ARRGGGGGHHHH it is annoying that everything doesn't work in unicode by default, but this is legacy.
+The 256 glyph VGA compatible text mode is still the universal fallback / startup mode for computers these days, meaning that the terminal will always need to be compatible with a basic old code page first.
+
+ * If you need Unicode you will have to specify it at both ends, in and out, or you risk failure.
+ * For visible console output, stick to ASCII.
+
+-t3hmun
