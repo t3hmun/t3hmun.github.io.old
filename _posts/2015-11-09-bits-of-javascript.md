@@ -89,9 +89,15 @@ If we used x instead of `closureCopy` in the `closingFunct`, then every `closing
 
 ## `this`
 
-### In a Method
+Every function has it's own `this` variable.
 
-Normally `this` refers to the object that the function is __called__ inside of. For a method `this` would be the object that it is defined in. For a function called in a method it would be the object of the method that it is called from. Keep in mind that if a method is assigned to a var it is no longer a method of that object, it becomes a normal function.
+### `bind`
+
+A new function can be created that is explicitly bound to an object `boundFunc = func.bind(anObject)`, in which case `this` is set to the specified object.
+
+### Methods aand Functions
+
+In methods `this` refers to the object the method belongs to. Other functions, including functions in methods, default `this` to the global object (default to `undefined` in strict mode).  Keep in mind that if a method is assigned to a var it is no longer a method of that object, it becomes a normal function with a default `this`.
 
 ```javascript
 var objA = {
@@ -111,14 +117,22 @@ objB.valFun = objA.valFun.bind(objA);
 objB.valFun(); //Output: a
 ```
 
-A new function can be created that is explicitly bound to an object `ft = f.bind(anObject)`, in which case `this` is set to the specified object, ignoring the object that it is called from.
-
-
 ### At the Top Level
 
-In browsers, at the top level, outside of any function, `this` always returns the global object `global`  which is usually `Window`. Any variables declared at that top level also become properties of that global object.
+Browsers and Node.Js act differently at the top level.
 
-Scripts run in Node.Js have different rules for the top level, a lot can be understood from having a quick look at the [source for `node.js`](https://github.com/nodejs/node/blob/34a35919e165cba6d5972e004e6b2cbdf2f4c65a/src/node.js#L951-L968):
+In browsers, at the top level scope outside of any function `this` always returns the global object `Window`.
+
+In Node.Js at the top level `this` is `module.exports`. Note that functions at the top level still default to the global object (or `undefined` in strict mode).
+
+
+## Browser and Node.JS Structure
+
+In browsers the global object is `Window`. Variables and functions declared at the top level become properties of `Window`.
+
+In Node.Js the global object is called `global`. Variables and functions declared at the top level do not become a part of the global object.
+
+ A lot can be understood from having a quick look at the [source for `node.js`](https://github.com/nodejs/node/blob/34a35919e165cba6d5972e004e6b2cbdf2f4c65a/src/node.js#L951-L968):
 
 ```javascript
 NativeModule.wrap = function(script) {
@@ -141,8 +155,23 @@ NativeModule.prototype.compile = function() {
 };
 ```
 
-First thing to notice is the the script is run inside a function wrapper. This means that variables declared at the top level are local variables in the scope of that function. As a result these variables wont pollute the global object like they do in browser scripts.
+First thing to notice is the the script is run inside a function wrapper. This means that variables and functions declared at the top level are local variables in the scope of that function. As a result these variables won't pollute the `global` object like they do in browser scripts. However vars defined but not declared with `var` are treated as implicit globals and added to `global` as a result.
 
 From the code we can see that `exports`, `require` and `module` are function parameters. This explains how they are available in the whole script, they aren't just magic global variables.
 
-The next part is a little more difficult to decode; the `runInThisContext()` function, which in turn calls the `ContextifyScript()` function, which appears to call a C compiled core module. I looks like this sets the object and global context for the function.
+The next part is a little more difficult to decode; the `runInThisContext()` function, which in turn calls the `ContextifyScript()` function, which appears to call a C compiled core module. It looks like this sets the object context (`exports`) and global context (`global`) for the function:
+
+```javascript
+function retThisFunc(){return this};
+var varRtFunc = retThisFunc;
+obj = {thisProp : this};
+
+// Every entry in the following array evaluates to `true` in Node.Js.
+var trueForNodeJs = [
+    this == exports,
+    this == module.exports,
+    this == obj.thisProp,
+    global == retThisFunc(),
+    global == varRtFunc()
+];
+```
