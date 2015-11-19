@@ -175,3 +175,39 @@ var trueForNodeJs = [
     global == varRtFunc()
 ];
 ```
+
+
+## Lenient Equality
+
+The `==` operator has a bizarre process of deciding equality. It makes conversions then does strict equality checks, but it does not coerce to boolean like one might expect ([Mozilla have a neat table illustrating this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Loose_equality_using)):
+
+ 1. If the operands are the same type, __return__ strict equality.
+ 1. If any of the operands are objects, convert them to primitives (`toPrimitive()`).
+ 1. If the operands are the same type, __return__ strict equality.
+ 1. If operands are `null` and `undefined`, __return__ true.
+ 1. If either of the operands are `null` or `undefined` __return__ false.
+ 1. If any of the operands are not numbers, convert them to numbers, __return__ strict equality.
+
+This results in the following fun equalities:
+
+```javascript
+var a = {};
+var b = {};
+
+console.log(a == b); // false
+
+a.valueOf = function () { return 'monkeys'; };
+b.valueOf = function () { return 'monkeys'; };
+
+console.log(a == b); // false
+console.log(a == 'monkeys'); // true
+console.log(b == 'monkeys'); // true
+
+var c = {};
+// Default valueOf() returns object so it falls-back to toString().
+console.log(c == '[object Object]'); //true
+```
+
+In case you are getting confused, statements like `if()` that expect a boolean  will coerce the expression to boolean, so none of this is relevant unless you use lenient equality in your expression. `0`, `Nan`, `null`, `undefined` and `''` all coerce to `false` after the expression has been evaluated.
+
+The `!` operator coerces to boolean too and has precedence over equality operators, so `!undefined == true` is `true` and `!!undefined == false`. `!!` is often used as shorthand for boolean coercions.
