@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<!-- This is an include file because all pages use the same head.
+Liquid Markup is used to customise it for each page. -->
+<head>
+  <!-- UTF-8 is the best supported modern character-set used almost everywhere. -->
+  <meta charset="utf-8">
+  <!-- This is needed to suppress Internet Explorer's compatibility mode and make it operate with minimum quirks. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- This informs small screen devices that the content is intended to wrap inside the screen-width without scaling. 
+  This prevents the phone from rendering a miniature parody of the desktop appearance of the site.
+  The design of the site must be suitable for this kind of wrapping in a smaller space. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- A description for search engines and other non-humans. If the page has not description set default to site description. -->
+  <meta name="description" content="As a programmer learning JavaScript most of it is obvious and self-explanatory, however there are many little niggles and quirks that separate it from other languages. This is just some that I may need to remind myself of.">
+
+  <!-- Title used by the browser and also by search engines and non-humans. -->
+  <title>Bits of Javascript</title>
+
+  <!-- The root relative url for the stylesheet. -->
+  <link id="maincss" rel="stylesheet" href="http://t3hmun.github.io/css/main.css">
+  <!-- The preferred URL for the page. Useful when there are multiple possible urls. -->
+  <link rel="canonical" href="http://t3hmun.github.io/note/2015/bits-of-javascript/">
+  <!-- Handy link to the RSS for the site for browsers and non-humans. -->
+  <link rel="alternate" type="application/rss+xml" title="t3hmun" href="http://t3hmun.github.io/feed.xml" />
+  
+  <script src="http://t3hmun.github.io/js/theme.js"></script>
+</head>
+
+<body>
+  <div class="body-wrapper">
+
+    <header>
+      <div class="centre-block" id="top-of-page">
+        <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        <nav>
+          <div class="art miniart "><a href="http://t3hmun.github.io/about/">         ╷                     
+   ╭───╮ ├───╮╭───╮╷   ╷╶┼─╴   
+▒  │   │ │   ││   ││   │ │    ▒
+   ╰───╰ ╰───╯╰───╯╰───╯ ╰─╴   
+</a></div>
+          <div class="art miniart"><a href="http://t3hmun.github.io/archive/">                  ╷      .             
+   ╭───╮ ╭──╴╭───╴├───╮ ╶┐ ╷  ╷╭───╮   
+▒  │   │ │   │    │   │  │ └┐┌┘├───╯  ▒
+   ╰───╰ ╵   ╰───╴╵   ╵  ╰╴ └┘ ╰───╯   </a></div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- 
+The base layout has this wrapped in a main section.
+This layout contains a single main article. 
+-->
+<article>
+  <h2><a href="http://t3hmun.github.io/note/2015/bits-of-javascript/">Bits of Javascript</a></h2>
+  <footer>
+    <div class="heading-footer">
+      <span class="date">
+        Posted on:
+        <time datetime=" 2015-11-05 12:00 ">2015-11-05 at 12:00</time>
+      </span>
+      <span class="tags">      
+        <a href="http://t3hmun.github.io/archive/#note">[note] - </a>
+        <a href="http://t3hmun.github.io/archive/#javascript">[javascript] </a>
+      </span>
+    </div>
+  </footer>
+  <p>This article is a compilation of the oddities and features of JavaScript that I am most likely to forget.</p>
+
+<h3 id="hoisting">Hoisting</h3>
+
+<p>Variable declarations are hoisted to the top of the file but the assignment remains in its original position.
+This results in the variable being undefined as opposed to a reference error before the statement.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="c1">//*other code here*</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="c1">// Is equivalent to the following due to hoisting:</span>
+<span class="kd">var</span> <span class="nx">x</span><span class="p">;</span>
+<span class="c1">//*other code here*</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Implicit globals do not have their declaration hoisted.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Comment out the next line to test the rest.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">implicitGlobal</span><span class="p">);</span> <span class="c1">// Reference error, CRASH.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">normalGlobal</span><span class="p">);</span> <span class="c1">// &gt;undefined</span>
+
+<span class="nx">a</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">implicitGlobal</span><span class="p">);</span> <span class="c1">// &gt;'bad-implicit'</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">normalGlobal</span><span class="p">);</span> <span class="c1">// &gt;'meh'</span>
+
+<span class="kd">function</span> <span class="nx">a</span> <span class="p">(){</span>
+    <span class="nx">implicitGlobal</span> <span class="o">=</span> <span class="s1">'bad-implicit'</span><span class="p">;</span>
+    <span class="nx">normalGlobal</span> <span class="o">=</span> <span class="s1">'meh'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">normalGlobal</span> <span class="o">=</span> <span class="s1">'surprise'</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">implicitGlobal</span><span class="p">);</span> <span class="c1">// &gt;'bad'</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">normalGlobal</span><span class="p">);</span> <span class="c1">// &gt;'surprise'</span>
+</code></pre>
+</div>
+
+<h3 id="logic">Logic</h3>
+
+<p><code class="highlighter-rouge">&amp;&amp;</code> and <code class="highlighter-rouge">||</code> are lazy and return the last lazily tested operand.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">truething</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="kd">var</span> <span class="nx">falsething</span><span class="p">;</span> <span class="c1">//undefined (assign 0, '' or false for smae result).</span>
+<span class="nx">truething</span> <span class="o">&amp;&amp;</span> <span class="nx">falsething</span> <span class="c1">//== falsething</span>
+<span class="nx">truething</span> <span class="o">||</span> <span class="nx">falsething</span> <span class="c1">//== truething</span>
+<span class="nx">falsething</span> <span class="o">&amp;&amp;</span> <span class="nx">truething</span> <span class="c1">//== falsething</span>
+<span class="nx">falsething</span> <span class="o">||</span> <span class="nx">truething</span> <span class="c1">//== truething</span>
+</code></pre>
+</div>
+
+<h3 id="iife-pattern">IIFE Pattern</h3>
+
+<p>Immediately Invoked Function Expression</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="c1">//Here we have a new variable scope.    </span>
+<span class="p">}());</span>   
+</code></pre>
+</div>
+
+<p>This is needed if you are iterating and passing values into a closure.
+Variables cannot be redeclared in JavaScript, only redefined, hence resulting in side-effects everywhere the var is used.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">stuffToDoLater</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">x</span> <span class="o">=</span> <span class="nx">someRandomValueFunction</span><span class="p">();</span>
+    <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="c1">// A new var scope to create closureCopy in.</span>
+        <span class="kd">var</span> <span class="nx">closureCopy</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">closingFunct</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">doStuff</span><span class="p">(</span><span class="nx">closureCopy</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">stuffToDoLater</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">closureCopy</span><span class="p">)</span>
+    <span class="p">}());</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>If we used x instead of <code class="highlighter-rouge">closureCopy</code> in the <code class="highlighter-rouge">closingFunct</code>, then every <code class="highlighter-rouge">closingFunct</code> in <code class="highlighter-rouge">stuffToDoLater</code> would have the same <code class="highlighter-rouge">x</code> with the last value assigned to it in the loop.</p>
+
+<h3 id="this"><code class="highlighter-rouge">this</code></h3>
+
+<p>Every function has it’s own <code class="highlighter-rouge">this</code> variable.</p>
+
+<h4 id="bind"><code class="highlighter-rouge">bind</code></h4>
+
+<p>A new function can be created that is explicitly bound to an object <code class="highlighter-rouge">boundFunc = func.bind(anObject)</code>, in which case <code class="highlighter-rouge">this</code> is set to the specified object.</p>
+
+<h4 id="methods-aand-functions">Methods aand Functions</h4>
+
+<p>In methods <code class="highlighter-rouge">this</code> refers to the object the method belongs to. Other functions, including functions in methods, default <code class="highlighter-rouge">this</code> to the global object (default to <code class="highlighter-rouge">undefined</code> in strict mode).  Keep in mind that if a method is assigned to a var it is no longer a method of that object, it becomes a normal function with a default <code class="highlighter-rouge">this</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">objA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">val</span><span class="p">:</span> <span class="s2">"a"</span><span class="p">,</span>
+    <span class="na">valFun</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">val</span><span class="p">)}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">objB</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">val</span><span class="p">:</span> <span class="s2">"b"</span>
+<span class="p">}</span>
+
+<span class="nx">objA</span><span class="p">.</span><span class="nx">valFun</span><span class="p">();</span> <span class="c1">//Output: a</span>
+
+<span class="nx">objB</span><span class="p">.</span><span class="nx">valFun</span> <span class="o">=</span> <span class="nx">objA</span><span class="p">.</span><span class="nx">valFun</span><span class="p">;</span>
+<span class="nx">objB</span><span class="p">.</span><span class="nx">valFun</span><span class="p">();</span> <span class="c1">//Output: b</span>
+<span class="nx">objB</span><span class="p">.</span><span class="nx">valFun</span> <span class="o">=</span> <span class="nx">objA</span><span class="p">.</span><span class="nx">valFun</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">objA</span><span class="p">);</span>
+<span class="nx">objB</span><span class="p">.</span><span class="nx">valFun</span><span class="p">();</span> <span class="c1">//Output: a</span>
+</code></pre>
+</div>
+
+<h4 id="at-the-top-level">At the Top Level</h4>
+
+<p>Browsers and Node.Js act differently at the top level.</p>
+
+<p>In browsers, at the top level scope outside of any function <code class="highlighter-rouge">this</code> always returns the global object <code class="highlighter-rouge">Window</code>.</p>
+
+<p>In Node.Js at the top level <code class="highlighter-rouge">this</code> is <code class="highlighter-rouge">module.exports</code>. Note that functions at the top level still default to the global object (or <code class="highlighter-rouge">undefined</code> in strict mode).</p>
+
+<h3 id="browser-and-nodejs-structure">Browser and Node.JS Structure</h3>
+
+<p>In browsers the global object is <code class="highlighter-rouge">Window</code>. Variables and functions declared at the top level become properties of <code class="highlighter-rouge">Window</code>.</p>
+
+<p>In Node.Js the global object is called <code class="highlighter-rouge">global</code>. Variables and functions declared at the top level do not become a part of the global object.</p>
+
+<p>A lot can be understood from having a quick look at the <a href="https://github.com/nodejs/node/blob/34a35919e165cba6d5972e004e6b2cbdf2f4c65a/src/node.js#L951-L968">source for <code class="highlighter-rouge">node.js</code></a>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">NativeModule</span><span class="p">.</span><span class="nx">wrap</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">script</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">NativeModule</span><span class="p">.</span><span class="nx">wrapper</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">script</span> <span class="o">+</span> <span class="nx">NativeModule</span><span class="p">.</span><span class="nx">wrapper</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="nx">NativeModule</span><span class="p">.</span><span class="nx">wrapper</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'(function (exports, require, module, __filename, __dirname) { '</span><span class="p">,</span>
+  <span class="s1">'\n});'</span>
+<span class="p">];</span>
+
+<span class="nx">NativeModule</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">compile</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">NativeModule</span><span class="p">.</span><span class="nx">getSource</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="nx">source</span> <span class="o">=</span> <span class="nx">NativeModule</span><span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
+
+  <span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="nx">runInThisContext</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span> <span class="p">{</span> <span class="na">filename</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">filename</span> <span class="p">});</span>
+  <span class="nx">fn</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">exports</span><span class="p">,</span> <span class="nx">NativeModule</span><span class="p">.</span><span class="nx">require</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">filename</span><span class="p">);</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">loaded</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>First thing to notice is the the script is run inside a function wrapper. This means that variables and functions declared at the top level are local variables in the scope of that function. As a result these variables won’t pollute the <code class="highlighter-rouge">global</code> object like they do in browser scripts. However vars defined but not declared with <code class="highlighter-rouge">var</code> are treated as implicit globals and added to <code class="highlighter-rouge">global</code> as a result.</p>
+
+<p>From the code we can see that <code class="highlighter-rouge">exports</code>, <code class="highlighter-rouge">require</code> and <code class="highlighter-rouge">module</code> are function parameters. This explains how they are available in the whole script, they aren’t just magic global variables.</p>
+
+<p>The next part is a little more difficult to decode; the <code class="highlighter-rouge">runInThisContext()</code> function, which in turn calls the <code class="highlighter-rouge">ContextifyScript()</code> function, which appears to call a C compiled core module. It looks like this sets the object context (<code class="highlighter-rouge">exports</code>) and global context (<code class="highlighter-rouge">global</code>) for the function:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">retThisFunc</span><span class="p">(){</span><span class="k">return</span> <span class="k">this</span><span class="p">};</span>
+<span class="kd">var</span> <span class="nx">varRtFunc</span> <span class="o">=</span> <span class="nx">retThisFunc</span><span class="p">;</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="na">thisProp</span> <span class="p">:</span> <span class="k">this</span><span class="p">};</span>
+
+<span class="c1">// Every entry in the following array evaluates to `true` in Node.Js.</span>
+<span class="kd">var</span> <span class="nx">trueForNodeJs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="k">this</span> <span class="o">==</span> <span class="nx">exports</span><span class="p">,</span>
+    <span class="k">this</span> <span class="o">==</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">,</span>
+    <span class="k">this</span> <span class="o">==</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">thisProp</span><span class="p">,</span>
+    <span class="nx">global</span> <span class="o">==</span> <span class="nx">retThisFunc</span><span class="p">(),</span>
+    <span class="nx">global</span> <span class="o">==</span> <span class="nx">varRtFunc</span><span class="p">()</span>
+<span class="p">];</span>
+</code></pre>
+</div>
+
+<h3 id="lenient-equality">Lenient Equality</h3>
+
+<p>The <code class="highlighter-rouge">==</code> operator has a bizarre process of deciding equality. It makes conversions then does strict equality checks, but it does not coerce to boolean like one might expect (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Loose_equality_using">Mozilla have a neat table illustrating this</a>):</p>
+
+<ol>
+  <li>If the operands are the same type, <strong>return</strong> strict equality.</li>
+  <li>If any of the operands are objects, convert them to primitives (<code class="highlighter-rouge">toPrimitive()</code>).</li>
+  <li>If the operands are the same type, <strong>return</strong> strict equality.</li>
+  <li>If operands are <code class="highlighter-rouge">null</code> and <code class="highlighter-rouge">undefined</code>, <strong>return</strong> true.</li>
+  <li>If either of the operands are <code class="highlighter-rouge">null</code> or <code class="highlighter-rouge">undefined</code> <strong>return</strong> false.</li>
+  <li>If any of the operands are not numbers, convert them to numbers, <strong>return</strong> strict equality.</li>
+</ol>
+
+<p>This results in the following fun equalities:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// false</span>
+
+<span class="nx">a</span><span class="p">.</span><span class="nx">valueOf</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'monkeys'</span><span class="p">;</span> <span class="p">};</span>
+<span class="nx">b</span><span class="p">.</span><span class="nx">valueOf</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'monkeys'</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="s1">'monkeys'</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span> <span class="o">==</span> <span class="s1">'monkeys'</span><span class="p">);</span> <span class="c1">// true</span>
+
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="c1">// Default valueOf() returns object so it falls-back to toString().</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span> <span class="o">==</span> <span class="s1">'[object Object]'</span><span class="p">);</span> <span class="c1">//true</span>
+</code></pre>
+</div>
+
+<p>In case you are getting confused, statements like <code class="highlighter-rouge">if()</code> that expect a boolean  will coerce the expression to boolean, so none of this is relevant unless you use lenient equality in your expression. <code class="highlighter-rouge">0</code>, <code class="highlighter-rouge">Nan</code>, <code class="highlighter-rouge">null</code>, <code class="highlighter-rouge">undefined</code> and <code class="highlighter-rouge">''</code> all coerce to <code class="highlighter-rouge">false</code> after the expression has been evaluated.</p>
+
+<p>The <code class="highlighter-rouge">!</code> operator coerces to boolean too and has precedence over equality operators, so <code class="highlighter-rouge">!undefined == true</code> is <code class="highlighter-rouge">true</code> and <code class="highlighter-rouge">!!undefined == false</code>. <code class="highlighter-rouge">!!</code> is often used as shorthand for boolean coercions.</p>
+
+
+  <section>
+    <div id="comments-load-button" class="comments-load-button">
+        <script type="text/javascript">
+        function loadcomments() {
+
+            //Hide the load button, it is no longer needed.
+            document.getElementById('comments-load-button').style.display = 'none'
+
+            //Unhide the comments div.
+            document.getElementById('disqus_thread').style.display = 'block'
+
+            //Page-specific configuration for Disqus comments.
+            var disqus_config = function() {
+                //Base url is a mess when testing and i might sqitch domain anyway.
+                //this.page.url = http://t3hmun.github.io/note/2015/bits-of-javascript/;
+                this.page.identifier = "2015-11-05 12:00:00 +0000-Bits of Javascript";
+            };
+
+
+            //Create an element for the script and then shove it in the head.
+            var scriptele = document.createElement('script')
+            scriptele.setAttribute("type", "text/javascript")
+            scriptele.setAttribute("src", "http://t3hmun.github.io/js/disqus.js")
+            document.getElementsByTagName("head")[0].appendChild(scriptele)
+        }
+        </script>
+        <div class="centre-block">
+            Loading comments will open connections to <a href="https://help.disqus.com/customer/portal/topics/215159-terms-and-policies/articles">Disqus</a> and <a href="https://support.google.com/analytics/answer/6004245?hl=en">Google</a>.
+            <br>
+            <a href="http://t3hmun.github.io/images/nudgenudge.png">It may be possible</a> that they will datamine and track you and your comments.
+            <br>
+            <br>
+            <button onclick="loadcomments()">Click to load Disqus comments</button>
+        </div>
+    </div>
+    <div id="disqus_thread" class="comments-block"></div>
+</section>
+
+
+</article>
+
+    </main>
+
+    <footer>
+      <div class="centre-block">
+        <div class="bar">
+          <div class="art"><a href="#top-of-page">▁▁
+scroll ╱╲ to top</a></div>
+          <br>
+          <br>
+        </div>
+        <br>
+        <div class="art">╭┬╮╭─╮┐│ ▝ 
+╵ ╵╰─╵╰╰╴▝ </div><span class="fblock">blog at t3hmun dot com</span>
+        <br> See my code at
+        <div class="art"><a href="http://github.com/t3hmun"> ╭─╴.   ╷ ╷    
+ │ ┐┐ ┼ ├─┤╷╷├╮
+ ╰─╯╰╴╰╴╵ ╵╰╯└╯</a></div>
+        <br> Site content is licensed as
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴╭─╴ ╭─╮          
+ │  │   ├─┤ttribution
+ ╰─╴╰─╴ ╵ ╵          </a></div>
+
+        <div class="art"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> ╭─╴     ╭─╮    
+ ╰─╮hare ├─┤like
+ ╶─╯     ╵ ╵    </a></div>
+
+        <div class="centre-block">
+          <div class="art bigart"><a href="http://t3hmun.github.io/">
+╭───────────────────╮
+│   ╶─╮             │
+│ ┼╴ ─┤├─╮╭┬╮╷ ╷┌─╮ │
+│ ╰╴╶─╯╵ ╵╵ ╵╰─╯╵ ╵ │
+╰───────────────────╯</a></div>
+        </div>
+
+      </div>
+    </footer>
+
+
+    <div id="theme-changer" class="scripty">
+      <a id="lightbutton">light</a> -
+      <a id="darkbutton">dark</a> -
+      <a href="#top-of-page">top</a>
+    </div>
+
+    <div id="toc-toggle-div" class="toc-toggle">
+      <a href="" id="toctogglebutton">toc</a>
+    </div>
+
+  </div>
+</body>
+
+</html>
