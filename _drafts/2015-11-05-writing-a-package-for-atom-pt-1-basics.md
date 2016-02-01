@@ -19,8 +19,7 @@ This article details how to create a basic package for Atom and explains the rea
 ## Why
 
 I've been testing out Atom as a general code editor, and it does seem to have potential.
-It does take more than a second to load, making it still inferior to Sublime for instant text file hacking, but it seems nicer as a light-weight IDE.
-The plugins for Sublime are a little messy, I get the feeling that Atom is just a bit easier to work with out of the box.
+It does take more than a second to load, making it still inferior to Sublime for instant text file hacking, but it seems nicer as a light-weight IDE. 
 
 Anyway I decided I wanted to run [Pylint](http://www.pylint.org/) (and later [Pylama](https://github.com/klen/pylama)) automatically as I write code, highlighting syntax errors as you type is a lot quicker than running the linter in the console afterwards.
 I tried the [community Linter packages](https://github.com/AtomLinter) and they failed to satisfy me.
@@ -55,7 +54,7 @@ Run an Atom instance in dev mode (`atom -d`). You can continue running a non dev
 
 The package should be visible in the right at the bottom of the packages part of the settings. The default project also adds a context menu option, keyboard shortcut and en entry in the packages menu (`alt-p`).
 
-Pressing `ctrl-shift-R` in the dev window will reload it, without affecting the normal Atom instance. This way you can edit the package in a normal Atom instance and then reload the dev window to test the changes.
+Pressing `ctrl-alt-R` in the dev window will reload it, without affecting the normal Atom instance. This way you can edit the package in a normal Atom instance and then reload the dev window to test the changes.
 
 
 ## What Programming Language?
