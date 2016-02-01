@@ -8,15 +8,23 @@ tags: javascript
 comments_enabled: true
 ---
 
+
+This article is a compilation of the oddities and features of JavaScript that I am most likely to forget.
+
+
 ## Hoisting
 
+Variable declarations are hoisted to the top of the file but the assignment remains in its original position.
+This results in the variable being undefined as opposed to a reference error before the statement.
+
 ```javascript
+
+//*other code here*
 var x = 5;
-...other code
 
 // Is equivalent to the following due to hoisting:
 var x;
-...other code
+//*other code here*
 x = 5;
 ```
 
@@ -29,7 +37,7 @@ console.log(normalGlobal); // >undefined
 
 a();
 
-console.log(implicitGlobal); // >'bad'
+console.log(implicitGlobal); // >'bad-implicit'
 console.log(normalGlobal); // >'meh'
 
 function a (){
