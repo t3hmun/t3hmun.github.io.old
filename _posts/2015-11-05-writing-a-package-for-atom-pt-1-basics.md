@@ -148,3 +148,5 @@ The cson files in the menus and keymaps folders add key-bindings and menus to At
 Now we have a simple package that confirms it is working in the console. Basic but hopefully you should understand what __everything__ does.
 
 In the next article I'll start transforming this into an actual linter package.
+
+In [part 2]({{ site.baseurl }}/article/2015/writing-a-package-for-atom-pt-2-linter) I start writing a linter and then get bored.

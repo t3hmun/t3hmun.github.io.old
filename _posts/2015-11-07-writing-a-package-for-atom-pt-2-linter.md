@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Writing a Package for Atom pt 2 - Linter"
-date: 2015-11-05 12:00:00
+date: 2015-11-07 12:00:00
 description: "I found the Python linters for Atom unsatisfactory so I decided to create my own. This involved learning to write Atom packages and CoffeeScript. This article transforms a basic package into a linter."
 category: article
 tags: python lint atom package coffeescript
@@ -9,9 +9,9 @@ comments_enabled: true
 ---
 
 I ran out of steam half-way though writing this. I finished the package but I wasn't particularly enjoying CoffeeScript.
-I've finished writing the package with an error-warnings-info indicator.
+I've finished writing the package with an error-warnings-info indicator, you can see the code on [github here](https://github.com/t3hmun/python-lama-lint).
 
-This continues on from the previous article which created a very basic Atom package. In this article we'll turn it into a python Linter.
+This continues on from the [previous article]({{ site.baseurl }}/article/2015/writing-a-package-for-atom-pt-1-basics/) which created a very basic Atom package. In this article we'll turn it into a python Linter.
 
 ## My First Linting Message
 
@@ -88,3 +88,10 @@ lint: (textEditor) ->
 ## Child Process
 
 The linting tools I want to use is written in Python, so we need to launch a child process to run it. For this we'll use [Atom's `Buffered Process`](https://atom.io/docs/api/v1.1.0/BufferedProcess), which is a wrapper for [Node.Js's `child_process`](https://nodejs.org/api/child_process.html).
+
+...
+
+
+> Sorry, I'm not going to finish this. I went back to using Sublime for text editing.
+> 
+> The [code for a basic linter](https://github.com/t3hmun/python-lama-lint) is complete, you can have a look at it if ye like.
