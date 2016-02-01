@@ -3,7 +3,7 @@ layout: post
 title: "Bits of Javascript"
 date: 2015-11-05 12:00:00
 description: "As a programmer learning JavaScript most of it is obvious and self-explanatory, however there are many little niggles and quirks that separate it from other languages. This is just some that I may need to remind myself of."
-category: notes
+category: note
 tags: javascript
 comments_enabled: true
 ---
