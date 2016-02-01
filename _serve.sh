@@ -1,1 +1,1 @@
-jekyll serve --baseurl=
+jekyll serve --drafts --baseurl=
