@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Standards for hex-shank screw and drill bits."
-date: 2015-11-05 12:00:00
-description: ""
+date: 2016-01-28 12:00:00
+description: "The standard names for the common screwing and drilling hex shank."
 category: notes
-tags: javascript
+tags: diy
 comments_enabled: true
 ---
 
@@ -16,12 +16,10 @@ Products that bother to list the standard will any one or both of the standards,
 
 ## Most Screwing Bits / Adapters
 
-It appears that `C 6.3` bits ( mostly stubby 1/4" hex screw bits) are compatible with `D 6.3` adapters (mostly ratchet screwdrivers and 1/4" magnetic bit holders).
+It appears that `C 6.3` bits (mostly stubby 1/4" hex screw bits) are compatible with `D 6.3` adapters (mostly ratchet screwdrivers and 1/4" magnetic bit holders).
 
 The C and D styles are usually only held together with magnets, which makes the fine for screwing but not great for drilling where you need to pull back without the bit falling out.
 
 ## Most Drilling Bits / Adapters
 
 `E 6.3` are the hex shank bits with the squashed neck near the end, which lock into `F 6.3` adapters. However only Wera seems to mention `F.6.3` in their literature, most impact drivers specs just call it a _1/4" quick change_. 
-
-bbbbbbbbbbb
